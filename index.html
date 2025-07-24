@@ -45,14 +45,17 @@ Desenvolvido por Caíque Eduardo
     }
 
     nav {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      background: rgba(0, 255, 255, 0.1);
-      padding: 12px;
-      border-bottom: 1px solid #00cfff;
-      backdrop-filter: blur(6px);
-    }
+       display: flex;
+       flex-wrap: wrap; /* Quebra linha em telas menores */
+       justify-content: center;
+       gap: 10px;
+       background: rgba(0, 255, 255, 0.1);
+       padding: 12px 10px;
+       border-bottom: 1px solid #00cfff;
+       backdrop-filter: blur(6px);
+       box-sizing: border-box;
+}
+
 
     nav a {
       color: #00e0ff;
