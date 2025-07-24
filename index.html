@@ -1,1 +1,211 @@
-<!-- Conteúdo HTML do index será adicionado aqui em breve -->
+<!--
+Página principal do site Godoy Solutions in TECH
+Desenvolvido por Caíque Eduardo
+Última atualização: Julho/2025
+-->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Godoy Solutions in TECH</title>
+  <style>
+    /* Estilos base e fundo com efeito futurista */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: #ffffff;
+    }
+
+    /* Imagem de fundo (logo com baixa opacidade) */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://i.imgur.com/qg7YzCx.jpg') no-repeat center top;
+      background-size: contain;
+      opacity: 0.1;
+      z-index: -1;
+    }
+
+    header {
+      text-align: center;
+    }
+
+    .logo-banner {
+      width: 100%;
+      max-height: 300px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      background: rgba(0, 255, 255, 0.1);
+      padding: 12px;
+      border-bottom: 1px solid #00cfff;
+      backdrop-filter: blur(6px);
+    }
+
+    nav a {
+      color: #00e0ff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ffffff;
+    }
+
+    section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+      background-color: rgba(0, 0, 30, 0.4);
+      border-radius: 12px;
+      box-shadow: 0 0 25px rgba(0, 200, 255, 0.2);
+      backdrop-filter: blur(6px);
+    }
+
+    h2 {
+      color: #00e6ff;
+    }
+
+    footer {
+      background: rgba(0, 20, 50, 0.6);
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      border-top: 1px solid #00cfff55;
+    }
+
+    button, input, textarea {
+      background-color: rgba(0, 30, 50, 0.6);
+      color: #00f0ff;
+      border: 1px solid #00ffff99;
+      padding: 10px;
+      margin: 5px 0;
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .btn-whatsapp {
+      display: inline-block;
+      background: #25D366;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 6px;
+      margin-top: 10px;
+    }
+
+    .email-link {
+      color: #ffcc00;
+      text-decoration: underline;
+    }
+
+    .apoio-img {
+      max-width: 220px;
+      display: block;
+      margin: 20px auto;
+      border-radius: 10px;
+    }
+
+    .ranking {
+      background: rgba(255,255,255,0.08);
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+      color: #aef;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <!-- Logo como título principal -->
+    <img class="logo-banner" src="https://i.imgur.com/qg7YzCx.jpg" alt="Godoy Solutions Logo" />
+  </header>
+
+  <!-- Navegação -->
+  <nav>
+    <a href="#sobre">Sobre</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#contato">Contato</a>
+    <a href="#noticias">Notícias</a>
+    <a href="#apoio">Apoie</a>
+    <a href="softwares.html">Softwares</a>
+  </nav>
+
+  <!-- Seção Sobre -->
+  <section id="sobre">
+    <h2>Sobre a Empresa</h2>
+    <p>Godoy Solutions in TECH foi fundada por Caíque Eduardo Godoy da Silva, profissional com 28 anos e ampla formação na área de tecnologia. Possui certificações em Algoritmos, HTML5 e CSS3, Inteligência Artificial, Análise de Dados, Técnico em Informática e Manutenção, Elétrica Residencial Atualizada, JavaScript Básico e está se especializando continuamente em novas tecnologias. O objetivo da empresa é oferecer soluções tecnológicas acessíveis, práticas e futuristas, com foco em inovação, qualidade e atendimento personalizado.</p>
+  </section>
+
+  <!-- Seção Serviços -->
+  <section id="servicos">
+    <h2>Nossos Serviços</h2>
+    <ul>
+      <li>Criação de sistemas de gerenciamento e vendas</li>
+      <li>Desenvolvimento de sites e aplicativos personalizados</li>
+      <li>Manutenção de PCs, notebooks, celulares e periféricos</li>
+      <li>Instalação e restauração de sistemas operacionais</li>
+      <li>Recuperação de dados</li>
+      <li>Aulas e Sugestões para melhorar seu desempenho em Tech</li>
+    </ul>
+  </section>
+
+  <!-- Formulário de Contato -->
+  <section id="contato">
+    <h2>Fale Conosco</h2>
+    <p><a class="btn-whatsapp" href="https://wa.me/5511995586459" target="_blank">WhatsApp</a></p>
+    <p>Email: <a class="email-link" href="mailto:caiqueworkti@gmail.com">caiqueworkti@gmail.com</a></p>
+    <h3>Envie uma sugestão ou mensagem:</h3>
+    <form>
+      <input type="text" placeholder="Seu nome" required>
+      <input type="email" placeholder="Seu email" required>
+      <textarea rows="5" placeholder="Sua mensagem"></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
+
+  <!-- Notícias -->
+  <section id="noticias">
+    <h2>Notícias & Atualizações</h2>
+    <p>Em breve, publicações sobre inteligência artificial, tendências em TI, programação e muito mais.</p>
+  </section>
+
+  <!-- Apoio -->
+  <section id="apoio">
+    <h2>Apoie nosso trabalho</h2>
+    <p>Gostou do nosso conteúdo? Você pode apoiar via Pix escaneando o QR Code abaixo:</p>
+    <!-- // Adicione aqui a imagem do QR Code -->
+    <img class="apoio-img" src="https://i.imgur.com/XPYubnk.jpg" alt="QR Code Pix">
+    <p><a href="https://forms.gle/MUBmLM4EyDCqGiZ76" target="_blank">
+      <button>Me Identifiquei (Clique aqui)</button>
+    </a></p>
+    <div class="ranking">
+      <h3>Últimos Apoiadores</h3>
+      <ul>
+        <li><strong>Anônimo</strong> - R$ 50,00 - "Parabéns pelo site!"</li>
+        <li><strong>João Silva</strong> - R$ 15,00 - "Conteúdo top!"</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Rodapé -->
+  <footer>
+    <p>&copy; 2025 Godoy Solutions in TECH • Desenvolvido por Caíque Eduardo</p>
+  </footer>
+
+</body>
+</html>
