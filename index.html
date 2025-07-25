@@ -385,11 +385,15 @@
     window.onload = iniciarRolagem;
   </script>
 
- <script>
+<script>
   const newsContainer = document.getElementById('news-cards');
+  newsContainer.innerHTML = '<div class="loading">Carregando notícias...</div>';
+
   fetch('https://api.rss2json.com/v1/api.json?rss_url=https://news.google.com/rss/search?q=tecnologia&hl=pt-BR&gl=BR&ceid=BR:pt-419')
     .then(response => response.json())
     .then(data => {
+      if (newsContainer.children.length > 1) return; // Evita duplicação
+      
       const items = data.items.slice(0, 6);
       newsContainer.innerHTML = '';
 
@@ -399,20 +403,20 @@
         
         let imgURL = 'https://via.placeholder.com/320x180?text=Not%C3%ADcia+Tecnol%C3%B3gica';
         
-        if (item.content) {
-          const contentMatch = item.content.match(/<img[^>]+src="([^">]+)"/);
-          if (contentMatch) imgURL = contentMatch[1];
-        }
+        // Tenta extrair imagem de 3 fontes diferentes
+        const sources = [
+          item.content?.match(/<img[^>]+src="([^">]+)"/),
+          item.description?.match(/<img[^>]+src="([^">]+)"/),
+          item.enclosure?.link // Alguns RSS usam este campo para imagens
+        ].filter(Boolean);
         
-        if (!imgURL.includes('placeholder')) {
-          const descMatch = item.description.match(/<img[^>]+src="([^">]+)"/);
-          if (descMatch) imgURL = descMatch[1];
-        }
+        if (sources.length > 0) imgURL = sources[0][1] || imgURL;
 
         card.innerHTML = `
-          <img src="${imgURL}" alt="Imagem da notícia" onerror="this.src='https://via.placeholder.com/320x180?text=Imagem+N%C3%A3o+Dispon%C3%ADvel'">
+          <img src="${imgURL}" alt="Imagem da notícia" 
+               onerror="this.src='https://via.placeholder.com/320x180?text=Imagem+N%C3%A3o+Dispon%C3%ADvel'">
           <h3><a href="${item.link}" target="_blank">${item.title}</a></h3>
-          <p>${item.description.replace(/<[^>]*>?/gm, '').substring(0, 120)}...</p>
+          <p>${item.description?.replace(/<[^>]*>?/gm, '').substring(0, 120) || 'Descrição não disponível'}...</p>
           <a class="news-link" href="${item.link}" target="_blank">Ler mais →</a>
         `;
         newsContainer.appendChild(card);
