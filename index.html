@@ -129,6 +129,7 @@ Desenvolvido por Caíque Eduardo
       margin-top: 20px;
       color: #aef;
     }
+
   </style>
 </head>
 <body>
@@ -200,10 +201,12 @@ Desenvolvido por Caíque Eduardo
   <!-- Ranking com animação e estilo futurista -->
 <div class="ranking">
   <h3>Últimos Apoiadores</h3>
-  <div class="ranking-container">
+  <div class="ranking-container"> <!-- ⬅️ Nova div -->
     <ul id="ranking-list">
       <li>Carregando dados...</li>
     </ul>
+  </div>
+</div>
   </div>
 </div>
 
@@ -232,7 +235,9 @@ Desenvolvido por Caíque Eduardo
   @keyframes scrollRanking {
     0%   { transform: translateY(0); }
     100% { transform: translateY(-100%); }
+
   }
+
 </style>
 </section>
 
