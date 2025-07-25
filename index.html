@@ -12,7 +12,73 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Godoy Solutions in TECH</title>
 
-  <style>/* Loader */
+  <style>
+/* Container principal */
+.news-header {
+  position: relative;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Efeito holográfico animado */
+.holographic-effect {
+  height: 4px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(0, 255, 255, 0.8) 50%, 
+    transparent 100%);
+  animation: scanline 3s linear infinite;
+}
+
+@keyframes scanline {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Cards de notícias */
+.news-card {
+  background: rgba(0, 30, 60, 0.3);
+  border-left: 3px solid #00f0ff;
+  padding: 1.2rem;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-3px);
+}
+
+/* Link futurista */
+.news-link {
+  display: inline-block;
+  color: #00f0ff;
+  font-weight: bold;
+  margin-top: 0.8rem;
+}
+
+.link-icon {
+  display: inline-block;
+  margin-right: 0.5rem;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+/* Mensagem de erro */
+.news-error {
+  text-align: center;
+  padding: 2rem;
+  border: 1px dashed #ff5555;
+}
+
+.error-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}/* Loader */
 .news-loader {
   text-align: center;
   padding: 30px;
@@ -494,80 +560,134 @@
     }
 
     window.onload = iniciarRolagem;
-  </script>
-
 <script>
+
+  // 1. Referência ao container de notícias
   const newsContainer = document.getElementById('news-cards');
   
-  // 1. Dados locais de fallback (personalize com suas notícias)
-  const backupNews = [
+  // 2. Cabeçalho futurístico com efeito visual
+  newsContainer.innerHTML = `
+    <div class="news-header">
+      <!-- Efeito de luz azul animado -->
+      <div class="holographic-effect"></div>
+      <!-- Título com estilo futurista -->
+      <h2>ÚLTIMAS NOTÍCIAS TECNOLÓGICAS</h2>
+    </div>
+    <!-- Container onde as notícias serão injetadas -->
+    <div id="news-content"></div>
+  `;
+
+  // 3. Lista de APIs em ordem de prioridade
+  const apis = [
     {
-      title: "Novidades em IA para 2025",
-      description: "As principais tendências de IA que vão revolucionar o mercado tecnológico...",
-      url: "#",
-      urlToImage: "https://via.placeholder.com/320x180.png/0077ff?text=IA+2025"
+      name: 'GNews', // API mais estável
+      url: 'https://gnews.io/api/v4/top-headlines?category=technology&lang=pt&max=6&apikey=SUA_CHAVE_GNEWS',
+      parser: data => data.articles // Formatação específica para GNews
     },
     {
-      title: "Godoy Solutions em Destaque",
-      description: "Como nossa empresa está inovando no mercado tecnológico...",
-      url: "#",
-      urlToImage: "https://via.placeholder.com/320x180.png/0077ff?text=Godoy+Tech"
+      name: 'NewsAPI', // Fallback
+      url: 'https://newsapi.org/v2/top-headlines?country=br&category=technology&pageSize=6&apiKey=SUA_CHAVE_NEWSAPI',
+      parser: data => data.articles // Formatação específica para NewsAPI
+    },
+    {
+      name: 'Backup', // Dados locais se todas as APIs falharem
+      url: null,
+      parser: () => [
+        {
+          title: "Godoy Solutions: Inovação em TI",
+          description: "Conheça nossos novos serviços de consultoria em tecnologia",
+          url: "#servicos"
+        },
+        {
+          title: "Tendências Tech 2025",
+          description: "As previsões para o mercado de tecnologia no próximo ano",
+          url: "#"
+        }
+      ]
     }
   ];
 
-  // 2. Exibir loader
-  showLoader();
-
-  // 3. Sistema de tentativas
-  fetchWithRetry(3);
-
-  function fetchWithRetry(attempts) {
-    fetch('https://newsapi.org/v2/top-headlines?country=br&category=technology&pageSize=2&apiKey=SUA_CHAVE_AQUI')
-      .then(response => {
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        return response.json();
-      })
-      .then(data => {
-        displayNews(data.articles || backupNews);
-      })
-      .catch(error => {
-        console.error(`Tentativa ${4-attempts} falhou:`, error);
-        if (attempts > 1) {
-          setTimeout(() => fetchWithRetry(attempts - 1), 2000);
-        } else {
-          displayNews(backupNews, true);
-        }
-      });
+  // 4. Função principal que orquestra o carregamento
+  async function loadNews() {
+    // Tenta cada API em sequência
+    for (const api of apis) {
+      try {
+        const articles = await fetchNews(api);
+        displayNews(articles);
+        break; // Sai do loop se conseguir
+      } catch (error) {
+        console.warn(`Falha na ${api.name}:`, error);
+        continue; // Tenta a próxima API
+      }
+    }
   }
 
-  function showLoader() {
-    newsContainer.innerHTML = `
-      <div class="news-loader">
-        <div class="loader"></div>
-        <p>Carregando conteúdo...</p>
+  /**
+   * 5. Busca notícias em uma API específica
+   * @param {Object} api - Configurações da API
+   * @returns {Promise<Array>} Lista de artigos
+   */
+  async function fetchNews(api) {
+    // Se for o backup local, retorna diretamente
+    if (!api.url) return api.parser();
+    
+    const response = await fetch(api.url);
+    
+    // Verifica se a resposta foi bem sucedida
+    if (!response.ok) {
+      throw new Error(`Erro ${response.status}`);
+    }
+    
+    const data = await response.json();
+    return api.parser(data); // Formata os dados conforme a API
+  }
+
+  /**
+   * 6. Exibe as notícias na página
+   * @param {Array} articles - Lista de artigos
+   */
+  function displayNews(articles) {
+    const content = document.getElementById('news-content');
+    
+    // Mapeia cada artigo para HTML
+    content.innerHTML = articles.map(article => `
+      <div class="news-card">
+        <!-- Título com limite de caracteres -->
+        <h3>${article.title.length > 70 ? article.title.substring(0, 70) + '...' : article.title}</h3>
+        
+        <!-- Descrição ou texto padrão -->
+        <p>${article.description?.substring(0, 100) || 'Clique para ler a matéria completa'}...</p>
+        
+        <!-- Link com ícone futurista -->
+        <a href="${article.url}" target="_blank" class="news-link">
+          <span class="link-icon">⧉</span> Acessar matéria
+        </a>
+      </div>
+    `).join('');
+    
+    // Adiciona efeito de loading
+    content.style.opacity = 0;
+    setTimeout(() => {
+      content.style.transition = 'opacity 0.5s ease';
+      content.style.opacity = 1;
+    }, 100);
+  }
+
+  // 7. Tratamento de erros global
+  function showError(error) {
+    const content = document.getElementById('news-content');
+    content.innerHTML = `
+      <div class="news-error">
+        <div class="error-icon">⚠️</div>
+        <p>Serviço de notícias temporariamente indisponível</p>
+        <small>${error.message}</small>
+        <button onclick="window.location.reload()">Tentar novamente</button>
       </div>
     `;
   }
 
-  function displayNews(articles, isFallback = false) {
-    newsContainer.innerHTML = articles.map(article => `
-      <div class="news-card">
-        <img src="${article.urlToImage}" 
-             alt="${article.title}"
-             loading="lazy"
-             onerror="this.src='https://via.placeholder.com/320x180.png/0077ff?text=Not%C3%ADcia'">
-        <h3>${article.title}</h3>
-        <p>${article.description || 'Clique para ler mais'}</p>
-        <a href="${article.url}" class="news-link">Ler mais →</a>
-      </div>
-    `).join('');
-
-    if (isFallback) {
-      newsContainer.insertAdjacentHTML('beforeend',
-        `<p class="warning">⚠️ Mostrando notícias locais</p>`
-      );
-    }
-  }
-</script>
+  // 8. Inicia o processo com tratamento de erros
+  loadNews().catch(showError);
+</script>>
 </body>
 </html>
