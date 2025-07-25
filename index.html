@@ -12,74 +12,78 @@
 
   <style>
 
-
-    @keyframes pingpong {
-  0% { left: 0; }
-  100% { left: calc(100% - 80px); } /* 80px = largura da linha */
-}
-}  
-    @keyframes heartbeat {
-  0% { transform: scale(0.97); }
-  20% { transform: scale(1.20); }
-  40% { transform: scale(0.99); }
-  60% { transform: scale(1.01); }
-  80% { transform: scale(0.985); }
-  100% { transform: scale(1); }
+/* ========== ANIMAÇÕES ========== */
+@keyframes pingpong {
+  0% { left: 0; } /* Início: alinhado à esquerda */
+  100% { left: calc(100% - 80px); } /* Fim: desloca até a direita (80px = largura da linha) */
 }
 
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-      color: #ffffff;
-    }
-    
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('fundobom.png') no-repeat center top;
-      background-size: cover;
-      opacity: 0.1;
-      z-index: -1;
-    }
+@keyframes heartbeat {
+  0% { transform: scale(0.97); } /* Quase no tamanho normal */
+  20% { transform: scale(1.20); } /* Expande 20% (pico do batimento) */
+  40% { transform: scale(0.99); } /* Retrai levemente */
+  60% { transform: scale(1.01); } /* Pequena expansão */
+  80% { transform: scale(0.985); } /* Quase volta ao normal */
+  100% { transform: scale(1); } /* Tamanho original */
+}
 
-    .news-header {
-      position: relative;
-      margin-bottom: 30px;
-      text-align: center;
-    }
-    
-    .news-line {
+/* ========== ESTILOS GERAIS ========== */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364); /* Gradiente de fundo */
+  color: #ffffff;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('fundobom.png') no-repeat center top;
+  background-size: cover;
+  opacity: 0.1;
+  z-index: -1;
+}
+
+/* ========== SEÇÃO DE NOTÍCIAS ========== */
+.news-header {
+  position: relative;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.news-line {
   height: 2px;
   width: 80px;
-  background: rgba(0, 255, 255, 0.6);
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.8), transparent); /* Efeito de luz */
   margin: 0 auto 15px auto;
-  animation: pingpong 2s ease-in-out infinite alternate; 
-  position: relative; 
+  animation: pingpong 2s ease-in-out infinite alternate; /* Animação de vai e vem */
+  position: relative;
+  box-shadow: 0 0 8px rgba(0, 200, 255, 0.5); /* Brilho suave */
 }
-    }
 
-    .news-title {
-      color: #00e6ff;
-      text-shadow: 0 0 10px #00e6ff;
-    }
+.news-title {
+  color: #00e6ff;
+  text-shadow: 0 0 10px #00e6ff; /* Efeito neon */
+}
 
-    header { text-align: center; }
-   
+/* ========== CABEÇALHO & LOGO ========== */
+header { 
+  text-align: center; 
+}
 
-  .logo {
-  width: 70%; /* Reduzi para caber melhor a animação */
-  max-width: 380px; /* Tamanho máximo ajustado */
+.logo {
+  width: 70%;
+  max-width: 380px;
   object-fit: contain;
   display: block;
-  margin: 25px auto; /* Espaçamento aumentado */
-  animation: heartbeat 2.3s ease-in-out infinite;
+  margin: 25px auto;
+  animation: heartbeat 2.3s ease-in-out infinite; /* Pulsação contínua */
   transform-origin: center;
-  filter: drop-shadow(0 0 10px rgba(0, 200, 255, 0.3)); /* Efeito de brilho */
+  filter: drop-shadow(0 0 10px rgba(0, 200, 255, 0.3)); /* Brilho azulado */
 }
     nav { 
       display: flex; 
