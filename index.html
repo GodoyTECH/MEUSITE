@@ -13,7 +13,59 @@
   <title>Godoy Solutions in TECH</title>
 
   <style>
+/* Loader */
+.news-loader {
+  text-align: center;
+  padding: 30px;
+  color: #00e6ff;
+}
 
+.loader-spinner {
+  border: 4px solid rgba(0, 230, 255, 0.2);
+  border-top: 4px solid #00e6ff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 15px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Mensagem de erro */
+.news-error {
+  text-align: center;
+  padding: 20px;
+  background: rgba(255, 85, 85, 0.1);
+  border-radius: 10px;
+}
+
+.news-error svg {
+  margin-bottom: 10px;
+}
+
+.news-error h3 {
+  color: #ff5555;
+}
+
+.reload-button {
+  background: #00e6ff;
+  color: #0f2027;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-top: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.reload-button:hover {
+  background: #00cfff;
+}
     .loading {
   display: flex;
   flex-direction: column;
@@ -412,57 +464,101 @@
 
 <script>
   const newsContainer = document.getElementById('news-cards');
-  const apiKey = 'abc30160719845619ce9e00875b20ab9'; // 👈 SUA CHAVE AQUI
-  const apiUrl = `https://newsapi.org/v2/top-headlines?country=br&pageSize=6&apiKey=${apiKey}`;
-
-  // Exibe loader enquanto carrega
-  newsContainer.innerHTML = `
-    <div class="loading">
-      <svg viewBox="0 0 50 50" width="40" fill="#00e6ff">
-        <circle cx="25" cy="25" r="20" opacity="0.2" fill="none" stroke="#00e6ff" stroke-width="4"/>
-        <circle cx="25" cy="25" r="20" opacity="0.7" fill="none" stroke="#00e6ff" stroke-width="4" stroke-dasharray="100 12" transform="rotate(360 25 25)">
-          <animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="1s" repeatCount="indefinite"/>
-        </circle>
-      </svg>
-      <p>Carregando notícias...</p>
-    </div>
-  `;
-
-  fetch(apiUrl)
-    .then(async response => {
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Erro na API');
+  
+  // Configurações (substitua pela sua chave)
+  const config = {
+    newsApiKey: 'abc30160719845619ce9e00875b20ab9',
+    backupNews: [
+      {
+        title: "Novidades em Inteligência Artificial para 2025",
+        description: "As principais tendências de IA que vão revolucionar o mercado tecnológico no próximo ano...",
+        url: "https://exemplo.com/ia-2025",
+        urlToImage: "https://via.placeholder.com/320x180?text=IA+2025"
+      },
+      {
+        title: "Godoy Solutions lança novo serviço de consultoria",
+        description: "Nossa equipe acaba de expandir os serviços para incluir consultoria em transformação digital...",
+        url: "https://godoysoluintech.netify.app",
+        urlToImage: "https://via.placeholder.com/320x180?text=Godoy+Solutions"
       }
-      return response.json();
+    ]
+  };
+
+  // 1. Exibe loader animado
+  showLoader();
+
+  // 2. Tenta a NewsAPI primeiro
+  fetchNewsAPI()
+    .catch(() => {
+      console.log('Usando notícias locais como fallback');
+      return { articles: config.backupNews };
     })
-    .then(data => {
-      if (!data.articles || data.articles.length === 0) {
-        throw new Error('Nenhuma notícia encontrada');
-      }
-      
-      newsContainer.innerHTML = data.articles.map(article => `
-        <div class="news-card">
-          <img src="${article.urlToImage || 'https://via.placeholder.com/320x180?text=Sem+Imagem'}" 
-               alt="${article.title}" 
-               loading="lazy"
-               onerror="this.src='https://via.placeholder.com/320x180?text=Imagem+Não+Disponível'">
-          <h3><a href="${article.url}" target="_blank">${article.title}</a></h3>
-          <p>${article.description?.substring(0, 120) || 'Clique para ler a matéria completa'}...</p>
-          <a class="news-link" href="${article.url}" target="_blank">Ler mais →</a>
-        </div>
-      `).join('');
-    })
-    .catch(error => {
-      console.error('Erro detalhado:', error);
-      newsContainer.innerHTML = `
-        <div class="error">
-          <p>😕 Não foi possível carregar as notícias</p>
-          <small>${error.message}</small>
-          <button onclick="window.location.reload()">Tentar novamente</button>
-        </div>
-      `;
-    });
+    .then(displayNews)
+    .catch(showError);
+
+  // ========== FUNÇÕES ========== //
+  function showLoader() {
+    newsContainer.innerHTML = `
+      <div class="news-loader">
+        <div class="loader-spinner"></div>
+        <p>Buscando as últimas notícias...</p>
+      </div>
+    `;
+  }
+
+  async function fetchNewsAPI() {
+    const response = await fetch(
+      `https://newsapi.org/v2/top-headlines?country=br&category=technology&pageSize=6&apiKey=${config.newsApiKey}`
+    );
+    
+    if (!response.ok) {
+      throw new Error(`API retornou status ${response.status}`);
+    }
+    
+    return await response.json();
+  }
+
+  function displayNews(data) {
+    if (!data.articles || data.articles.length === 0) {
+      throw new Error('Nenhuma notícia disponível');
+    }
+
+    newsContainer.innerHTML = data.articles.map(article => `
+      <div class="news-card">
+        <img src="${article.urlToImage || 'https://via.placeholder.com/320x180?text=Not%C3%ADcia+Tecnol%C3%B3gica'}" 
+             alt="${article.title}" 
+             loading="lazy"
+             onerror="this.src='https://via.placeholder.com/320x180?text=Imagem+N%C3%A3o+Dispon%C3%ADvel'">
+        <h3><a href="${article.url}" target="_blank" rel="noopener">${article.title}</a></h3>
+        <p>${article.description?.substring(0, 120) || 'Clique para ler mais...'}</p>
+        <a class="news-link" href="${article.url}" target="_blank" rel="noopener">
+          Ler mais →
+        </a>
+      </div>
+    `).join('');
+  }
+
+  function showError(error) {
+    console.error('Erro ao carregar notícias:', error);
+    newsContainer.innerHTML = `
+      <div class="news-error">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ff5555">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+        </svg>
+        <h3>Não foi possível carregar notícias em tempo real</h3>
+        <p>Mostrando nossas últimas atualizações:</p>
+        ${config.backupNews.map(article => `
+          <div class="news-card">
+            <h4><a href="${article.url}">${article.title}</a></h4>
+            <p>${article.description}</p>
+          </div>
+        `).join('')}
+        <button onclick="window.location.reload()" class="reload-button">
+          Tentar novamente
+        </button>
+      </div>
+    `;
+  }
 </script>
 </body>
 </html>
