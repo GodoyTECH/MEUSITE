@@ -233,7 +233,7 @@ Desenvolvido por Caíque Eduardo
       lista.innerHTML = '';
       data.reverse().forEach(entry => {
         const nome = entry["Nome"]?.trim() || "Anônimo";
-        const valor = entry["Valor"] || "R$ ?";
+        const valor = entry["Valor do apoio (R$)"] || "R$ ?";
         const comentario = entry["Comentário"] || "";
         const li = document.createElement("li");
         li.innerHTML = `<strong>${nome}</strong> - ${valor} - "${comentario}"`;
