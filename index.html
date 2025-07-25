@@ -255,25 +255,31 @@ Desenvolvido por Caíque Eduardo
         return response.json();
       })
       .then(data => {
-        if (JSON.stringify(data) === JSON.stringify(dadosCache)) return; // evita recarregar se nada mudou
+        if (JSON.stringify(data) === JSON.stringify(dadosCache)) return;
 
         dadosCache = data;
         const lista = document.getElementById('ranking-list');
-        lista.innerHTML = ''; // limpa
+        lista.innerHTML = '';
 
-        const entradas = [...data].reverse(); // inverter para mostrar os mais recentes
-
-        // repetir dados se forem poucos
+        const entradas = [...data].reverse();
         const total = entradas.length;
         const repeatCount = total < 6 ? Math.ceil(12 / total) : 1;
 
         for (let i = 0; i < repeatCount; i++) {
           entradas.forEach(entry => {
             const nome = entry["Nome"]?.trim() || "Anônimo";
-            const valor = entry["Valor do apoio (R$)"];
+
+            let valorBruto = entry["Valor do apoio (R$)"] || "0";
+            let valorNumerico = parseFloat(valorBruto.replace(",", "."));
+            let valorFormatado = new Intl.NumberFormat('pt-BR', {
+              style: 'currency',
+              currency: 'BRL'
+            }).format(valorNumerico);
+
             const comentario = entry["Comentários"] || "";
+
             const li = document.createElement("li");
-            li.innerHTML = `<strong>${nome}</strong> - ${valor} <br><em>${comentario}</em>`;
+            li.innerHTML = `<strong>${nome}</strong> apoiou com <strong>${valorFormatado}</strong><br><em>${comentario}</em>`;
             lista.appendChild(li);
           });
         }
@@ -284,7 +290,6 @@ Desenvolvido por Caíque Eduardo
       });
   }
 
-  // Carrega inicialmente e depois a cada 20 segundos
   carregarRanking();
   setInterval(carregarRanking, 20000);
 </script>
