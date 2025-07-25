@@ -270,7 +270,7 @@ Desenvolvido por Caíque Eduardo
         for (let i = 0; i < repeatCount; i++) {
           entradas.forEach(entry => {
             const nome = entry["Nome"]?.trim() || "Anônimo";
-            const valor = entry["Valor do apoio (R$)";
+            const valor = entry["Valor do apoio (R$)"];
             const comentario = entry["Comentários"] || "";
             const li = document.createElement("li");
             li.innerHTML = `<strong>${nome}</strong> - ${valor} <br><em>${comentario}</em>`;
