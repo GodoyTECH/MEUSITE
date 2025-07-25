@@ -44,7 +44,20 @@
       transform-origin: center;
       transition: all 0.3s ease;
     }
-    
+    @keyframes pingpong {
+  0% { 
+    left: 0; 
+    transform: translateX(0); 
+  }
+  50% { 
+    left: 100%; 
+    transform: translateX(-100%); /* Rebate na borda direita */
+  }
+  100% { 
+    left: 0; 
+    transform: translateX(0); 
+  }
+}
     @keyframes heartbeat {
       0% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(0, 230, 255, 0)); }
       15% { transform: scale(1.03); filter: drop-shadow(0 0 15px rgba(0, 230, 255, 0.3)); }
@@ -60,16 +73,21 @@
       text-align: center;
     }
     
-    .holographic-scanner {
-      height: 3px;
-      background: linear-gradient(90deg, 
-        transparent 0%, 
-        rgba(0, 255, 255, 0.8) 50%, 
-        transparent 100%);
-      animation: scan 4s linear infinite;
-      margin-bottom: 15px;
-      box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-    }
+    .holographic-pingpong {
+  height: 3px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(0, 255, 255, 0.8) 50%, 
+    transparent 100%);
+  animation: pingpong 2s linear infinite;
+ /* Troque 'scan' por 'pingpong' */
+  margin-bottom: 15px;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  position: relative; 
+/* Adicione isso para controle preciso */
+  width: 100%;
+ /* Garante que respeite o container  */
+}
     
     .news-title-glitch {
       position: relative;
