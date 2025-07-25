@@ -1,22 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <!-- Meta Tags para Compartilhamento -->
   <meta property="og:image" content="logo.jpeg" />
   <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="logoicon.png">
-  
-  <!-- Configurações Básicas -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Godoy Solutions in TECH</title>
 
   <style>
-    /* ========== ESTILOS GERAIS ========== */
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -36,61 +30,38 @@
       opacity: 0.1;
       z-index: -1;
     }
-    
-    /* ========== ANIMAÇÕES ========== */
-    /* Efeito de batimento cardíaco na logo */
-    .logo-banner {
-      animation: heartbeat 2.5s ease-in-out infinite;
-      transform-origin: center;
-      transition: all 0.3s ease;
-    }
 
-    /* Animação ping-pong para a linha (MODIFICADA) */
-    @keyframes pingpong {
-      0% { left: 0; transform: translateX(0); }
-      100% { left: calc(100% - 60px); transform: translateX(0); }
-    }
-
-    @keyframes heartbeat {
-      0% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(0, 230, 255, 0)); }
-      15% { transform: scale(1.03); filter: drop-shadow(0 0 15px rgba(0, 230, 255, 0.3)); }
-      30% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(0, 230, 255, 0)); }
-      45% { transform: scale(1.05); filter: drop-shadow(0 0 20px rgba(0, 230, 255, 0.5)); }
-      60% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(0, 230, 255, 0)); }
-    }
-    
-    /* Cabeçalho animado das notícias */
-    .news-header-animated {
+    .news-header {
       position: relative;
       margin-bottom: 30px;
       text-align: center;
     }
     
-    /* Linha animada (MODIFICADA para ping-pong) */
-    .holographic-scanner {
-      height: 3px;
-      width: 60px; /* Largura fixa */
-      background: linear-gradient(90deg, 
-        transparent 0%, 
-        rgba(0, 255, 255, 0.8) 50%, 
-        transparent 100%);
-      animation: pingpong 2s ease-in-out infinite alternate; /* Efeito ping-pong */
-      margin-bottom: 15px;
-      box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-      position: relative;
-      left: 0;
+    .news-line {
+      height: 2px;
+      width: 80px;
+      background: rgba(0, 255, 255, 0.6);
+      margin: 0 auto 15px auto;
     }
-    
-    .news-title-glitch {
-      position: relative;
+
+    .news-title {
       color: #00e6ff;
       text-shadow: 0 0 10px #00e6ff;
     }
 
-    /* ========== SEUS ESTILOS ORIGINAIS ========== */
     header { text-align: center; }
-    .logo-banner { width: 100%; max-height: 300px; object-fit: contain; display: block; margin: 0 auto; }
-    nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; background: rgba(0, 255, 255, 0.1); padding: 12px 10px; border-bottom: 1px solid #00cfff; backdrop-filter: blur(6px); box-sizing: border-box; }
+    .logo { width: 100%; max-height: 300px; object-fit: contain; display: block; margin: 0 auto; }
+    nav { 
+      display: flex; 
+      flex-wrap: wrap; 
+      justify-content: center; 
+      gap: 10px; 
+      background: rgba(0, 255, 255, 0.1); 
+      padding: 12px 10px; 
+      border-bottom: 1px solid #00cfff; 
+      backdrop-filter: blur(6px); 
+      box-sizing: border-box; 
+    }
     nav a { color: #00e0ff; text-decoration: none; font-weight: bold; transition: color 0.3s ease; }
     nav a:hover { color: #ffffff; }
     section { padding: 40px 20px; max-width: 1000px; margin: auto; background-color: rgba(0, 0, 30, 0.4); border-radius: 12px; box-shadow: 0 0 25px rgba(0, 200, 255, 0.2); backdrop-filter: blur(6px); }
@@ -110,12 +81,10 @@
   </style>
 </head>
 <body>
-  <!-- ========== HEADER ========== -->
   <header>
-    <img class="logo-banner" src="logo.png" alt="Godoy Solutions TECH" />
+    <img class="logo" src="logo.png" alt="Godoy Solutions TECH" />
   </header>
   
-  <!-- ========== NAVEGAÇÃO ========== -->
   <nav>
     <a href="#sobre">Sobre</a>
     <a href="#servicos">Serviços</a>
@@ -125,21 +94,43 @@
     <a href="softwares.html">Softwares</a>
   </nav>
   
-  <!-- ========== SEÇÃO SOBRE ========== -->
   <section id="sobre" class="sobre-estilizado">
     <h2>Sobre a Empresa</h2>
-    <p>
-      A <strong>Godoy Solutions in TECH</strong> foi fundada por <strong>Caique Eduardo Godoy da Silva</strong>, um profissional com 28 anos com sólida formações na área de tecnologia.
-    </p>
-    <!-- ... (conteúdo original completo) ... -->
+    <p>A <strong>Godoy Solutions in TECH</strong> foi fundada por <strong>Caique Eduardo Godoy da Silva</strong>, um profissional com 28 anos com sólida formações na área de tecnologia.</p>
+    <p>Contendo diversas certificações relevantes, incluindo <em>Algoritmos</em>, <em>HTML5 e CSS3</em>, <em>JavaScript Básico,porém se especializando</em>, <em>Inteligência Artificial</em>, <em>Análise de Dados</em>, <em>Elétrica Residencial Atualizada</em>, além de ser <strong>Técnico em Informática e Manutenção</strong>.</p>
+    <p>Sua trajetória é marcada pelo aprendizado contínuo e pela paixão por inovação. Está constantemente se especializando em novas tecnologias, acompanhando as tendências do mercado para oferecer o que há de mais moderno.</p>
+    <p>O principal objetivo da Godoy Solutions é <strong>fornecer soluções tecnológicas acessíveis, eficientes e futuristas</strong>, sempre com foco em qualidade, inovação e atendimento personalizado ao cliente.</p>
   </section>
   
-  <!-- ========== SEÇÃO NOTÍCIAS ========== -->
+  <section id="servicos">
+    <h2>Nossos Serviços</h2>
+    <ul>
+      <li>Criação de sistemas de gerenciamento e vendas</li>
+      <li>Desenvolvimento de sites e aplicativos personalizados</li>
+      <li>Manutenção de PCs, notebooks, celulares e periféricos</li>
+      <li>Instalação e restauração de sistemas operacionais</li>
+      <li>Recuperação de dados</li>
+      <li>Aulas e Sugestões para melhorar seu desempenho em Tech</li>
+    </ul>
+  </section>
+  
+  <section id="contato">
+    <h2>Fale Conosco</h2>
+    <p><a class="btn-whatsapp" href="https://wa.me/5511995586459" target="_blank">WhatsApp</a></p>
+    <p>Email: <a class="email-link" href="mailto:caiqueworkti@gmail.com">caiqueworkti@gmail.com</a></p>
+    <h3>Envie uma sugestão ou mensagem:</h3>
+    <form>
+      <input type="text" placeholder="Seu nome" required>
+      <input type="email" placeholder="Seu email" required>
+      <textarea rows="5" placeholder="Sua mensagem"></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
+  
   <section id="noticias">
-    <div class="news-header-animated">
-      <!-- LINHA ANIMADA COM PING-PONG -->
-      <div class="holographic-scanner"></div>
-      <h2 class="news-title-glitch">NOTÍCIAS & ATUALIZAÇÕES</h2>
+    <div class="news-header">
+      <div class="news-line"></div>
+      <h2 class="news-title">NOTÍCIAS & ATUALIZAÇÕES</h2>
     </div>
     <div id="news-cards" class="news-grid">
       <div class="news-loader">
@@ -148,12 +139,30 @@
       </div>
     </div>
   </section>
+  
+  <section id="apoio">
+    <h2>Apoie nosso trabalho</h2>
+    <p>Gostou do nosso conteúdo? Você pode apoiar via Pix escaneando o QR Code abaixo:</p>
+    <img class="apoio-img" src="apoio.jpeg" alt="QR Code Pix">
+    <p><a href="https://forms.gle/Vq4qbkYSbDU5smdE6" target="_blank">
+      <button>Me Identifiquei (Clique aqui)</button>
+    </a></p>
+    <div class="ranking">
+      <h3>Últimos Apoiadores</h3>
+      <ul id="ranking-list">
+        <li>Carregando dados...</li>
+      </ul>
+    </div>
+  </section>
+  
+  <footer>
+    <p>&copy; 2025 Godoy Solutions in TECH • Desenvolvido por Caíque Eduardo</p>
+  </footer>
 
-  <!-- ========== SCRIPTS ORIGINAIS (100% INTACTOS) ========== -->
   <script>
     /**
-     * SISTEMA DE APOIADORES
-     * Carrega dados do Google Sheets e exibe em formato de ranking
+     * Sistema de carregamento de apoiadores via Google Sheets
+     * Atualiza a lista de apoiadores a cada 20 segundos
      */
     const sheetID = '1isrjaaOEUJqwLTIbzV3KzZHlpZYC6r4f0mtS28PL6YI';
     const sheetName = 'form1';
@@ -192,13 +201,12 @@
         });
     }
     
-    // Carrega inicialmente e a cada 20 segundos
     carregarRanking();
     setInterval(carregarRanking, 20000);
 
     /**
-     * SISTEMA DE NOTÍCIAS
-     * Versão 3.0 - Resiliente com múltiplas fontes e fallback
+     * Sistema de carregamento de notícias
+     * Busca notícias tecnológicas da API GNews com fallback local
      */
     const newsConfig = {
       containerId: 'news-cards',
@@ -275,14 +283,12 @@
       }
     }
 
-    // Inicializa o sistema de notícias
     document.addEventListener('DOMContentLoaded', () => {
-      const newsSystem = new NewsSystem(newsConfig);
-      newsSystem.init();
+      new NewsSystem(newsConfig).init();
     });
 
     /**
-     * SISTEMA DE ROLAGEM AUTOMÁTICA DO RANKING
+     * Sistema de rolagem automática da lista de apoiadores
      */
     const rankingList = document.getElementById("ranking-list");
 
