@@ -117,19 +117,14 @@ button, input, textarea {
   border-radius: 8px;
   margin-top: 20px;
   color: #aef;
-}
-
-.ranking-container {
-  max-height: 180px;
+  max-height: 250px;
   overflow: hidden;
-  position: relative;
 }
 
 #ranking-list {
-  margin: 0;
-  padding: 0;
   list-style: none;
-  transition: transform 12s linear;
+  padding-left: 0;
+  margin: 0;
 }
 
   </style>
@@ -179,11 +174,9 @@ button, input, textarea {
 
 <div class="ranking">
   <h3>Últimos Apoiadores</h3>
-  <div class="ranking-container">
-    <ul id="ranking-list">
-      <li>Carregando dados...</li>
-    </ul>
-  </div>
+  <ul id="ranking-list">
+    <li>Carregando dados...</li>
+  </ul>
 </div>
 
   </section>  <footer>
@@ -215,11 +208,14 @@ button, input, textarea {
           for (let i = 0; i < repeatCount; i++) {
             entradas.forEach(entry => {
               const nome = entry["Nome"]?.trim() || "Anônimo";
-              let valor = entry["Valor do apoio (R$)"] || "0";
-              valor = parseFloat(valor.replace(',', '.')).toFixed(2).replace('.', ',');
+              const valorBruto = entry["Valor do apoio (R$)"]?.replace(',', '.') || "0";
+              const valorFormatado = parseFloat(valorBruto).toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL'
+              });
               const comentario = entry["Comentários"] || "";
               const li = document.createElement("li");
-              li.innerHTML = `<strong>${nome}</strong> doou R$ ${valor} <br><em>${comentario}</em>`;
+              li.innerHTML = `<strong>${nome}</strong> doou ${valorFormatado} <br><em>${comentario}</em>`;
               lista.appendChild(li);
             });
           }
