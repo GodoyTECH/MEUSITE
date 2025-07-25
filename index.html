@@ -385,34 +385,43 @@
     window.onload = iniciarRolagem;
   </script>
 
-  <script>
-    const newsContainer = document.getElementById('news-cards');
-    fetch('https://api.rss2json.com/v1/api.json?rss_url=https://news.google.com/rss/search?q=tecnologia&hl=pt-BR&gl=BR&ceid=BR:pt-419')
-      .then(response => response.json())
-      .then(data => {
-        const items = data.items.slice(0, 6);
-        newsContainer.innerHTML = ''; // limpa conteúdo anterior
+ <script>
+  const newsContainer = document.getElementById('news-cards');
+  fetch('https://api.rss2json.com/v1/api.json?rss_url=https://news.google.com/rss/search?q=tecnologia&hl=pt-BR&gl=BR&ceid=BR:pt-419')
+    .then(response => response.json())
+    .then(data => {
+      const items = data.items.slice(0, 6);
+      newsContainer.innerHTML = '';
 
-        items.forEach(item => {
-          const card = document.createElement('div');
-          card.className = 'news-card';
+      items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'news-card';
+        
+        let imgURL = 'https://via.placeholder.com/320x180?text=Not%C3%ADcia+Tecnol%C3%B3gica';
+        
+        if (item.content) {
+          const contentMatch = item.content.match(/<img[^>]+src="([^">]+)"/);
+          if (contentMatch) imgURL = contentMatch[1];
+        }
+        
+        if (!imgURL.includes('placeholder')) {
+          const descMatch = item.description.match(/<img[^>]+src="([^">]+)"/);
+          if (descMatch) imgURL = descMatch[1];
+        }
 
-          const imgMatch = item.description.match(/<img.*?src="(.*?)"/);
-          const imgURL = imgMatch ? imgMatch[1] : 'https://via.placeholder.com/320x180?text=Notícia';
-
-          card.innerHTML = `
-            <img src="${imgURL}" alt="Imagem da notícia">
-            <h3><a href="${item.link}" target="_blank">${item.title}</a></h3>
-            <p>${item.description.replace(/<[^>]*>?/gm, '').substring(0, 120)}...</p>
-            <a class="news-link" href="${item.link}" target="_blank">Ler mais →</a>
-          `;
-          newsContainer.appendChild(card);
-        });
-      })
-      .catch(error => {
-        console.error('Erro ao carregar notícias:', error);
-        newsContainer.innerHTML = '<p>Não foi possível carregar as notícias.</p>';
+        card.innerHTML = `
+          <img src="${imgURL}" alt="Imagem da notícia" onerror="this.src='https://via.placeholder.com/320x180?text=Imagem+N%C3%A3o+Dispon%C3%ADvel'">
+          <h3><a href="${item.link}" target="_blank">${item.title}</a></h3>
+          <p>${item.description.replace(/<[^>]*>?/gm, '').substring(0, 120)}...</p>
+          <a class="news-link" href="${item.link}" target="_blank">Ler mais →</a>
+        `;
+        newsContainer.appendChild(card);
       });
-  </script>
+    })
+    .catch(error => {
+      console.error('Erro ao carregar notícias:', error);
+      newsContainer.innerHTML = '<p>Não foi possível carregar as notícias no momento.</p>';
+    });
+</script>
 </body>
 </html>
