@@ -1,162 +1,152 @@
-<!--
-Página principal do site Godoy Solutions in TECH
-Desenvolvido por Caíque Eduardo
-Última atualização: Julho/2025
--->
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!DOCTYPE html><html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Godoy Solutions in TECH</title>
   <style>
-    /* Estilos base e fundo com efeito futurista */
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
       color: #ffffff;
-    }
-
-    /* Imagem de fundo (logo com baixa opacidade) */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('fundobom.png') no-repeat center top;
-      background-size: cover;
-      opacity: 0.1;
-      z-index: -1;
-    }
-
-    header {
-      text-align: center;
-    }
-
-    .logo-banner {
-      width: 100%;
-      max-height: 300px;
-      object-fit: contain;
-      display: block;
-      margin: 0 auto;
-    }
-
-    nav {
-       display: flex;
-       flex-wrap: wrap; /* Quebra linha em telas menores */
-       justify-content: center;
-       gap: 10px;
-       background: rgba(0, 255, 255, 0.1);
-       padding: 12px 10px;
-       border-bottom: 1px solid #00cfff;
-       backdrop-filter: blur(6px);
-       box-sizing: border-box;
+    }body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('fundobom.png') no-repeat center top;
+  background-size: cover;
+  opacity: 0.1;
+  z-index: -1;
 }
 
+header {
+  text-align: center;
+}
 
-    nav a {
-      color: #00e0ff;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s ease;
-    }
+.logo-banner {
+  width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
 
-    nav a:hover {
-      color: #ffffff;
-    }
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  background: rgba(0, 255, 255, 0.1);
+  padding: 12px 10px;
+  border-bottom: 1px solid #00cfff;
+  backdrop-filter: blur(6px);
+  box-sizing: border-box;
+}
 
-    section {
-      padding: 40px 20px;
-      max-width: 1000px;
-      margin: auto;
-      background-color: rgba(0, 0, 30, 0.4);
-      border-radius: 12px;
-      box-shadow: 0 0 25px rgba(0, 200, 255, 0.2);
-      backdrop-filter: blur(6px);
-    }
+nav a {
+  color: #00e0ff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
 
-    h2 {
-      color: #00e6ff;
-    }
+nav a:hover {
+  color: #ffffff;
+}
 
-    footer {
-      background: rgba(0, 20, 50, 0.6);
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9em;
-      border-top: 1px solid #00cfff55;
-    }
+section {
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: auto;
+  background-color: rgba(0, 0, 30, 0.4);
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(0, 200, 255, 0.2);
+  backdrop-filter: blur(6px);
+}
 
-    button, input, textarea {
-      background-color: rgba(0, 30, 50, 0.6);
-      color: #00f0ff;
-      border: 1px solid #00ffff99;
-      padding: 10px;
-      margin: 5px 0;
-      width: 100%;
-      border-radius: 8px;
-    }
+h2 {
+  color: #00e6ff;
+}
 
-    .btn-whatsapp {
-      display: inline-block;
-      background: #25D366;
-      color: white;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 6px;
-      margin-top: 10px;
-    }
+footer {
+  background: rgba(0, 20, 50, 0.6);
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9em;
+  border-top: 1px solid #00cfff55;
+}
 
-    .email-link {
-      color: #ffcc00;
-      text-decoration: underline;
-    }
+button, input, textarea {
+  background-color: rgba(0, 30, 50, 0.6);
+  color: #00f0ff;
+  border: 1px solid #00ffff99;
+  padding: 10px;
+  margin: 5px 0;
+  width: 100%;
+  border-radius: 8px;
+}
 
-    .apoio-img {
-      max-width: 220px;
-      display: block;
-      margin: 20px auto;
-      border-radius: 10px;
-    }
+.btn-whatsapp {
+  display: inline-block;
+  background: #25D366;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 6px;
+  margin-top: 10px;
+}
 
-    .ranking {
-      background: rgba(255,255,255,0.08);
-      padding: 15px;
-      border-radius: 8px;
-      margin-top: 20px;
-      color: #aef;
-    }
+.email-link {
+  color: #ffcc00;
+  text-decoration: underline;
+}
+
+.apoio-img {
+  max-width: 220px;
+  display: block;
+  margin: 20px auto;
+  border-radius: 10px;
+}
+
+.ranking {
+  background: rgba(255,255,255,0.08);
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+  color: #aef;
+}
+
+.ranking-container {
+  max-height: 180px;
+  overflow: hidden;
+  position: relative;
+}
+
+#ranking-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  transition: transform 12s linear;
+}
 
   </style>
 </head>
-<body>
-
-  <header>
-    <!-- Logo como título principal -->
+<body>  <header>
     <img class="logo-banner" src="logo.png" alt="Godoy Solutions TECH" />
-  </header>
-
-  <!-- Navegação -->
-  <nav>
+  </header>  <nav>
     <a href="#sobre">Sobre</a>
     <a href="#servicos">Serviços</a>
     <a href="#contato">Contato</a>
     <a href="#noticias">Notícias</a>
     <a href="#apoio">Apoie</a>
     <a href="softwares.html">Softwares</a>
-  </nav>
-
-  <!-- Seção Sobre -->
-  <section id="sobre">
+  </nav>  <section id="sobre">
     <h2>Sobre a Empresa</h2>
     <p>Godoy Solutions in TECH foi fundada por Caíque Eduardo Godoy da Silva, profissional com 28 anos e ampla formação na área de tecnologia. Possui certificações em Algoritmos, HTML5 e CSS3, Inteligência Artificial, Análise de Dados, Técnico em Informática e Manutenção, Elétrica Residencial Atualizada, JavaScript Básico e está se especializando continuamente em novas tecnologias. O objetivo da empresa é oferecer soluções tecnológicas acessíveis, práticas e futuristas, com foco em inovação, qualidade e atendimento personalizado.</p>
-  </section>
-
-  <!-- Seção Serviços -->
-  <section id="servicos">
+  </section>  <section id="servicos">
     <h2>Nossos Serviços</h2>
     <ul>
       <li>Criação de sistemas de gerenciamento e vendas</li>
@@ -166,10 +156,7 @@ Desenvolvido por Caíque Eduardo
       <li>Recuperação de dados</li>
       <li>Aulas e Sugestões para melhorar seu desempenho em Tech</li>
     </ul>
-  </section>
-
-  <!-- Formulário de Contato -->
-  <section id="contato">
+  </section>  <section id="contato">
     <h2>Fale Conosco</h2>
     <p><a class="btn-whatsapp" href="https://wa.me/5511995586459" target="_blank">WhatsApp</a></p>
     <p>Email: <a class="email-link" href="mailto:caiqueworkti@gmail.com">caiqueworkti@gmail.com</a></p>
@@ -180,124 +167,70 @@ Desenvolvido por Caíque Eduardo
       <textarea rows="5" placeholder="Sua mensagem"></textarea>
       <button type="submit">Enviar</button>
     </form>
-  </section>
-
-  <!-- Notícias -->
-  <section id="noticias">
+  </section>  <section id="noticias">
     <h2>Notícias & Atualizações</h2>
     <p>Em breve, publicações sobre inteligência artificial, tendências em TI, programação e muito mais.</p>
-  </section>
+  </section>  <section id="apoio">
+    <h2>Apoie nosso trabalho</h2>
+    <p>Gostou do nosso conteúdo? Você pode apoiar via Pix escaneando o QR Code abaixo:</p>
+    <img class="apoio-img" src="apoio.jpeg" alt="QR Code Pix"><p><a href="https://forms.gle/Vq4qbkYSbDU5smdE6" target="_blank">
+  <button>Me Identifiquei (Clique aqui)</button>
+</a></p>
 
-  <!-- Apoio -->
-  <section id="apoio">
-  <h2>Apoie nosso trabalho</h2>
-  <p>Gostou do nosso conteúdo? Você pode apoiar via Pix escaneando o QR Code abaixo:</p>
-  <img class="apoio-img" src="apoio.jpeg" alt="QR Code Pix">
-
-  <p><a href="https://forms.gle/Vq4qbkYSbDU5smdE6" target="_blank">
-    <button>Me Identifiquei (Clique aqui)</button>
-  </a></p>
-
-  <!-- Ranking com animação e estilo futurista -->
 <div class="ranking">
   <h3>Últimos Apoiadores</h3>
-  <div class="ranking-container"> <!-- ⬅️ Nova div -->
+  <div class="ranking-container">
     <ul id="ranking-list">
       <li>Carregando dados...</li>
     </ul>
   </div>
 </div>
-  </div>
-</div>
 
-<style>
-  .ranking-container {
-    max-height: 180px;
-    overflow: hidden;
-    position: relative;
-  }
-
-  #ranking-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    animation: scrollRanking 10s linear infinite;
-  }
-
-  #ranking-list li {
-    padding: 8px 12px;
-    border-bottom: 1px solid #00ffff33;
-    font-size: 0.95em;
-    background-color: rgba(0, 0, 50, 0.2);
-    color: #00faff;
-  }
-
-  @keyframes scrollRanking {
-    0%   { transform: translateY(0); }
-    100% { transform: translateY(-100%); }
-
-  }
-
-</style>
-</section>
-
-
-  <!-- Rodapé -->
-  <footer>
+  </section>  <footer>
     <p>&copy; 2025 Godoy Solutions in TECH • Desenvolvido por Caíque Eduardo</p>
-  </footer>
-<script>
-  const sheetID = '1isrjaaOEUJqwLTIbzV3KzZHlpZYC6r4f0mtS28PL6YI';
-  const sheetName = 'form1';
-  const sheetURL = `https://opensheet.elk.sh/${sheetID}/${sheetName}`;
+  </footer>  <script>
+    const sheetID = '1isrjaaOEUJqwLTIbzV3KzZHlpZYC6r4f0mtS28PL6YI';
+    const sheetName = 'form1';
+    const sheetURL = `https://opensheet.elk.sh/${sheetID}/${sheetName}`;
 
-  let dadosCache = [];
+    let dadosCache = [];
 
-  function carregarRanking() {
-    fetch(sheetURL)
-      .then(response => {
-        if (!response.ok) throw new Error('Erro na resposta da rede');
-        return response.json();
-      })
-      .then(data => {
-        if (JSON.stringify(data) === JSON.stringify(dadosCache)) return;
+    function carregarRanking() {
+      fetch(sheetURL)
+        .then(response => {
+          if (!response.ok) throw new Error('Erro na resposta da rede');
+          return response.json();
+        })
+        .then(data => {
+          if (JSON.stringify(data) === JSON.stringify(dadosCache)) return;
 
-        dadosCache = data;
-        const lista = document.getElementById('ranking-list');
-        lista.innerHTML = '';
+          dadosCache = data;
+          const lista = document.getElementById('ranking-list');
+          lista.innerHTML = '';
 
-        const entradas = [...data].reverse();
-        const total = entradas.length;
-        const repeatCount = total < 6 ? Math.ceil(12 / total) : 1;
+          const entradas = [...data].reverse();
+          const total = entradas.length;
+          const repeatCount = total < 6 ? Math.ceil(12 / total) : 1;
 
-        for (let i = 0; i < repeatCount; i++) {
-          entradas.forEach(entry => {
-            const nome = entry["Nome"]?.trim() || "Anônimo";
+          for (let i = 0; i < repeatCount; i++) {
+            entradas.forEach(entry => {
+              const nome = entry["Nome"]?.trim() || "Anônimo";
+              let valor = entry["Valor do apoio (R$)"] || "0";
+              valor = parseFloat(valor.replace(',', '.')).toFixed(2).replace('.', ',');
+              const comentario = entry["Comentários"] || "";
+              const li = document.createElement("li");
+              li.innerHTML = `<strong>${nome}</strong> doou R$ ${valor} <br><em>${comentario}</em>`;
+              lista.appendChild(li);
+            });
+          }
+        })
+        .catch(error => {
+          console.error("Erro ao carregar dados:", error);
+          document.getElementById("ranking-list").innerHTML = "<li>Erro ao carregar dados.</li>";
+        });
+    }
 
-            let valorBruto = entry["Valor do apoio (R$)"] || "0";
-            let valorNumerico = parseFloat(valorBruto.replace(",", "."));
-            let valorFormatado = new Intl.NumberFormat('pt-BR', {
-              style: 'currency',
-              currency: 'BRL'
-            }).format(valorNumerico);
-
-            const comentario = entry["Comentários"] || "";
-
-            const li = document.createElement("li");
-            li.innerHTML = `<strong>${nome}</strong> apoiou com <strong>${valorFormatado}</strong><br><em>${comentario}</em>`;
-            lista.appendChild(li);
-          });
-        }
-      })
-      .catch(error => {
-        console.error("Erro ao carregar dados:", error);
-        document.getElementById("ranking-list").innerHTML = "<li>Erro ao carregar dados.</li>";
-      });
-  }
-
-  carregarRanking();
-  setInterval(carregarRanking, 20000);
-</script>
-
-</body>
+    carregarRanking();
+    setInterval(carregarRanking, 20000);
+  </script></body>
 </html>
