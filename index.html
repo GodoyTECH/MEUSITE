@@ -11,6 +11,23 @@
   <title>Godoy Solutions in TECH</title>
 
   <style>
+/* ANIMAÇÃO DA LOGO */
+.logo-banner {
+  width: 80%; /* Ajuste conforme necessário */
+  max-width: 500px; /* Limite máximo */
+  display: block;
+  margin: 0 auto;
+  animation: heartbeat 2s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.05); }
+  50% { transform: scale(1); }
+  75% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
 .news-line {
   height: 60px;
   width: 60px; /* Largura da linha */
