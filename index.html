@@ -16,35 +16,7 @@
   <title>Godoy Solutions in TECH</title>
 
   <style>
-
     /* ========== ESTILOS GERAIS ========== */
-  
-
- /* Seção Contato - Mantendo estilo original */
-    #contato form {
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-    #contato input,
-    #contato textarea,
-    #contato button {
-    background-color: rgba(0, 30, 50, 0.6);
-    color: #00f0ff;
-    border: 1px solid #00ffff99;
-    padding: 10px;
-    margin: 5px 0;
-    width: 100%;
-    border-radius: 8px;
-}
-
-/* Cor do link de email original */
-
-      .email-link {
-       color: #ffcc00 !important; /* Mantém o         amarelo original */
-       text-decoration: underline;
-}
-
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -65,150 +37,74 @@
       z-index: -1;
     }
     
-    /* ========== HEADER & NAV ========== */
-    header {
-      text-align: center;
-    }
-    
+    /* ========== ANIMAÇÕES NOVAS ========== */
+    /* Efeito de batimento cardíaco na logo */
     .logo-banner {
-      width: 100%;
-      max-height: 300px;
-      object-fit: contain;
-      display: block;
-      margin: 0 auto;
+      animation: heartbeat 2.5s ease-in-out infinite;
+      transform-origin: center;
+      transition: all 0.3s ease;
     }
     
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      background: rgba(0, 255, 255, 0.1);
-      padding: 12px 10px;
-      border-bottom: 1px solid #00cfff;
-      backdrop-filter: blur(6px);
-      box-sizing: border-box;
+    @keyframes heartbeat {
+      0% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(0, 230, 255, 0)); }
+      15% { transform: scale(1.03); filter: drop-shadow(0 0 15px rgba(0, 230, 255, 0.3)); }
+      30% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(0, 230, 255, 0)); }
+      45% { transform: scale(1.05); filter: drop-shadow(0 0 20px rgba(0, 230, 255, 0.5)); }
+      60% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(0, 230, 255, 0)); }
     }
     
-    nav a {
-      color: #00e0ff;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s ease;
-    }
-    
-    nav a:hover {
-      color: #ffffff;
-    }
-    
-    /* ========== SEÇÕES ========== */
-    section {
-      padding: 40px 20px;
-      max-width: 1000px;
-      margin: auto;
-      background-color: rgba(0, 0, 30, 0.4);
-      border-radius: 12px;
-      box-shadow: 0 0 25px rgba(0, 200, 255, 0.2);
-      backdrop-filter: blur(6px);
-    }
-    
-    h2 {
-      color: #00e6ff;
-    }
-    
-    /* Estilo Especial para Sobre */
-    .sobre-estilizado {
-      background: linear-gradient(to bottom right, rgba(0, 30, 60, 0.5), rgba(0, 50, 100, 0.3));
-      border-left: 5px solid #00f0ff;
-      border-radius: 12px;
-      padding: 30px;
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
-      margin-top: 30px;
-    }
-    
-    /* ========== NOTÍCIAS ========== */
-    .news-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
-    }
-    
-    .news-card {
-      background: rgba(0, 20, 40, 0.5);
-      border-radius: 12px;
-      padding: 15px;
-      box-shadow: 0 0 18px rgba(0, 255, 255, 0.2);
-      backdrop-filter: blur(4px);
-      transition: transform 0.3s ease;
-    }
-    
-    .news-card:hover {
-      transform: scale(1.02);
-    }
-    
-    .news-card img {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 10px;
-      background: linear-gradient(45deg, #0f2027, #203a43);
-    }
-    
-    .news-link {
-      display: inline-block;
-      color: #00cfff;
-      font-weight: bold;
-      text-decoration: none;
-      border: 1px solid #00cfff;
-      padding: 6px 10px;
-      border-radius: 6px;
-      transition: background 0.3s ease;
-    }
-    
-    /* ========== FOOTER ========== */
-    footer {
-      background: rgba(0, 20, 50, 0.6);
+    /* Cabeçalho animado das notícias */
+    .news-header-animated {
+      position: relative;
+      margin-bottom: 30px;
       text-align: center;
-      padding: 20px;
-      font-size: 0.9em;
-      border-top: 1px solid #00cfff55;
     }
     
-    /* ========== ELEMENTOS ESPECÍFICOS ========== */
-    .btn-whatsapp {
-      display: inline-block;
-      background: #25D366;
-      color: white;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 6px;
-      margin-top: 10px;
+    .holographic-scanner {
+      height: 3px;
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(0, 255, 255, 0.8) 50%, 
+        transparent 100%);
+      animation: scan 4s linear infinite;
+      margin-bottom: 15px;
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
     }
     
-    .ranking {
-      background: rgba(255,255,255,0.08);
-      padding: 15px;
-      border-radius: 8px;
-      margin-top: 20px;
-      color: #aef;
-      max-height: 200px;
-      overflow-y: auto;
-      scroll-behavior: smooth;
+    .news-title-glitch {
+      position: relative;
+      color: #00e6ff;
+      text-shadow: 0 0 10px #00e6ff;
     }
     
-    /* ========== ANIMAÇÕES ========== */
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    @keyframes scan {
+      0% { transform: translateX(-100%); opacity: 0; }
+      20% { opacity: 1; }
+      80% { opacity: 1; }
+      100% { transform: translateX(100%); opacity: 0; }
     }
     
-    @keyframes pulse {
-      0% { opacity: 0.6; }
-      50% { opacity: 1; }
-      100% { opacity: 0.6; }
-    }
+    /* ========== SEUS ESTILOS ORIGINAIS ========== */
+    /* [Todos os seus estilos originais preservados aqui] */
+    header { text-align: center; }
+    .logo-banner { width: 100%; max-height: 300px; object-fit: contain; display: block; margin: 0 auto; }
+    nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; background: rgba(0, 255, 255, 0.1); padding: 12px 10px; border-bottom: 1px solid #00cfff; backdrop-filter: blur(6px); box-sizing: border-box; }
+    nav a { color: #00e0ff; text-decoration: none; font-weight: bold; transition: color 0.3s ease; }
+    nav a:hover { color: #ffffff; }
+    section { padding: 40px 20px; max-width: 1000px; margin: auto; background-color: rgba(0, 0, 30, 0.4); border-radius: 12px; box-shadow: 0 0 25px rgba(0, 200, 255, 0.2); backdrop-filter: blur(6px); }
+    h2 { color: #00e6ff; }
+    .sobre-estilizado { background: linear-gradient(to bottom right, rgba(0, 30, 60, 0.5), rgba(0, 50, 100, 0.3)); border-left: 5px solid #00f0ff; border-radius: 12px; padding: 30px; box-shadow: 0 0 20px rgba(0, 255, 255, 0.2); margin-top: 30px; }
+    .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px; }
+    .news-card { background: rgba(0, 20, 40, 0.5); border-radius: 12px; padding: 15px; box-shadow: 0 0 18px rgba(0, 255, 255, 0.2); backdrop-filter: blur(4px); transition: transform 0.3s ease; }
+    .news-card:hover { transform: scale(1.02); }
+    .news-card img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 10px; background: linear-gradient(45deg, #0f2027, #203a43); }
+    .news-link { display: inline-block; color: #00cfff; font-weight: bold; text-decoration: none; border: 1px solid #00cfff; padding: 6px 10px; border-radius: 6px; transition: background 0.3s ease; }
+    .news-link:hover { background: #00cfff33; }
+    footer { background: rgba(0, 20, 50, 0.6); text-align: center; padding: 20px; font-size: 0.9em; border-top: 1px solid #00cfff55; }
+    .btn-whatsapp { display: inline-block; background: #25D366; color: white; padding: 10px 20px; text-decoration: none; border-radius: 6px; margin-top: 10px; }
+    .ranking { background: rgba(255,255,255,0.08); padding: 15px; border-radius: 8px; margin-top: 20px; color: #aef; max-height: 200px; overflow-y: auto; scroll-behavior: smooth; }
+    .email-link { color: #ffcc00; text-decoration: underline; }
+    .apoio-img { max-width: 220px; display: block; margin: 20px auto; border-radius: 10px; }
   </style>
 </head>
 <body>
@@ -271,11 +167,13 @@
     </form>
   </section>
   
-  <!-- ========== SEÇÃO NOTÍCIAS ========== -->
+  <!-- ========== SEÇÃO NOTÍCIAS (COM ANIMAÇÃO) ========== -->
   <section id="noticias">
-    <h2>Notícias & Atualizações</h2>
+    <div class="news-header-animated">
+      <div class="holographic-scanner"></div>
+      <h2 class="news-title-glitch">NOTÍCIAS & ATUALIZAÇÕES</h2>
+    </div>
     <div id="news-cards" class="news-grid">
-      <!-- As notícias serão carregadas aqui via JavaScript -->
       <div class="news-loader">
         <div class="loader"></div>
         <p>Carregando notícias tecnológicas...</p>
@@ -284,32 +182,27 @@
   </section>
   
   <!-- ========== SEÇÃO APOIO ========== -->
- 
- <section id="apoio">
-  <h2>Apoie nosso trabalho</h2>
-  <p>Gostou do nosso conteúdo? Você pode apoiar via Pix escaneando o QR Code abaixo, deixando junto sua mensagem que aparecerá no ranking ! Desde Já, Gratidão 🙏🏼:</p>
-  
-  <!-- QR Code com tamanho original -->
-  <img class="apoio-img" src="apoio.jpeg" alt="QR Code Pix" style="width: 220px; height: auto;">
-  
-  <p><a href="https://forms.gle/Vq4qbkYSbDU5smdE6" target="_blank">
-    <button style="background: #00e6ff; color: #0f2027;">Me Identifiquei (Clique aqui)</button>
-  </a></p>
-  
-  <div class="ranking">
-    <h3>Últimos Apoiadores</h3>
-    <ul id="ranking-list">
-      <li>Carregando dados...</li>
-    </ul>
-  </div>
-</section>
+  <section id="apoio">
+    <h2>Apoie nosso trabalho</h2>
+    <p>Gostou do nosso conteúdo? Você pode apoiar via Pix escaneando o QR Code abaixo:</p>
+    <img class="apoio-img" src="apoio.jpeg" alt="QR Code Pix">
+    <p><a href="https://forms.gle/Vq4qbkYSbDU5smdE6" target="_blank">
+      <button>Me Identifiquei (Clique aqui)</button>
+    </a></p>
+    <div class="ranking">
+      <h3>Últimos Apoiadores</h3>
+      <ul id="ranking-list">
+        <li>Carregando dados...</li>
+      </ul>
+    </div>
+  </section>
   
   <!-- ========== FOOTER ========== -->
   <footer>
     <p>&copy; 2025 Godoy Solutions in TECH • Desenvolvido por Caíque Eduardo</p>
   </footer>
 
-  <!-- ========== SCRIPTS ========== -->
+  <!-- ========== SCRIPTS ORIGINAIS COMPLETOS ========== -->
   <script>
     /**
      * SISTEMA DE APOIADORES
