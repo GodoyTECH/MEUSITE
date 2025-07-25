@@ -210,28 +210,25 @@ Desenvolvido por Caíque Eduardo
   <footer>
     <p>&copy; 2025 Godoy Solutions in TECH • Desenvolvido por Caíque Eduardo</p>
   </footer>
-   <script>
-    // Cole aqui o ID da sua planilha publicada no Google Sheets
-    const sheetID = "2PACX-1vTCejP2yEPu7znGmW7RrXZVT2boYC96RbVEw4hCxOWKi0S2i9V_ZyWuOwnKy7DuWzPInTxIqRK8PPJ3";
-
-    // Nome da aba da planilha (exatamente como aparece na planilha, case sensitive)
-    const sheetName = "Untitled spreadsheet : Form1";
-
-    // URL do OpenSheet para ler os dados da planilha publicada
+    <script>
+    const sheetID = '2PACX-1vTCejP2yEPu7znGmW7RrXZVT2boYC96RbVEw4hCxOWKi0S2i9V_ZyWuOwnKy7DuWzPInTxIqRK8PPJ3';
+    const sheetName = 'Untitled spreadsheet : Form1';
     const sheetURL = `https://opensheet.elk.sh/${sheetID}/${sheetName}`;
 
     fetch(sheetURL)
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Erro na resposta da rede');
+        }
+        return response.json();
+      })
       .then(data => {
-        const lista = document.getElementById("ranking-list");
-        lista.innerHTML = ""; // limpa o loading
-
-        // Exibe do último para o primeiro
+        const lista = document.getElementById('ranking-list');
+        lista.innerHTML = '';
         data.reverse().forEach(entry => {
           const nome = entry["Nome"]?.trim() || "Anônimo";
           const valor = entry["Valor"] || "R$ ?";
           const comentario = entry["Comentário"] || "";
-
           const li = document.createElement("li");
           li.innerHTML = `<strong>${nome}</strong> - ${valor} - "${comentario}"`;
           lista.appendChild(li);
@@ -239,7 +236,10 @@ Desenvolvido por Caíque Eduardo
       })
       .catch(error => {
         console.error("Erro ao carregar dados:", error);
-        document.getElementById("ranking-list").innerHTML = "<li>Erro ao carregar dados.</li>";
+        const lista = document.getElementById("ranking-list");
+        if (lista) {
+          lista.innerHTML = "<li>Erro ao carregar dados. Verifique a URL da planilha ou sua publicação.</li>";
+        }
       });
   </script>
 
