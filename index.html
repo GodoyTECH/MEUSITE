@@ -197,12 +197,43 @@ Desenvolvido por Caíque Eduardo
     <button>Me Identifiquei (Clique aqui)</button>
   </a></p>
 
-  <div class="ranking">
-    <h3>Últimos Apoiadores</h3>
+  <!-- Ranking com animação e estilo futurista -->
+<div class="ranking">
+  <h3>Últimos Apoiadores</h3>
+  <div class="ranking-container">
     <ul id="ranking-list">
       <li>Carregando dados...</li>
     </ul>
   </div>
+</div>
+
+<style>
+  .ranking-container {
+    max-height: 180px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  #ranking-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    animation: scrollRanking 10s linear infinite;
+  }
+
+  #ranking-list li {
+    padding: 8px 12px;
+    border-bottom: 1px solid #00ffff33;
+    font-size: 0.95em;
+    background-color: rgba(0, 0, 50, 0.2);
+    color: #00faff;
+  }
+
+  @keyframes scrollRanking {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(-100%); }
+  }
+</style>
 </section>
 
 
@@ -210,43 +241,52 @@ Desenvolvido por Caíque Eduardo
   <footer>
     <p>&copy; 2025 Godoy Solutions in TECH • Desenvolvido por Caíque Eduardo</p>
   </footer>
-    <script>
-  // ID da planilha do Google Sheets
+<script>
   const sheetID = '1isrjaaOEUJqwLTIbzV3KzZHlpZYC6r4f0mtS28PL6YI';
-
-  // Nome da aba da planilha (diferencia maiúsculas/minúsculas)
   const sheetName = 'form1';
-
-  // URL para buscar os dados com o serviço opensheet.elk.sh
   const sheetURL = `https://opensheet.elk.sh/${sheetID}/${sheetName}`;
 
-  // Faz a requisição dos dados da planilha e renderiza no ranking
-  fetch(sheetURL)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Erro na resposta da rede');
-      }
-      return response.json();
-    })
-    .then(data => {
-      const lista = document.getElementById('ranking-list');
-      lista.innerHTML = '';
-      data.reverse().forEach(entry => {
-        const nome = entry["Nome"]?.trim() || "Anônimo";
-        const valor = entry["Valor do apoio (R$)"] || "R$ ?";
-        const comentario = entry["Comentários"] || "";
-        const li = document.createElement("li");
-        li.innerHTML = `<strong>${nome}</strong> - ${valor} - "${comentario}"`;
-        lista.appendChild(li);
+  let dadosCache = [];
+
+  function carregarRanking() {
+    fetch(sheetURL)
+      .then(response => {
+        if (!response.ok) throw new Error('Erro na resposta da rede');
+        return response.json();
+      })
+      .then(data => {
+        if (JSON.stringify(data) === JSON.stringify(dadosCache)) return; // evita recarregar se nada mudou
+
+        dadosCache = data;
+        const lista = document.getElementById('ranking-list');
+        lista.innerHTML = ''; // limpa
+
+        const entradas = [...data].reverse(); // inverter para mostrar os mais recentes
+
+        // repetir dados se forem poucos
+        const total = entradas.length;
+        const repeatCount = total < 6 ? Math.ceil(12 / total) : 1;
+
+        for (let i = 0; i < repeatCount; i++) {
+          entradas.forEach(entry => {
+            const nome = entry["Nome"]?.trim() || "Anônimo";
+            const valor = entry["Valor"] || "R$ ?";
+            const comentario = entry["Comentário"] || "";
+            const li = document.createElement("li");
+            li.innerHTML = `<strong>${nome}</strong> - ${valor} <br><em>${comentario}</em>`;
+            lista.appendChild(li);
+          });
+        }
+      })
+      .catch(error => {
+        console.error("Erro ao carregar dados:", error);
+        document.getElementById("ranking-list").innerHTML = "<li>Erro ao carregar dados.</li>";
       });
-    })
-    .catch(error => {
-      console.error("Erro ao carregar dados:", error);
-      const lista = document.getElementById("ranking-list");
-      if (lista) {
-        lista.innerHTML = "<li>Erro ao carregar dados. Verifique a URL da planilha ou sua publicação.</li>";
-      }
-    });
+  }
+
+  // Carrega inicialmente e depois a cada 20 segundos
+  carregarRanking();
+  setInterval(carregarRanking, 20000);
 </script>
 
 </body>
