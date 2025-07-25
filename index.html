@@ -387,44 +387,29 @@
 
 <script>
   const newsContainer = document.getElementById('news-cards');
-  newsContainer.innerHTML = '<div class="loading">Carregando notícias...</div>';
+  const apiKey = 'abc30160719845619ce9e00875b20ab9'; // 👈 Substitua por variável de ambiente em produção
+  const apiUrl = `https://newsapi.org/v2/top-headlines?country=br&category=technology&pageSize=6&apiKey=${apiKey}`;
 
-  fetch('https://api.rss2json.com/v1/api.json?rss_url=https://news.google.com/rss/search?q=tecnologia&hl=pt-BR&gl=BR&ceid=BR:pt-419')
-    .then(response => response.json())
+  fetch(apiUrl)
+    .then(response => {
+      if (!response.ok) throw new Error('Erro na API');
+      return response.json();
+    })
     .then(data => {
-      if (newsContainer.children.length > 1) return; // Evita duplicação
-      
-      const items = data.items.slice(0, 6);
-      newsContainer.innerHTML = '';
-
-      items.forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'news-card';
-        
-        let imgURL = 'https://via.placeholder.com/320x180?text=Not%C3%ADcia+Tecnol%C3%B3gica';
-        
-        // Tenta extrair imagem de 3 fontes diferentes
-        const sources = [
-          item.content?.match(/<img[^>]+src="([^">]+)"/),
-          item.description?.match(/<img[^>]+src="([^">]+)"/),
-          item.enclosure?.link // Alguns RSS usam este campo para imagens
-        ].filter(Boolean);
-        
-        if (sources.length > 0) imgURL = sources[0][1] || imgURL;
-
-        card.innerHTML = `
-          <img src="${imgURL}" alt="Imagem da notícia" 
-               onerror="this.src='https://via.placeholder.com/320x180?text=Imagem+N%C3%A3o+Dispon%C3%ADvel'">
-          <h3><a href="${item.link}" target="_blank">${item.title}</a></h3>
-          <p>${item.description?.replace(/<[^>]*>?/gm, '').substring(0, 120) || 'Descrição não disponível'}...</p>
-          <a class="news-link" href="${item.link}" target="_blank">Ler mais →</a>
-        `;
-        newsContainer.appendChild(card);
-      });
+      newsContainer.innerHTML = data.articles.map(article => `
+        <div class="news-card">
+          <img src="${article.urlToImage || 'https://via.placeholder.com/320x180?text=Sem+Imagem'}" 
+               alt="${article.title}" 
+               onerror="this.src='https://via.placeholder.com/320x180?text=Imagem+Não+Disponível'">
+          <h3><a href="${article.url}" target="_blank">${article.title}</a></h3>
+          <p>${article.description?.substring(0, 120) || 'Clique para ler mais'}...</p>
+          <a class="news-link" href="${article.url}" target="_blank">Ler mais →</a>
+        </div>
+      `).join('');
     })
     .catch(error => {
-      console.error('Erro ao carregar notícias:', error);
-      newsContainer.innerHTML = '<p>Não foi possível carregar as notícias no momento.</p>';
+      console.error(error);
+      newsContainer.innerHTML = `<p class="error">Erro ao carregar notícias: ${error.message}</p>`;
     });
 </script>
 </body>
