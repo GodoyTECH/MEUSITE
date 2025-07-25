@@ -188,7 +188,7 @@ Desenvolvido por Caíque Eduardo
   </section>
 
   <!-- Apoio -->
-  <<section id="apoio">
+  <section id="apoio">
   <h2>Apoie nosso trabalho</h2>
   <p>Gostou do nosso conteúdo? Você pode apoiar via Pix escaneando o QR Code abaixo:</p>
   <img class="apoio-img" src="apoio.jpeg" alt="QR Code Pix">
@@ -210,31 +210,38 @@ Desenvolvido por Caíque Eduardo
   <footer>
     <p>&copy; 2025 Godoy Solutions in TECH • Desenvolvido por Caíque Eduardo</p>
   </footer>
-  <script>
-  // URL do OpenSheet com o ID da planilha
-  const sheetURL = "https://opensheet.elk.sh/2PACX-abc123xyz456/Form Responses 1";
+   <script>
+    // Cole aqui o ID da sua planilha publicada no Google Sheets
+    const sheetID = "2PACX-1vTCejP2yEPu7znGmW7RrXZVT2boYC96RbVEw4hCxOWKi0S2i9V_ZyWuOwnKy7DuWzPInTxIqRK8PPJ3";
 
+    // Nome da aba da planilha (exatamente como aparece na planilha, case sensitive)
+    const sheetName = "Form1";
 
-  // Função para carregar os dados
-  fetch(sheetURL)
-    .then(response => response.json())
-    .then(data => {
-      const lista = document.getElementById("ranking-list");
+    // URL do OpenSheet para ler os dados da planilha publicada
+    const sheetURL = `https://opensheet.elk.sh/${sheetID}/${sheetName}`;
 
-      // Limpa a lista antes de preencher
-      lista.innerHTML = "";
+    fetch(sheetURL)
+      .then(response => response.json())
+      .then(data => {
+        const lista = document.getElementById("ranking-list");
+        lista.innerHTML = ""; // limpa o loading
 
-      data.reverse().forEach(entry => {
-        const nome = entry["Nome"]?.trim() || "Anônimo";
-        const valor = entry["Valor"] || "R$ ?";
-        const comentario = entry["Comentário"] || "";
+        // Exibe do último para o primeiro
+        data.reverse().forEach(entry => {
+          const nome = entry["Nome"]?.trim() || "Anônimo";
+          const valor = entry["Valor"] || "R$ ?";
+          const comentario = entry["Comentário"] || "";
 
-        const li = document.createElement("li");
-        li.innerHTML = `<strong>${nome}</strong> - ${valor} - "${comentario}"`;
-        lista.appendChild(li);
+          const li = document.createElement("li");
+          li.innerHTML = `<strong>${nome}</strong> - ${valor} - "${comentario}"`;
+          lista.appendChild(li);
+        });
+      })
+      .catch(error => {
+        console.error("Erro ao carregar dados:", error);
+        document.getElementById("ranking-list").innerHTML = "<li>Erro ao carregar dados.</li>";
       });
-    });
-</script>
+  </script>
 
 </body>
 </html>
