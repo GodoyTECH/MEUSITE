@@ -465,100 +465,74 @@
 <script>
   const newsContainer = document.getElementById('news-cards');
   
-  // Configurações (substitua pela sua chave)
-  const config = {
-    newsApiKey: 'abc30160719845619ce9e00875b20ab9',
-    backupNews: [
-      {
-        title: "Novidades em Inteligência Artificial para 2025",
-        description: "As principais tendências de IA que vão revolucionar o mercado tecnológico no próximo ano...",
-        url: "https://exemplo.com/ia-2025",
-        urlToImage: "https://via.placeholder.com/320x180?text=IA+2025"
-      },
-      {
-        title: "Godoy Solutions lança novo serviço de consultoria",
-        description: "Nossa equipe acaba de expandir os serviços para incluir consultoria em transformação digital...",
-        url: "https://godoysoluintech.netify.app",
-        urlToImage: "https://via.placeholder.com/320x180?text=Godoy+Solutions"
-      }
-    ]
-  };
+  // 1. Dados locais de fallback (personalize com suas notícias)
+  const backupNews = [
+    {
+      title: "Novidades em IA para 2025",
+      description: "As principais tendências de IA que vão revolucionar o mercado tecnológico...",
+      url: "#",
+      urlToImage: "https://via.placeholder.com/320x180.png/0077ff?text=IA+2025"
+    },
+    {
+      title: "Godoy Solutions em Destaque",
+      description: "Como nossa empresa está inovando no mercado tecnológico...",
+      url: "#",
+      urlToImage: "https://via.placeholder.com/320x180.png/0077ff?text=Godoy+Tech"
+    }
+  ];
 
-  // 1. Exibe loader animado
+  // 2. Exibir loader
   showLoader();
 
-  // 2. Tenta a NewsAPI primeiro
-  fetchNewsAPI()
-    .catch(() => {
-      console.log('Usando notícias locais como fallback');
-      return { articles: config.backupNews };
-    })
-    .then(displayNews)
-    .catch(showError);
+  // 3. Sistema de tentativas
+  fetchWithRetry(3);
 
-  // ========== FUNÇÕES ========== //
+  function fetchWithRetry(attempts) {
+    fetch('https://newsapi.org/v2/top-headlines?country=br&category=technology&pageSize=2&apiKey=SUA_CHAVE_AQUI')
+      .then(response => {
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return response.json();
+      })
+      .then(data => {
+        displayNews(data.articles || backupNews);
+      })
+      .catch(error => {
+        console.error(`Tentativa ${4-attempts} falhou:`, error);
+        if (attempts > 1) {
+          setTimeout(() => fetchWithRetry(attempts - 1), 2000);
+        } else {
+          displayNews(backupNews, true);
+        }
+      });
+  }
+
   function showLoader() {
     newsContainer.innerHTML = `
       <div class="news-loader">
-        <div class="loader-spinner"></div>
-        <p>Buscando as últimas notícias...</p>
+        <div class="loader"></div>
+        <p>Carregando conteúdo...</p>
       </div>
     `;
   }
 
-  async function fetchNewsAPI() {
-    const response = await fetch(
-      `https://newsapi.org/v2/top-headlines?country=br&category=technology&pageSize=6&apiKey=${config.newsApiKey}`
-    );
-    
-    if (!response.ok) {
-      throw new Error(`API retornou status ${response.status}`);
-    }
-    
-    return await response.json();
-  }
-
-  function displayNews(data) {
-    if (!data.articles || data.articles.length === 0) {
-      throw new Error('Nenhuma notícia disponível');
-    }
-
-    newsContainer.innerHTML = data.articles.map(article => `
+  function displayNews(articles, isFallback = false) {
+    newsContainer.innerHTML = articles.map(article => `
       <div class="news-card">
-        <img src="${article.urlToImage || 'https://via.placeholder.com/320x180?text=Not%C3%ADcia+Tecnol%C3%B3gica'}" 
-             alt="${article.title}" 
+        <img src="${article.urlToImage}" 
+             alt="${article.title}"
              loading="lazy"
-             onerror="this.src='https://via.placeholder.com/320x180?text=Imagem+N%C3%A3o+Dispon%C3%ADvel'">
-        <h3><a href="${article.url}" target="_blank" rel="noopener">${article.title}</a></h3>
-        <p>${article.description?.substring(0, 120) || 'Clique para ler mais...'}</p>
-        <a class="news-link" href="${article.url}" target="_blank" rel="noopener">
-          Ler mais →
-        </a>
+             onerror="this.src='https://via.placeholder.com/320x180.png/0077ff?text=Not%C3%ADcia'">
+        <h3>${article.title}</h3>
+        <p>${article.description || 'Clique para ler mais'}</p>
+        <a href="${article.url}" class="news-link">Ler mais →</a>
       </div>
     `).join('');
-  }
 
-  function showError(error) {
-    console.error('Erro ao carregar notícias:', error);
-    newsContainer.innerHTML = `
-      <div class="news-error">
-        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ff5555">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
-        </svg>
-        <h3>Não foi possível carregar notícias em tempo real</h3>
-        <p>Mostrando nossas últimas atualizações:</p>
-        ${config.backupNews.map(article => `
-          <div class="news-card">
-            <h4><a href="${article.url}">${article.title}</a></h4>
-            <p>${article.description}</p>
-          </div>
-        `).join('')}
-        <button onclick="window.location.reload()" class="reload-button">
-          Tentar novamente
-        </button>
-      </div>
-    `;
+    if (isFallback) {
+      newsContainer.insertAdjacentHTML('beforeend',
+        `<p class="warning">⚠️ Mostrando notícias locais</p>`
+      );
+    }
   }
-</script>
-</body>
+</script></body>
 </html>
