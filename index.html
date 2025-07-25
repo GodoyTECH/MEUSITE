@@ -10,6 +10,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Godoy Solutions in TECH</title>
+  
   <style>
     body {
       margin: 0;
@@ -128,23 +129,74 @@ button, input, textarea {
   overflow-y: auto;
   scroll-behavior: smooth;
 }
+  /* Estilo especial para a seção "Sobre a Empresa" */
+.sobre-estilizado {
+  background: linear-gradient(to bottom right, rgba(0, 30, 60, 0.5), rgba(0, 50, 100, 0.3));
+  border-left: 5px solid #00f0ff;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+  margin-top: 30px;
+}
+
+.sobre-estilizado h2 {
+  color: #00e6ff;
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 25px;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+.sobre-estilizado p {
+  line-height: 1.7;
+  margin-bottom: 16px;
+  color: #e0f7ff;
+  font-size: 1.05em;
+}
+
+.sobre-estilizado strong {
+  color: #00ffff;
+}
+
+.sobre-estilizado em {
+  color: #99e6ff;
+  font-style: italic;
+}
 
   </style>
 </head>
 <body>
   <header>
     <img class="logo-banner" src="logo.png" alt="Godoy Solutions TECH" />
-  </header>  <nav>
+  </header>  
+  <nav>
     <a href="#sobre">Sobre</a>
     <a href="#servicos">Serviços</a>
     <a href="#contato">Contato</a>
     <a href="#noticias">Notícias</a>
     <a href="#apoio">Apoie</a>
     <a href="softwares.html">Softwares</a>
-  </nav>  <section id="sobre">
-    <h2>Sobre a Empresa</h2>
-    <p>Godoy Solutions in TECH foi fundada por Caíque Eduardo Godoy da Silva, profissional com 28 anos e ampla formação na área de tecnologia. Possui certificações em Algoritmos, HTML5 e CSS3, Inteligência Artificial, Análise de Dados, Técnico em Informática e Manutenção, Elétrica Residencial Atualizada, JavaScript Básico e está se especializando continuamente em novas tecnologias. O objetivo da empresa é oferecer soluções tecnológicas acessíveis, práticas e futuristas, com foco em inovação, qualidade e atendimento personalizado.</p>
-  </section>  <section id="servicos">
+  </nav>  
+<section id="sobre" class="sobre-estilizado">
+  <h2>Sobre a Empresa</h2>
+
+  <p>
+    A <strong>Godoy Solutions in TECH</strong> foi fundada por <strong>Caíque Eduardo Godoy da Silva</strong>, um profissional com 28 anos e sólida formação na área de tecnologia.
+  </p>
+
+  <p>
+    Caíque possui diversas certificações relevantes, incluindo <em>Algoritmos</em>, <em>HTML5 e CSS3</em>, <em>JavaScript Básico</em>, <em>Inteligência Artificial</em>, <em>Análise de Dados</em>, <em>Elétrica Residencial Atualizada</em>, além de ser <strong>Técnico em Informática e Manutenção</strong>.
+  </p>
+
+  <p>
+    Sua trajetória é marcada pelo aprendizado contínuo e pela paixão por inovação. Está constantemente se especializando em novas tecnologias, acompanhando as tendências do mercado para oferecer o que há de mais moderno.
+  </p>
+
+  <p>
+    O principal objetivo da Godoy Solutions é <strong>fornecer soluções tecnológicas acessíveis, eficientes e futuristas</strong>, sempre com foco em qualidade, inovação e atendimento personalizado ao cliente.
+  </p>
+</section>
+  <section id="servicos">
     <h2>Nossos Serviços</h2>
     <ul>
       <li>Criação de sistemas de gerenciamento e vendas</li>
@@ -154,7 +206,8 @@ button, input, textarea {
       <li>Recuperação de dados</li>
       <li>Aulas e Sugestões para melhorar seu desempenho em Tech</li>
     </ul>
-  </section>  <section id="contato">
+   </section>  
+  <section id="contato">
     <h2>Fale Conosco</h2>
     <p><a class="btn-whatsapp" href="https://wa.me/5511995586459" target="_blank">WhatsApp</a></p>
     <p>Email: <a class="email-link" href="mailto:caiqueworkti@gmail.com">caiqueworkti@gmail.com</a></p>
@@ -181,9 +234,11 @@ button, input, textarea {
         <li>Carregando dados...</li>
       </ul>
     </div>
-  </section>  <footer>
+  </section>  
+  <footer>
     <p>&copy; 2025 Godoy Solutions in TECH • Desenvolvido por Caíque Eduardo</p>
-  </footer>  <script>
+  </footer>  
+  <script>
     const sheetID = '1isrjaaOEUJqwLTIbzV3KzZHlpZYC6r4f0mtS28PL6YI';
     const sheetName = 'form1';
     const sheetURL = `https://opensheet.elk.sh/${sheetID}/${sheetName}`;
@@ -246,5 +301,6 @@ button, input, textarea {
     }
 
     window.onload = iniciarRolagem;
-  </script></body>
+  </script>
+</body>
 </html>
