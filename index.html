@@ -13,6 +13,31 @@
   <title>Godoy Solutions in TECH</title>
 
   <style>
+
+    .loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding: 30px;
+  color: #00e6ff;
+}
+
+.error {
+  text-align: center;
+  padding: 20px;
+  color: #ff5555;
+}
+
+.error button {
+  background: #ff5555;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  margin-top: 10px;
+  cursor: pointer;
+}
     .news-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -387,29 +412,56 @@
 
 <script>
   const newsContainer = document.getElementById('news-cards');
-  const apiKey = 'abc30160719845619ce9e00875b20ab9'; // 👈 Substitua por variável de ambiente em produção
-  const apiUrl = `https://newsapi.org/v2/top-headlines?country=br&category=technology&pageSize=6&apiKey=${apiKey}`;
+  const apiKey = 'abc30160719845619ce9e00875b20ab9'; // 👈 SUA CHAVE AQUI
+  const apiUrl = `https://newsapi.org/v2/top-headlines?country=br&pageSize=6&apiKey=${apiKey}`;
+
+  // Exibe loader enquanto carrega
+  newsContainer.innerHTML = `
+    <div class="loading">
+      <svg viewBox="0 0 50 50" width="40" fill="#00e6ff">
+        <circle cx="25" cy="25" r="20" opacity="0.2" fill="none" stroke="#00e6ff" stroke-width="4"/>
+        <circle cx="25" cy="25" r="20" opacity="0.7" fill="none" stroke="#00e6ff" stroke-width="4" stroke-dasharray="100 12" transform="rotate(360 25 25)">
+          <animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="1s" repeatCount="indefinite"/>
+        </circle>
+      </svg>
+      <p>Carregando notícias...</p>
+    </div>
+  `;
 
   fetch(apiUrl)
-    .then(response => {
-      if (!response.ok) throw new Error('Erro na API');
+    .then(async response => {
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Erro na API');
+      }
       return response.json();
     })
     .then(data => {
+      if (!data.articles || data.articles.length === 0) {
+        throw new Error('Nenhuma notícia encontrada');
+      }
+      
       newsContainer.innerHTML = data.articles.map(article => `
         <div class="news-card">
           <img src="${article.urlToImage || 'https://via.placeholder.com/320x180?text=Sem+Imagem'}" 
                alt="${article.title}" 
+               loading="lazy"
                onerror="this.src='https://via.placeholder.com/320x180?text=Imagem+Não+Disponível'">
           <h3><a href="${article.url}" target="_blank">${article.title}</a></h3>
-          <p>${article.description?.substring(0, 120) || 'Clique para ler mais'}...</p>
+          <p>${article.description?.substring(0, 120) || 'Clique para ler a matéria completa'}...</p>
           <a class="news-link" href="${article.url}" target="_blank">Ler mais →</a>
         </div>
       `).join('');
     })
     .catch(error => {
-      console.error(error);
-      newsContainer.innerHTML = `<p class="error">Erro ao carregar notícias: ${error.message}</p>`;
+      console.error('Erro detalhado:', error);
+      newsContainer.innerHTML = `
+        <div class="error">
+          <p>😕 Não foi possível carregar as notícias</p>
+          <small>${error.message}</small>
+          <button onclick="window.location.reload()">Tentar novamente</button>
+        </div>
+      `;
     });
 </script>
 </body>
