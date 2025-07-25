@@ -11,6 +11,17 @@
   <title>Godoy Solutions in TECH</title>
 
   <style>
+.news-line {
+  height: 2px;
+  width: 60px; /* Largura da linha */
+  background: rgba(0, 255, 255, 0.6);
+  margin: 0 auto 15px auto;
+  animation: pingpong 2s ease-in-out infinite alternate; /* Efeito ping-pong */
+}
+    @keyframes pingpong {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(100% - 60px)); }
+}
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
