@@ -211,37 +211,43 @@ Desenvolvido por Caíque Eduardo
     <p>&copy; 2025 Godoy Solutions in TECH • Desenvolvido por Caíque Eduardo</p>
   </footer>
     <script>
-    const sheetID = '1vTCejP2yEPu7znGmW7RrXZVT2boYC96RbVEw4hCxOWKi0S2i9V_ZyWuOwnKy7DuWzPInTxIqRK8PPJ3';
-    const sheetName = 'Untitled spreadsheet : form1';
-    const sheetURL = `https://opensheet.elk.sh/${sheetID}/${sheetName}`;
+  // ID da planilha do Google Sheets
+  const sheetID = '1isrjaaOEUJqwLTIbzV3KzZHlpZYC6r4f0mtS28PL6YI';
 
-    fetch(sheetURL)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Erro na resposta da rede');
-        }
-        return response.json();
-      })
-      .then(data => {
-        const lista = document.getElementById('ranking-list');
-        lista.innerHTML = '';
-        data.reverse().forEach(entry => {
-          const nome = entry["Nome"]?.trim() || "Anônimo";
-          const valor = entry["Valor"] || "R$ ?";
-          const comentario = entry["Comentário"] || "";
-          const li = document.createElement("li");
-          li.innerHTML = `<strong>${nome}</strong> - ${valor} - "${comentario}"`;
-          lista.appendChild(li);
-        });
-      })
-      .catch(error => {
-        console.error("Erro ao carregar dados:", error);
-        const lista = document.getElementById("ranking-list");
-        if (lista) {
-          lista.innerHTML = "<li>Erro ao carregar dados. Verifique a URL da planilha ou sua publicação.</li>";
-        }
+  // Nome da aba da planilha (diferencia maiúsculas/minúsculas)
+  const sheetName = 'form1';
+
+  // URL para buscar os dados com o serviço opensheet.elk.sh
+  const sheetURL = `https://opensheet.elk.sh/${sheetID}/${sheetName}`;
+
+  // Faz a requisição dos dados da planilha e renderiza no ranking
+  fetch(sheetURL)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Erro na resposta da rede');
+      }
+      return response.json();
+    })
+    .then(data => {
+      const lista = document.getElementById('ranking-list');
+      lista.innerHTML = '';
+      data.reverse().forEach(entry => {
+        const nome = entry["Nome"]?.trim() || "Anônimo";
+        const valor = entry["Valor"] || "R$ ?";
+        const comentario = entry["Comentário"] || "";
+        const li = document.createElement("li");
+        li.innerHTML = `<strong>${nome}</strong> - ${valor} - "${comentario}"`;
+        lista.appendChild(li);
       });
-  </script>
+    })
+    .catch(error => {
+      console.error("Erro ao carregar dados:", error);
+      const lista = document.getElementById("ranking-list");
+      if (lista) {
+        lista.innerHTML = "<li>Erro ao carregar dados. Verifique a URL da planilha ou sua publicação.</li>";
+      }
+    });
+</script>
 
 </body>
 </html>
