@@ -188,27 +188,52 @@ Desenvolvido por Caíque Eduardo
   </section>
 
   <!-- Apoio -->
-  <section id="apoio">
-    <h2>Apoie nosso trabalho</h2>
-    <p>Gostou do nosso conteúdo? Você pode apoiar via Pix escaneando o QR Code abaixo:</p>
-    <!-- // Adicione aqui a imagem do QR Code -->
-    <img class="apoio-img" src="apoio.jpeg" alt="QR Code Pix">
-    <p><a href="https://forms.gle/MUBmLM4EyDCqGiZ76" target="_blank">
-      <button>Me Identifiquei (Clique aqui)</button>
-    </a></p>
-    <div class="ranking">
-      <h3>Últimos Apoiadores</h3>
-      <ul>
-        <li><strong>Anônimo</strong> - R$ 50,00 - "Parabéns pelo site!"</li>
-        <li><strong>João Silva</strong> - R$ 15,00 - "Conteúdo top!"</li>
-      </ul>
-    </div>
-  </section>
+  <<section id="apoio">
+  <h2>Apoie nosso trabalho</h2>
+  <p>Gostou do nosso conteúdo? Você pode apoiar via Pix escaneando o QR Code abaixo:</p>
+  <img class="apoio-img" src="apoio.jpeg" alt="QR Code Pix">
+
+  <p><a href="https://forms.gle/Vq4qbkYSbDU5smdE6" target="_blank">
+    <button>Me Identifiquei (Clique aqui)</button>
+  </a></p>
+
+  <div class="ranking">
+    <h3>Últimos Apoiadores</h3>
+    <ul id="ranking-list">
+      <li>Carregando dados...</li>
+    </ul>
+  </div>
+</section>
+
 
   <!-- Rodapé -->
   <footer>
     <p>&copy; 2025 Godoy Solutions in TECH • Desenvolvido por Caíque Eduardo</p>
   </footer>
+  <script>
+  // URL do OpenSheet com o ID da planilha
+  const sheetURL = "https://opensheet.elk.sh/2PACX-1vTCejP2yEPu7znGmWTr7RZboCY96RbYEv4hCxCWKlOSt2i9V_ZyWuCwnkY7DuWzPlnTK8R8PU3/Form Responses 1";
+
+  // Função para carregar os dados
+  fetch(sheetURL)
+    .then(response => response.json())
+    .then(data => {
+      const lista = document.getElementById("ranking-list");
+
+      // Limpa a lista antes de preencher
+      lista.innerHTML = "";
+
+      data.reverse().forEach(entry => {
+        const nome = entry["Nome"]?.trim() || "Anônimo";
+        const valor = entry["Valor"] || "R$ ?";
+        const comentario = entry["Comentário"] || "";
+
+        const li = document.createElement("li");
+        li.innerHTML = `<strong>${nome}</strong> - ${valor} - "${comentario}"`;
+        lista.appendChild(li);
+      });
+    });
+</script>
 
 </body>
 </html>
