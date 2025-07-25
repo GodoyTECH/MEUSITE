@@ -1,441 +1,226 @@
 <!DOCTYPE html><html lang="pt-BR">
 <head>
-  <!-- Imagem que aparece ao compartilhar o site -->
-<meta property="og:image" content="logo.jpeg" />
-<meta property="og:image:type" content="image/jpeg" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-  <!-- Ícone da aba (favicon) -->
-  <link rel="icon" type="image/png" href="logoicon.png">
+  <!-- Metadados para compartilhamento e favicon -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Godoy Solutions in TECH</title>
-
-}
- <style>
-
-   
-    .news-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-  margin-top: 20px;
-    .news-card {
-  background: rgba(0, 20, 40, 0.5);
-  border-radius: 12px;
-  padding: 15px;
-  box-shadow: 0 0 18px rgba(0, 255, 255, 0.2);
-  backdrop-filter: blur(4px);
-  transition: transform 0.3s ease;
-}
-
-.news-card:hover {
-  transform: scale(1.02);
-}
-
-.news-card img {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 10px;
-}
-
-.news-card h3 {
-  font-size: 1.1rem;
-  color: #00eaff;
-  margin-bottom: 8px;
-}
-
-.news-card p {
-  font-size: 0.9rem;
-  color: #cceeff;
-  margin-bottom: 10px;
-}
-
-.news-link {
-  display: inline-block;
-  color: #00cfff;
-  font-weight: bold;
-  text-decoration: none;
-  border: 1px solid #00cfff;
-  padding: 6px 10px;
-  border-radius: 6px;
-  transition: background 0.3s ease;
-}
-
-.news-link:hover {
-  background: #00cfff33;
-}
-    
-    #news-list {
-  list-style: none;
-  padding: 0;
-  color: #aef;
-}
-
-#news-list li {
-  background: rgba(0, 40, 70, 0.4);
-  padding: 12px;
-  border-radius: 8px;
-  margin-bottom: 12px;
-  box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
-}
+  <title>Godoy Solutions in TECH</title>  <!-- Ícone da aba (favicon) -->  <link rel="icon" type="image/png" href="logoicon.png">  <!-- Quando o link for compartilhado nas redes sociais -->  <meta property="og:image" content="logo.jpeg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />  <style>
+    /* ===== ESTILOS GERAIS DO SITE ===== */
 
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
       color: #ffffff;
-    }body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('fundobom.png') no-repeat center top;
-  background-size: cover;
-  opacity: 0.1;
-  z-index: -1;
-}
+    }
 
-header {
-  text-align: center;
-}
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('fundobom.png') no-repeat center top;
+      background-size: cover;
+      opacity: 0.1;
+      z-index: -1;
+    }
 
-.logo-banner {
-  width: 100%;
-  max-height: 300px;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
-}
+    header {
+      text-align: center;
+    }
 
-nav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  background: rgba(0, 255, 255, 0.1);
-  padding: 12px 10px;
-  border-bottom: 1px solid #00cfff;
-  backdrop-filter: blur(6px);
-  box-sizing: border-box;
-}
+    .logo-banner {
+      width: 100%;
+      max-height: 300px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+    }
 
-nav a {
-  color: #00e0ff;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease;
-}
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      background: rgba(0, 255, 255, 0.1);
+      padding: 12px 10px;
+      border-bottom: 1px solid #00cfff;
+      backdrop-filter: blur(6px);
+      box-sizing: border-box;
+    }
 
-nav a:hover {
-  color: #ffffff;
-}
+    nav a {
+      color: #00e0ff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
 
-section {
-  padding: 40px 20px;
-  max-width: 1000px;
-  margin: auto;
-  background-color: rgba(0, 0, 30, 0.4);
-  border-radius: 12px;
-  box-shadow: 0 0 25px rgba(0, 200, 255, 0.2);
-  backdrop-filter: blur(6px);
-}
+    nav a:hover {
+      color: #ffffff;
+    }
 
-h2 {
-  color: #00e6ff;
-}
+    section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+      background-color: rgba(0, 0, 30, 0.4);
+      border-radius: 12px;
+      box-shadow: 0 0 25px rgba(0, 200, 255, 0.2);
+      backdrop-filter: blur(6px);
+    }
 
-footer {
-  background: rgba(0, 20, 50, 0.6);
-  text-align: center;
-  padding: 20px;
-  font-size: 0.9em;
-  border-top: 1px solid #00cfff55;
-}
+    h2 {
+      color: #00e6ff;
+    }
 
-button, input, textarea {
-  background-color: rgba(0, 30, 50, 0.6);
-  color: #00f0ff;
-  border: 1px solid #00ffff99;
-  padding: 10px;
-  margin: 5px 0;
-  width: 100%;
-  border-radius: 8px;
-}
+    footer {
+      background: rgba(0, 20, 50, 0.6);
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      border-top: 1px solid #00cfff55;
+    }
 
-.btn-whatsapp {
-  display: inline-block;
-  background: #25D366;
-  color: white;
-  padding: 10px 20px;
-  text-decoration: none;
-  border-radius: 6px;
-  margin-top: 10px;
-}
+    button, input, textarea {
+      background-color: rgba(0, 30, 50, 0.6);
+      color: #00f0ff;
+      border: 1px solid #00ffff99;
+      padding: 10px;
+      margin: 5px 0;
+      width: 100%;
+      border-radius: 8px;
+    }
 
-.email-link {
-  color: #ffcc00;
-  text-decoration: underline;
-}
+    .btn-whatsapp {
+      display: inline-block;
+      background: #25D366;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 6px;
+      margin-top: 10px;
+    }
 
-.apoio-img {
-  max-width: 220px;
-  display: block;
-  margin: 20px auto;
-  border-radius: 10px;
-}
+    .email-link {
+      color: #ffcc00;
+      text-decoration: underline;
+    }
 
-.ranking {
-  background: rgba(255,255,255,0.08);
-  padding: 15px;
-  border-radius: 8px;
-  margin-top: 20px;
-  color: #aef;
-  max-height: 200px;
-  overflow-y: auto;
-  scroll-behavior: smooth;
-}
-  /* Estilo especial para a seção "Sobre a Empresa" */
-.sobre-estilizado {
-  background: linear-gradient(to bottom right, rgba(0, 30, 60, 0.5), rgba(0, 50, 100, 0.3));
-  border-left: 5px solid #00f0ff;
-  border-radius: 12px;
-  padding: 30px;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
-  margin-top: 30px;
-}
+    .apoio-img {
+      max-width: 220px;
+      display: block;
+      margin: 20px auto;
+      border-radius: 10px;
+    }
 
-.sobre-estilizado h2 {
-  color: #00e6ff;
-  text-align: center;
-  font-size: 2em;
-  margin-bottom: 25px;
-  text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
-}
+    .ranking {
+      background: rgba(255,255,255,0.08);
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+      color: #aef;
+      max-height: 200px;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+    }
 
-.sobre-estilizado p {
-  line-height: 1.7;
-  margin-bottom: 16px;
-  color: #e0f7ff;
-  font-size: 1.05em;
-}
+    /* Estilo visual para a seção "Sobre a Empresa" */
+    .sobre-estilizado {
+      background: linear-gradient(to bottom right, rgba(0, 30, 60, 0.5), rgba(0, 50, 100, 0.3));
+      border-left: 5px solid #00f0ff;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+      margin-top: 30px;
+    }
 
-.sobre-estilizado strong {
-  color: #00ffff;
-}
+    .sobre-estilizado h2 {
+      color: #00e6ff;
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 25px;
+      text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+    }
 
-.sobre-estilizado em {
-  color: #99e6ff;
-  font-style: italic;
-}
+    .sobre-estilizado p {
+      line-height: 1.7;
+      margin-bottom: 16px;
+      color: #e0f7ff;
+      font-size: 1.05em;
+    }
 
-  </style>
-</head>
+    .sobre-estilizado strong {
+      color: #00ffff;
+    }
+
+    .sobre-estilizado em {
+      color: #99e6ff;
+      font-style: italic;
+    }
+
+    /* Estilo das notícias */
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .news-card {
+      background: rgba(0, 20, 40, 0.5);
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 0 0 18px rgba(0, 255, 255, 0.2);
+      backdrop-filter: blur(4px);
+      transition: transform 0.3s ease;
+    }
+
+    .news-card:hover {
+      transform: scale(1.02);
+    }
+
+    .news-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .news-card h3 {
+      font-size: 1.1rem;
+      color: #00eaff;
+      margin-bottom: 8px;
+    }
+
+    .news-card p {
+      font-size: 0.9rem;
+      color: #cceeff;
+      margin-bottom: 10px;
+    }
+
+    .news-link {
+      display: inline-block;
+      color: #00cfff;
+      font-weight: bold;
+      text-decoration: none;
+      border: 1px solid #00cfff;
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: background 0.3s ease;
+    }
+
+    .news-link:hover {
+      background: #00cfff33;
+    }
+  </style></head>
 <body>
-  <header>
-    <img class="logo-banner" src="logo.png" alt="Godoy Solutions TECH" />
-  </header>  
-  <nav>
-    <a href="#sobre">Sobre</a>
-    <a href="#servicos">Serviços</a>
-    <a href="#contato">Contato</a>
-    <a href="#noticias">Notícias</a>
-    <a href="#apoio">Apoie</a>
-    <a href="softwares.html">Softwares</a>
-  </nav>  
-<section id="sobre" class="sobre-estilizado">
-  <h2>Sobre a Empresa</h2>
-
-  <p>
-    A <strong>Godoy Solutions in TECH</strong> foi fundada por <strong>Caique Eduardo Godoy da Silva</strong>, um profissional com 28 anos com sólida formações na área de tecnologia.
-  </p>
-
-  <p>
-    Contendo diversas certificações relevantes, incluindo <em>Algoritmos</em>, <em>HTML5 e CSS3</em>, <em>JavaScript Básico,porém se especializando</em>, <em>Inteligência Artificial</em>, <em>Análise de Dados</em>, <em>Elétrica Residencial Atualizada</em>, além de ser <strong>Técnico em Informática e Manutenção</strong>.
-  </p>
-
-  <p>
-    Sua trajetória é marcada pelo aprendizado contínuo e pela paixão por inovação. Está constantemente se especializando em novas tecnologias, acompanhando as tendências do mercado para oferecer o que há de mais moderno.
-  </p>
-
-  <p>
-    O principal objetivo da Godoy Solutions é <strong>fornecer soluções tecnológicas acessíveis, eficientes e futuristas</strong>, sempre com foco em qualidade, inovação e atendimento personalizado ao cliente.
-  </p>
-</section>
-  <section id="servicos">
-    <h2>Nossos Serviços</h2>
-    <ul>
-      <li>Criação de sistemas de gerenciamento e vendas</li>
-      <li>Desenvolvimento de sites e aplicativos personalizados</li>
-      <li>Manutenção de PCs, notebooks, celulares e periféricos</li>
-      <li>Instalação e restauração de sistemas operacionais</li>
-      <li>Recuperação de dados</li>
-      <li>Aulas e Sugestões para melhorar seu desempenho em Tech</li>
-    </ul>
-   </section>  
-  <section id="contato">
-    <h2>Fale Conosco</h2>
-    <p><a class="btn-whatsapp" href="https://wa.me/5511995586459" target="_blank">WhatsApp</a></p>
-    <p>Email: <a class="email-link" href="mailto:caiqueworkti@gmail.com">caiqueworkti@gmail.com</a></p>
-    <h3>Envie uma sugestão ou mensagem:</h3>
-    <form>
-      <input type="text" placeholder="Seu nome" required>
-      <input type="email" placeholder="Seu email" required>
-      <textarea rows="5" placeholder="Sua mensagem"></textarea>
-      <button type="submit">Enviar</button>
-    </form>
-  </section> 
-  
-<section id="noticias">
-  <h2>Notícias & Atualizações</h2>
-  <div id="news-cards" class="news-grid">
-    <p>Carregando notícias tecnológicas...</p>
-  </div>
-</section>
-
-
-  
-  <section id="apoio">
-    <h2>Apoie nosso trabalho</h2>
-    <p>Gostou do nosso conteúdo? Você pode apoiar via Pix escaneando o QR Code abaixo:</p>
-    <img class="apoio-img" src="apoio.jpeg" alt="QR Code Pix">
-    <p><a href="https://forms.gle/Vq4qbkYSbDU5smdE6" target="_blank">
-      
-      <button>Me Identifiquei (Clique aqui)</button>
-    </a></p>
-    <div class="ranking">
-      <h3>Últimos Apoiadores</h3>
-      <ul id="ranking-list">
-        <li>Carregando dados...</li>
-      </ul>
-    </div>
-  </section>  
-  <footer>
-    <p>&copy; 2025 Godoy Solutions in TECH • Desenvolvido por Caíque Eduardo</p>
-  </footer>  
-  
-  <script>
-    const sheetID = '1isrjaaOEUJqwLTIbzV3KzZHlpZYC6r4f0mtS28PL6YI';
-    const sheetName = 'form1';
-    const sheetURL = `https://opensheet.elk.sh/${sheetID}/${sheetName}`;
-    let dadosCache = [];
-
-    function carregarRanking() {
-      fetch(sheetURL)
-        .then(response => {
-          if (!response.ok) throw new Error('Erro na resposta da rede');
-          return response.json();
-        })
-        .then(data => {
-          if (JSON.stringify(data) === JSON.stringify(dadosCache)) return;
-          dadosCache = data;
-          const lista = document.getElementById('ranking-list');
-          lista.innerHTML = '';
-          const entradas = [...data].reverse();
-          const total = entradas.length;
-          const repeatCount = total < 6 ? Math.ceil(12 / total) : 1;
-          for (let i = 0; i < repeatCount; i++) {
-            entradas.forEach(entry => {
-              const nome = entry["Nome"]?.trim() || "Anônimo";
-              const valor = parseFloat(entry["Valor do apoio (R$)"]) || 0;
-              const comentario = entry["Comentários"] || "";
-              const valorFormatado = valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-              const li = document.createElement("li");
-              li.innerHTML = `<strong>${nome}</strong> doou ${valorFormatado} <br><em>${comentario}</em>`;
-              lista.appendChild(li);
-            });
-          }
-        })
-        .catch(error => {
-          console.error("Erro ao carregar dados:", error);
-          document.getElementById("ranking-list").innerHTML = "<li>Erro ao carregar dados.</li>";
-        });
-    }
-    carregarRanking();
-    setInterval(carregarRanking, 20000);
-  </script>  <script>
-    const rankingList = document.getElementById("ranking-list");
-
-    function iniciarRolagem() {
-      let intervalo;
-      let velocidade = 50;
-      let pausa = 5000;
-
-      function rolarRanking() {
-        if (rankingList.scrollTop + rankingList.clientHeight >= rankingList.scrollHeight) {
-          clearInterval(intervalo);
-          setTimeout(() => {
-            rankingList.scrollTop = 0;
-            intervalo = setInterval(rolarRanking, velocidade);
-          }, pausa);
-        } else {
-          rankingList.scrollTop += 1;
-        }
-      }
-
-      intervalo = setInterval(rolarRanking, velocidade);
-    }
-
-    window.onload = iniciarRolagem;
-  </script>
-  <script>
-  const newsContainer = document.getElementById('news-cards');
-
-  fetch('https://api.rss2json.com/v1/api.json?rss_url=https://news.google.com/rss/search?q=tecnologia&hl=pt-BR&gl=BR&ceid=BR:pt-419')
-    .then(response => response.json())
-    .then(data => {
-      const items = data.items.slice(0, 6);
-      newsContainer.innerHTML = ''; // limpa conteúdo anterior
-
-      items.forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'news-card';
-
-        const imgMatch = item.description.match(/<img.*?src="(.*?)"/);
-        const imgURL = imgMatch ? imgMatch[1] : 'https://via.placeholder.com/320x180?text=Notícia';
-
-        card.innerHTML = `
-          <img src="${imgURL}" alt="Imagem da notícia">
-          <h3><a href="${item.link}" target="_blank">${item.title}</a></h3>
-          <p>${item.description.replace(/<[^>]*>?/gm, '').substring(0, 120)}...</p>
-          <a class="news-link" href="${item.link}" target="_blank">Ler mais →</a>
-        `;
-        newsContainer.appendChild(card);
-      });
-    })
-    .catch(error => {
-      console.error('Erro ao carregar notícias:', error);
-      newsContainer.innerHTML = '<p>Não foi possível carregar as notícias.</p>';
-    });
-</script>
-
+  <!-- TODO o conteúdo do seu <body> vem aqui... -->
+  <!-- Seu código da logo, menu, seções, formulários e scripts será reinserido na próxima parte -->
 </body>
-
-  <script>
-const newsContainer = document.getElementById('news-list');
-
-fetch('https://api.rss2json.com/v1/api.json?rss_url=https://news.google.com/rss/search?q=tecnologia&hl=pt-BR&gl=BR&ceid=BR:pt-419')
-  .then(response => response.json())
-  .then(data => {
-    const items = data.items.slice(0, 6); // mostra só 6 notícias
-    newsContainer.innerHTML = ''; // limpa carregando...
-
-    items.forEach(item => {
-      const li = document.createElement('li');
-      li.innerHTML = `<a href="${item.link}" target="_blank" style="color:#00e0ff; font-weight:bold;">${item.title}</a><br>
-                      <small>${item.pubDate.split(' ')[0]}</small>`;
-      li.style.marginBottom = '15px';
-      newsContainer.appendChild(li);
-    });
-  })
-  .catch(error => {
-    console.error('Erro ao carregar notícias:', error);
-    newsContainer.innerHTML = '<li>Não foi possível carregar as notícias.</li>';
-  });
-</script>
-
 </html>
