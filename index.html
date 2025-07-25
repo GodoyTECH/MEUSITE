@@ -11,7 +11,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Godoy Solutions in TECH</title>
   
-  <style>
+  <style>#news-list {
+  list-style: none;
+  padding: 0;
+  color: #aef;
+}
+
+#news-list li {
+  background: rgba(0, 40, 70, 0.4);
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
+}
+
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -181,11 +194,11 @@ button, input, textarea {
   <h2>Sobre a Empresa</h2>
 
   <p>
-    A <strong>Godoy Solutions in TECH</strong> foi fundada por <strong>Caíque Eduardo Godoy da Silva</strong>, um profissional com 28 anos e sólida formação na área de tecnologia.
+    A <strong>Godoy Solutions in TECH</strong> foi fundada por <strong>Caique Eduardo Godoy da Silva</strong>, um profissional com 28 anos com sólida formações na área de tecnologia.
   </p>
 
   <p>
-    Caíque possui diversas certificações relevantes, incluindo <em>Algoritmos</em>, <em>HTML5 e CSS3</em>, <em>JavaScript Básico</em>, <em>Inteligência Artificial</em>, <em>Análise de Dados</em>, <em>Elétrica Residencial Atualizada</em>, além de ser <strong>Técnico em Informática e Manutenção</strong>.
+    Contendo diversas certificações relevantes, incluindo <em>Algoritmos</em>, <em>HTML5 e CSS3</em>, <em>JavaScript Básico,porém se especializando</em>, <em>Inteligência Artificial</em>, <em>Análise de Dados</em>, <em>Elétrica Residencial Atualizada</em>, além de ser <strong>Técnico em Informática e Manutenção</strong>.
   </p>
 
   <p>
@@ -218,14 +231,22 @@ button, input, textarea {
       <textarea rows="5" placeholder="Sua mensagem"></textarea>
       <button type="submit">Enviar</button>
     </form>
-  </section>  <section id="noticias">
-    <h2>Notícias & Atualizações</h2>
-    <p>Em breve, publicações sobre inteligência artificial, tendências em TI, programação e muito mais.</p>
-  </section>  <section id="apoio">
+  </section> 
+  
+<section id="noticias">
+  <h2>Notícias & Atualizações</h2>
+  <ul id="news-list">
+    <li>Carregando notícias de tecnologia...</li>
+  </ul>
+</section>
+
+  
+  <section id="apoio">
     <h2>Apoie nosso trabalho</h2>
     <p>Gostou do nosso conteúdo? Você pode apoiar via Pix escaneando o QR Code abaixo:</p>
     <img class="apoio-img" src="apoio.jpeg" alt="QR Code Pix">
     <p><a href="https://forms.gle/Vq4qbkYSbDU5smdE6" target="_blank">
+      
       <button>Me Identifiquei (Clique aqui)</button>
     </a></p>
     <div class="ranking">
@@ -238,6 +259,7 @@ button, input, textarea {
   <footer>
     <p>&copy; 2025 Godoy Solutions in TECH • Desenvolvido por Caíque Eduardo</p>
   </footer>  
+  
   <script>
     const sheetID = '1isrjaaOEUJqwLTIbzV3KzZHlpZYC6r4f0mtS28PL6YI';
     const sheetName = 'form1';
@@ -303,4 +325,27 @@ button, input, textarea {
     window.onload = iniciarRolagem;
   </script>
 </body>
+  <script>
+const newsContainer = document.getElementById('news-list');
+
+fetch('https://api.rss2json.com/v1/api.json?rss_url=https://news.google.com/rss/search?q=tecnologia&hl=pt-BR&gl=BR&ceid=BR:pt-419')
+  .then(response => response.json())
+  .then(data => {
+    const items = data.items.slice(0, 6); // mostra só 6 notícias
+    newsContainer.innerHTML = ''; // limpa carregando...
+
+    items.forEach(item => {
+      const li = document.createElement('li');
+      li.innerHTML = `<a href="${item.link}" target="_blank" style="color:#00e0ff; font-weight:bold;">${item.title}</a><br>
+                      <small>${item.pubDate.split(' ')[0]}</small>`;
+      li.style.marginBottom = '15px';
+      newsContainer.appendChild(li);
+    });
+  })
+  .catch(error => {
+    console.error('Erro ao carregar notícias:', error);
+    newsContainer.innerHTML = '<li>Não foi possível carregar as notícias.</li>';
+  });
+</script>
+
 </html>
