@@ -12,106 +12,77 @@
 
   <style>
 
-/* ========== ANIMAÇÕES ========== */
-@keyframes pingpong {
-  50% { left: 50; } /* Início: alinhado à esquerda */
-  50% { left: calc(50% - 80px); } /* Fim: desloca até a direita (80px = largura da linha) */
-}
+/* ========== ANIMAÇÕES ========== */ @keyframes pingpong { 0% { left: 0; } 100% { left: calc(100% - 80px); } }
 
-@keyframes heartbeat {
-  0% { transform: scale(0.97); } /* Quase no tamanho normal */
-  20% { transform: scale(1.20); } /* Expande 20% (pico do batimento) */
-  40% { transform: scale(0.99); } /* Retrai levemente */
-  60% { transform: scale(1.01); } /* Pequena expansão */
-  80% { transform: scale(0.985); } /* Quase volta ao normal */
-  100% { transform: scale(1); } /* Tamanho original */
-}
+@keyframes heartbeat { 0% { transform: scale(0.97); } 20% { transform: scale(1.20); } 40% { transform: scale(0.99); } 60% { transform: scale(1.01); } 80% { transform: scale(0.985); } 100% { transform: scale(1); } }
 
-/* ========== ESTILOS GERAIS ========== */
-body {
-  margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(to right, #0f2027, #203a43, #2c5364); /* Gradiente de fundo */
-  color: #ffffff;
-}
+@keyframes neonBar { 0% { left: -50%; } 100% { left: 100%; } }
 
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('fundobom.png') no-repeat center top;
-  background-size: cover;
-  opacity: 0.1;
-  z-index: -1;
-}
+/* ========== ESTILOS GERAIS ========== */ body { margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(to right, #0f2027, #203a43, #2c5364); color: #ffffff; }
 
-/* ========== SEÇÃO DE NOTÍCIAS ========== */
-.news-header {
-  position: relative;
-  margin-bottom: 30px;
-  text-align: center;
-}
+body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url('fundobom.png') no-repeat center top; background-size: cover; opacity: 0.1; z-index: -1; }
 
-.news-line {
-  height: 2px;
-  width: 80px;
-  background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.8), transparent); /* Efeito de luz */
-  margin: 0 auto 15px auto;
-  animation: pingpong 2s ease-in-out infinite alternate; /* Animação de vai e vem */
-  position: relative;
-  box-shadow: 0 0 8px rgba(0, 200, 255, 0.5); /* Brilho suave */
-}
+/* ========== SEÇÃO DE NOTÍCIAS ========== */ .news-header { position: relative; margin-bottom: 30px; text-align: center; }
 
-.news-title {
-  color: #00e6ff;
-  text-shadow: 0 0 10px #00e6ff; /* Efeito neon */
-}
+.news-line { height: 2px; width: 80px; background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.8), transparent); margin: 0 auto 15px auto; animation: pingpong 2s ease-in-out infinite alternate; position: relative; box-shadow: 0 0 8px rgba(0, 200, 255, 0.5); }
 
-/* ========== CABEÇALHO & LOGO ========== */
-header { 
-  text-align: center; 
-}
+.news-title { color: #00e6ff; text-shadow: 0 0 10px #00e6ff; }
 
-.logo {
-  width: 70%;
-  max-width: 380px;
-  object-fit: contain;
-  display: block;
-  margin: 25px auto;
-  animation: heartbeat 2.3s ease-in-out infinite; /* Pulsação contínua */
-  transform-origin: center;
-  filter: drop-shadow(0 0 10px rgba(0, 200, 255, 0.3)); /* Brilho azulado */
-}
-    nav { 
-      display: flex; 
-      flex-wrap: wrap; 
-      justify-content: center; 
-      gap: 10px; 
-      background: rgba(0, 255, 255, 0.1); 
-      padding: 12px 10px; 
-      border-bottom: 1px solid #00cfff; 
-      backdrop-filter: blur(6px); 
-      box-sizing: border-box; 
-    }
-    nav a { color: #00e0ff; text-decoration: none; font-weight: bold; transition: color 0.3s ease; }
-    nav a:hover { color: #ffffff; }
-    section { padding: 40px 20px; max-width: 1000px; margin: auto; background-color: rgba(0, 0, 30, 0.4); border-radius: 12px; box-shadow: 0 0 25px rgba(0, 200, 255, 0.2); backdrop-filter: blur(6px); }
-    h2 { color: #00e6ff; }
-    .sobre-estilizado { background: linear-gradient(to bottom right, rgba(0, 30, 60, 0.5), rgba(0, 50, 100, 0.3)); border-left: 5px solid #00f0ff; border-radius: 12px; padding: 30px; box-shadow: 0 0 20px rgba(0, 255, 255, 0.2); margin-top: 30px; }
-    .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px; }
-    .news-card { background: rgba(0, 20, 40, 0.5); border-radius: 12px; padding: 15px; box-shadow: 0 0 18px rgba(0, 255, 255, 0.2); backdrop-filter: blur(4px); transition: transform 0.3s ease; }
-    .news-card:hover { transform: scale(1.02); }
-    .news-card img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 10px; background: linear-gradient(45deg, #0f2027, #203a43); }
-    .news-link { display: inline-block; color: #00cfff; font-weight: bold; text-decoration: none; border: 1px solid #00cfff; padding: 6px 10px; border-radius: 6px; transition: background 0.3s ease; }
-    .news-link:hover { background: #00cfff33; }
-    footer { background: rgba(0, 20, 50, 0.6); text-align: center; padding: 20px; font-size: 0.9em; border-top: 1px solid #00cfff55; }
-    .btn-whatsapp { display: inline-block; background: #25D366; color: white; padding: 10px 20px; text-decoration: none; border-radius: 6px; margin-top: 10px; }
-    .ranking { background: rgba(255,255,255,0.08); padding: 15px; border-radius: 8px; margin-top: 20px; color: #aef; max-height: 200px; overflow-y: auto; scroll-behavior: smooth; }
-    .email-link { color: #ffcc00; text-decoration: underline; }
-    .apoio-img { max-width: 220px; display: block; margin: 20px auto; border-radius: 10px; }
+/* ========== CABEÇALHO & LOGO ========== */ header { text-align: center; }
+
+.logo { width: 70%; max-width: 380px; object-fit: contain; display: block; margin: 25px auto; animation: heartbeat 2.3s ease-in-out infinite; transform-origin: center; filter: drop-shadow(0 0 10px rgba(0, 200, 255, 0.3)); }
+
+/* ========== NAVEGAÇÃO ========== */ nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; background: rgba(0, 255, 255, 0.1); padding: 12px 10px; border-bottom: 1px solid #00cfff; backdrop-filter: blur(6px); box-sizing: border-box; }
+
+nav a { color: #00e0ff; text-decoration: none; font-weight: bold; transition: color 0.3s ease; }
+
+nav a:hover { color: #ffffff; }
+
+/* ========== SEÇÕES ========== */ section { padding: 40px 20px; max-width: 1000px; margin: auto; background-color: rgba(0, 0, 30, 0.4); border-radius: 12px; box-shadow: 0 0 25px rgba(0, 200, 255, 0.2); backdrop-filter: blur(6px); }
+
+h2 { color: #00e6ff; }
+
+.sobre-estilizado { background: linear-gradient(to bottom right, rgba(0, 30, 60, 0.5), rgba(0, 50, 100, 0.3)); border-left: 5px solid #00f0ff; border-radius: 12px; padding: 30px; box-shadow: 0 0 20px rgba(0, 255, 255, 0.2); margin-top: 30px; }
+
+/* ========== CARDS DE NOTÍCIA ========== */ .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px; }
+
+.news-card { background: rgba(0, 20, 40, 0.5); border-radius: 12px; padding: 15px; box-shadow: 0 0 18px rgba(0, 255, 255, 0.2); backdrop-filter: blur(4px); transition: transform 0.3s ease; }
+
+.news-card:hover { transform: scale(1.02); }
+
+.news-card img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 10px; background: linear-gradient(45deg, #0f2027, #203a43); }
+
+.news-link { display: inline-block; color: #00cfff; font-weight: bold; text-decoration: none; border: 1px solid #00cfff; padding: 6px 10px; border-radius: 6px; transition: background 0.3s ease; }
+
+.news-link:hover { background: #00cfff33; }
+
+/* ========== RODAPÉ ========== */ footer { background: rgba(0, 20, 50, 0.6); text-align: center; padding: 20px; font-size: 0.9em; border-top: 1px solid #00cfff55; }
+
+/* ========== BOTÃO WHATSAPP ========== */ .btn-whatsapp { display: inline-block; background: #25D366; color: white; padding: 10px 20px; text-decoration: none; border-radius: 6px; margin-top: 10px; }
+
+/* ========== RANKING DE APOIO ========== */ .ranking { background: rgba(255, 255, 255, 0.08); padding: 15px; border-radius: 8px; margin-top: 20px; color: #aef; max-height: 200px; overflow-y: auto; scroll-behavior: smooth; }
+
+/* ========== LINKS DE EMAIL ========== */ .email-link { color: #ffcc00; text-decoration: underline; }
+
+/* ========== IMAGENS DE APOIO ========== */ .apoio-img { max-width: 220px; display: block; margin: 20px auto; border-radius: 10px; }
+
+/* ========== FORMULÁRIO ESTILIZADO ========== */ form { background: rgba(0, 30, 50, 0.35); padding: 30px; border-radius: 16px; box-shadow: 0 0 30px rgba(0, 255, 255, 0.15); backdrop-filter: blur(12px); transition: all 0.3s ease; position: relative; overflow: hidden; }
+
+form::before { content: ""; position: absolute; top: 0; left: -50%; width: 200%; height: 3px; background: linear-gradient(90deg, transparent, #00ffff, transparent); animation: neonBar 3s linear infinite; }
+
+form input[type="text"], form input[type="email"], form textarea { background: rgba(0, 20, 40, 0.5); border: 1px solid #00ffff55; padding: 14px 18px; margin-bottom: 18px; width: 100%; color: #e0ffff; font-size: 1em; border-radius: 12px; outline: none; transition: 0.3s ease; box-shadow: inset 0 0 8px rgba(0,255,255,0.05); }
+
+form input:focus, form textarea:focus { border-color: #00ffff; background: rgba(0, 40, 70, 0.6); box-shadow: 0 0 12px #00ffff66; }
+
+form button[type="submit"] { background: linear-gradient(90deg, #00cfff, #00f0ff); color: #001d2e; border: none; padding: 14px 28px; font-weight: bold; font-size: 1.15em; border-radius: 40px; width: 100%; cursor: pointer; box-shadow: 0 0 20px rgba(0, 255, 255, 0.25); transition: all 0.4s ease; letter-spacing: 1px; text-transform: uppercase; }
+
+form button[type="submit"]:hover { background: linear-gradient(90deg, #00f0ff, #00cfff); box-shadow: 0 0 25px #00e6ffaa; transform: scale(1.04); filter: brightness(1.1); }
+
+@media (max-width: 600px) { form { padding: 20px; }
+
+form button[type="submit"] { font-size: 1em; padding: 12px 20px; } }
+
+
   </style>
 </head>
 <body>
