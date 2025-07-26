@@ -12,11 +12,11 @@
 
   <style>
 
-/* ========== ANIMAÇÕES ========== */ @keyframes pingpong { 0% { left: 0; } 50% { left: calc(50% - 80px); } }
+/* ========== ANIMAÇÕES ========== */ @keyframes pingpong { 50% { left: 0; } 50% { left: calc(50% - 80px); } }
 
 @keyframes heartbeat { 0% { transform: scale(0.97); } 20% { transform: scale(1.20); } 40% { transform: scale(0.99); } 60% { transform: scale(1.01); } 80% { transform: scale(0.985); } 100% { transform: scale(1); } }
 
-@keyframes neonBar { 0% { left: -50%; } 50% { left: 50%; } }
+@keyframes neonBar { 0% { left: -50%; } 100% { left: 50%; } }
 
 /* ========== ESTILOS GERAIS ========== */ body { margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(to right, #0f2027, #203a43, #2c5364); color: #ffffff; }
 
@@ -66,22 +66,91 @@ h2 { color: #00e6ff; }
 
 /* ========== IMAGENS DE APOIO ========== */ .apoio-img { max-width: 220px; display: block; margin: 20px auto; border-radius: 10px; }
 
-/* ========== FORMULÁRIO ESTILIZADO ========== */ form { background: rgba(0, 30, 50, 0.35); padding: 30px; border-radius: 16px; box-shadow: 0 0 30px rgba(0, 255, 255, 0.15); backdrop-filter: blur(12px); transition: all 0.3s ease; position: relative; overflow: hidden; }
+/* ========== FORMULÁRIO ESTILIZADO ========== */ form {
+  background: rgba(0, 30, 50, 0.35);
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  width: 100%;               /* Garante que o form ocupe o espaço total do contêiner */
+  max-width: 100%;           /* Impede de ultrapassar o quadro */
+  box-sizing: border-box;    /* Inclui padding e bordas dentro da largura */
+}
 
-form::before { content: ""; position: absolute; top: 0; left: -50%; width: 200%; height: 3px; background: linear-gradient(90deg, transparent, #00ffff, transparent); animation: neonBar 3s linear infinite; }
+form::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 200%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #00ffff, transparent);
+  animation: neonBar 3s linear infinite;
+}
 
-form input[type="text"], form input[type="email"], form textarea { background: rgba(0, 20, 40, 0.5); border: 1px solid #00ffff55; padding: 14px 18px; margin-bottom: 18px; width: 100%; color: #e0ffff; font-size: 1em; border-radius: 12px; outline: none; transition: 0.3s ease; box-shadow: inset 0 0 8px rgba(0,255,255,0.05); }
+form input[type="text"],
+form input[type="email"],
+form textarea {
+  background: rgba(0, 20, 40, 0.5);
+  border: 1px solid #00ffff55;
+  padding: 14px 18px;
+  margin-bottom: 18px;
+  width: 100%;
+  max-width: 100%;           /* Evita ultrapassar o limite */
+  color: #e0ffff;
+  font-size: 1em;
+  border-radius: 12px;
+  outline: none;
+  transition: 0.3s ease;
+  box-shadow: inset 0 0 8px rgba(0,255,255,0.05);
+  box-sizing: border-box;    /* Corrige largura com padding */
+}
 
-form input:focus, form textarea:focus { border-color: #00ffff; background: rgba(0, 40, 70, 0.6); box-shadow: 0 0 12px #00ffff66; }
+form input:focus,
+form textarea:focus {
+  border-color: #00ffff;
+  background: rgba(0, 40, 70, 0.6);
+  box-shadow: 0 0 12px #00ffff66;
+}
 
-form button[type="submit"] { background: linear-gradient(90deg, #00cfff, #00f0ff); color: #001d2e; border: none; padding: 14px 28px; font-weight: bold; font-size: 1.15em; border-radius: 40px; width: 100%; cursor: pointer; box-shadow: 0 0 20px rgba(0, 255, 255, 0.25); transition: all 0.4s ease; letter-spacing: 1px; text-transform: uppercase; }
+form button[type="submit"] {
+  background: linear-gradient(90deg, #00cfff, #00f0ff);
+  color: #001d2e;
+  border: none;
+  padding: 14px 28px;
+  font-weight: bold;
+  font-size: 1.15em;
+  border-radius: 40px;
+  width: 100%;
+  max-width: 100%;           /* Garante que o botão se mantenha dentro */
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.25);
+  transition: all 0.4s ease;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  box-sizing: border-box;    /* Importante para responsividade */
+}
 
-form button[type="submit"]:hover { background: linear-gradient(90deg, #00f0ff, #00cfff); box-shadow: 0 0 25px #00e6ffaa; transform: scale(1.04); filter: brightness(1.1); }
+form button[type="submit"]:hover {
+  background: linear-gradient(90deg, #00f0ff, #00cfff);
+  box-shadow: 0 0 25px #00e6ffaa;
+  transform: scale(1.04);
+  filter: brightness(1.1);
+}
 
-@media (max-width: 600px) { form { padding: 20px; }
+@media (max-width: 600px) {
+  form {
+    padding: 20px;
+  }
 
-form button[type="submit"] { font-size: 1em; padding: 12px 20px; } }
-
+  form button[type="submit"] {
+    font-size: 1em;
+    padding: 12px 20px;
+  }
+}
 
   </style>
 </head>
