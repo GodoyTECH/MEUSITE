@@ -1,414 +1,49 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
- <!-- OPEN GRAPH para preview em redes sociais -->
-<meta property="og:title" content="Godoy Solutions in TECH" />
-<meta property="og:description" content="Inovação, tecnologia e soluções profissionais. Acesse agora!" />
-<meta property="og:image" content="https://godoysoluintech.netlify.app/logo.jpeg" />
-<meta property="og:image:type" content="image/jpeg" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://godoysoluintech.netlify.app/" />
-<meta property="og:type" content="website" />
-  <link rel="icon" type="image/png" href="logoicon.png">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Godoy Solutions in TECH</title>
-
-  <style>
-
-/* ========== ANIMAÇÕES ========== */ @keyframes pingpong { 50% { left: 0; } 50% { left: calc(50% - 80px); } }
-
-@keyframes heartbeat { 0% { transform: scale(0.97); } 20% { transform: scale(1.20); } 40% { transform: scale(0.99); } 60% { transform: scale(1.01); } 80% { transform: scale(0.985); } 100% { transform: scale(1); } }
-
-@keyframes neonBar { 0% { left: -50%; } 100% { left: 50%; } }
-
-/* ========== ESTILOS GERAIS ========== */ body { margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(to right, #0f2027, #203a43, #2c5364); color: #ffffff; }
-
-body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url('fundobom.png') no-repeat center top; background-size: cover; opacity: 0.1; z-index: -1; }
-
-/* ========== SEÇÃO DE NOTÍCIAS ========== */ .news-header { position: relative; margin-bottom: 30px; text-align: center; }
-
-.news-line { height: 2px; width: 80px; background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.8), transparent); margin: 0 auto 15px auto; animation: pingpong 2s ease-in-out infinite alternate; position: relative; box-shadow: 0 0 8px rgba(0, 200, 255, 0.5); }
-
-.news-title { color: #00e6ff; text-shadow: 0 0 10px #00e6ff; }
-
-/* ========== CABEÇALHO & LOGO ========== */ header { text-align: center; }
-
-.logo { width: 70%; max-width: 380px; object-fit: contain; display: block; margin: 25px auto; animation: heartbeat 2.3s ease-in-out infinite; transform-origin: center; filter: drop-shadow(0 0 10px rgba(0, 200, 255, 0.3)); }
-
-/* ========== NAVEGAÇÃO ========== */ nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; background: rgba(0, 255, 255, 0.1); padding: 12px 10px; border-bottom: 1px solid #00cfff; backdrop-filter: blur(6px); box-sizing: border-box; }
-
-nav a { color: #00e0ff; text-decoration: none; font-weight: bold; transition: color 0.3s ease; }
-
-nav a:hover { color: #ffffff; }
-
-/* ========== SEÇÕES ========== */ section { padding: 40px 20px; max-width: 1000px; margin: auto; background-color: rgba(0, 0, 30, 0.4); border-radius: 12px; box-shadow: 0 0 25px rgba(0, 200, 255, 0.2); backdrop-filter: blur(6px); }
-
-h2 { color: #00e6ff; }
-
-.sobre-estilizado { background: linear-gradient(to bottom right, rgba(0, 30, 60, 0.5), rgba(0, 50, 100, 0.3)); border-left: 5px solid #00f0ff; border-radius: 12px; padding: 30px; box-shadow: 0 0 20px rgba(0, 255, 255, 0.2); margin-top: 30px; }
-
-/* ========== CARDS DE NOTÍCIA ========== */ .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px; }
-
-.news-card { background: rgba(0, 20, 40, 0.5); border-radius: 12px; padding: 15px; box-shadow: 0 0 18px rgba(0, 255, 255, 0.2); backdrop-filter: blur(4px); transition: transform 0.3s ease; }
-
-.news-card:hover { transform: scale(1.02); }
-
-.news-card img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 10px; background: linear-gradient(45deg, #0f2027, #203a43); }
-
-.news-link { display: inline-block; color: #00cfff; font-weight: bold; text-decoration: none; border: 1px solid #00cfff; padding: 6px 10px; border-radius: 6px; transition: background 0.3s ease; }
-
-.news-link:hover { background: #00cfff33; }
-
-/* ========== RODAPÉ ========== */ footer { background: rgba(0, 20, 50, 0.6); text-align: center; padding: 20px; font-size: 0.9em; border-top: 1px solid #00cfff55; }
-
-/* ========== BOTÃO WHATSAPP ========== */ .btn-whatsapp { display: inline-block; background: #25D366; color: white; padding: 10px 20px; text-decoration: none; border-radius: 6px; margin-top: 10px; }
-
-/* ========== RANKING DE APOIO ========== */ .ranking { background: rgba(255, 255, 255, 0.08); padding: 15px; border-radius: 8px; margin-top: 20px; color: #aef; max-height: 200px; overflow-y: auto; scroll-behavior: smooth; }
-
-/* ========== LINKS DE EMAIL ========== */ .email-link { color: #ffcc00; text-decoration: underline; }
-
-/* ========== IMAGENS DE APOIO ========== */ .apoio-img { max-width: 220px; display: block; margin: 20px auto; border-radius: 10px; }
-
-/* ========== FORMULÁRIO ESTILIZADO ========== */ form {
-  background: rgba(0, 30, 50, 0.35);
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 0 30px rgba(0, 255, 255, 0.15);
-  backdrop-filter: blur(12px);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  width: 100%;               /* Garante que o form ocupe o espaço total do contêiner */
-  max-width: 100%;           /* Impede de ultrapassar o quadro */
-  box-sizing: border-box;    /* Inclui padding e bordas dentro da largura */
-}
-
-form::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -50%;
-  width: 200%;
-  height: 3px;
-  background: linear-gradient(90deg, transparent, #00ffff, transparent);
-  animation: neonBar 3s linear infinite;
-}
-
-form input[type="text"],
-form input[type="email"],
-form textarea {
-  background: rgba(0, 20, 40, 0.5);
-  border: 1px solid #00ffff55;
-  padding: 14px 18px;
-  margin-bottom: 18px;
-  width: 100%;
-  max-width: 100%;           /* Evita ultrapassar o limite */
-  color: #e0ffff;
-  font-size: 1em;
-  border-radius: 12px;
-  outline: none;
-  transition: 0.3s ease;
-  box-shadow: inset 0 0 8px rgba(0,255,255,0.05);
-  box-sizing: border-box;    /* Corrige largura com padding */
-}
-
-form input:focus,
-form textarea:focus {
-  border-color: #00ffff;
-  background: rgba(0, 40, 70, 0.6);
-  box-shadow: 0 0 12px #00ffff66;
-}
-
-form button[type="submit"] {
-  background: linear-gradient(90deg, #00cfff, #00f0ff);
-  color: #001d2e;
-  border: none;
-  padding: 14px 28px;
-  font-weight: bold;
-  font-size: 1.15em;
-  border-radius: 40px;
-  width: 100%;
-  max-width: 100%;           /* Garante que o botão se mantenha dentro */
-  cursor: pointer;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.25);
-  transition: all 0.4s ease;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  box-sizing: border-box;    /* Importante para responsividade */
-}
-
-form button[type="submit"]:hover {
-  background: linear-gradient(90deg, #00f0ff, #00cfff);
-  box-shadow: 0 0 25px #00e6ffaa;
-  transform: scale(1.04);
-  filter: brightness(1.1);
-}
-
-@media (max-width: 600px) {
-  form {
-    padding: 20px;
-  }
-
-  form button[type="submit"] {
-    font-size: 1em;
-    padding: 12px 20px;
-  }
-}
-
-  </style>
+  <link rel="stylesheet" href="assets/css/estilo.css"/>
+  <script src="https://kit.fontawesome.com/YOUR_KIT.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <header>
-    <img class="logo" src="logo.png" alt="Godoy Solutions TECH" />
-  </header>
-  
-  <nav>
-    <a href="#sobre">Sobre</a>
-    <a href="#servicos">Serviços</a>
-    <a href="#contato">Contato</a>
-    <a href="#noticias">Notícias</a>
-    <a href="#apoio">Apoie</a>
-    <a href="softwares.html">Softwares</a>
-  </nav>
-  
-  <section id="sobre" class="sobre-estilizado">
-    <h2>Sobre a Empresa</h2>
-    <p>A <strong>Godoy Solutions in TECH</strong> foi fundada por <strong>Caique Eduardo Godoy da Silva</strong>, um profissional com 28 anos com sólida formações na área de tecnologia.</p>
-    <p>Contendo diversas certificações relevantes, incluindo <em>Algoritmos</em>, <em>HTML5 e CSS3</em>, <em>JavaScript Básico,porém se especializando</em>, <em>Inteligência Artificial</em>, <em>Análise de Dados</em>, <em>Elétrica Residencial Atualizada</em>, além de ser <strong>Técnico em Informática e Manutenção</strong>.</p>
-    <p>Sua trajetória é marcada pelo aprendizado contínuo e pela paixão por inovação. Está constantemente se especializando em novas tecnologias, acompanhando as tendências do mercado para oferecer o que há de mais moderno.</p>
-    <p>O principal objetivo da Godoy Solutions é <strong>fornecer soluções tecnológicas acessíveis, eficientes e futuristas</strong>, sempre com foco em qualidade, inovação e atendimento personalizado ao cliente.</p>
-  </section>
-  
-  <section id="servicos">
-    <h2>Nossos Serviços</h2>
-    <ul>
-      <li>Criação de sistemas de gerenciamento e vendas</li>
-      <li>Desenvolvimento de sites e aplicativos personalizados</li>
-      <li>Manutenção de PCs, notebooks, celulares e periféricos</li>
-      <li>Instalação e restauração de sistemas operacionais</li>
-      <li>Recuperação de dados</li>
-      <li>Aulas e Sugestões para melhorar seu desempenho em Tech</li>
-    </ul>
-  </section>
-  
-  <section id="contato">
-    <h2>🫵🏼 Faça Seu Orçamento sem sair de  casa! </h2>
-    <p><a class="btn-whatsapp" href="https://wa.me/5511995586459" target="_blank">📲WhatsApp</a></p>
-    <p>Email: <a class="email-link" href="mailto:caiqueworkti@gmail.com">caiqueworkti@gmail.com</a></p>
-    <h3>Envie Sugestões ou Dúvidas:</h3>
-  <form action="https://formsubmit.co/godoysolu.intech@gmail.com" method="POST">
-
-  <!-- Campo de nome -->
-  <input type="text" name="name" placeholder="Seu nome" required>
-
-  <!-- Campo de e-mail -->
-  <input type="email" name="email" placeholder="Seu email" required>
-
-  <!-- Campo de mensagem -->
-  <textarea name="message" rows="5" placeholder="Sua mensagem" required></textarea>
-
-  <!-- Botão de envio -->
-  <button type="submit">Enviar</button>
-
-  <!-- Redireciona para página de agradecimento -->
-  <input type="hidden" name="_next" value="https://godoysoluintech.netlify.app/obrigado.html">
-
-  <!-- Define o e-mail do usuário como resposta -->
-  <input type="hidden" name="_replyto" value="">
-
-  <!-- Desativa o captcha do FormSubmit -->
-  <input type="hidden" name="_captcha" value="false">
-</form>
-  </section>
-  
-  <section id="noticias">
-    <div class="news-header">
-      <div class="news-line"></div>
-      <h2 class="news-title">NOTÍCIAS & ATUALIZAÇÕES</h2>
-    </div>
-    <div id="news-cards" class="news-grid">
-      <div class="news-loader">
-        <div class="loader"></div>
-        <p>Carregando notícias tecnológicas...</p>
-      </div>
-    </div>
-  </section>
-  
-  <section id="apoio">
-    <h2>Apoie nosso trabalho</h2>
-    <p>Gostou do nosso conteúdo? Você pode apoiar via Pix escaneando o QR Code abaixo e ter seu nome em nosso Rangink !:</p>
-    <img class="apoio-img" src="apoio.jpeg" alt="QR Code Pix">
-    <p><a href="https://forms.gle/Vq4qbkYSbDU5smdE6" target="_blank">
-      <button>Me Identifiquei (Clique aqui)</button>
-    </a></p>
-    <div class="ranking">
-      <h3>Últimos Apoiadores</h3>
-      <ul id="ranking-list">
-        <li>Carregando dados...</li>
+  <header class="header">
+    <nav class="nav">
+      <ul>
+        <li><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
+        <li><a href="contato.html"><i class="fas fa-envelope"></i> Contato</a></li>
+        <li><a href="noticias.html"><i class="fas fa-newspaper"></i> Notícias</a></li>
+        <li><a href="apoio.html"><i class="fas fa-heart"></i> Apoio</a></li>
+        <li><a href="softwares.html"><i class="fas fa-cogs"></i> Softwares</a></li>
       </ul>
+    </nav>
+    <div class="hero">
+      <img src="assets/images/logo.png" alt="Logo Godoy Solutions" class="hero-logo"/>
     </div>
-  </section>
-  
-  <footer>
-    <p>&copy; 2025 Godoy Solutions in TECH • Desenvolvido por Caíque Eduardo</p>
+  </header>
+  <main>
+    <section class="sobre">
+      <h2>Sobre a Empresa</h2>
+      <p>A <strong>Godoy Solutions in TECH</strong> foi fundada por <strong>Caique Eduardo Godoy da Silva</strong>, com sólida formação na área de tecnologia e 28 anos de experiência.</p>
+      <p>Certificações em Algoritmos, HTML5 e CSS3, JavaScript básico, Inteligência Artificial, Análise de Dados, Elétrica Residencial, além de Técnico em Informática e manutenção.</p>
+      <p>Paixão por inovação e aprendizado constante para oferecer soluções eficientes e futuristas.</p>
+    </section>
+    <section class="servicos">
+      <h2>Nossos Serviços</h2>
+      <ul>
+        <li><i class="fas fa-laptop-code"></i> Sistemas de gerenciamento e vendas</li>
+        <li><i class="fas fa-mobile-alt"></i> Sites e aplicativos personalizados</li>
+        <li><i class="fas fa-tools"></i> Manutenção de PCs, celulares e periféricos</li>
+        <li><i class="fas fa-wrench"></i> Instalação e restauração de sistemas</li>
+        <li><i class="fas fa-database"></i> Recuperação de dados</li>
+        <li><i class="fas fa-chalkboard-teacher"></i> Aulas e consultoria em Tech</li>
+      </ul>
+      <a href="contato.html" class="btn-cta"><i class="fas fa-comments"></i> Solicite um orçamento</a>
+    </section>
+  </main>
+  <footer class="footer">
+    &copy; 2025 Godoy Solutions in TECH • Desenvolvido por Caíque Eduardo
   </footer>
-
-  <script>
-    /**
-     * Sistema de carregamento de apoiadores via Google Sheets
-     * Atualiza a lista de apoiadores a cada 20 segundos
-     */
-    const sheetID = '1isrjaaOEUJqwLTIbzV3KzZHlpZYC6r4f0mtS28PL6YI';
-    const sheetName = 'form1';
-    const sheetURL = `https://opensheet.elk.sh/${sheetID}/${sheetName}`;
-    let dadosCache = [];
-
-    function carregarRanking() {
-      fetch(sheetURL)
-        .then(response => {
-          if (!response.ok) throw new Error('Erro na resposta da rede');
-          return response.json();
-        })
-        .then(data => {
-          if (JSON.stringify(data) === JSON.stringify(dadosCache)) return;
-          dadosCache = data;
-          const lista = document.getElementById('ranking-list');
-          lista.innerHTML = '';
-          const entradas = [...data].reverse();
-          const total = entradas.length;
-          const repeatCount = total < 6 ? Math.ceil(12 / total) : 1;
-          for (let i = 0; i < repeatCount; i++) {
-            entradas.forEach(entry => {
-              const nome = entry["Nome"]?.trim() || "Anônimo";
-              const valor = parseFloat(entry["Valor do apoio (R$)"]) || 0;
-              const comentario = entry["Comentários"] || "";
-              const valorFormatado = valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-              const li = document.createElement("li");
-              li.innerHTML = `<strong>${nome}</strong> doou ${valorFormatado} <br><em>${comentario}</em>`;
-              lista.appendChild(li);
-            });
-          }
-        })
-        .catch(error => {
-          console.error("Erro ao carregar dados:", error);
-          document.getElementById("ranking-list").innerHTML = "<li>Erro ao carregar dados.</li>";
-        });
-    }
-    
-    carregarRanking();
-    setInterval(carregarRanking, 20000);
- 
-    /**
-     * Sistema de carregamento de notícias
-     * Busca notícias tecnológicas da API GNews com fallback local
-     */
-    const newsConfig = {
-      containerId: 'news-cards',
-      sources: [
-        {
-          name: 'GNews',
-          url: 'https://gnews.io/api/v4/top-headlines?category=technology&lang=pt&max=6&apikey=f7295ef44d4b435a16e3210b96b72176',
-          parser: data => data.articles || []
-        },
-        {
-          name: 'Backup',
-          url: null,
-          parser: () => [
-            {
-              title: "Godoy Solutions Expande Serviços",
-              description: "Nova linha de consultoria em IA para pequenas empresas já disponível.",
-              url: "#servicos"
-            },
-            {
-              title: "Workshop Gratuito: JavaScript Moderno",
-              description: "Participe do nosso evento online no dia 20/10. Inscrições abertas!",
-              url: "#"
-            }
-          ]
-        }
-      ]
-    };
-
-    class NewsSystem {
-      constructor(config) {
-        this.config = config;
-        this.container = document.getElementById(config.containerId);
-      }
-
-      async init() {
-        try {
-          const articles = await this.fetchNews();
-          this.display(articles);
-        } catch (error) {
-          console.error('Erro no sistema de notícias:', error);
-          this.display(this.config.sources.find(s => s.name === 'Backup').parser());
-        }
-      }
-
-      async fetchNews() {
-        for (const source of this.config.sources) {
-          try {
-            if (!source.url) continue;
-            
-            const response = await fetch(source.url);
-            if (!response.ok) continue;
-            
-            const data = await response.json();
-            const articles = source.parser(data);
-            
-            if (articles.length > 0) {
-              return articles;
-            }
-          } catch (e) {
-            console.warn(`Falha na fonte ${source.name}:`, e);
-          }
-        }
-        throw new Error('Todas as fontes falharam');
-      }
-
-      display(articles) {
-        this.container.innerHTML = articles.map(article => `
-          <div class="news-card">
-            <h3>${article.title}</h3>
-            <p>${article.description || 'Clique para ler mais...'}</p>
-            <a href="${article.url}" target="_blank" class="news-link">Ler mais →</a>
-          </div>
-        `).join('');
-      }
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      new NewsSystem(newsConfig).init();
-    });
-
-    /**
-     * Sistema de rolagem automática da lista de apoiadores
-     */
-    const rankingList = document.getElementById("ranking-list");
-
-    function iniciarRolagem() {
-      let intervalo;
-      const velocidade = 50;
-      const pausa = 5000;
-
-      function rolar() {
-        if (rankingList.scrollTop + rankingList.clientHeight >= rankingList.scrollHeight) {
-          clearInterval(intervalo);
-          setTimeout(() => {
-            rankingList.scrollTop = 0;
-            intervalo = setInterval(rolar, velocidade);
-          }, pausa);
-        } else {
-          rankingList.scrollTop += 1;
-        }
-      }
-
-      intervalo = setInterval(rolar, velocidade);
-    }
-
-    window.onload = iniciarRolagem;
-  </script>
 </body>
 </html>
