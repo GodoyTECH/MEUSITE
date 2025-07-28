@@ -98,7 +98,7 @@ function carregarRanking() {
 }
 
 // ========== MENU HAMBÚRGUER ==========
-<script>
+
   document.addEventListener('DOMContentLoaded', () => {
     const botao = document.querySelector('.menu-toggle');
     const menu = document.getElementById('menuLateral');
@@ -126,7 +126,7 @@ function carregarRanking() {
       });
     });
   });
-</script>
+
 
 
 
