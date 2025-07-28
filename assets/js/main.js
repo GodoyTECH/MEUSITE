@@ -1,5 +1,7 @@
 //js
 // ========== SISTEMA DE CONTATO ==========
+
+
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.querySelector('form');
 
@@ -96,6 +98,15 @@ function carregarRanking() {
 }
 
 // ========== MENU HAMBÚRGUER ==========
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const botao = document.querySelector('.menu-lateral');
+    const menu = document.getElementById('menuLateral');
+
+    if (botao && menu) {
+      botao.addEventListener('click', () => {
+        menu.classList.toggle('ativo');
+      });
 document.addEventListener('DOMContentLoaded', () => {
   const botao = document.querySelector('.menu-lateral');
   const menu = document.getElementById('menuLateral');
