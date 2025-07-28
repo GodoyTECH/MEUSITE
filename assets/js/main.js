@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Fontes de notícias
   const sources = [
     {
-      url: 'https://gnews.io/api/v4/top-headlines?category=technology&lang=pt&max=6&apikey=YOUR_API_KEY',
+      url: 'https://gnews.io/api/v4/top-headlines?category=technology&lang=pt&max=6&apikey=f7295ef44d4b435a16e3210b96b72176',
       parser: d => d.articles || []
     },
     {
