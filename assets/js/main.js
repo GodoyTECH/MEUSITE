@@ -165,3 +165,21 @@ function iniciarMenuHamburguer() {
 document.addEventListener('DOMContentLoaded', iniciarMenuHamburguer);
 
 });
+document.addEventListener('DOMContentLoaded', () => {
+  const botao = document.querySelector('.menu-toggle');
+  const menu = document.getElementById('menuLateral');
+
+  if (botao && menu) {
+    botao.addEventListener('click', () => {
+      menu.classList.toggle('ativo');
+    });
+
+    // Fecha menu ao clicar em qualquer link (opcional)
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.remove('ativo');
+      });
+    });
+  }
+});
+
