@@ -1,4 +1,29 @@
 //js
+// ========== SISTEMA DE CONTATO ==========document.addEventListener('DOMContentLoaded', () => {
+  const form = document.querySelector('form');
+
+  if (!form) return;
+
+  form.addEventListener('submit', (e) => {
+    const nome = form.querySelector('input[name="name"]');
+    const email = form.querySelector('input[name="email"]');
+    const mensagem = form.querySelector('textarea[name="message"]');
+
+    if (!nome.value.trim() || !email.value.trim() || !mensagem.value.trim()) {
+      alert("Por favor, preencha todos os campos.");
+      e.preventDefault();
+      return;
+    }
+
+    // Mensagem opcional de carregamento
+    form.querySelector('button[type="submit"]').innerText = "Enviando...";
+
+    // Deixa a aparência de envio mais amigável (opcional)
+    form.style.opacity = "0.6";
+  });
+});
+
+
 // ========== SISTEMA DE NOTÍCIAS ==========
 class NewsSystem {
   constructor(containerId, sources) {
