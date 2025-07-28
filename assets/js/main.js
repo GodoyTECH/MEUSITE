@@ -96,6 +96,34 @@ function carregarRanking() {
 }
 
 // ========== MENU HAMBÚRGUER ==========
+document.addEventListener('DOMContentLoaded', () => {
+  const botao = document.querySelector('.menu-toggle');
+  const menu = document.getElementById('menuLateral');
+
+  if (botao && menu) {
+    // Abre/fecha o menu
+    botao.addEventListener('click', (e) => {
+      e.stopPropagation(); // Evita fechar o menu ao clicar no botão
+      menu.classList.toggle('ativo');
+    });
+
+    // Fecha ao clicar em qualquer link
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.remove('ativo');
+      });
+    });
+
+    // Fecha o menu se clicar fora dele
+    document.addEventListener('click', (e) => {
+      const clicouFora = !menu.contains(e.target) && !botao.contains(e.target);
+      if (clicouFora) {
+        menu.classList.remove('ativo');
+      }
+    });
+  }
+});
+
 function iniciarMenuHamburguer() {
   const toggle = document.querySelector('.menu-toggle');
   const menu = document.querySelector('nav.nav ul');
