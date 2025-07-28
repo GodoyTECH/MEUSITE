@@ -8,13 +8,11 @@
   <script src="https://kit.fontawesome.com/YOUR_KIT.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <header class="header">
-    <button class="menu-toggle" onclick="document.querySelector('nav.nav ul').classList.toggle('show')">
-  ☰
-<!-- Botão do menu hamburguer -->
+<!-- Botão fixo do menu hamburguer -->
 <button class="menu-toggle" aria-label="Abrir menu">&#9776;</button>
 
-<nav class="nav">
+<!-- Menu lateral escondido -->
+<nav class="menu-lateral" id="menuLateral">
   <ul>
     <li><a href="index.html">Início</a></li>
     <li><a href="contato.html">Contato</a></li>
@@ -23,6 +21,7 @@
     <li><a href="softwares.html">Softwares</a></li>
   </ul>
 </nav>
+
 
     <div class="hero">
       <img src="assets/images/logo.png" alt="Logo Godoy Solutions" class="hero-logo"/>
