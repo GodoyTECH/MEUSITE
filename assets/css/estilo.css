@@ -41,44 +41,75 @@ body {
   z-index: 1000;
 }
 
-nav.nav ul {
-  display: none;
-  flex-direction: column;
-  background: rgba(0, 0, 30, 0.95);
-  position: absolute;
-  top: 60px;
-  left: 0;
-  width: 100%;
-  padding: 20px 0;
-  text-align: center;
-  z-index: 999;
-  border-top: 1px solid var(--primary);
+/* ====== MENU LATERAL FIXO COM BOTÃO ====== */
+.menu-toggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: #00e6ff;
+  color: #001d2e;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 1.8em;
+  z-index: 1100;
+  cursor: pointer;
+  box-shadow: 0 0 10px #00e6ff99;
+  transition: background 0.3s, transform 0.2s;
 }
 
-nav.nav ul.show {
+.menu-toggle:hover {
+  background: #00f0ff;
+  transform: scale(1.1);
+}
+
+nav.menu-lateral {
+  position: fixed;
+  top: 0;
+  left: -260px;
+  width: 250px;
+  height: 100%;
+  background: rgba(0, 30, 60, 0.95);
+  backdrop-filter: blur(8px);
+  box-shadow: 2px 0 15px rgba(0, 255, 255, 0.2);
+  transition: left 0.3s ease;
+  z-index: 1090;
+  padding-top: 80px;
+}
+
+nav.menu-lateral ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-nav.nav ul li {
-  margin: 10px 0;
+nav.menu-lateral ul li {
+  width: 100%;
 }
 
-nav.nav a {
-  color: var(--primary);
-  font-weight: bold;
+nav.menu-lateral ul li a {
+  display: block;
+  width: 100%;
+  padding: 15px 25px;
+  color: #00e6ff;
   text-decoration: none;
-  font-size: 1.2em;
+  font-size: 1.1em;
+  transition: background 0.3s, color 0.3s;
 }
 
-nav.nav a:hover {
-  color: white;
+nav.menu-lateral ul li a:hover {
+  background: #00cfff33;
+  color: #ffffff;
 }
 
-
-.hero {
-  padding: 50px 0;
-  text-align: center;
+nav.menu-lateral.ativo {
+  left: 0;
 }
+
 
 .hero-logo {
   width: 60%;
