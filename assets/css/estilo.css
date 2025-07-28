@@ -82,7 +82,7 @@ nav.menu-lateral {
   border-bottom-right-radius: 10px;
   backdrop-filter: blur(6px);
   box-shadow: 2px 0 15px rgba(0, 255, 255, 0.2);
-  transition: rigth 0.3s ease;
+  transition: left 0.3s ease;
   z-index: 9999;
   padding: 10px 0;
 }
@@ -165,7 +165,7 @@ ul {
 }
 
 .btn-cta i {
-  margin-left: 10px;
+  margin-rigth: 10px;
 }
 
 .btn-cta:hover {
