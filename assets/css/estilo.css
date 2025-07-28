@@ -72,7 +72,7 @@ body {
 nav.menu-lateral {
   position: fixed;
   top: 80px; /* espaço abaixo da logo */
-  left: -200px; /* escondido inicialmente */
+  right: -200px; /* escondido inicialmente */
   width: 180px;
   height: auto;
   max-height: 80%;
@@ -87,7 +87,7 @@ nav.menu-lateral {
 }
 
 nav.menu-lateral.ativo {
-  left: 0;
+  top: 0;
 }
 
 /* Lista de navegação dentro do menu */
