@@ -97,7 +97,7 @@ function carregarRanking() {
 
 // ========== MENU HAMBÚRGUER ==========
 document.addEventListener('DOMContentLoaded', () => {
-  const botao = document.querySelector('.menu-toggle');
+  const botao = document.querySelector('.menu-lateral');
   const menu = document.getElementById('menuLateral');
 
   if (!botao || !menu) return;
@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // MENU UNIVERSAL (funciona em qualquer tela)
 function iniciarMenuHamburguer() {
-  const toggle = document.querySelector('.menu-toggle');
+  const toggle = document.querySelector('.menu-lateral');
   const menu = document.querySelector('nav.nav ul');
 
   if (!toggle || !menu) return;
@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', iniciarMenuHamburguer);
 
 });
 document.addEventListener('DOMContentLoaded', () => {
-  const botao = document.querySelector('.menu-toggle');
+  const botao = document.querySelector('.menu-lateral');
   const menu = document.getElementById('menuLateral');
 
   if (botao && menu) {
