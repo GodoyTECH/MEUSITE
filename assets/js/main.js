@@ -1,5 +1,6 @@
 //js
-// ========== SISTEMA DE CONTATO ==========document.addEventListener('DOMContentLoaded', () => {
+// ========== SISTEMA DE CONTATO ==========
+document.addEventListener('DOMContentLoaded', () => {
   const form = document.querySelector('form');
 
   if (!form) return;
