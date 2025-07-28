@@ -1,1 +1,330 @@
 /* estilo.css */
+:root {
+  --primary: #00e6ff;
+  --background: #0f2027;
+  --bg-gradient: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
+  --btn-bg: #00cfff;
+  --btn-hover: #00f0ff;
+  --font: 'Segoe UI', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg-gradient);
+  color: white;
+  min-height: 100vh;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+}
+
+nav.nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  list-style: none;
+  padding: 15px;
+  flex-wrap: wrap;
+}
+
+nav.nav a {
+  color: var(--primary);
+  font-weight: bold;
+  position: relative;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+nav.nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 2px;
+  width: 100%;
+  background: var(--primary);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  transform-origin: left;
+}
+
+nav.nav a:hover {
+  color: #fff;
+}
+
+nav.nav a:hover::after {
+  transform: scaleX(1);
+}
+
+.hero {
+  padding: 50px 0;
+  text-align: center;
+}
+
+.hero-logo {
+  width: 60%;
+  max-width: 300px;
+  animation: heartbeat 2s infinite;
+  filter: drop-shadow(0 0 15px var(--primary));
+}
+
+section {
+  padding: 60px 20px;
+  max-width: 900px;
+  margin: auto;
+  backdrop-filter: blur(6px);
+  background: rgba(0, 0, 30, 0.5);
+  border-radius: 12px;
+  margin-bottom: 40px;
+}
+
+section h2 {
+  margin-bottom: 20px;
+  color: var(--primary);
+  text-align: center;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+.btn-cta {
+  display: inline-block;
+  padding: 18px 36px;
+  background: var(--btn-bg);
+  color: #001d2e;
+  border-radius: 50px;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 0 20px var(--btn-bg);
+  transition: background 0.4s, transform 0.3s;
+  margin-top: 30px;
+  text-decoration: none;
+}
+
+.btn-cta i {
+  margin-right: 10px;
+}
+
+.btn-cta:hover {
+  background: var(--btn-hover);
+  transform: scale(1.05);
+  box-shadow: 0 0 30px var(--btn-hover);
+}
+
+.email-link {
+  color: #ffcc00;
+  text-decoration: underline;
+}
+
+.apoio-img {
+  max-width: 220px;
+  display: block;
+  margin: 20px auto;
+  border-radius: 10px;
+}
+
+.ranking {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+  color: #aef;
+  max-height: 200px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+footer.footer {
+  background: rgba(0, 20, 50, 0.6);
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9em;
+  border-top: 1px solid #00cfff55;
+}
+
+/* ========== NOTÍCIAS ========== */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.news-card {
+  background: rgba(0, 20, 40, 0.5);
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 0 18px rgba(0, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+  transition: transform 0.3s ease;
+  overflow: hidden;
+}
+
+.news-card:hover {
+  transform: scale(1.02);
+}
+
+.news-thumb {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  background: linear-gradient(45deg, #0f2027, #203a43);
+}
+
+.news-link {
+  display: inline-block;
+  color: #00cfff;
+  font-weight: bold;
+  text-decoration: none;
+  border: 1px solid #00cfff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.news-link:hover {
+  background: #00cfff33;
+}
+
+/* ========== FORMULÁRIO ========== */
+form {
+  background: rgba(0, 30, 50, 0.35);
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+form input[type="text"],
+form input[type="email"],
+form textarea {
+  background: rgba(0, 20, 40, 0.5);
+  border: 1px solid #00ffff55;
+  padding: 14px 18px;
+  margin-bottom: 18px;
+  width: 100%;
+  color: #e0ffff;
+  font-size: 1em;
+  border-radius: 12px;
+  outline: none;
+  transition: 0.3s ease;
+  box-shadow: inset 0 0 8px rgba(0, 255, 255, 0.05);
+  box-sizing: border-box;
+}
+
+form input:focus,
+form textarea:focus {
+  border-color: #00ffff;
+  background: rgba(0, 40, 70, 0.6);
+  box-shadow: 0 0 12px #00ffff66;
+}
+
+form button[type="submit"] {
+  background: linear-gradient(90deg, #00cfff, #00f0ff);
+  color: #001d2e;
+  border: none;
+  padding: 14px 28px;
+  font-weight: bold;
+  font-size: 1.15em;
+  border-radius: 40px;
+  width: 100%;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.25);
+  transition: all 0.4s ease;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  box-sizing: border-box;
+}
+
+form button[type="submit"]:hover {
+  background: linear-gradient(90deg, #00f0ff, #00cfff);
+  box-shadow: 0 0 25px #00e6ffaa;
+  transform: scale(1.04);
+  filter: brightness(1.1);
+}
+
+/* ========== ANIMAÇÃO LOGO ========== */
+@keyframes heartbeat {
+  0% { transform: scale(0.97); }
+  20% { transform: scale(1.20); }
+  40% { transform: scale(0.99); }
+  60% { transform: scale(1.01); }
+  80% { transform: scale(0.985); }
+  100% { transform: scale(1); }
+}
+
+/* ========== RESPONSIVIDADE ========== */
+@media (max-width: 600px) {
+  .hero-logo {
+    width: 80%;
+  }
+  nav.nav ul {
+    flex-wrap: wrap;
+  }
+  .btn-cta {
+    width: 100%;
+    text-align: center;
+  }
+  form {
+    padding: 20px;
+  }
+}
+/* ========== HAMBUGAO ========== */
+.menu-toggle {
+  display: none;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-size: 2em;
+  cursor: pointer;
+  z-index: 999;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  nav.nav ul {
+    display: none;
+    flex-direction: column;
+    background: rgba(0, 0, 30, 0.95);
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  nav.nav ul.show {
+    display: flex;
+  }
+
+  nav.nav ul li {
+    margin: 10px 0;
+  }
+}
