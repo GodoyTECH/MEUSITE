@@ -69,7 +69,7 @@ body {
 nav.menu-lateral {
   position: fixed;
   top: 80px; /* deixa espaço para a logo */
-  right: -200px;
+  left: -200px;
   width: 180px;
   height: auto;
   max-height: 80%;
