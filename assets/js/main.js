@@ -100,40 +100,34 @@ function carregarRanking() {
 // ========== MENU HAMBÚRGUER ==========
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const botao = document.querySelector('.menu-lateral');
+    const botao = document.querySelector('.menu-toggle');
     const menu = document.getElementById('menuLateral');
 
-    if (botao && menu) {
-      botao.addEventListener('click', () => {
-        menu.classList.toggle('ativo');
+    if (!botao || !menu) return;
+
+    // Abre/fecha o menu ao clicar no botão
+    botao.addEventListener('click', (e) => {
+      e.stopPropagation();
+      menu.classList.toggle('ativo');
+    });
+
+    // Fecha o menu ao clicar fora
+    document.addEventListener('click', (e) => {
+      const clicouFora = !menu.contains(e.target) && !botao.contains(e.target);
+      if (clicouFora) {
+        menu.classList.remove('ativo');
+      }
+    });
+
+    // Fecha o menu ao clicar em qualquer link dentro dele
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.remove('ativo');
       });
-document.addEventListener('DOMContentLoaded', () => {
-  const botao = document.querySelector('.menu-lateral');
-  const menu = document.getElementById('menuLateral');
-
-  if (!botao || !menu) return;
-
-  // Abre/fecha o menu ao clicar no botão
-  botao.addEventListener('click', (e) => {
-    e.stopPropagation();
-    menu.classList.toggle('ativo');
-  });
-
-  // Fecha o menu ao clicar fora
-  document.addEventListener('click', (e) => {
-    const clicouFora = !menu.contains(e.target) && !botao.contains(e.target);
-    if (clicouFora) {
-      menu.classList.remove('ativo');
-    }
-  });
-
-  // Fecha o menu ao clicar em qualquer link dentro dele
-  menu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      menu.classList.remove('ativo');
     });
   });
-});
+</script>
+
 
 
 // ========== INICIALIZAÇÃO ==========
