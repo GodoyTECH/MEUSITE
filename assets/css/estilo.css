@@ -1,4 +1,5 @@
 /* estilo.css */
+
 :root {
   --primary: #00e6ff;
   --background: #0f2027;
@@ -41,9 +42,7 @@ body {
   z-index: 1000;
 }
 
-/* ====== MENU LATERAL FIXO COM BOTÃO ====== */
-/* ===== MENU LATERAL COMPACTO ===== */
-
+/* ===== BOTÃO FIXO DO MENU (VISÍVEL EM TODAS AS TELAS) ===== */
 .menu-toggle {
   position: fixed;
   top: 20px;
@@ -59,17 +58,20 @@ body {
   cursor: pointer;
   box-shadow: 0 0 8px #00e6ff99;
   transition: background 0.3s, transform 0.2s;
+  display: block !important; /* <-- ESSENCIAL: garante visibilidade */
 }
 
+/* Animação no hover */
 .menu-toggle:hover {
   background: #00f0ff;
   transform: scale(1.1);
 }
 
+/* ===== MENU LATERAL COMPACTO ===== */
 nav.menu-lateral {
   position: fixed;
-  top: 80px; /* deixa espaço para a logo */
-  left: -200px;
+  top: 80px; /* espaço abaixo da logo */
+  left: -200px; /* escondido inicialmente */
   width: 180px;
   height: auto;
   max-height: 80%;
@@ -87,12 +89,14 @@ nav.menu-lateral.ativo {
   left: 0;
 }
 
+/* Lista de navegação dentro do menu */
 nav.menu-lateral ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
+/* Itens do menu */
 nav.menu-lateral ul li {
   width: 100%;
 }
@@ -111,7 +115,6 @@ nav.menu-lateral ul li a:hover {
   background: #00cfff33;
   color: #ffffff;
 }
-
 
 .hero-logo, .logo {
   display: block;
