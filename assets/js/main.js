@@ -144,6 +144,24 @@ document.addEventListener('DOMContentLoaded', () => {
   carregarRanking();
   setInterval(carregarRanking, 20000);
 
-  // Ativar menu responsivo
-  iniciarMenuHamburguer();
+  
+  // MENU UNIVERSAL (funciona em qualquer tela)
+function iniciarMenuHamburguer() {
+  const toggle = document.querySelector('.menu-toggle');
+  const menu = document.querySelector('nav.nav ul');
+
+  if (!toggle || !menu) return;
+
+  toggle.addEventListener('click', () => {
+    menu.classList.toggle('show');
+  });
+
+  // Fecha o menu se clicar em um link (opcional)
+  menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => menu.classList.remove('show'));
+  });
+}
+
+document.addEventListener('DOMContentLoaded', iniciarMenuHamburguer);
+
 });
