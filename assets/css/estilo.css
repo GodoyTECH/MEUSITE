@@ -30,21 +30,8 @@ body {
   z-index: 1000;
 }
 
-.menu-lateral {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  background: none;
-  border: none;
-  color: var(--primary);
-  font-size: 2em;
-  cursor: pointer;
-  z-index: 1000;
-}
-
 /* ===== BOTÃO FIXO DO MENU (VISÍVEL EM TODAS AS TELAS) ===== */
-
-.menu-lateral {
+.menu-toggle {
   position: fixed;
   top: 25px;
   right: 20px;
@@ -63,13 +50,12 @@ body {
 }
 
 /* Animação no hover */
-.menu-lateral:hover {
+.menu-toggle:hover {
   background: #00f0ff;
   transform: scale(1.1);
 }
 
 /* ===== MENU LATERAL COMPACTO ===== */
-
 nav.menu-lateral {
   position: fixed;
   top: 80px; /* espaço abaixo da logo */
@@ -82,13 +68,13 @@ nav.menu-lateral {
   border-bottom-right-radius: 10px;
   backdrop-filter: blur(6px);
   box-shadow: 2px 0 15px rgba(0, 255, 255, 0.2);
-  transition: left 0.3s ease;
+  transition: right 0.3s ease; /* <-- CORRIGIDO: era 'left', agora é 'right' */
   z-index: 9999;
   padding: 10px 0;
 }
 
 nav.menu-lateral.ativo {
-  left: 0;
+  right: 0; /* <-- CORRIGIDO: era 'left: 0', agora é 'right: 0' */
 }
 
 /* Lista de navegação dentro do menu */
@@ -117,7 +103,6 @@ nav.menu-lateral ul li a:hover {
   background: #00cfff33;
   color: #ffffff;
 }
-
 .hero-logo, .logo {
   display: block;
   margin: 20px auto 30px auto;
