@@ -30,7 +30,7 @@ body {
   z-index: 1000;
 }
 
-.menu-toggle {
+.menu-lateral {
   position: absolute;
   top: 15px;
   right: 20px;
@@ -44,7 +44,7 @@ body {
 
 /* ===== BOTÃO FIXO DO MENU (VISÍVEL EM TODAS AS TELAS) ===== */
 
-.menu-toggle {
+.menu-lateral {
   position: fixed;
   top: 25px;
   right: 20px;
@@ -63,12 +63,13 @@ body {
 }
 
 /* Animação no hover */
-.menu-toggle:hover {
+.menu-lateral:hover {
   background: #00f0ff;
   transform: scale(1.1);
 }
 
 /* ===== MENU LATERAL COMPACTO ===== */
+
 nav.menu-lateral {
   position: fixed;
   top: 80px; /* espaço abaixo da logo */
@@ -339,7 +340,7 @@ form button[type="submit"]:hover {
   }
 }
 /* ========== HAMBUGAO ========== */
-.menu-toggle {
+.menu-lateral {
   display: none;
   position: absolute;
   top: 15px;
@@ -353,7 +354,7 @@ form button[type="submit"]:hover {
 }
 
 @media (max-width: 768px) {
-  .menu-toggle {
+  .menu-lateral {
     display: block;
   }
 
