@@ -42,6 +42,8 @@ body {
 }
 
 /* ====== MENU LATERAL FIXO COM BOTÃO ====== */
+/* ===== MENU LATERAL COMPACTO ===== */
+
 .menu-toggle {
   position: fixed;
   top: 20px;
@@ -50,12 +52,12 @@ body {
   color: #001d2e;
   border: none;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  font-size: 1.8em;
+  width: 45px;
+  height: 45px;
+  font-size: 1.6em;
   z-index: 1100;
   cursor: pointer;
-  box-shadow: 0 0 10px #00e6ff99;
+  box-shadow: 0 0 8px #00e6ff99;
   transition: background 0.3s, transform 0.2s;
 }
 
@@ -66,25 +68,29 @@ body {
 
 nav.menu-lateral {
   position: fixed;
-  top: 0;
-  left: -260px;
-  width: 250px;
-  height: 100%;
-  background: rgba(0, 30, 60, 0.95);
-  backdrop-filter: blur(8px);
+  top: 80px; /* deixa espaço para a logo */
+  left: -200px;
+  width: 180px;
+  height: auto;
+  max-height: 80%;
+  background: rgba(0, 30, 60, 0.97);
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  backdrop-filter: blur(6px);
   box-shadow: 2px 0 15px rgba(0, 255, 255, 0.2);
   transition: left 0.3s ease;
   z-index: 1090;
-  padding-top: 80px;
+  padding: 10px 0;
+}
+
+nav.menu-lateral.ativo {
+  left: 0;
 }
 
 nav.menu-lateral ul {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
 }
 
 nav.menu-lateral ul li {
@@ -94,10 +100,10 @@ nav.menu-lateral ul li {
 nav.menu-lateral ul li a {
   display: block;
   width: 100%;
-  padding: 15px 25px;
+  padding: 12px 20px;
   color: #00e6ff;
   text-decoration: none;
-  font-size: 1.1em;
+  font-size: 1em;
   transition: background 0.3s, color 0.3s;
 }
 
@@ -106,17 +112,17 @@ nav.menu-lateral ul li a:hover {
   color: #ffffff;
 }
 
-nav.menu-lateral.ativo {
-  left: 0;
-}
 
-
-.hero-logo {
+.hero-logo, .logo {
+  display: block;
+  margin: 20px auto 30px auto;
   width: 60%;
   max-width: 300px;
-  animation: heartbeat 2s infinite;
-  filter: drop-shadow(0 0 15px var(--primary));
+  animation: heartbeat 2.5s infinite;
+  filter: drop-shadow(0 0 10px rgba(0, 200, 255, 0.4));
+  text-align: center;
 }
+
 
 section {
   padding: 60px 20px;
