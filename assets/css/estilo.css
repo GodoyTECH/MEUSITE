@@ -43,10 +43,11 @@ body {
 }
 
 /* ===== BOTÃO FIXO DO MENU (VISÍVEL EM TODAS AS TELAS) ===== */
+
 .menu-toggle {
   position: fixed;
-  top: 20px;
-  left: 20px;
+  top: 25px;
+  right: 20px;
   background: #00e6ff;
   color: #001d2e;
   border: none;
