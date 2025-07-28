@@ -87,7 +87,7 @@ nav.menu-lateral {
 }
 
 nav.menu-lateral.ativo {
-  top: 0;
+  right: 0;
 }
 
 /* Lista de navegação dentro do menu */
