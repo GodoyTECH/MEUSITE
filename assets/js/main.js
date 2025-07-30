@@ -159,3 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
   carregarRanking();
   setInterval(carregarRanking, 20000);
 });
+function toggleMenu() {
+  const menu = document.getElementById('menuLateral');
+  menu.classList.toggle('ativo');
+}
