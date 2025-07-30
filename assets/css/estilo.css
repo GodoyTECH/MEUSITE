@@ -194,7 +194,19 @@ ul {
   transform: scale(1.05);
   box-shadow: 0 0 30px var(--btn-hover);
 }
-
+ display: block;         /* força o botão ocupar a linha e facilitar centralização */
+  margin: 30px auto 0;    /* centraliza horizontalmente e dá margem superior */
+  padding: 18px 36px;
+  background: var(--btn-bg);
+  color: #001d2e;
+  border-radius: 50px;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 0 20px var(--btn-bg);
+  transition: background 0.4s, transform 0.3s;
+  text-decoration: none;
+  width: fit-content;     /
 /* ===== LINKS DE E‑MAIL E IMAGENS ===== */
 .email-link {
   color: #ffcc00;
