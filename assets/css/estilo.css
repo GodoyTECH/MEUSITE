@@ -1,3 +1,47 @@
+/* Estilos para a seção Sobre */
+.sobre {
+  max-width: 700px;       /* largura confortável para leitura */
+  margin: 0 auto 40px;    /* centraliza e dá margem inferior */
+  padding: 0 15px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+.sobre p {
+  line-height: 1.6;       /* altura da linha para facilitar leitura */
+  margin-bottom: 18px;    /* espaço entre parágrafos */
+}
+
+/* Estilos para a seção Serviços */
+.servicos {
+  padding: 20px 15px;
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+.servicos ul {
+  list-style: none;
+  padding-left: 10px;
+}
+
+.servicos ul li {
+  margin-bottom: 12px;
+  padding-left: 30px;
+  position: relative;
+  font-size: 1.1em;
+}
+
+/* Ícones na lista */
+.servicos ul li i {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #0077cc;
+  font-size: 1.2em;
+}
 /* ===== VARIÁVEIS GLOBAIS ===== */
 :root {
   --primary: #00e6ff;
