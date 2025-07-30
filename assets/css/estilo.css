@@ -219,18 +219,20 @@ ul {
 .btn-whatsapp,
 .btn-email {
   display: inline-block;
-  padding: 16px 30px;
-  margin: 12px auto;
+  padding: 12px 26px;
+  margin: 20px auto 0; /* Centraliza horizontalmente e coloca abaixo do botão WhatsApp */
   background: var(--btn-bg);
   color: #001d2e;
   font-weight: bold;
-  font-size: 1em;
+  font-size: 0.95em;
   border-radius: 50px;
-  box-shadow: 0 0 15px var(--btn-bg);
+  box-shadow: 0 0 10px var(--btn-bg);
   text-decoration: none;
   transition: background 0.3s ease, transform 0.2s ease;
+  display: block; /* força quebrar linha */
+  text-align: center; /* alinha o conteúdo do botão */
+  width: fit-content; /* ajusta largura ao conteúdo */
 }
-
 .btn-whatsapp:hover,
 .btn-email:hover {
   background: var(--btn-hover);
