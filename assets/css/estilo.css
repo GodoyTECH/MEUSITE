@@ -1,5 +1,4 @@
-/* estilo.css */
-
+/* ===== VARIÁVEIS GLOBAIS ===== */
 :root {
   --primary: #00e6ff;
   --background: #0f2027;
@@ -9,12 +8,12 @@
   --font: 'Segoe UI', sans-serif;
 }
 
+/* ===== RESET / BASE ===== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 body {
   font-family: var(--font);
   background: var(--bg-gradient);
@@ -22,6 +21,7 @@ body {
   min-height: 100vh;
 }
 
+/* ===== HEADER ===== */
 .header {
   position: sticky;
   top: 0;
@@ -30,13 +30,12 @@ body {
   z-index: 1000;
 }
 
-/* ===== BOTÃO FIXO DO MENU (VISÍVEL EM TODAS AS TELAS) ===== */
-/* ===== BOTÃO FIXO DO MENU (VISÍVEL EM TODAS AS TELAS) ===== */
+/* ===== BOTÃO FIXO DO MENU ===== */
 .menu-toggle {
   position: fixed;
   top: 25px;
   right: 20px;
-  background: #00e6ff;
+  background: var(--primary);
   color: #001d2e;
   border: none;
   border-radius: 50%;
@@ -45,14 +44,12 @@ body {
   font-size: 1.6em;
   z-index: 9999;
   cursor: pointer;
-  box-shadow: 0 0 12px #00e6ffcc;
+  box-shadow: 0 0 12px var(--btn-bg);
   transition: background 0.3s, transform 0.2s;
-  display: block !important; /* <-- ESSENCIAL: garante visibilidade */
+  display: block !important; /* ESSENCIAL: garante visibilidade */
 }
-
-/* Animação no hover */
 .menu-toggle:hover {
-  background: #00f0ff;
+  background: var(--btn-hover);
   transform: scale(1.1);
 }
 
@@ -60,7 +57,7 @@ body {
 nav.menu-lateral {
   position: fixed;
   top: 80px;
-  right: -220px; /* começa fora da tela */
+  right: -220px; /* escondido inicialmente */
   width: 200px;
   background: rgba(0, 30, 60, 0.95);
   border-top-left-radius: 10px;
@@ -71,43 +68,34 @@ nav.menu-lateral {
   z-index: 9998;
   padding: 15px 0;
 }
-
-/* Quando o menu estiver ativo */
 nav.menu-lateral.ativo {
   right: 0;
 }
-
-/* Lista do menu */
 nav.menu-lateral ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-
-/* Itens do menu */
 nav.menu-lateral ul li {
   width: 100%;
 }
-
-/* Links do menu */
 nav.menu-lateral ul li a {
   display: block;
   width: 100%;
   padding: 15px 20px;
-  color: #00e6ff;
+  color: var(--primary);
   text-decoration: none;
   font-size: 1.1em;
   font-weight: bold;
   transition: background 0.3s, color 0.3s;
   border-radius: 6px;
 }
-
-/* Efeito hover */
 nav.menu-lateral ul li a:hover {
-  background: #00cfff33;
+  background: var(--btn-bg)33;
   color: #ffffff;
 }
 
+/* ===== HERO / LOGO ===== */
 .hero-logo, .logo {
   display: block;
   margin: 20px auto 30px auto;
@@ -118,7 +106,7 @@ nav.menu-lateral ul li a:hover {
   text-align: center;
 }
 
-
+/* ===== SEÇÕES ===== */
 section {
   padding: 60px 20px;
   max-width: 900px;
@@ -128,17 +116,16 @@ section {
   border-radius: 12px;
   margin-bottom: 40px;
 }
-
 section h2 {
   margin-bottom: 20px;
   color: var(--primary);
   text-align: center;
 }
 
+/* ===== LISTAS E BOTÕES ===== */
 ul {
-  padding-rigth: 20px;
+  padding-right: 20px;
 }
-
 .btn-cta {
   display: inline-block;
   padding: 18px 36px;
@@ -153,22 +140,20 @@ ul {
   margin-top: 30px;
   text-decoration: none;
 }
-
 .btn-cta i {
-  margin-rigth: 10px;
+  margin-right: 10px; /* corrigido margin-rigth antigo */
 }
-
 .btn-cta:hover {
   background: var(--btn-hover);
   transform: scale(1.05);
   box-shadow: 0 0 30px var(--btn-hover);
 }
 
+/* ===== LINKS DE E‑MAIL E IMAGENS ===== */
 .email-link {
   color: #ffcc00;
   text-decoration: underline;
 }
-
 .apoio-img {
   max-width: 220px;
   display: block;
@@ -176,6 +161,7 @@ ul {
   border-radius: 10px;
 }
 
+/* ===== RANKING ===== */
 .ranking {
   background: rgba(255, 255, 255, 0.08);
   padding: 15px;
@@ -187,22 +173,13 @@ ul {
   scroll-behavior: smooth;
 }
 
-footer.footer {
-  background: rgba(0, 20, 50, 0.6);
-  text-align: center;
-  padding: 20px;
-  font-size: 0.9em;
-  border-top: 1px solid #00cfff55;
-}
-
-/* ========== NOTÍCIAS ========== */
+/* ===== NOTÍCIAS ===== */
 .news-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
   margin-top: 20px;
 }
-
 .news-card {
   background: rgba(0, 20, 40, 0.5);
   border-radius: 12px;
@@ -212,11 +189,9 @@ footer.footer {
   transition: transform 0.3s ease;
   overflow: hidden;
 }
-
 .news-card:hover {
   transform: scale(1.02);
 }
-
 .news-thumb {
   width: 100%;
   height: 160px;
@@ -225,36 +200,31 @@ footer.footer {
   margin-bottom: 10px;
   background: linear-gradient(45deg, #0f2027, #203a43);
 }
-
 .news-link {
   display: inline-block;
-  color: #00cfff;
+  color: var(--btn-bg);
   font-weight: bold;
   text-decoration: none;
-  border: 1px solid #00cfff;
+  border: 1px solid var(--btn-bg);
   padding: 6px 10px;
   border-radius: 6px;
   transition: background 0.3s ease;
 }
-
 .news-link:hover {
-  background: #00cfff33;
+  background: var(--btn-bg)33;
 }
 
-/* ========== FORMULÁRIO ========== */
+/* ===== FORMULÁRIO ===== */
 form {
   background: rgba(0, 30, 50, 0.35);
   padding: 30px;
   border-radius: 16px;
   box-shadow: 0 0 30px rgba(0, 255, 255, 0.15);
   backdrop-filter: blur(12px);
-  position: relative;
-  overflow: hidden;
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
 }
-
 form input[type="text"],
 form input[type="email"],
 form textarea {
@@ -269,18 +239,15 @@ form textarea {
   outline: none;
   transition: 0.3s ease;
   box-shadow: inset 0 0 8px rgba(0, 255, 255, 0.05);
-  box-sizing: border-box;
 }
-
 form input:focus,
 form textarea:focus {
   border-color: #00ffff;
   background: rgba(0, 40, 70, 0.6);
   box-shadow: 0 0 12px #00ffff66;
 }
-
 form button[type="submit"] {
-  background: linear-gradient(90deg, #00cfff, #00f0ff);
+  background: linear-gradient(90deg, var(--btn-bg), var(--btn-hover));
   color: #001d2e;
   border: none;
   padding: 14px 28px;
@@ -293,17 +260,15 @@ form button[type="submit"] {
   transition: all 0.4s ease;
   letter-spacing: 1px;
   text-transform: uppercase;
-  box-sizing: border-box;
 }
-
 form button[type="submit"]:hover {
-  background: linear-gradient(90deg, #00f0ff, #00cfff);
-  box-shadow: 0 0 25px #00e6ffaa;
+  background: linear-gradient(90deg, var(--btn-hover), var(--btn-bg));
+  box-shadow: 0 0 25px var(--btn-bg);
   transform: scale(1.04);
   filter: brightness(1.1);
 }
 
-/* ========== ANIMAÇÃO LOGO ========== */
+/* ===== ANIMAÇÃO DA LOGO ===== */
 @keyframes heartbeat {
   0% { transform: scale(0.97); }
   20% { transform: scale(1.20); }
@@ -313,7 +278,7 @@ form button[type="submit"]:hover {
   100% { transform: scale(1); }
 }
 
-/* ========== RESPONSIVIDADE ========== */
+/* ===== RESPONSIVIDADE ===== */
 @media (max-width: 600px) {
   .hero-logo {
     width: 80%;
@@ -329,25 +294,23 @@ form button[type="submit"]:hover {
     padding: 20px;
   }
 }
-/* ========== HAMBUGAO ========== */
-.menu-lateral {
-  display: none;
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  background: none;
-  border: none;
-  color: var(--primary);
-  font-size: 2em;
-  cursor: pointer;
-  z-index: 999;
-}
 
+/* ===== MOBILE MENU (hambúrguer) ===== */
+/* Observação: mantive sua estrutura, mas removi duplicação conflitante */
 @media (max-width: 768px) {
+  /* Seu bloco original de .menu-lateral para mobile */
   .menu-lateral {
     display: block;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: var(--primary);
+    font-size: 2em;
+    cursor: pointer;
+    z-index: 999;
   }
-
   nav.nav ul {
     display: none;
     flex-direction: column;
@@ -359,12 +322,11 @@ form button[type="submit"]:hover {
     text-align: center;
     padding: 20px 0;
   }
-
   nav.nav ul.show {
     display: flex;
   }
-
   nav.nav ul li {
     margin: 10px 0;
   }
 }
+
