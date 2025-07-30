@@ -220,7 +220,7 @@ ul {
 .btn-email {
   display: inline-block;
   padding: 12px 26px;
-  margin: 20px auto 0; /* Centraliza horizontalmente e coloca abaixo do botão WhatsApp */
+  margin: 20px auto 20px; /* Centraliza horizontalmente e coloca abaixo do botão WhatsApp */
   background: var(--btn-bg);
   color: #001d2e;
   font-weight: bold;
