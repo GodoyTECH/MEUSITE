@@ -100,7 +100,7 @@ nav.menu-lateral ul li a:hover {
   display: block;
   margin: 20px auto 30px auto;
   width: 60%;
-  max-width: 300px;
+  max-width: 400px;
   animation: heartbeat 2.5s infinite;
   filter: drop-shadow(0 0 10px rgba(0, 200, 255, 0.4));
   text-align: center;
