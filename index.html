@@ -3,96 +3,64 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Godoy Solutions in TECH — sistemas, manutenção, consultoria e aulas em tecnologia." />
   <title>Godoy Solutions in TECH</title>
-
-  <!-- Estilo principal -->
   <link rel="stylesheet" href="assets/css/estilo.css"/>
 
-  <!-- FontAwesome (KIT REAL) -->
+  <!-- FontAwesome corrigido -->
   <script src="https://kit.fontawesome.com/7ab7dab519.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
-  <!-- ===== BOTÃO FLUTUANTE DO MENU HAMBÚRGUER ===== -->
-  <button class="menu-toggle">☰</button>
+<!-- Botão do menu hamburguer -->
+<!-- Botão que abre o menu lateral -->
+<!-- Botão flutuante do menu -->
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
 
-  <!-- ===== MENU LATERAL COMPACTO ===== -->
-  <nav class="menu-lateral" id="menuLateral">
+<!-- Menu lateral -->
+<nav class="menu-lateral" id="menuLateral">
+  <ul>
+    <li><a href="index.html">Início</a></li>
+    <li><a href="contato.html">Contato</a></li>
+    <li><a href="noticias.html">Notícias</a></li>
+    <li><a href="apoio.html">Apoio</a></li>
+    <li><a href="softwares.html">Softwares</a></li>
+  </ul>
+</nav>
+
+<!-- Logo centralizada -->
+<div class="hero">
+  <img src="assets/images/logo.jpeg" alt="Logo Godoy Solutions" class="hero-logo"/>
+</div>
+
+</header>
+
+<main>
+  <section class="sobre">
+    <h2>Sobre a Empresa</h2>
+    <p>A <strong>Godoy Solutions in TECH</strong> foi fundada por <strong>Caique Eduardo Godoy da Silva</strong>, com sólida formação na área de tecnologia e 28 anos de experiência.</p>
+    <p>Certificações em Algoritmos, HTML5 e CSS3, JavaScript básico, Inteligência Artificial, Análise de Dados, Elétrica Residencial, além de Técnico em Informática e manutenção.</p>
+    <p>Paixão por inovação e aprendizado constante para oferecer soluções eficientes e futuristas.</p>
+  </section>
+
+  <section class="servicos">
+    <h2>Nossos Serviços</h2>
     <ul>
-      <li><a href="#inicio">Início</a></li>
-      <li><a href="#contato">Contato</a></li>
-      <li><a href="#noticias">Notícias</a></li>
-      <li><a href="#apoio">Apoio</a></li>
-      <li><a href="#softwares">Softwares</a></li>
+      <li><i class="fas fa-laptop-code"></i> Sistemas de gerenciamento e vendas</li>
+      <li><i class="fas fa-mobile-alt"></i> Sites e aplicativos personalizados</li>
+      <li><i class="fas fa-tools"></i> Manutenção de PCs, celulares e periféricos</li>
+      <li><i class="fas fa-wrench"></i> Instalação e restauração de sistemas</li>
+      <li><i class="fas fa-database"></i> Recuperação de dados</li>
+      <li><i class="fas fa-chalkboard-teacher"></i> Aulas e consultoria em Tech</li>
     </ul>
-  </nav>
+    <a href="contato.html" class="btn-cta"><i class="fas fa-comments"></i> Solicite um orçamento</a>
+  </section>
+</main>
 
-  <!-- ===== HEADER COM LOGO ===== -->
-  <header>
-    <div class="hero" id="inicio">
-      <img src="assets/images/logo.jpeg" alt="Logo Godoy Solutions" class="hero-logo"/>
-    </div>
-  </header>
+<footer class="footer">
+  &copy; 2025 Godoy Solutions in TECH • Desenvolvido por Caíque Eduardo
+</footer>
 
-  <!-- ===== CONTEÚDO PRINCIPAL ===== -->
-  <main>
-
-    <!-- SOBRE A EMPRESA -->
-    <section class="sobre">
-      <h2>Sobre a Empresa</h2>
-      <p>A <strong>Godoy Solutions in TECH</strong> foi fundada por <strong>Caique Eduardo Godoy da Silva</strong>, com sólida formação na área de tecnologia e 28 anos de experiência.</p>
-      <p>Certificações em Algoritmos, HTML5 e CSS3, JavaScript básico, Inteligência Artificial, Análise de Dados, Elétrica Residencial, além de Técnico em Informática e manutenção.</p>
-      <p>Paixão por inovação e aprendizado constante para oferecer soluções eficientes e futuristas.</p>
-    </section>
-
-    <!-- SERVIÇOS -->
-    <section class="servicos">
-      <h2>Nossos Serviços</h2>
-      <ul>
-        <li><i class="fas fa-laptop-code"></i> Sistemas de gerenciamento e vendas</li>
-        <li><i class="fas fa-mobile-alt"></i> Sites e aplicativos personalizados</li>
-        <li><i class="fas fa-tools"></i> Manutenção de PCs, celulares e periféricos</li>
-        <li><i class="fas fa-wrench"></i> Instalação e restauração de sistemas</li>
-        <li><i class="fas fa-database"></i> Recuperação de dados</li>
-        <li><i class="fas fa-chalkboard-teacher"></i> Aulas e consultoria em Tech</li>
-      </ul>
-      <a href="contato.html" class="btn-cta"><i class="fas fa-comments"></i> Solicite um orçamento</a>
-    </section>
-
-    <!-- NOTÍCIAS -->
-    <section id="noticias">
-      <h2>Últimas Notícias</h2>
-      <div id="news-cards" class="news-grid"></div>
-    </section>
-
-    <!-- APOIO -->
-    <section id="apoio">
-      <h2>Apoie o Projeto</h2>
-      <p>Você pode contribuir com qualquer valor. Seu apoio ajuda a manter nossos serviços e treinamentos acessíveis.</p>
-      <ul id="ranking-list" class="ranking"></ul>
-    </section>
-
-    <!-- FORMULÁRIO DE CONTATO -->
-    <section id="contato">
-      <h2>Entre em Contato</h2>
-      <form action="https://formspree.io/f/SEU_ENDPOINT" method="POST">
-        <input type="text" name="name" placeholder="Seu nome" required>
-        <input type="email" name="email" placeholder="Seu e-mail" required>
-        <textarea name="message" rows="5" placeholder="Sua mensagem..." required></textarea>
-        <button type="submit">Enviar mensagem</button>
-      </form>
-    </section>
-
-  </main>
-
-  <!-- ===== RODAPÉ ===== -->
-  <footer class="footer">
-    &copy; 2025 Godoy Solutions in TECH • Desenvolvido por Caíque Eduardo
-  </footer>
-
-  <!-- ===== SCRIPT PRINCIPAL ===== -->
-  <script src="assets/js/main.js"></script>
+<script src="assets/js/main.js"></script>
 
 </body>
 </html>
