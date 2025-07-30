@@ -373,4 +373,38 @@ form button[type="submit"]:hover {
     margin: 10px 0;
   }
 }
+/* ===== AJUSTES PARA A SEÇÃO SOBRE ===== */
+.sobre p {
+  line-height: 1.6;       /* altura da linha para facilitar leitura */
+  margin-bottom: 18px;    /* espaço entre parágrafos */
+}
+
+/* ===== AJUSTES PARA A SEÇÃO SERVIÇOS ===== */
+.servicos {
+  padding-left: 15px;     /* menos padding à esquerda para aproximar conteúdo */
+  max-width: 600px;       /* limitar largura, opcional */
+  margin-left: 0;         /* alinhamento à esquerda */
+}
+
+.servicos ul {
+  list-style: none;       /* remove marcadores padrão */
+  padding-left: 10px;     /* deixa espaço para os ícones */
+}
+
+.servicos ul li {
+  position: relative;
+  padding-left: 30px;     /* espaço para ícone */
+  margin-bottom: 12px;
+  font-size: 1.1em;
+}
+
+/* Ícones na lista (mantendo sua cor e tamanho) */
+.servicos ul li i {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #0077cc;         /* ou outra cor que preferir */
+  font-size: 1.2em;
+}
 
