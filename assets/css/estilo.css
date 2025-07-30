@@ -31,6 +31,7 @@ body {
 }
 
 /* ===== BOTÃO FIXO DO MENU (VISÍVEL EM TODAS AS TELAS) ===== */
+/* ===== BOTÃO FIXO DO MENU (VISÍVEL EM TODAS AS TELAS) ===== */
 .menu-toggle {
   position: fixed;
   top: 25px;
@@ -39,12 +40,12 @@ body {
   color: #001d2e;
   border: none;
   border-radius: 50%;
-  width: 45px;
-  height: 45px;
+  width: 50px;
+  height: 50px;
   font-size: 1.6em;
   z-index: 9999;
   cursor: pointer;
-  box-shadow: 0 0 8px #00e6ff99;
+  box-shadow: 0 0 12px #00e6ffcc;
   transition: background 0.3s, transform 0.2s;
   display: block !important; /* <-- ESSENCIAL: garante visibilidade */
 }
@@ -58,26 +59,25 @@ body {
 /* ===== MENU LATERAL COMPACTO ===== */
 nav.menu-lateral {
   position: fixed;
-  top: 80px; /* espaço abaixo da logo */
-  right: -200px; /* escondido inicialmente */
-  width: 180px;
-  height: auto;
-  max-height: 80%;
-  background: rgba(0, 30, 60, 0.97);
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  backdrop-filter: blur(6px);
-  box-shadow: 2px 0 15px rgba(0, 255, 255, 0.2);
-  transition: right 0.3s ease; /* <-- CORRIGIDO: era 'left', agora é 'right' */
-  z-index: 9999;
-  padding: 10px 0;
+  top: 80px;
+  right: -220px; /* começa fora da tela */
+  width: 200px;
+  background: rgba(0, 30, 60, 0.95);
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  backdrop-filter: blur(8px);
+  box-shadow: -4px 0 20px rgba(0, 255, 255, 0.3);
+  transition: right 0.3s ease;
+  z-index: 9998;
+  padding: 15px 0;
 }
 
+/* Quando o menu estiver ativo */
 nav.menu-lateral.ativo {
-  right: 0; /* <-- CORRIGIDO: era 'left: 0', agora é 'right: 0' */
+  right: 0;
 }
 
-/* Lista de navegação dentro do menu */
+/* Lista do menu */
 nav.menu-lateral ul {
   list-style: none;
   padding: 0;
@@ -89,20 +89,25 @@ nav.menu-lateral ul li {
   width: 100%;
 }
 
+/* Links do menu */
 nav.menu-lateral ul li a {
   display: block;
   width: 100%;
-  padding: 12px 20px;
+  padding: 15px 20px;
   color: #00e6ff;
   text-decoration: none;
-  font-size: 1em;
+  font-size: 1.1em;
+  font-weight: bold;
   transition: background 0.3s, color 0.3s;
+  border-radius: 6px;
 }
 
+/* Efeito hover */
 nav.menu-lateral ul li a:hover {
   background: #00cfff33;
   color: #ffffff;
 }
+
 .hero-logo, .logo {
   display: block;
   margin: 20px auto 30px auto;
