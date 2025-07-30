@@ -6,13 +6,11 @@
   <title>Godoy Solutions in TECH</title>
   <link rel="stylesheet" href="assets/css/estilo.css"/>
 
-  <!-- FontAwesome corrigido -->
+  <!-- FontAwesome funcional -->
   <script src="https://kit.fontawesome.com/7ab7dab519.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
-<!-- Botão do menu hamburguer -->
-<!-- Botão que abre o menu lateral -->
 <!-- Botão flutuante do menu -->
 <button class="menu-toggle" onclick="toggleMenu()">☰</button>
 
@@ -56,11 +54,21 @@
   </section>
 </main>
 
-<footer class="footer">
-  &copy; 2025 Godoy Solutions in TECH • Desenvolvido por Caíque Eduardo
+<footer class="footer">                        &copy; 2025 Godoy Solutions in TECH • Desenvolvido por Caíque Eduardo
 </footer>
 
+<!-- Script principal -->
 <script src="assets/js/main.js"></script>
+
+<!-- 🔧 fallback global para garantir que o botão funcione com onclick -->
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById('menuLateral');
+    if (menu) {
+      menu.classList.toggle('ativo');
+    }
+  }
+</script>
 
 </body>
 </html>
