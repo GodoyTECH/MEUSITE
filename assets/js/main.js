@@ -1,7 +1,6 @@
 // ========== SISTEMA DE CONTATO ==========
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.querySelector('form');
-
   if (!form) return;
 
   form.addEventListener('submit', (e) => {
@@ -18,10 +17,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mensagem opcional de carregamento
     form.querySelector('button[type="submit"]').innerText = "Enviando...";
 
-    // Deixa a aparência de envio mais amigável (opcional)
+    // Estética de envio (opcional)
     form.style.opacity = "0.6";
   });
 });
+
 
 // ========== SISTEMA DE NOTÍCIAS ==========
 class NewsSystem {
@@ -37,7 +37,8 @@ class NewsSystem {
       this.display(articles);
     } catch (e) {
       console.error("Erro ao carregar notícias:", e);
-      this.display(this.sources.find(s => !s.url).parser());
+      const fallback = this.sources.find(s => !s.url)?.parser() || [];
+      this.display(fallback);
     }
   }
 
@@ -70,6 +71,7 @@ class NewsSystem {
   }
 }
 
+
 // ========== SISTEMA DE RANKING (GOOGLE SHEETS) ==========
 function carregarRanking() {
   const sheetURL = `https://opensheet.elk.sh/1isrjaaOEUJqwLTIbzV3KzZHlpZYC6r4f0mtS28PL6YI/form1`;
@@ -93,6 +95,7 @@ function carregarRanking() {
     });
 }
 
+
 // ========== MENU HAMBÚRGUER ==========
 document.addEventListener('DOMContentLoaded', () => {
   const botao = document.querySelector('.menu-toggle');
@@ -114,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Fecha o menu ao clicar em qualquer link
+  // Fecha o menu ao clicar em qualquer link dentro dele
   menu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       menu.classList.remove('ativo');
@@ -122,9 +125,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// ========== INICIALIZAÇÃO ==========
+
+// ========== INICIALIZAÇÃO GLOBAL ==========
 document.addEventListener('DOMContentLoaded', () => {
-  // Fontes de notícias
   const sources = [
     {
       url: 'https://gnews.io/api/v4/top-headlines?category=technology&lang=pt&max=6&apikey=f7295ef44d4b435a16e3210b96b72176',
@@ -149,17 +152,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   ];
 
-  // Inicializar sistema de notícias, se existir o container
   const noticiasContainer = document.getElementById('news-cards');
   if (noticiasContainer) {
     new NewsSystem('news-cards', sources).init();
   }
 
-  // Carregar ranking de apoiadores (se existir)
   carregarRanking();
   setInterval(carregarRanking, 20000);
 });
+
+
+// ========== FUNÇÃO GLOBAL OPCIONAL ==========
 function toggleMenu() {
   const menu = document.getElementById('menuLateral');
   menu.classList.toggle('ativo');
 }
+
