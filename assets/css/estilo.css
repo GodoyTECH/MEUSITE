@@ -1,4 +1,15 @@
 /* ===== VARIÁVEIS GLOBAIS ===== */
+
+.footer {
+      text-align: center;
+      padding: 20px;
+      color: #ccc;
+      font-size: 0.9em;
+      background: #0b0b0b;
+      margin-top: 40px;
+      border-top: 1px solid #00f0ff33;
+    }
+  
 :root {
   --primary: #00e6ff;
   --background: #0f2027;
