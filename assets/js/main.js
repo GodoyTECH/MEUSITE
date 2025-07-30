@@ -99,6 +99,13 @@ function carregarRanking() {
 
 // ========== MENU HAMBÚRGUER ==========
 
+
+  // Função que alterna a visibilidade do menu
+  function toggleMenu() {
+    const menu = document.getElementById('menuLateral');
+    menu.classList.toggle('ativo');
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     const botao = document.querySelector('.menu-toggle');
     const menu = document.getElementById('menuLateral');
