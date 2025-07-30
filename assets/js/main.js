@@ -1,7 +1,4 @@
-//js
 // ========== SISTEMA DE CONTATO ==========
-
-
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.querySelector('form');
 
@@ -25,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
     form.style.opacity = "0.6";
   });
 });
-
 
 // ========== SISTEMA DE NOTÍCIAS ==========
 class NewsSystem {
@@ -98,44 +94,33 @@ function carregarRanking() {
 }
 
 // ========== MENU HAMBÚRGUER ==========
+document.addEventListener('DOMContentLoaded', () => {
+  const botao = document.querySelector('.menu-toggle');
+  const menu = document.getElementById('menuLateral');
 
+  if (!botao || !menu) return;
 
-  // Função que alterna a visibilidade do menu
-  function toggleMenu() {
-    const menu = document.getElementById('menuLateral');
+  // Abre/fecha o menu ao clicar no botão
+  botao.addEventListener('click', (e) => {
+    e.stopPropagation();
     menu.classList.toggle('ativo');
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const botao = document.querySelector('.menu-toggle');
-    const menu = document.getElementById('menuLateral');
-
-    if (!botao || !menu) return;
-
-    // Abre/fecha o menu ao clicar no botão
-    botao.addEventListener('click', (e) => {
-      e.stopPropagation();
-      menu.classList.toggle('ativo');
-    });
-
-    // Fecha o menu ao clicar fora
-    document.addEventListener('click', (e) => {
-      const clicouFora = !menu.contains(e.target) && !botao.contains(e.target);
-      if (clicouFora) {
-        menu.classList.remove('ativo');
-      }
-    });
-
-    // Fecha o menu ao clicar em qualquer link dentro dele
-    menu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        menu.classList.remove('ativo');
-      });
-    });
   });
 
+  // Fecha o menu ao clicar fora dele
+  document.addEventListener('click', (e) => {
+    const clicouFora = !menu.contains(e.target) && !botao.contains(e.target);
+    if (clicouFora) {
+      menu.classList.remove('ativo');
+    }
+  });
 
-
+  // Fecha o menu ao clicar em qualquer link
+  menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.remove('ativo');
+    });
+  });
+});
 
 // ========== INICIALIZAÇÃO ==========
 document.addEventListener('DOMContentLoaded', () => {
@@ -173,43 +158,4 @@ document.addEventListener('DOMContentLoaded', () => {
   // Carregar ranking de apoiadores (se existir)
   carregarRanking();
   setInterval(carregarRanking, 20000);
-
-  
-  // MENU UNIVERSAL (funciona em qualquer tela)
-function iniciarMenuHamburguer() {
-  const toggle = document.querySelector('.menu-lateral');
-  const menu = document.querySelector('nav.nav ul');
-
-  if (!toggle || !menu) return;
-
-  toggle.addEventListener('click', () => {
-    menu.classList.toggle('show');
-  });
-
-  // Fecha o menu se clicar em um link (opcional)
-  menu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => menu.classList.remove('show'));
-  });
-}
-
-document.addEventListener('DOMContentLoaded', iniciarMenuHamburguer);
-
 });
-document.addEventListener('DOMContentLoaded', () => {
-  const botao = document.querySelector('.menu-lateral');
-  const menu = document.getElementById('menuLateral');
-
-  if (botao && menu) {
-    botao.addEventListener('click', () => {
-      menu.classList.toggle('ativo');
-    });
-
-    // Fecha menu ao clicar em qualquer link (opcional)
-    menu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        menu.classList.remove('ativo');
-      });
-    });
-  }
-});
-
