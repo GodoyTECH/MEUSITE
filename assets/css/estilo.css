@@ -173,8 +173,9 @@ ul {
   padding-right: 20px;
 }
 .btn-cta {
-  display: inline-block;
-  padding: 18px 36px;
+  display: block;             /* centraliza */
+  margin: 30px auto 0;        /* centraliza com margem superior */
+  width: fit-content;         /* ajusta largura ao conteúdo */
   background: var(--btn-bg);
   color: #001d2e;
   border-radius: 50px;
@@ -183,9 +184,9 @@ ul {
   text-transform: uppercase;
   box-shadow: 0 0 20px var(--btn-bg);
   transition: background 0.4s, transform 0.3s;
-  margin-top: 30px;
   text-decoration: none;
 }
+
 .btn-cta i {
   margin-right: 10px;
 }
