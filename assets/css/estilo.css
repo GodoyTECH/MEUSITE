@@ -238,6 +238,7 @@ ul {
 }
 
 .btn-email {
+  display: block;
   font-size: 0.95em;
   padding: 12px 26px;
   box-shadow: 0 0 10px var(--btn-bg);
