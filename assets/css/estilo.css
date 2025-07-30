@@ -241,7 +241,9 @@ ul {
   font-size: 0.95em;
   padding: 12px 26px;
   box-shadow: 0 0 10px var(--btn-bg);
+  margin-top: 20px; /* Aqui está o espaçamento extra que faltava */
 }
+
 
 .apoio-img {
   max-width: 220px;
