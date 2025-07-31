@@ -1,5 +1,3 @@
-// animação fundo //
-
 /* 🔹 FUNDO PRINCIPAL */
 #background-scene {
   position: fixed;
@@ -9,7 +7,7 @@
   height: 100vh;
   z-index: -10;
   background: linear-gradient(45deg, #212121, #3b3f54);
-  overflow: hidden;
+  overflow: hidden; /* evita que o fundo ultrapasse os limites da tela */
 }
 
 /* 🔹 IMAGEM DOS ROBÔS NAS BORDAS */
@@ -40,7 +38,7 @@
 .light-ray {
   position: absolute;
   width: 2px;
-  height: 200%;
+  height: 100%; /* corrigido para não ultrapassar a tela */
   background: #44D5F7;
   opacity: 0.3;
   animation: moveLight 5s linear infinite;
@@ -84,7 +82,7 @@
   50% { transform: translateY(-20px); opacity: 0.5; }
 }
 
-/* 🔹 OVERLAYS PULSANTES */
+/* 🔹 OVERLAY PULSANTE */
 .overlay-lights {
   position: absolute;
   top: 30%;
@@ -100,6 +98,13 @@
 @keyframes pulse {
   0%, 100% { transform: scale(1); opacity: 0.6; }
   50% { transform: scale(1.5); opacity: 0.2; }
+}
+
+/* 🔹 AJUSTES GLOBAIS */
+html, body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
 }
 
 /* ===== VARIÁVEIS GLOBAIS ===== */
