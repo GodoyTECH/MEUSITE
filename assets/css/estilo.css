@@ -40,7 +40,7 @@
   width: 2px;
   height: 100%; /* corrigido para não ultrapassar a tela */
   background: #44D5F7;
-  opacity: 0.3;
+  opacity: 0.1;
   animation: moveLight 5s linear infinite;
 }
 
