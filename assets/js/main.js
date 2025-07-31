@@ -1,3 +1,34 @@
+// script.js
+
+// Função para ativar/desativar a cena de fundo
+function toggleBackground() {
+  const bg = document.getElementById('background-scene');
+  if (bg) {
+    bg.style.display = (bg.style.display === 'none') ? 'block' : 'none';
+  }
+}
+
+// Exemplo: Adicionar mais partículas dinamicamente
+function generateParticles(qtd = 10) {
+  const container = document.querySelector('.particles');
+  if (!container) return;
+
+  for (let i = 0; i < qtd; i++) {
+    const particle = document.createElement('div');
+    particle.classList.add('particle');
+    particle.style.top = `${Math.random() * 100}%`;
+    particle.style.left = `${Math.random() * 100}%`;
+    particle.style.animationDelay = `${Math.random() * 5}s`;
+    container.appendChild(particle);
+  }
+}
+
+// Função para iniciar tudo ao carregar a página
+document.addEventListener('DOMContentLoaded', () => {
+  console.log("🧠 Fundo animado carregado.");
+  generateParticles(15); // Gera partículas extras
+});
+
 // ========== SISTEMA DE CONTATO ==========
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.querySelector('form');
