@@ -116,7 +116,7 @@
   <main>
     <section class="sobre">
       <h2 style="margin-top: 60px;">Apoie nosso trabalho</h2>
-      <p>Escaneie o QR Code do Pix e tenha seu nome na lista dos apoiadores:</p>
+      <p>Escaneie o QR Code do Pix e Deixe sua Mensagem</p>
       <img src="assets/images/apoio.jpeg" alt="QR Code Pix" class="apoio-img"/>
 
       <!-- Formulário estilizado -->
@@ -124,7 +124,7 @@
         <h3>Formulário de Apoio</h3>
         <form id="apoio-form">
           <div class="form-group">
-            <label for="nome">Nome (ou Apelido)</label>
+            <label for="nome">Nome (ou @)</label>
             <input type="text" id="nome" name="nome" required>
           </div>
           <div class="form-group">
@@ -132,23 +132,15 @@
             <input type="number" id="valor" name="valor" required>
           </div>
           <div class="form-group">
-            <label for="mensagem">Mensagem (opcional)</label>
+            <label for="mensagem">Mensagem </label>
             <textarea id="mensagem" name="mensagem" rows="3"></textarea>
           </div>
           <div class="form-submit">
-            <button type="submit">Enviar Apoio</button>
+            <button type="submit">Enviar</button>
           </div>
         </form>
         <p id="status-msg" style="text-align:center; margin-top:10px; color:#00ffcc;"></p>
-      </div>
-
-      <!-- Lista de apoiadores -->
-      <div class="ranking">
-        <h3>Últimos Apoiadores</h3>
-        <ul id="ranking-list"><li>Carregando...</li></ul>
-      </div>
-    </section>
-  </main>
+      
 
   <!-- Rodapé -->
   <footer class="footer">
