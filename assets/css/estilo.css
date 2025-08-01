@@ -1,17 +1,20 @@
-
 /* 🔹 IMAGEM DOS ROBÔS NAS BORDAS */
 .robots-bg {
-  position: absolute;
+  position: fixed; /* fixo para cobrir a tela mesmo com rolagem */
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background: url('../images/robots-scene.png') center center no-repeat;
   background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center center;
   opacity: 0.7;
   pointer-events: none;
   z-index: -5;
 }
+
 
 
 
