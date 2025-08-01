@@ -20,18 +20,19 @@
 
 /* 🔹 RAIOS DE LUZ */
 .light-rays {
-  position: absolute;
+  position: fixed; /* fixo na tela */
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh; /* limita aos limites visíveis */
   pointer-events: none;
+  z-index: -4; /* ajustar se necessário para ficar atrás do conteúdo */
 }
 
 .light-ray {
   position: absolute;
   width: 2px;
-  height: 100%; /* corrigido para não ultrapassar a tela */
+  height: 100vh; /* ocupa exatamente a altura visível */
   background: #44D5F7;
   opacity: 0.2;
   animation: moveLight 5s linear infinite;
@@ -43,9 +44,10 @@
 .light-ray-4 { left: 75%; background: #7A288A; animation-delay: 3s; }
 
 @keyframes moveLight {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100%); }
+  0% { transform: translateY(-100vh); }
+  100% { transform: translateY(100vh); }
 }
+
 
 /* 🔹 PARTÍCULAS */
 .particles {
