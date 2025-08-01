@@ -1,32 +1,3 @@
-.google-form-container {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 20px;
-  background: rgba(0, 0, 0, 0.4);
-  border: 2px solid #00f0ff;
-  border-radius: 16px;
-  box-shadow: 0 0 25px #00f0ff88;
-  backdrop-filter: blur(8px);
-}
-
-.google-form-container iframe {
-  width: 100%;
-  height: 800px;
-  border: none;
-  border-radius: 10px;
-}
-
-/* 🔹 FUNDO PRINCIPAL */
-#background-scene {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: -10;
-  background: linear-gradient(45deg, #212121, #3b3f54);
-  overflow: hidden; /* evita que o fundo ultrapasse os limites da tela */
-}
 
 /* 🔹 IMAGEM DOS ROBÔS NAS BORDAS */
 .robots-bg {
@@ -562,4 +533,23 @@ form button[type="submit"]:hover {
     margin: 10px 0;
   }
 }
+/* 🔹 Estilo para o formulário Google Forms */
+.google-form-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 2px solid #00f0ff;
+  border-radius: 16px;
+  box-shadow: 0 0 25px #00f0ff88;
+  backdrop-filter: blur(8px);
+}
+
+.google-form-container iframe {
+  width: 100%;
+  height: 750px;
+  border: none;
+  border-radius: 10px;
+}
+
 
