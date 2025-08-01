@@ -1,58 +1,84 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  
-  <!-- Ícone da aba do navegador -->
-  <link rel="icon" type="image/png" href="assets/images/logoicon.png" />
-  <link rel="apple-touch-icon" href="assets/images/logoicon.png" />
-
-  <!-- Compartilhamento redes sociais -->
-  <meta property="og:title" content="Godoy Solutions in TECH" />
-  <meta property="og:description" content="Tecnologia com propósito, soluções com personalidade." />
-  <meta property="og:image" content="https://godoysoluintech.netlify.app/apoio//assets/images/logotipo.jpeg" />
-  <meta property="og:url" content="https://godoysoluintech.netlify.app/apoio" />
-  <meta property="og:type" content="website" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="https://godoysoluintech.netlify.app/apoio/assets/images/logotipo.jpeg" />
-
-  <!-- FontAwesome funcional -->
-  <script src="https://kit.fontawesome.com/7ab7dab519.js" crossorigin="anonymous"></script>
-
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Apoie nosso trabalho</title>
+
+  <!-- Estilos -->
   <link rel="stylesheet" href="assets/css/estilo.css"/>
+
+  <!-- Ícones e redes sociais -->
+  <link rel="icon" type="image/png" href="assets/images/logoicon.png" />
+  <link rel="apple-touch-icon" href="assets/images/logoicon.png" />
+  <meta property="og:title" content="Godoy Solutions in TECH" />
+  <meta property="og:description" content="Tecnologia com propósito, soluções com personalidade." />
+  <meta property="og:image" content="https://godoysoluintech.netlify.app/assets/images/logotipo.jpeg" />
+  <meta property="og:url" content="https://godoysoluintech.netlify.app/apoio" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://godoysoluintech.netlify.app/assets/images/logotipo.jpeg" />
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/7ab7dab519.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <!-- Botão fixo do menu hamburguer -->
-<button class="menu-toggle" aria-label="Abrir menu">&#9776;</button>
 
-<!-- Menu lateral escondido -->
-<nav class="menu-lateral" id="menuLateral">
-  <ul>
-    <li><a href="index.html">Início</a></li>
-    <li><a href="contato.html">Contato</a></li>
-    <li><a href="noticias.html">Notícias</a></li>
-    <li><a href="apoio.html">Apoio</a></li>
-    <li><a href="softwares.html">Softwares</a></li>
-  </ul>
-</nav>
+  <!-- 🔹 Fundo animado -->
+  <div id="background-scene">
+    <div class="robots-bg"></div>
 
+    <!-- Efeitos -->
+    <div class="overlay-lights"></div>
+    <div class="particles">
+      <div class="particle particle-1"></div>
+      <div class="particle particle-2"></div>
+      <div class="particle particle-3"></div>
+    </div>
+    <div class="light-rays">
+      <div class="light-ray light-ray-1"></div>
+      <div class="light-ray light-ray-2"></div>
+      <div class="light-ray light-ray-3"></div>
+      <div class="light-ray light-ray-4"></div>
+    </div>
+  </div>
+
+  <!-- Menu fixo -->
+  <button class="menu-toggle" aria-label="Abrir menu">&#9776;</button>
+  <nav class="menu-lateral" id="menuLateral">
+    <ul>
+      <li><a href="index.html">Início</a></li>
+      <li><a href="contato.html">Contato</a></li>
+      <li><a href="noticias.html">Notícias</a></li>
+      <li><a href="apoio.html">Apoio</a></li>
+      <li><a href="softwares.html">Softwares</a></li>
+    </ul>
+  </nav>
+
+  <!-- Conteúdo principal -->
   <main>
     <section class="sobre">
-      <h2>Apoie nosso trabalho</h2>
+      <h2 style="margin-top: 60px;">Apoie nosso trabalho</h2>
       <p>Escaneie o QR Code do Pix e tenha seu nome na lista dos apoiadores:</p>
       <img src="assets/images/apoio.jpeg" alt="QR Code Pix" class="apoio-img"/>
+
+      <!-- Google Forms integrado -->
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSedyzwv8VfPrI6PwrPjReK5QwzCZaPl_rAF0rOcG7I7b8rTwA/viewform?embedded=true" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Carregando…</iframe>
+
+      <!-- Lista dinâmica -->
       <div class="ranking">
         <h3>Últimos Apoiadores</h3>
         <ul id="ranking-list"><li>Carregando...</li></ul>
       </div>
     </section>
   </main>
+
+  <!-- Rodapé -->
   <footer class="footer">
     &copy; 2025 Godoy Solutions in TECH • Desenvolvido por Caíque Eduardo
   </footer>
+
+  <!-- Scripts -->
   <script src="assets/js/main.js"></script>
 </body>
 </html>
