@@ -21,14 +21,71 @@
 
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/7ab7dab519.js" crossorigin="anonymous"></script>
-</head>
-<body>
 
+  <!-- Estilos adicionais do formulário -->
+  <style>
+    .form-container {
+      background: #0a0a0aee;
+      border: 1px solid #00f0ff44;
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 600px;
+      margin: 30px auto;
+      box-shadow: 0 0 20px #00f0ff66;
+    }
+    .form-container h3 {
+      color: var(--primary);
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #eee;
+      font-weight: bold;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #00f0ff33;
+      background: #111;
+      color: white;
+      font-size: 1em;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #00f0ff;
+    }
+    .form-submit {
+      text-align: center;
+    }
+    .form-submit button {
+      background: var(--btn-bg);
+      color: #001d2e;
+      font-weight: bold;
+      padding: 12px 30px;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s ease;
+      font-size: 1em;
+    }
+    .form-submit button:hover {
+      background: var(--btn-hover);
+    }
+  </style>
+</head>
+
+<body>
   <!-- 🔹 Fundo animado -->
   <div id="background-scene">
     <div class="robots-bg"></div>
-
-    <!-- Efeitos -->
     <div class="overlay-lights"></div>
     <div class="particles">
       <div class="particle particle-1"></div>
@@ -43,7 +100,7 @@
     </div>
   </div>
 
-  <!-- Menu fixo -->
+  <!-- Botão e menu lateral -->
   <button class="menu-toggle" aria-label="Abrir menu">&#9776;</button>
   <nav class="menu-lateral" id="menuLateral">
     <ul>
@@ -62,10 +119,30 @@
       <p>Escaneie o QR Code do Pix e tenha seu nome na lista dos apoiadores:</p>
       <img src="assets/images/apoio.jpeg" alt="QR Code Pix" class="apoio-img"/>
 
-      <!-- Google Forms integrado -->
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSedyzwv8VfPrI6PwrPjReK5QwzCZaPl_rAF0rOcG7I7b8rTwA/viewform?embedded=true" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Carregando…</iframe>
+      <!-- Formulário estilizado -->
+      <div class="form-container">
+        <h3>Formulário de Apoio</h3>
+        <form id="apoio-form">
+          <div class="form-group">
+            <label for="nome">Nome (ou Apelido)</label>
+            <input type="text" id="nome" name="nome" required>
+          </div>
+          <div class="form-group">
+            <label for="valor">Valor do Apoio (R$)</label>
+            <input type="number" id="valor" name="valor" required>
+          </div>
+          <div class="form-group">
+            <label for="mensagem">Mensagem (opcional)</label>
+            <textarea id="mensagem" name="mensagem" rows="3"></textarea>
+          </div>
+          <div class="form-submit">
+            <button type="submit">Enviar Apoio</button>
+          </div>
+        </form>
+        <p id="status-msg" style="text-align:center; margin-top:10px; color:#00ffcc;"></p>
+      </div>
 
-      <!-- Lista dinâmica -->
+      <!-- Lista de apoiadores -->
       <div class="ranking">
         <h3>Últimos Apoiadores</h3>
         <ul id="ranking-list"><li>Carregando...</li></ul>
@@ -78,7 +155,7 @@
     &copy; 2025 Godoy Solutions in TECH • Desenvolvido por Caíque Eduardo
   </footer>
 
-  <!-- Scripts -->
+  <!-- Scripts externos -->
   <script src="assets/js/main.js"></script>
 </body>
 </html>
