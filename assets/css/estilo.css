@@ -576,5 +576,23 @@ form button[type="submit"]:hover {
   border: none;
   border-radius: 10px;
 }
+/* Botão do Instagram fixo no canto superior direito */
+.instagram-fixo {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  font-size: 28px;
+  color: #fff;
+  background: linear-gradient(135deg, #e1306c, #fd1d1d, #f77737);
+  padding: 12px;
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(255, 0, 106, 0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
+.instagram-fixo:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px rgba(255, 0, 106, 0.8);
+}
 
