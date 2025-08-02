@@ -583,8 +583,8 @@ form button[type="submit"]:hover {
   left: 20px;
   z-index: 9999;
   font-size: 15px;
-  color: blue;
-  background: linear-gradient(135deg, #e1306c, #fd1d1d, #f77737);
+  color: #fff;
+  background: linear-gradient(135deg, #e1306c, #add8e6, #f77737);
   padding: 12px;
   border-radius: 40%;
   box-shadow: 0 0 15px rgba(255, 0, 106, 0.6);
