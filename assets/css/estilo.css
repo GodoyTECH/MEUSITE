@@ -240,6 +240,20 @@ nav.menu-lateral ul li a:hover {
   filter: drop-shadow(0 0 10px rgba(0, 200, 255, 0.4));
   text-align: center;
 }
+/* ✨ Efeito de brilho na logo */
+.logo-brilhante {
+  filter: drop-shadow(0 0 8px #00f0ff);
+  animation: brilho-pulsante 2s infinite alternate;
+}
+
+@keyframes brilho-pulsante {
+  0% {
+    filter: drop-shadow(0 0 5px #00f0ff);
+  }
+  100% {
+    filter: drop-shadow(0 0 20px #00f0ff);
+  }
+}
 
 /* ===== SEÇÕES ===== */
 section {
