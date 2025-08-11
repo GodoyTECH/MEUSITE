@@ -4,56 +4,116 @@
 
 <!-- Ícones do Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="assets/css/estilo.css">
+<link rel="stylesheet" href="assets/css/estilo.css">
   
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Godoy Solutions in TECH</title>
-  <link rel="stylesheet" href="assets/css/estilo.css"/>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Godoy Solutions in TECH</title>
+<link rel="stylesheet" href="assets/css/estilo.css"/>
 
-  <!-- Ícone da aba do navegador -->
-  <link rel="icon" type="image/png" href="assets/images/logoicon.png" />
-  <link rel="apple-touch-icon" href="assets/images/logoicon.png" />
+<!-- Ícone da aba do navegador -->
+<link rel="icon" type="image/png" href="assets/images/logoicon.png" />
+<link rel="apple-touch-icon" href="assets/images/logoicon.png" />
 
-  <!-- Compartilhamento redes sociais -->
-  <meta property="og:title" content="Godoy Solutions in TECH" />
-  <meta property="og:description" content="Tecnologia com propósito, soluções com personalidade." />
-  <meta property="og:image" content="https://godoysoluintech.netlify.app/assets/images/logo.jpeg" />
-  <meta property="og:url" content="https://godoysoluintech.netlify.app/" />
-  <meta property="og:type" content="website" />
+<!-- Compartilhamento redes sociais -->
+<meta property="og:title" content="Godoy Solutions in TECH" />
+<meta property="og:description" content="Tecnologia com propósito, soluções com personalidade." />
+<meta property="og:image" content="https://godoysoluintech.netlify.app/assets/images/logo.jpeg" />
+<meta property="og:url" content="https://godoysoluintech.netlify.app/" />
+<meta property="og:type" content="website" />
 
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="https://godoysoluintech.netlify.app/assets/images/logo.jpeg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://godoysoluintech.netlify.app/assets/images/logo.jpeg" />
 
-  <!-- FontAwesome funcional -->
-  <script src="https://kit.fontawesome.com/7ab7dab519.js" crossorigin="anonymous"></script>
+<!-- FontAwesome funcional -->
+<script src="https://kit.fontawesome.com/7ab7dab519.js" crossorigin="anonymous"></script>
 
-  <!-- CSS extra direto na index para o footer e vídeo -->
-  <style>
-    .video-box {
-      max-width: 720px;
-      margin: 30px auto;
-      padding: 10px;
-      border: 2px solid #00f0ff;
-      border-radius: 20px;
-      box-shadow: 0 0 20px #00f0ff88;
-      background-color: #000000cc;
-      backdrop-filter: blur(8px);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-    }
+<!-- CSS extra direto na index para o footer, vídeo e mascote -->
+<style>
+  .video-box {
+    max-width: 720px;
+    margin: 30px auto;
+    padding: 10px;
+    border: 2px solid #00f0ff;
+    border-radius: 20px;
+    box-shadow: 0 0 20px #00f0ff88;
+    background-color: #000000cc;
+    backdrop-filter: blur(8px);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
 
-    .video-box:hover {
-      transform: scale(1.02);
-      box-shadow: 0 0 30px #00f0ffcc;
-    }
+  .video-box:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 30px #00f0ffcc;
+  }
 
-    .video-box video {
-      width: 100%;
-      border-radius: 12px;
-    }
+  .video-box video {
+    width: 100%;
+    border-radius: 12px;
+  }
 
-  
-  </style>
+  /* 🔹 Mascote animado */
+  .mascote-container {
+    position: relative;
+    width: 400px;
+    margin: 40px auto;
+  }
+
+  .mascote-container img {
+    width: 100%;
+    display: block;
+  }
+
+  /* Olhos brilhando */
+  .olho {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, #00f0ff, transparent);
+    border-radius: 50%;
+    animation: brilhoOlho 1.5s infinite alternate;
+  }
+
+  /* Exemplo: ajuste manual da posição conforme a imagem final */
+  .olho.esquerdo { top: 120px; left: 160px; }
+  .olho.direito { top: 120px; right: 160px; }
+
+  @keyframes brilhoOlho {
+    from { opacity: 0.4; }
+    to { opacity: 1; box-shadow: 0 0 12px #00f0ff; }
+  }
+
+  /* Plantas piscando */
+  .planta {
+    position: absolute;
+    background: radial-gradient(circle, #00ff80, transparent);
+    border-radius: 50%;
+    animation: piscaPlanta 3s infinite alternate;
+  }
+  .planta.p1 { width: 30px; height: 30px; top: 200px; left: 80px; }
+  .planta.p2 { width: 25px; height: 25px; top: 250px; right: 100px; }
+
+  @keyframes piscaPlanta {
+    from { opacity: 0.5; }
+    to { opacity: 1; box-shadow: 0 0 15px #00ff80; }
+  }
+
+  /* Feixe de luz percorrendo o corpo */
+  .feixe {
+    position: absolute;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, #00f0ff, transparent);
+    animation: percorreCorpo 4s infinite linear;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  @keyframes percorreCorpo {
+    0% { top: -100%; }
+    100% { top: 100%; }
+  }
+</style>
 </head>
 <body>
  <!-- 🔹 Fundo animado futurista com robôs e efeitos -->
@@ -81,6 +141,7 @@
   <div class="robots-bg"></div>
 
 </div>
+
 <!-- Botão flutuante do menu -->
 <button class="menu-toggle">☰</button>
 
@@ -95,13 +156,17 @@
   </ul>
 </nav>
 
-<!-- Logo centralizada -->
-<div class="hero">
- <img src="assets/images/logo.jpeg" alt="Logo Godoy Solutions" class="hero-logo logo-brilhante"/>
-
+<!-- 🔹 Novo mascote animado -->
+<div class="mascote-container">
+  <img src="assets/images/mascote2.png" alt="Mascote Godoy Solutions Tech"/>
+  <div class="olho esquerdo"></div>
+  <div class="olho direito"></div>
+  <div class="planta p1"></div>
+  <div class="planta p2"></div>
+  <div class="feixe"></div>
 </div>
 
-<!-- Caixa de vídeo animado abaixo da logo -->
+<!-- Caixa de vídeo animado abaixo do mascote -->
 <div class="video-box">
   <video autoplay controls loop playsinline>
     <source src="assets/images/demo.mp4" type="video/mp4">
@@ -131,17 +196,15 @@
     </ul>
     <a href="contato.html" class="btn-cta"><i class="fas fa-comments"></i> Solicite um orçamento</a>
   </section>
- 
 </main>
- <footer class="footer">
+
+<footer class="footer">
   &copy; 2025 Godoy Solutions in TECH • Desenvolvido por Caíque Eduardo
 </footer>
 
 <a href="https://www.instagram.com/godoysolutionstech?igsh=MjJ6b2xhN3RhZzRl" target="_blank" class="instagram-fixo">
   <i class="fab fa-instagram"></i>
 </a>
-
-
 
 <!-- Script principal -->
 <script src="assets/js/main.js"></script>
