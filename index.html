@@ -62,6 +62,7 @@
   .mascote-container img {
     width: 100%;
     display: block;
+    opacity: 0.5; 
   }
 
   /* Olhos brilhando */
@@ -87,14 +88,14 @@
   .planta {
     position: absolute;
     background: radial-gradient(circle, #00ff80, transparent);
-    border-radius: 50%;
+    border-radius: 40%;
     animation: piscaPlanta 3s infinite alternate;
   }
   .planta.p1 { width: 30px; height: 30px; top: 200px; left: 80px; }
   .planta.p2 { width: 25px; height: 25px; top: 250px; right: 100px; }
 
   @keyframes piscaPlanta {
-    from { opacity: 0.5; }
+    from { opacity: 0.3; }
     to { opacity: 1; box-shadow: 0 0 15px #00ff80; }
   }
 
