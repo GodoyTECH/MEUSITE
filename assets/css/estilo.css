@@ -324,7 +324,7 @@ nav.menu-lateral ul li a {
   font-weight: bold;
   transition: background 0.3s, color 0.3s;
   border-radius: 6px;
-  opacity: 0.8;
+  opacity: 0.7;
 }
 nav.menu-lateral ul li a:hover {
   background: var(--btn-bg)33;
@@ -363,6 +363,7 @@ section h2 {
   margin-bottom: 18px;    /* espaço entre parágrafos */
   /* Garantir quebras de linha corretas */
   white-space: normal;
+  text-align: justify;  
 }
 
 /* ===== Estilos para a seção Serviços (original seu, sem alterar posição) */
