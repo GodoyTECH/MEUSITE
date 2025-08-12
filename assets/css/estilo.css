@@ -680,7 +680,7 @@ form button[type="submit"]:hover {
   font-size: 20px;
   color: #fff;
   background: linear-gradient(135deg, #e1306c, #add8e6, #f77737);
-  padding: 12px;
+  padding: 20px;
   border-radius: 40%;
  
 }
