@@ -350,22 +350,21 @@ section h2 {
 
 /* ===== AJUSTES PARA A SEÇÃO SOBRE ===== */
 .sobre {
-  max-width: 700px;        /* largura confortável para leitura */
-  margin: 0 auto 40px;     /* centraliza e margem inferior */
+  /* Remove color #333 que deixava texto escuro, mantém o branco padrão do body */
+  max-width: 700px;       /* largura confortável para leitura */
+  margin: 0 auto 40px;    /* centraliza e dá margem inferior */
   padding: 0 15px;
   font-family: var(--font);
-  color: white;            /* texto claro */
-  /* para evitar quebras estranhas em telas pequenas */
-  word-wrap: break-word;
-  /* suaviza fontes para melhor leitura */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  color: white;           /* texto claro para contraste no fundo escuro */
 }
 
 .sobre p {
-  line-height: 1.6;        /* espaço entre linhas */
-  margin-bottom: 18px;     /* espaçamento entre parágrafos */
-  text-align: justify;     /* deixa o texto justificado, mais elegante */
+  line-height: 1.6;       /* altura da linha para facilitar leitura */
+  margin-bottom: 18px;    /* espaço entre parágrafos */
+  /* Garantir quebras de linha corretas */
+  white-space: normal;
+}
+
 /* ===== Estilos para a seção Serviços (original seu, sem alterar posição) */
 .servicos {
   padding: 20px 15px;
