@@ -303,9 +303,10 @@ nav.menu-lateral {
   transition: right 0.3s ease;
   z-index: 9998;
   padding: 15px 0;
+  opacity: 0.8;
 }
 nav.menu-lateral.ativo {
-  right: 0;
+  right: 1;
 }
 nav.menu-lateral ul {
   list-style: none;
@@ -325,6 +326,7 @@ nav.menu-lateral ul li a {
   font-weight: bold;
   transition: background 0.3s, color 0.3s;
   border-radius: 6px;
+  opacity: 0.8;
 }
 nav.menu-lateral ul li a:hover {
   background: var(--btn-bg)33;
