@@ -359,11 +359,12 @@ section h2 {
 }
 
 .sobre p {
-  line-height: 1.6;       /* altura da linha para facilitar leitura */
-  margin-bottom: 18px;    /* espaço entre parágrafos */
-  /* Garantir quebras de linha corretas */
+ 
   white-space: normal;
-  text-align: justify;  
+   line-height: 1.6;
+  margin-bottom: 18px;
+  text-align: justify;
+  hyphens: auto; /* melhora o espaçamento no justify */
 }
 
 /* ===== Estilos para a seção Serviços (original seu, sem alterar posição) */
