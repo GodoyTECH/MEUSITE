@@ -39,58 +39,59 @@ footer {
 
 
 
-/* 🔹 RAIOS DE LUZ */
 .light-rays {
-  position: fixed; /* fixo na tela */
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh; /* limita aos limites visíveis */
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
   pointer-events: none;
-  z-index: -4; /* atrás do conteúdo */
+  z-index: -4;
+  overflow: hidden;
 }
 
 .light-ray {
   position: absolute;
   width: 2px;
-  height: 100vh; /* altura total da viewport */
+  height: 100vh;
   background: #44D5F7;
   opacity: 0.2;
-  animation-name: moveLightRandom;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
-  animation-fill-mode: forwards;
 }
 
-/* Diferentes linhas com variações de cor, delay e duração */
+/* Cada linha tem uma animação que move vertical e horizontalmente */
 .light-ray-1 {
   background: #44D5F7;
+  animation-name: moveDiagonal1;
   animation-duration: 6s;
   animation-delay: 0s;
 }
 
 .light-ray-2 {
   background: #7A288A;
+  animation-name: moveDiagonal2;
   animation-duration: 8s;
   animation-delay: 1.5s;
 }
 
 .light-ray-3 {
   background: #44D5F7;
+  animation-name: moveDiagonal3;
   animation-duration: 7s;
   animation-delay: 0.7s;
 }
 
 .light-ray-4 {
   background: #7A288A;
+  animation-name: moveDiagonal4;
   animation-duration: 5s;
   animation-delay: 2.3s;
 }
 
-/* Animação que move verticalmente e horizontalmente com variação */
-@keyframes moveLightRandom {
+/* Animações com movimento horizontal (left) e vertical (translateY) */
+@keyframes moveDiagonal1 {
   0% {
-    transform: translate(calc(-10vw + 100vw * var(--rand-x-start)), -100vh);
+    left: 10%;
+    transform: translateY(-100vh);
     opacity: 0;
   }
   10% {
@@ -100,10 +101,69 @@ footer {
     opacity: 0.3;
   }
   100% {
-    transform: translate(calc(-10vw + 100vw * var(--rand-x-end)), 100vh);
+    left: 25%;
+    transform: translateY(100vh);
     opacity: 0;
   }
 }
+
+@keyframes moveDiagonal2 {
+  0% {
+    left: 35%;
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.3;
+  }
+  90% {
+    opacity: 0.3;
+  }
+  100% {
+    left: 45%;
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+@keyframes moveDiagonal3 {
+  0% {
+    left: 55%;
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.3;
+  }
+  90% {
+    opacity: 0.3;
+  }
+  100% {
+    left: 60%;
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+@keyframes moveDiagonal4 {
+  0% {
+    left: 75%;
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.3;
+  }
+  90% {
+    opacity: 0.3;
+  }
+  100% {
+    left: 80%;
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
 
 
 
