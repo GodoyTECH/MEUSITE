@@ -674,12 +674,12 @@ form button[type="submit"]:hover {
 /* Botão do Instagram fixo no canto superior direito */
 .instagram-fixo {
   position: fixed;
-  top: 10px;
-  left: 20px;
+  top: 0px;
+  left: 10px;
   z-index: 9999;
   font-size: 20px;
   color: #fff;
-  background: linear-gradient(135deg, #e1306c, #add8e6, #f77737);
+  background: translate;
   padding: 10px;
   border-radius: 20%;
  
