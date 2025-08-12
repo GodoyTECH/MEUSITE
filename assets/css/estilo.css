@@ -288,31 +288,48 @@ body {
   transform: scale(1.1);
 }
 
-/* ===== MENU LATERAL COMPACTO SEM FUNDO ===== */
+/* ===== MENU LATERAL COMPACTO ===== */
 nav.menu-lateral {
   position: fixed;
   top: 80px;
-  right: -220px; /* escondido inicialmente, mantém o funcionamento */
-  width: auto; /* ajusta a largura conforme o conteúdo */
-  background: transparent !important; /* remove o fundo azul escuro */
-  border-top-left-radius: 0 !important;
-  border-bottom-left-radius: 0 !important;
-  backdrop-filter: none !important;
-  box-shadow: none !important;
+  right: -220px; /* escondido inicialmente */
+  width: 200px;
+  background: transparent; /* alterado para transparente */
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  backdrop-filter: blur(8px);
+  box-shadow: -4px 0 20px rgba(0, 255, 255, 0.3);
   transition: right 0.3s ease;
   z-index: 9998;
-  padding: 0; /* remove espaçamento extra */
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  padding: 15px 0;
 }
-
 nav.menu-lateral.ativo {
   right: 0;
 }
-
 nav.menu-lateral ul {
   list-style: none;
+  padding: 0;
+  margin: 0;
+}
+nav.menu-lateral ul li {
+  width: 100%;
+}
+nav.menu-lateral ul li a {
+  display: block;
+  width: 100%;
+  padding: 15px 20px;
+  color: var(--primary);
+  text-decoration: none;
+  font-size: 1.1em;
+  font-weight: bold;
+  transition: background 0.3s, color 0.3s;
+  border-radius: 6px;
+  opacity: 0.8;
+}
+nav.menu-lateral ul li a:hover {
+  background: var(--btn-bg)33;
+  color: #ffffff;
+}
 
 
 /* ===== SEÇÕES ===== */
