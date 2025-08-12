@@ -47,27 +47,64 @@ footer {
   width: 100vw;
   height: 100vh; /* limita aos limites visíveis */
   pointer-events: none;
-  z-index: -4; /* ajustar se necessário para ficar atrás do conteúdo */
+  z-index: -4; /* atrás do conteúdo */
 }
 
 .light-ray {
   position: absolute;
   width: 2px;
-  height: 100vh; /* ocupa exatamente a altura visível */
+  height: 100vh; /* altura total da viewport */
   background: #44D5F7;
   opacity: 0.2;
-  animation: moveLight 5s linear infinite;
+  animation-name: moveLightRandom;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
 }
 
-.light-ray-1 { left: 15%; animation-delay: 0s; }
-.light-ray-2 { left: 35%; background: #7A288A; animation-delay: 1s; }
-.light-ray-3 { left: 55%; animation-delay: 2s; }
-.light-ray-4 { left: 75%; background: #7A288A; animation-delay: 3s; }
-
-@keyframes moveLight {
-  0% { transform: translateY(-100vh); }
-  100% { transform: translateY(100vh); }
+/* Diferentes linhas com variações de cor, delay e duração */
+.light-ray-1 {
+  background: #44D5F7;
+  animation-duration: 6s;
+  animation-delay: 0s;
 }
+
+.light-ray-2 {
+  background: #7A288A;
+  animation-duration: 8s;
+  animation-delay: 1.5s;
+}
+
+.light-ray-3 {
+  background: #44D5F7;
+  animation-duration: 7s;
+  animation-delay: 0.7s;
+}
+
+.light-ray-4 {
+  background: #7A288A;
+  animation-duration: 5s;
+  animation-delay: 2.3s;
+}
+
+/* Animação que move verticalmente e horizontalmente com variação */
+@keyframes moveLightRandom {
+  0% {
+    transform: translate(calc(-10vw + 100vw * var(--rand-x-start)), -100vh);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.3;
+  }
+  90% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translate(calc(-10vw + 100vw * var(--rand-x-end)), 100vh);
+    opacity: 0;
+  }
+}
+
 
 
 /* 🔹 PARTÍCULAS */
