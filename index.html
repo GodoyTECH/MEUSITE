@@ -62,7 +62,7 @@
   .mascote-container img {
     width: 100%;
     display: block;
-    opacity: 1.0; 
+    opacity: 0.8; 
   }
 
   /* Olhos brilhando */
@@ -84,35 +84,10 @@
     to { opacity: 1; box-shadow: 0 0 12px #00f0ff; }
   }
 
-  /* Plantas piscando */
-  .planta {
-    position: relative;
-    background: radial-gradient(circle, #00ff80, transparent);
-    border-radius: 40%;
-    animation: piscaPlanta 3s infinite alternate;
-  }
-  .planta.p1 { width: 30px; height: 30px; top: 500px; left: 78px; }
+ 
   
 
-  @keyframes piscaPlanta {
-    from { opacity: 0.3; }
-    to { opacity: 1; box-shadow: 0 0 10px #00ff80; }
-  }
-/* Feixe de luz percorrendo o corpo */
-  .feixe {
-    position: absolute;
-    width: 4px;
-    height: 100%;
-    background: linear-gradient(to bottom, transparent, #00f0ff, transparent);
-    animation: percorreCorpo 4s infinite linear;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  @keyframes percorreCorpo {
-    0% { top: -100%; }
-    100% { top: 100%; }
-  }
+    
 
 
 
