@@ -677,7 +677,7 @@ form button[type="submit"]:hover {
   top: 10px;
   left: 20px;
   z-index: 9999;
-  font-size: 15px;
+  font-size: 20px;
   color: #fff;
   background: linear-gradient(135deg, #e1306c, #add8e6, #f77737);
   padding: 12px;
