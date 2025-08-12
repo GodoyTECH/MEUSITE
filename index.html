@@ -54,8 +54,8 @@
 
   /* 🔹 Mascote animado */
   .mascote-container {
-    position: relative;
-    width: 400px;
+    position: center;
+    width: 350px;
     margin: 40px auto;
   }
 
@@ -72,7 +72,7 @@
     height: 10px;
     background: radial-gradient(circle, #00f0ff, transparent);
     border-radius: 40%;
-    animation: brilhoOlho 1.0s infinite alternate;
+    animation: brilhoOlho 0.2s infinite alternate;
   }
 
   /* Exemplo: ajuste manual da posição conforme a imagem final */
@@ -96,24 +96,11 @@
 
   @keyframes piscaPlanta {
     from { opacity: 0.3; }
-    to { opacity: 1; box-shadow: 0 0 15px #00ff80; }
+    to { opacity: 1; box-shadow: 0 0 10px #00ff80; }
   }
 
-  /* Feixe de luz percorrendo o corpo */
-  .feixe {
-    position: absolute;
-    width: 4px;
-    height: 100%;
-    background: linear-gradient(to bottom, transparent, #00f0ff, transparent);
-    animation: percorreCorpo 4s infinite linear;
-    left: 50%;
-    transform: translateX(-50%);
-  }
 
-  @keyframes percorreCorpo {
-    0% { top: -100%; }
-    100% { top: 100%; }
-  }
+
 </style>
 </head>
 <body>
@@ -144,7 +131,7 @@
 </div>
 
 <!-- Botão flutuante do menu -->
-<button class="menu-toggle">Menu</button>
+<button class="menu-toggle">=</button>
 
 <!-- Menu lateral -->
 <nav class="menu-lateral" id="menuLateral">
