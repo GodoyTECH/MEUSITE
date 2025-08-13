@@ -22,7 +22,6 @@
 <meta name="twitter:image" content="https://godoysoluintech.netlify.app/assets/images/logo.jpeg" />
 
 <script src="https://kit.fontawesome.com/7ab7dab519.js" crossorigin="anonymous"></script>
-
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;900&display=swap" rel="stylesheet">
 
 <style>
@@ -39,10 +38,10 @@ body {
 .video-box {
   max-width: 720px;
   margin: 30px auto;
-  padding: 5px;
+  padding: 10px;
   border: 2px solid #00f0ff;
-  border-radius: 5px;
-  box-shadow: 0 0 10px #00f0ff88;
+  border-radius: 20px;
+  box-shadow: 0 0 20px #00f0ff88;
   background-color: #000000cc;
   backdrop-filter: blur(8px);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
@@ -58,7 +57,7 @@ body {
   align-items: center;
   justify-content: center;
   margin: 40px auto;
-  max-width: 300px; /* limite máximo */
+  max-width: 300px; 
   width: 90%;
 }
 .mascote-container img {
@@ -75,38 +74,30 @@ body {
   border-radius: 40%;
   animation: brilhoOlho 0.2s infinite alternate;
 }
-.olho.esquerdo { top: 20%; left: 40%; }
+.olho.esquerdo { top: 30%; left: 40%; }
 .olho.direito { top: 30%; left: 60%; }
 
 @keyframes brilhoOlho { from { opacity: 0.1; } to { opacity: 1; box-shadow: 0 0 12px #00f0ff; } }
 
-/* Título centralizado e responsivo */
+/* Título transparente com contorno */
 #tituloMascote {
-  font-size: 4vw;              /* tamanho da fonte proporcional à largura da tela */
+  font-size: clamp(24px, 5vw, 40px);
   font-weight: 900;
   font-family: 'Orbitron', sans-serif;
   color: transparent;
   -webkit-text-stroke: 1px #00f0ff;
   text-shadow: 0 0 15px #00f0ff, 0 0 30px #00f0ff;
-  background-clip: text;
-  -webkit-background-clip: text;
-  margin-top: 8px;             /* logo abaixo do mascote */
+  margin-top: 15px;
   position: relative;
   z-index: 5;
   text-align: center;
-  white-space: nowrap;          /* força o texto em uma linha */
-}
-
-#cometaCanvas {
-  position: fixed;
-  top: 0; left: 0;
-  pointer-events: none;
-  z-index: 10;
+  white-space: nowrap; /* força em uma linha só */
+  display: inline-block;
+  min-width: 100%;
 }
 </style>
 </head>
 <body>
-<canvas id="cometaCanvas"></canvas>
 
 <div id="background-scene">
   <div class="overlay-lights"></div>
@@ -174,132 +165,54 @@ function toggleMenu() {
   const menu = document.getElementById('menuLateral');
   if (menu) menu.classList.toggle('ativo');
 }
-</script>
 
-<script>
-const canvas = document.getElementById('cometaCanvas');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+// --- Animação de letras do título ---
+const tituloEl = document.getElementById('tituloMascote');
+const textoTitulo = "Godoy Soluções em TECH";
 
-class Cometa {
-  constructor(destX,destY){
-    this.x=Math.random()*canvas.width;
-    this.y=-50;
-    this.destX=destX;
-    this.destY=destY;
-    const dx=destX-this.x;
-    const dy=destY-this.y;
-    const dist=Math.sqrt(dx*dx+dy*dy);
-    this.velX=dx/(dist/10);
-    this.velY=dy/(dist/10);
-    this.trail=[];
-    this.maxTrail=20;
-  }
-  update(){
-    this.trail.push({x:this.x,y:this.y,alpha:1});
-    if(this.trail.length>this.maxTrail) this.trail.shift();
-    this.x+=this.velX;
-    this.y+=this.velY;
-    this.trail.forEach(p=>p.alpha*=0.95);
-  }
-  draw(){
-    for(let i=0;i<this.trail.length;i++){
-      const p=this.trail[i];
-      ctx.beginPath();
-      ctx.fillStyle=`rgba(0,240,255,${p.alpha})`;
-      ctx.arc(p.x,p.y,4*p.alpha,0,Math.PI*2);
-      ctx.fill();
-    }
-    ctx.fillStyle="#00f0ff";
-    ctx.beginPath();
-    ctx.arc(this.x,this.y,5,0,Math.PI*2);
-    ctx.fill();
-  }
-}
-
-let cometa;
-let tituloMostrado=false;
-const tituloEl=document.getElementById('tituloMascote');
-const VELOCIDADE_LETRAS=0.03;
-const OPACIDADE_INCREMENTO=0.02;
-
-// Função retorna posição do título **logo abaixo do mascote**
-function getTituloCentro(){
-  const rect=document.querySelector('.mascote-container').getBoundingClientRect();
-  return {x:rect.left+rect.width/2, y:rect.bottom + 10 + window.scrollY};
-}
-
-function animar(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  if(cometa){
-    cometa.update();
-    cometa.draw();
-    const centro=getTituloCentro();
-    if(!tituloMostrado && Math.abs(cometa.x-centro.x)<10 && Math.abs(cometa.y-centro.y)<10){
-      explodeLetras("Godoy Soluções em TECH");
-      tituloMostrado=true;
-    }
-  }
-  requestAnimationFrame(animar);
-}
-
-function spawnCometa(){ 
-  const centro=getTituloCentro();
-  cometa=new Cometa(centro.x,centro.y); 
-}
-
-// Animação das letras
-function explodeLetras(texto){
-  const letras=[];
-  const centro=getTituloCentro();
-  tituloEl.textContent=""; // Limpa título antes de criar spans
-  for(let i=0;i<texto.length;i++){
-    const span=document.createElement('span');
-    span.textContent=texto[i];
-    span.style.position="absolute";
-    span.style.color="#00f0ff";
-    span.style.fontFamily="'Orbitron', sans-serif";
-    span.style.fontWeight="900";
-    span.style.fontSize=clampFontSize()+"px";
-    span.style.left=(Math.random()*canvas.width)+"px";
-    span.style.top=(Math.random()*canvas.height + window.scrollY)+"px";
-    span.style.opacity=0;
+function animarLetras() {
+  tituloEl.textContent = ""; // limpa antes de animar
+  const letras = [];
+  for(let i=0;i<textoTitulo.length;i++){
+    const span = document.createElement('span');
+    span.textContent = textoTitulo[i];
+    span.style.position = "absolute";
+    span.style.left = Math.random()*window.innerWidth + "px"; 
+    span.style.top = Math.random()*window.innerHeight + "px";
+    span.style.opacity = 0;
+    span.style.color = "#00f0ff";
+    span.style.fontFamily = "'Orbitron', sans-serif";
+    span.style.fontWeight = "900";
+    span.style.fontSize = "4vw";
     document.body.appendChild(span);
-    letras.push({element:span, destX:centro.x-(texto.length*12)+i*24, destY:centro.y});
+    letras.push({element: span, destX: tituloEl.getBoundingClientRect().left + i*24, destY: tituloEl.getBoundingClientRect().top});
   }
 
-  function animarLetras(){
-    let completo=true;
+  function moverLetras(){
+    let completo = true;
     letras.forEach(l=>{
-      const x=parseFloat(l.element.style.left);
-      const y=parseFloat(l.element.style.top);
-      const dx=(l.destX-x)*VELOCIDADE_LETRAS;
-      const dy=(l.destY-y)*VELOCIDADE_LETRAS;
+      const x = parseFloat(l.element.style.left);
+      const y = parseFloat(l.element.style.top);
+      const dx = (l.destX-x)*0.05;
+      const dy = (l.destY-y)*0.05;
       if(Math.abs(dx)>0.5||Math.abs(dy)>0.5) completo=false;
-      l.element.style.left=(x+dx)+"px";
-      l.element.style.top=(y+dy)+"px";
-      l.element.style.opacity=Math.min(1,parseFloat(l.element.style.opacity)+OPACIDADE_INCREMENTO);
+      l.element.style.left = x+dx + "px";
+      l.element.style.top = y+dy + "px";
+      l.element.style.opacity = Math.min(1, parseFloat(l.element.style.opacity)+0.02);
     });
-    if(!completo) requestAnimationFrame(animarLetras);
-    else{
-      tituloEl.textContent=texto; // **título final permanece visível**
+    if(!completo) requestAnimationFrame(moverLetras);
+    else {
+      tituloEl.textContent = textoTitulo; // título final permanece
       letras.forEach(l=>l.element.remove());
     }
   }
-  animarLetras();
+  moverLetras();
 }
 
-function clampFontSize(){ return Math.max(24,Math.min(window.innerWidth/20,40)); }
-
-spawnCometa();
-animar();
-
-window.addEventListener('resize',()=>{
-  canvas.width=window.innerWidth;
-  canvas.height=window.innerHeight;
-});
+window.addEventListener("load", animarLetras);
+window.addEventListener('resize', ()=>{ /* reajusta posições se a tela mudar */ });
 </script>
 
 </body>
 </html>
+
