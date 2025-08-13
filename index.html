@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -40,6 +39,7 @@ body {
   align-items: center;
 }
 
+/* Video box */
 .video-box {
   max-width: 720px;
   margin: 30px auto;
@@ -54,7 +54,7 @@ body {
 .video-box:hover { transform: scale(1.02); box-shadow: 0 0 30px #00f0ffcc; }
 .video-box video { width: 100%; border-radius: 12px; opacity:0.5; }
 
-/* Mascote centralizado */
+/* Mascote centralizado e responsivo */
 .mascote-container {
   position: relative;
   display: flex;
@@ -62,10 +62,10 @@ body {
   align-items: center;
   justify-content: center;
   margin: 40px auto;
+  max-width: 90%;
 }
 .mascote-container img {
-  max-width: 80%;
-  width: 400px;
+  max-width: 100%;
   height: auto;
   display: block;
   opacity: 0.8;
@@ -78,12 +78,14 @@ body {
   border-radius: 40%;
   animation: brilhoOlho 0.2s infinite alternate;
 }
-.olho.esquerdo { top: 122px; left: 40%; }
+.olho.esquerdo { top: 30%; left: 40%; }
+.olho.direito { top: 30%; left: 60%; }
 
 @keyframes brilhoOlho { from { opacity: 0.1; } to { opacity: 1; box-shadow: 0 0 12px #00f0ff; } }
 
+/* Título centralizado e responsivo */
 #tituloMascote {
-  font-size: 40px;
+  font-size: clamp(24px, 5vw, 48px); /* ajusta automaticamente entre 24 e 48px */
   font-weight: 900;
   font-family: 'Orbitron', sans-serif;
   color: transparent;
@@ -94,6 +96,7 @@ body {
   margin-top: 20px;
   position: relative;
   z-index: 5;
+  text-align: center;
 }
 
 #cometaCanvas {
@@ -180,87 +183,75 @@ function toggleMenu() {
 }
 </script>
 
+<!-- Script do cometa e título com animação de letras -->
 <script>
 const canvas = document.getElementById('cometaCanvas');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-class Particula {
-  constructor(x,y,dx,dy,color,size){
-    this.x=x; this.y=y; this.dx=dx; this.dy=dy;
-    this.color=color; this.size=size; this.alpha=1;
-  }
-  update(){ this.x+=this.dx; this.y+=this.dy; this.alpha*=0.95; }
-  draw(){
-    ctx.beginPath();
-    ctx.fillStyle=`rgba(${this.color},${this.alpha})`;
-    ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
-    ctx.fill();
-  }
-}
-
 class Cometa {
   constructor(destX,destY){
-    this.x=Math.random()*canvas.width; this.y=-50;
-    this.destX=destX; this.destY=destY;
-    const dx=destX-this.x; const dy=destY-this.y;
+    this.x=Math.random()*canvas.width;
+    this.y=-50;
+    this.destX=destX;
+    this.destY=destY;
+    const dx=destX-this.x;
+    const dy=destY-this.y;
     const dist=Math.sqrt(dx*dx+dy*dy);
-    this.velX=dx/(dist/15); this.velY=dy/(dist/15);
-    this.trail=[]; this.maxTrail=25;
+    this.velX=dx/(dist/10);
+    this.velY=dy/(dist/10);
+    this.trail=[];
+    this.maxTrail=20;
   }
   update(){
     this.trail.push({x:this.x,y:this.y,alpha:1});
     if(this.trail.length>this.maxTrail) this.trail.shift();
-    this.x+=this.velX; this.y+=this.velY;
-    this.trail.forEach(p=>p.alpha*=0.9);
+    this.x+=this.velX;
+    this.y+=this.velY;
+    this.trail.forEach(p=>p.alpha*=0.95);
   }
   draw(){
-    for(let p of this.trail){
+    for(let i=0;i<this.trail.length;i++){
+      const p=this.trail[i];
       ctx.beginPath();
       ctx.fillStyle=`rgba(0,240,255,${p.alpha})`;
-      ctx.arc(p.x,p.y,4*p.alpha,0,Math.PI*2); ctx.fill();
+      ctx.arc(p.x,p.y,4*p.alpha,0,Math.PI*2);
+      ctx.fill();
     }
     ctx.fillStyle="#00f0ff";
-    ctx.beginPath(); ctx.arc(this.x,this.y,5,0,Math.PI*2); ctx.fill();
+    ctx.beginPath();
+    ctx.arc(this.x,this.y,5,0,Math.PI*2);
+    ctx.fill();
   }
 }
 
 let cometa;
-let tituloEl=document.getElementById('tituloMascote');
 let tituloMostrado=false;
-let explosaoParticulas=[];
-
+const tituloEl=document.getElementById('tituloMascote');
 function getTituloCentro(){
-  const rect=tituloEl.getBoundingClientRect();
+  const rect=document.querySelector('.mascote-container').getBoundingClientRect();
   return {x:rect.left+rect.width/2, y:rect.top+rect.height/2};
 }
 
 function animar(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
   if(cometa){
-    cometa.update(); cometa.draw();
-    if(!tituloMostrado){
-      const centro=getTituloCentro();
-      const dx=cometa.x-centro.x;
-      const dy=cometa.y-centro.y;
-      const dist=Math.sqrt(dx*dx+dy*dy);
-      if(dist<6){
-        cometa.velX=0; cometa.velY=0;
-        explodeLetras("Godoy Soluções em TECH");
-        tituloMostrado=true;
-      }
+    cometa.update();
+    cometa.draw();
+    if(!tituloMostrado && Math.abs(cometa.x-getTituloCentro().x)<10 && Math.abs(cometa.y-getTituloCentro().y)<10){
+      explodeLetras("Godoy Soluções em TECH");
+      tituloMostrado=true;
     }
   }
-  explosaoParticulas.forEach(p=>{p.update();p.draw();});
-  explosaoParticulas=explosaoParticulas.filter(p=>p.alpha>0.02);
   requestAnimationFrame(animar);
 }
 
-function spawnCometa(){
-  const centro=getTituloCentro();
-  cometa=new Cometa(centro.x,centro.y);
-}
+function spawnCometa(){ cometa=new Cometa(getTituloCentro().x,getTituloCentro().y); }
+
+const VELOCIDADE_LETRAS=0.03;
+const OPACIDADE_INCREMENTO=0.02;
+let explosaoParticulas=[];
 
 function explodeLetras(texto){
   const letras=[];
@@ -272,16 +263,12 @@ function explodeLetras(texto){
     span.style.color="#00f0ff";
     span.style.fontFamily="'Orbitron', sans-serif";
     span.style.fontWeight="900";
-    span.style.fontSize="40px";
+    span.style.fontSize=clampFontSize()+"px";
     span.style.left=(Math.random()*canvas.width)+"px";
     span.style.top=(Math.random()*canvas.height)+"px";
     span.style.opacity=0;
     document.body.appendChild(span);
-    letras.push({element:span,destX:centro.x-(texto.length*12)+i*24,destY:centro.y});
-    // partículas
-    for(let j=0;j<20;j++){
-      explosaoParticulas.push(new Particula(centro.x,centro.y,(Math.random()-0.5)*12,(Math.random()-0.5)*12,"0,255,255",2));
-    }
+    letras.push({element:span, destX:centro.x-(texto.length*12)+i*24, destY:centro.y});
   }
 
   function animarLetras(){
@@ -289,12 +276,12 @@ function explodeLetras(texto){
     letras.forEach(l=>{
       const x=parseFloat(l.element.style.left);
       const y=parseFloat(l.element.style.top);
-      const dx=(l.destX-x)*0.08;
-      const dy=(l.destY-y)*0.08;
+      const dx=(l.destX-x)*VELOCIDADE_LETRAS;
+      const dy=(l.destY-y)*VELOCIDADE_LETRAS;
       if(Math.abs(dx)>0.5||Math.abs(dy)>0.5) completo=false;
       l.element.style.left=(x+dx)+"px";
       l.element.style.top=(y+dy)+"px";
-      l.element.style.opacity=Math.min(1,parseFloat(l.element.style.opacity)+0.05);
+      l.element.style.opacity=Math.min(1,parseFloat(l.element.style.opacity)+OPACIDADE_INCREMENTO);
     });
     if(!completo) requestAnimationFrame(animarLetras);
     else{
@@ -305,8 +292,17 @@ function explodeLetras(texto){
   animarLetras();
 }
 
+// Ajusta tamanho da fonte responsivamente
+function clampFontSize(){ return Math.max(24,Math.min(window.innerWidth/20,48)); }
+
 spawnCometa();
 animar();
+
+// Atualiza canvas ao redimensionar
+window.addEventListener('resize',()=>{
+  canvas.width=window.innerWidth;
+  canvas.height=window.innerHeight;
+});
 </script>
 
 </body>
