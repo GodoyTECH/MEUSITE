@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -32,77 +31,77 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;900&display=swap" rel="stylesheet">
 
 <style>
-  body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  .video-box {
-    max-width: 720px;
-    margin: 30px auto;
-    padding: 10px;
-    border: 2px solid #00f0ff;
-    border-radius: 20px;
-    box-shadow: 0 0 20px #00f0ff88;
-    background-color: #000000cc;
-    backdrop-filter: blur(8px);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-  }
-  .video-box:hover { transform: scale(1.02); box-shadow: 0 0 30px #00f0ffcc; }
-  .video-box video { width: 100%; border-radius: 12px; opacity:0.5; }
+.video-box {
+  max-width: 720px;
+  margin: 30px auto;
+  padding: 10px;
+  border: 2px solid #00f0ff;
+  border-radius: 20px;
+  box-shadow: 0 0 20px #00f0ff88;
+  background-color: #000000cc;
+  backdrop-filter: blur(8px);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.video-box:hover { transform: scale(1.02); box-shadow: 0 0 30px #00f0ffcc; }
+.video-box video { width: 100%; border-radius: 12px; opacity:0.5; }
 
-  /* Mascote centralizado */
-  .mascote-container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 40px auto;
-  }
-  .mascote-container img {
-    max-width: 80%;
-    width: 400px;
-    height: auto;
-    display: block;
-    opacity: 0.8;
-  }
+/* Mascote centralizado */
+.mascote-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 40px auto;
+}
+.mascote-container img {
+  max-width: 80%;
+  width: 400px;
+  height: auto;
+  display: block;
+  opacity: 0.8;
+}
 
-  .olho {
-    position: absolute;
-    width: 10px; height: 10px;
-    background: radial-gradient(circle, #00f0ff, transparent);
-    border-radius: 40%;
-    animation: brilhoOlho 0.2s infinite alternate;
-  }
-  .olho.esquerdo { top: 122px; left: 40%; } 
+.olho {
+  position: absolute;
+  width: 10px; height: 10px;
+  background: radial-gradient(circle, #00f0ff, transparent);
+  border-radius: 40%;
+  animation: brilhoOlho 0.2s infinite alternate;
+}
+.olho.esquerdo { top: 122px; left: 40%; }
 
-  @keyframes brilhoOlho { from { opacity: 0.1; } to { opacity: 1; box-shadow: 0 0 12px #00f0ff; } }
+@keyframes brilhoOlho { from { opacity: 0.1; } to { opacity: 1; box-shadow: 0 0 12px #00f0ff; } }
 
-  #tituloMascote {
-    font-size: 40px;
-    font-weight: 900;
-    font-family: 'Orbitron', sans-serif;
-    color: transparent;
-    -webkit-text-stroke: 1px #00f0ff;
-    text-shadow: 0 0 15px #00f0ff, 0 0 30px #00f0ff;
-    background-clip: text;
-    -webkit-background-clip: text;
-    margin-top: 20px;
-    position: relative;
-    z-index: 5;
-  }
+#tituloMascote {
+  font-size: 40px;
+  font-weight: 900;
+  font-family: 'Orbitron', sans-serif;
+  color: transparent;
+  -webkit-text-stroke: 1px #00f0ff;
+  text-shadow: 0 0 15px #00f0ff, 0 0 30px #00f0ff;
+  background-clip: text;
+  -webkit-background-clip: text;
+  margin-top: 20px;
+  position: relative;
+  z-index: 5;
+}
 
-  #cometaCanvas {
-    position: fixed;
-    top: 0; left: 0;
-    pointer-events: none;
-    z-index: 10;
-  }
+#cometaCanvas {
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 10;
+}
 </style>
 </head>
 <body>
@@ -175,10 +174,10 @@
 
 <script src="assets/js/main.js"></script>
 <script>
-  function toggleMenu() {
-    const menu = document.getElementById('menuLateral');
-    if (menu) { menu.classList.toggle('ativo'); }
-  }
+function toggleMenu() {
+  const menu = document.getElementById('menuLateral');
+  if (menu) menu.classList.toggle('ativo');
+}
 </script>
 
 <script>
@@ -192,7 +191,7 @@ class Particula {
     this.x=x; this.y=y; this.dx=dx; this.dy=dy;
     this.color=color; this.size=size; this.alpha=1;
   }
-  update(){ this.x+=this.dx; this.y+=this.dy; this.alpha*=0.96; }
+  update(){ this.x+=this.dx; this.y+=this.dy; this.alpha*=0.95; }
   draw(){
     ctx.beginPath();
     ctx.fillStyle=`rgba(${this.color},${this.alpha})`;
@@ -207,14 +206,14 @@ class Cometa {
     this.destX=destX; this.destY=destY;
     const dx=destX-this.x; const dy=destY-this.y;
     const dist=Math.sqrt(dx*dx+dy*dy);
-    this.velX=dx/(dist/10); this.velY=dy/(dist/10);
-    this.trail=[]; this.maxTrail=20;
+    this.velX=dx/(dist/15); this.velY=dy/(dist/15);
+    this.trail=[]; this.maxTrail=25;
   }
   update(){
     this.trail.push({x:this.x,y:this.y,alpha:1});
     if(this.trail.length>this.maxTrail) this.trail.shift();
     this.x+=this.velX; this.y+=this.velY;
-    this.trail.forEach(p=>p.alpha*=0.95);
+    this.trail.forEach(p=>p.alpha*=0.9);
   }
   draw(){
     for(let p of this.trail){
@@ -228,41 +227,44 @@ class Cometa {
 }
 
 let cometa;
+let tituloEl=document.getElementById('tituloMascote');
 let tituloMostrado=false;
-const tituloEl=document.getElementById('tituloMascote');
-const rect=tituloEl.getBoundingClientRect();
-const scrollTop=window.scrollY||window.pageYOffset;
-const scrollLeft=window.scrollX||window.pageXOffset;
-const tituloX=rect.left+rect.width/2+scrollLeft;
-const tituloY=rect.top+rect.height/2+scrollTop;
-
 let explosaoParticulas=[];
+
+function getTituloCentro(){
+  const rect=tituloEl.getBoundingClientRect();
+  return {x:rect.left+rect.width/2, y:rect.top+rect.height/2};
+}
 
 function animar(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
   if(cometa){
     cometa.update(); cometa.draw();
     if(!tituloMostrado){
-      const dx=cometa.x-tituloX; const dy=cometa.y-tituloY;
-      const distancia=Math.sqrt(dx*dx+dy*dy);
-      if(distancia<5){
+      const centro=getTituloCentro();
+      const dx=cometa.x-centro.x;
+      const dy=cometa.y-centro.y;
+      const dist=Math.sqrt(dx*dx+dy*dy);
+      if(dist<6){
         cometa.velX=0; cometa.velY=0;
         explodeLetras("Godoy Soluções em TECH");
         tituloMostrado=true;
       }
     }
   }
-  explosaoParticulas.forEach(p=>{
-    p.update(); p.draw();
-  });
+  explosaoParticulas.forEach(p=>{p.update();p.draw();});
   explosaoParticulas=explosaoParticulas.filter(p=>p.alpha>0.02);
   requestAnimationFrame(animar);
 }
 
-function spawnCometa(){ cometa=new Cometa(tituloX,tituloY); }
+function spawnCometa(){
+  const centro=getTituloCentro();
+  cometa=new Cometa(centro.x,centro.y);
+}
 
 function explodeLetras(texto){
   const letras=[];
+  const centro=getTituloCentro();
   for(let i=0;i<texto.length;i++){
     const span=document.createElement('span');
     span.textContent=texto[i];
@@ -271,15 +273,14 @@ function explodeLetras(texto){
     span.style.fontFamily="'Orbitron', sans-serif";
     span.style.fontWeight="900";
     span.style.fontSize="40px";
-    span.style.left=(tituloX)+"px";
-    span.style.top=(tituloY)+"px";
+    span.style.left=(Math.random()*canvas.width)+"px";
+    span.style.top=(Math.random()*canvas.height)+"px";
     span.style.opacity=0;
     document.body.appendChild(span);
-    letras.push({element:span,destX:tituloX+i*24-(texto.length*12),destY:tituloY});
-    // inicializa partículas ao redor do ponto
-    for(let j=0;j<15;j++){
-      explosaoParticulas.push(new Particula(tituloX,tituloY,
-        (Math.random()-0.5)*10,(Math.random()-0.5)*10,"0,255,255",2));
+    letras.push({element:span,destX:centro.x-(texto.length*12)+i*24,destY:centro.y});
+    // partículas
+    for(let j=0;j<20;j++){
+      explosaoParticulas.push(new Particula(centro.x,centro.y,(Math.random()-0.5)*12,(Math.random()-0.5)*12,"0,255,255",2));
     }
   }
 
@@ -288,9 +289,11 @@ function explodeLetras(texto){
     letras.forEach(l=>{
       const x=parseFloat(l.element.style.left);
       const y=parseFloat(l.element.style.top);
-      const dx=(l.destX-x)*0.1; const dy=(l.destY-y)*0.1;
+      const dx=(l.destX-x)*0.08;
+      const dy=(l.destY-y)*0.08;
       if(Math.abs(dx)>0.5||Math.abs(dy)>0.5) completo=false;
-      l.element.style.left=(x+dx)+"px"; l.element.style.top=(y+dy)+"px";
+      l.element.style.left=(x+dx)+"px";
+      l.element.style.top=(y+dy)+"px";
       l.element.style.opacity=Math.min(1,parseFloat(l.element.style.opacity)+0.05);
     });
     if(!completo) requestAnimationFrame(animarLetras);
