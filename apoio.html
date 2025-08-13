@@ -80,6 +80,225 @@
       background: var(--btn-hover);
     }
 
+    /* Comentários e respostas */
+    .comentario {
+      background: #111;
+      border: 1px solid #00f0ff44;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+    }
+    .resposta {
+      background: #0a0a0a;
+      border-left: 3px solid #00f0ff;
+      margin-top: 10px;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+    .responder-form {
+      margin-top: 10px;
+    }
+    .responder-btn {
+      background: #00f0ff;
+      color: #001d2e;
+      padding: 5px 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 🔹 Fundo animado -->
+  <div id="background-scene">
+    <div class="robots-bg"></div>
+    <div class="overlay-lights"></div>
+    <div class="particles">
+      <div class="particle particle-1"></div>
+      <div class="particle particle-2"></div>
+      <div class="particle particle-3"></div>
+    </div>
+    <div class="light-rays">
+      <div class="light-ray light-ray-1"></div>
+      <div class="light-ray light-ray-2"></div>
+      <div class="light-ray light-ray-3"></div>
+      <div class="light-ray light-ray-4"></div>
+    </div>
+  </div>
+
+  <!-- Botão e menu lateral -->
+  <button class="menu-toggle" aria-label="Abrir menu">&#9776;</button>
+  <nav class="menu-lateral" id="menuLateral">
+    <ul>
+      <li><a href="index.html">Início</a></li>
+      <li><a href="contato.html">Contato</a></li>
+      <li><a href="noticias.html">Notícias</a></li>
+      <li><a href="apoio.html">Apoio</a></li>
+      <li><a href="softwares.html">Softwares</a></li>
+    </ul>
+  </nav>
+
+  <!-- Conteúdo principal -->
+  <main>
+    <section class="sobre">
+      <h2 style="margin-top: 60px;">Apoie nosso trabalho</h2>
+      <p>Escaneie o QR Code do Pix e Deixe sua Mensagem</p>
+      <img src="assets/images/apoio.jpeg" alt="QR Code Pix" class="apoio-img"/>
+
+      <!-- Formulário -->
+      <div class="form-container">
+        <h3>Deixe Aqui Sua Mensagem</h3>
+        <form id="apoio-form">
+          <div class="form-group">
+            <label for="nome">Nome (ou @)</label>
+            <input type="text" id="nome" name="nome" required>
+          </div>
+          <div class="form-group">
+            <label for="valor">Valor do Apoio (R$)</label>
+            <input type="number" id="valor" name="valor" required>
+          </div>
+          <div class="form-group">
+            <label for="mensagem">Mensagem </label>
+            <textarea id="mensagem" name="mensagem" rows="3"></textarea>
+          </div>
+          <div class="form-submit">
+            <button type="submit">Enviar</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Caixa de comentários -->
+      <div id="comentarios-container" class="form-container" style="margin-top:20px;">
+        <h3>Mensagens de Apoio</h3>
+        <div id="lista-comentarios"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 Godoy Solutions in TECH • Desenvolvido por Caíque Eduardo
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/main.js"></script>
+  <script>
+    window.addEventListener("DOMContentLoaded", carregarComentarios);
+
+    function salvarNoLocalStorage(lista) {
+      localStorage.setItem("comentarios", JSON.stringify(lista));
+    }
+
+    function carregarComentarios() {
+      const lista = JSON.parse(localStorage.getItem("comentarios")) || [];
+      lista.forEach(adicionarComentarioNaPagina);
+    }
+
+    function adicionarComentarioNaPagina(comentario) {
+      const comentarioDiv = document.createElement("div");
+      comentarioDiv.classList.add("comentario");
+      comentarioDiv.innerHTML = `
+        <p><strong>${comentario.nome}</strong> apoiou com R$ ${parseFloat(comentario.valor).toFixed(2)}</p>
+        <p>${comentario.mensagem}</p>
+        <button class="responder-btn">Responder</button>
+        <div class="respostas"></div>
+        <div class="responder-form" style="display:none;">
+          <div class="form-group">
+            <label>Resposta:</label>
+            <textarea class="resposta-texto" rows="2"></textarea>
+          </div>
+          <div class="form-submit">
+            <button class="enviar-resposta">Enviar Resposta</button>
+          </div>
+        </div>
+      `;
+
+      // Adicionar respostas existentes
+      if (comentario.respostas) {
+        comentario.respostas.forEach(resposta => {
+          const respostaDiv = document.createElement("div");
+          respostaDiv.classList.add("resposta");
+          respostaDiv.innerHTML = `<p><strong>Resposta:</strong> ${resposta}</p>`;
+          comentarioDiv.querySelector(".respostas").appendChild(respostaDiv);
+        });
+      }
+
+      // Mostrar/ocultar formulário de resposta
+      comentarioDiv.querySelector(".responder-btn").addEventListener("click", function() {
+        const formResposta = comentarioDiv.querySelector(".responder-form");
+        formResposta.style.display = formResposta.style.display === "none" ? "block" : "none";
+      });
+
+      // Enviar resposta
+      comentarioDiv.querySelector(".enviar-resposta").addEventListener("click", function() {
+        const respostaTexto = comentarioDiv.querySelector(".resposta-texto").value;
+        if (respostaTexto.trim() !== "") {
+          const respostaDiv = document.createElement("div");
+          respostaDiv.classList.add("resposta");
+          respostaDiv.innerHTML = `<p><strong>Resposta:</strong> ${respostaTexto}</p>`;
+          comentarioDiv.querySelector(".respostas").appendChild(respostaDiv);
+
+          const lista = JSON.parse(localStorage.getItem("comentarios")) || [];
+          const index = lista.findIndex(c =>
+            c.nome === comentario.nome &&
+            c.valor === comentario.valor &&
+            c.mensagem === comentario.mensagem
+          );
+          if (index !== -1) {
+            lista[index].respostas.push(respostaTexto);
+            salvarNoLocalStorage(lista);
+          }
+          comentarioDiv.querySelector(".resposta-texto").value = "";
+        }
+      });
+
+      document.getElementById("lista-comentarios").appendChild(comentarioDiv);
+    }
+
+    document.getElementById("apoio-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const nome = document.getElementById("nome").value;
+      const valor = document.getElementById("valor").value;
+      const mensagem = document.getElementById("mensagem").value;
+
+      const novoComentario = {
+        nome: nome,
+        valor: valor,
+        mensagem: mensagem,
+        respostas: []
+      };
+
+      adicionarComentarioNaPagina(novoComentario);
+
+      const lista = JSON.parse(localStorage.getItem("comentarios")) || [];
+      lista.push(novoComentario);
+      salvarNoLocalStorage(lista);
+
+      document.getElementById("apoio-form").reset();
+    });
+  </script>
+</body>
+</html>
+    .form-submit {
+      text-align: center;
+    }
+    .form-submit button {
+      background: var(--btn-bg);
+      color: #001d2e;
+      font-weight: bold;
+      padding: 12px 30px;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s ease;
+      font-size: 1em;
+    }
+    .form-submit button:hover {
+      background: var(--btn-hover);
+    }
+
     /* Estilo dos comentários */
     .comentario {
       background: #111;
