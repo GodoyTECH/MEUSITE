@@ -2,7 +2,6 @@
 <html lang="pt-BR">
 <head>
 
-<!-- Ícones do Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="assets/css/estilo.css">
   
@@ -11,11 +10,9 @@
 <title>Godoy Solutions in TECH</title>
 <link rel="stylesheet" href="assets/css/estilo.css"/>
 
-<!-- Ícone da aba -->
 <link rel="icon" type="image/png" href="assets/images/logoicon.png" />
 <link rel="apple-touch-icon" href="assets/images/logoicon.png" />
 
-<!-- Compartilhamento redes sociais -->
 <meta property="og:title" content="Godoy Solutions in TECH" />
 <meta property="og:description" content="Tecnologia com propósito, soluções com personalidade." />
 <meta property="og:image" content="https://godoysoluintech.netlify.app/assets/images/logo.jpeg" />
@@ -26,7 +23,6 @@
 
 <script src="https://kit.fontawesome.com/7ab7dab519.js" crossorigin="anonymous"></script>
 
-<!-- Fonte futurista -->
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;900&display=swap" rel="stylesheet">
 
 <style>
@@ -62,7 +58,8 @@ body {
   align-items: center;
   justify-content: center;
   margin: 40px auto;
-  max-width: 90%;
+  max-width: 300px; /* limite máximo */
+  width: 90%;
 }
 .mascote-container img {
   max-width: 100%;
@@ -85,7 +82,7 @@ body {
 
 /* Título centralizado e responsivo */
 #tituloMascote {
-  font-size: clamp(24px, 5vw, 48px); /* ajusta automaticamente entre 24 e 48px */
+  font-size: clamp(24px, 5vw, 40px); /* menor máximo para não cortar */
   font-weight: 900;
   font-family: 'Orbitron', sans-serif;
   color: transparent;
@@ -110,7 +107,6 @@ body {
 <body>
 <canvas id="cometaCanvas"></canvas>
 
-<!-- Fundo -->
 <div id="background-scene">
   <div class="overlay-lights"></div>
   <div class="particles"><div class="particle particle-1"></div><div class="particle particle-2"></div><div class="particle particle-3"></div></div>
@@ -118,7 +114,6 @@ body {
   <div class="robots-bg"></div>
 </div>
 
-<!-- Menu -->
 <button class="menu-toggle">=</button>
 <nav class="menu-lateral" id="menuLateral">
   <ul>
@@ -130,7 +125,6 @@ body {
   </ul>
 </nav>
 
-<!-- Mascote centralizado com título -->
 <div class="mascote-container">
   <img src="assets/images/mascote2.png" alt="Mascote Godoy Solutions Tech"/>
   <div class="olho esquerdo"></div>
@@ -138,7 +132,6 @@ body {
   <div id="tituloMascote"></div>
 </div>
 
-<!-- Vídeo -->
 <div class="video-box">
   <video autoplay controls loop playsinline>
     <source src="assets/images/demo.mp4" type="video/mp4">
@@ -146,7 +139,6 @@ body {
   </video>
 </div>
 
-<!-- Conteúdo -->
 <main>
   <section class="sobre">
     <h2>Sobre a Empresa</h2>
@@ -183,7 +175,6 @@ function toggleMenu() {
 }
 </script>
 
-<!-- Script do cometa e título com animação de letras -->
 <script>
 const canvas = document.getElementById('cometaCanvas');
 const ctx = canvas.getContext('2d');
@@ -229,9 +220,13 @@ class Cometa {
 let cometa;
 let tituloMostrado=false;
 const tituloEl=document.getElementById('tituloMascote');
+const VELOCIDADE_LETRAS=0.03;
+const OPACIDADE_INCREMENTO=0.02;
+
+// Função retorna posição do título central relativa à viewport
 function getTituloCentro(){
   const rect=document.querySelector('.mascote-container').getBoundingClientRect();
-  return {x:rect.left+rect.width/2, y:rect.top+rect.height/2};
+  return {x:rect.left+rect.width/2, y:rect.top+rect.height/2 + window.scrollY};
 }
 
 function animar(){
@@ -239,7 +234,8 @@ function animar(){
   if(cometa){
     cometa.update();
     cometa.draw();
-    if(!tituloMostrado && Math.abs(cometa.x-getTituloCentro().x)<10 && Math.abs(cometa.y-getTituloCentro().y)<10){
+    const centro=getTituloCentro();
+    if(!tituloMostrado && Math.abs(cometa.x-centro.x)<10 && Math.abs(cometa.y-centro.y)<10){
       explodeLetras("Godoy Soluções em TECH");
       tituloMostrado=true;
     }
@@ -247,15 +243,16 @@ function animar(){
   requestAnimationFrame(animar);
 }
 
-function spawnCometa(){ cometa=new Cometa(getTituloCentro().x,getTituloCentro().y); }
+function spawnCometa(){ 
+  const centro=getTituloCentro();
+  cometa=new Cometa(centro.x,centro.y); 
+}
 
-const VELOCIDADE_LETRAS=0.03;
-const OPACIDADE_INCREMENTO=0.02;
-let explosaoParticulas=[];
-
+// Animação das letras
 function explodeLetras(texto){
   const letras=[];
   const centro=getTituloCentro();
+  tituloEl.textContent=""; // Limpa título antes de criar spans
   for(let i=0;i<texto.length;i++){
     const span=document.createElement('span');
     span.textContent=texto[i];
@@ -265,7 +262,7 @@ function explodeLetras(texto){
     span.style.fontWeight="900";
     span.style.fontSize=clampFontSize()+"px";
     span.style.left=(Math.random()*canvas.width)+"px";
-    span.style.top=(Math.random()*canvas.height)+"px";
+    span.style.top=(Math.random()*canvas.height + window.scrollY)+"px";
     span.style.opacity=0;
     document.body.appendChild(span);
     letras.push({element:span, destX:centro.x-(texto.length*12)+i*24, destY:centro.y});
@@ -292,13 +289,12 @@ function explodeLetras(texto){
   animarLetras();
 }
 
-// Ajusta tamanho da fonte responsivamente
-function clampFontSize(){ return Math.max(24,Math.min(window.innerWidth/20,48)); }
+// Ajuste responsivo do tamanho da fonte
+function clampFontSize(){ return Math.max(24,Math.min(window.innerWidth/20,40)); }
 
 spawnCometa();
 animar();
 
-// Atualiza canvas ao redimensionar
 window.addEventListener('resize',()=>{
   canvas.width=window.innerWidth;
   canvas.height=window.innerHeight;
