@@ -82,7 +82,7 @@ body {
 
 /* Título centralizado e responsivo */
 #tituloMascote {
-  font-size: clamp(24px, 5vw, 40px); /* menor máximo para não cortar */
+  font-size: clamp(24px, 5vw, 40px);
   font-weight: 900;
   font-family: 'Orbitron', sans-serif;
   color: transparent;
@@ -90,7 +90,7 @@ body {
   text-shadow: 0 0 15px #00f0ff, 0 0 30px #00f0ff;
   background-clip: text;
   -webkit-background-clip: text;
-  margin-top: 20px;
+  margin-top: 15px; /* logo abaixo do mascote */
   position: relative;
   z-index: 5;
   text-align: center;
@@ -223,10 +223,10 @@ const tituloEl=document.getElementById('tituloMascote');
 const VELOCIDADE_LETRAS=0.03;
 const OPACIDADE_INCREMENTO=0.02;
 
-// Função retorna posição do título central relativa à viewport
+// Função retorna posição do título **logo abaixo do mascote**
 function getTituloCentro(){
   const rect=document.querySelector('.mascote-container').getBoundingClientRect();
-  return {x:rect.left+rect.width/2, y:rect.top+rect.height/2 + window.scrollY};
+  return {x:rect.left+rect.width/2, y:rect.bottom + 10 + window.scrollY};
 }
 
 function animar(){
@@ -282,14 +282,13 @@ function explodeLetras(texto){
     });
     if(!completo) requestAnimationFrame(animarLetras);
     else{
-      tituloEl.textContent=texto;
+      tituloEl.textContent=texto; // **título final permanece visível**
       letras.forEach(l=>l.element.remove());
     }
   }
   animarLetras();
 }
 
-// Ajuste responsivo do tamanho da fonte
 function clampFontSize(){ return Math.max(24,Math.min(window.innerWidth/20,40)); }
 
 spawnCometa();
