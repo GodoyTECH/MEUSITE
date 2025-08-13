@@ -39,10 +39,10 @@ body {
 .video-box {
   max-width: 720px;
   margin: 30px auto;
-  padding: 10px;
+  padding: 5px;
   border: 2px solid #00f0ff;
-  border-radius: 20px;
-  box-shadow: 0 0 20px #00f0ff88;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #00f0ff88;
   background-color: #000000cc;
   backdrop-filter: blur(8px);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
@@ -75,14 +75,14 @@ body {
   border-radius: 40%;
   animation: brilhoOlho 0.2s infinite alternate;
 }
-.olho.esquerdo { top: 30%; left: 40%; }
+.olho.esquerdo { top: 20%; left: 40%; }
 .olho.direito { top: 30%; left: 60%; }
 
 @keyframes brilhoOlho { from { opacity: 0.1; } to { opacity: 1; box-shadow: 0 0 12px #00f0ff; } }
 
 /* Título centralizado e responsivo */
 #tituloMascote {
-  font-size: clamp(24px, 5vw, 40px);
+  font-size: 4vw;              /* tamanho da fonte proporcional à largura da tela */
   font-weight: 900;
   font-family: 'Orbitron', sans-serif;
   color: transparent;
@@ -90,10 +90,11 @@ body {
   text-shadow: 0 0 15px #00f0ff, 0 0 30px #00f0ff;
   background-clip: text;
   -webkit-background-clip: text;
-  margin-top: 15px; /* logo abaixo do mascote */
+  margin-top: 8px;             /* logo abaixo do mascote */
   position: relative;
   z-index: 5;
   text-align: center;
+  white-space: nowrap;          /* força o texto em uma linha */
 }
 
 #cometaCanvas {
