@@ -76,22 +76,31 @@
     animation: brilhoOlho 0.2s infinite alternate;
   }
 
-  /* Exemplo: ajuste manual da posição conforme a imagem final */
   .olho.esquerdo { top: 122px; left: 162px; }
- 
+  .olho.direito { top: 122px; left: 210px; }
 
   @keyframes brilhoOlho {
     from { opacity: 0.1; }
     to { opacity: 1; box-shadow: 0 0 12px #00f0ff; }
   }
 
- 
-  
+  /* 🔹 Cometa e título */
+  #cometaCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 10;
+  }
 
-    
-
-
-
+  #tituloMascote {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #00f0ff;
+    text-shadow: 0 0 10px #00f0ff;
+  }
 </style>
 </head>
 <body>
@@ -122,7 +131,7 @@
 </div>
 
 <!-- Botão flutuante do menu -->
-<button class="menu-toggle">=</button>
+<button class="menu-toggle" onclick="toggleMenu()">=</button>
 
 <!-- Menu lateral -->
 <nav class="menu-lateral" id="menuLateral">
@@ -140,9 +149,8 @@
   <img src="assets/images/mascote2.png" alt="Mascote Godoy Solutions Tech"/>
   <div class="olho esquerdo"></div>
   <div class="olho direito"></div>
-  <div class="planta p1"></div>
-  <div class="planta p2"></div>
-  <div class="feixe"></div>
+  <canvas id="cometaCanvas"></canvas>
+  <h2 id="tituloMascote"></h2>
 </div>
 
 <!-- Caixa de vídeo animado abaixo do mascote -->
@@ -188,8 +196,61 @@
 <!-- Script principal -->
 <script src="assets/js/main.js"></script>
 
-<!-- Fallback para botão de menu -->
+<!-- Script do cometa -->
 <script>
+  const canvas = document.getElementById('cometaCanvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  function desenharCometa(x, y, comprimento, cor) {
+    const gradiente = ctx.createLinearGradient(x, y, x - comprimento, y - comprimento);
+    gradiente.addColorStop(0, cor);
+    gradiente.addColorStop(1, 'transparent');
+    ctx.strokeStyle = gradiente;
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.lineTo(x - comprimento, y - comprimento);
+    ctx.stroke();
+  }
+
+  function animarCometa() {
+    let x = Math.random() * window.innerWidth;
+    let y = 0;
+    const velX = -4;
+    const velY = 4;
+    const comprimento = 80;
+    const cor = '#00f0ff';
+
+    function animacao() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      desenharCometa(x, y, comprimento, cor);
+      x += velX;
+      y += velY;
+
+      if (y < window.innerHeight * 0.6) {
+        requestAnimationFrame(animacao);
+      } else {
+        escreverTitulo("Godoy Soluções em Tecnologia");
+      }
+    }
+    animacao();
+  }
+
+  function escreverTitulo(texto) {
+    const tituloEl = document.getElementById('tituloMascote');
+    tituloEl.textContent = "";
+    let i = 0;
+    const intervalo = setInterval(() => {
+      tituloEl.textContent += texto[i];
+      i++;
+      if (i === texto.length) clearInterval(intervalo);
+    }, 80);
+  }
+
+  animarCometa();
+
   function toggleMenu() {
     const menu = document.getElementById('menuLateral');
     if (menu) {
