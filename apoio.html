@@ -22,7 +22,7 @@
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/7ab7dab519.js" crossorigin="anonymous"></script>
 
-  <!-- Estilos adicionais do formulário -->
+  <!-- Estilos adicionais do formulário e mural -->
   <style>
     .form-container {
       background: #0a0a0aee;
@@ -78,6 +78,34 @@
     }
     .form-submit button:hover {
       background: var(--btn-hover);
+    }
+
+    /* Estilo dos comentários */
+    .comentario {
+      background: #111;
+      border: 1px solid #00f0ff44;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+    }
+    .comentario p {
+      margin: 5px 0;
+    }
+    .responder-btn {
+      background: #00f0ff;
+      color: #001d2e;
+      padding: 5px 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+    .resposta {
+      background: #0a0a0a;
+      border-left: 3px solid #00f0ff;
+      margin-top: 10px;
+      padding: 5px 10px;
+      border-radius: 5px;
     }
   </style>
 </head>
@@ -139,17 +167,99 @@
             <button type="submit">Enviar</button>
           </div>
         </form>
-        <p id="status-msg" style="text-align:center; margin-top:10px; color:#00ffcc;"></p>
-      </main>
+      </div>
 
- <footer>
+      <!-- Caixa onde as mensagens vão aparecer -->
+      <div id="comentarios-container" class="form-container" style="margin-top:20px;">
+        <h3>Mensagens de Apoio</h3>
+        <div id="lista-comentarios"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
     © 2025 Godoy Solutions in TECH • Desenvolvido por Caíque Eduardo
   </footer>
-        
 
- 
+  <!-- Script do mural -->
+  <script>
+    // Carregar comentários salvos ao abrir a página
+    window.addEventListener("DOMContentLoaded", carregarComentarios);
 
- 
-  <script src="assets/js/main.js"></script>
+    function salvarNoLocalStorage(lista) {
+      localStorage.setItem("comentarios", JSON.stringify(lista));
+    }
+
+    function carregarComentarios() {
+      const lista = JSON.parse(localStorage.getItem("comentarios")) || [];
+      lista.forEach(adicionarComentarioNaPagina);
+    }
+
+    function adicionarComentarioNaPagina(comentario) {
+      const comentarioDiv = document.createElement("div");
+      comentarioDiv.classList.add("comentario");
+      comentarioDiv.innerHTML = `
+        <p><strong>${comentario.nome}</strong> apoiou com R$ ${parseFloat(comentario.valor).toFixed(2)}</p>
+        <p>${comentario.mensagem}</p>
+        <button class="responder-btn">Responder</button>
+        <div class="respostas"></div>
+      `;
+
+      if (comentario.respostas) {
+        comentario.respostas.forEach(resposta => {
+          const respostaDiv = document.createElement("div");
+          respostaDiv.classList.add("resposta");
+          respostaDiv.innerHTML = `<p><strong>Resposta:</strong> ${resposta}</p>`;
+          comentarioDiv.querySelector(".respostas").appendChild(respostaDiv);
+        });
+      }
+
+      comentarioDiv.querySelector(".responder-btn").addEventListener("click", function() {
+        const respostaTexto = prompt("Digite sua resposta:");
+        if (respostaTexto) {
+          const respostaDiv = document.createElement("div");
+          respostaDiv.classList.add("resposta");
+          respostaDiv.innerHTML = `<p><strong>Resposta:</strong> ${respostaTexto}</p>`;
+          comentarioDiv.querySelector(".respostas").appendChild(respostaDiv);
+
+          const lista = JSON.parse(localStorage.getItem("comentarios")) || [];
+          const index = lista.findIndex(c =>
+            c.nome === comentario.nome &&
+            c.valor === comentario.valor &&
+            c.mensagem === comentario.mensagem
+          );
+          if (index !== -1) {
+            lista[index].respostas.push(respostaTexto);
+            salvarNoLocalStorage(lista);
+          }
+        }
+      });
+
+      document.getElementById("lista-comentarios").appendChild(comentarioDiv);
+    }
+
+    document.getElementById("apoio-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const nome = document.getElementById("nome").value;
+      const valor = document.getElementById("valor").value;
+      const mensagem = document.getElementById("mensagem").value;
+
+      const novoComentario = {
+        nome: nome,
+        valor: valor,
+        mensagem: mensagem,
+        respostas: []
+      };
+
+      adicionarComentarioNaPagina(novoComentario);
+
+      const lista = JSON.parse(localStorage.getItem("comentarios")) || [];
+      lista.push(novoComentario);
+      salvarNoLocalStorage(lista);
+
+      document.getElementById("apoio-form").reset();
+    });
+  </script>
 </body>
 </html>
