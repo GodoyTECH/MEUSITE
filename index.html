@@ -11,7 +11,7 @@
 <title>Godoy Solutions in TECH</title>
 <link rel="stylesheet" href="assets/css/estilo.css"/>
 
-<!-- Ícone da aba do navegador -->
+<!-- Ícone da aba -->
 <link rel="icon" type="image/png" href="assets/images/logoicon.png" />
 <link rel="apple-touch-icon" href="assets/images/logoicon.png" />
 
@@ -21,15 +21,21 @@
 <meta property="og:image" content="https://godoysoluintech.netlify.app/assets/images/logo.jpeg" />
 <meta property="og:url" content="https://godoysoluintech.netlify.app/" />
 <meta property="og:type" content="website" />
-
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="https://godoysoluintech.netlify.app/assets/images/logo.jpeg" />
 
-<!-- FontAwesome funcional -->
 <script src="https://kit.fontawesome.com/7ab7dab519.js" crossorigin="anonymous"></script>
 
-<!-- CSS extra direto na index para o footer, vídeo e mascote -->
+<!-- Fonte futurista -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;900&display=swap" rel="stylesheet">
+
 <style>
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
   .video-box {
     max-width: 720px;
     margin: 30px auto;
@@ -41,79 +47,218 @@
     backdrop-filter: blur(8px);
     transition: transform 0.4s ease, box-shadow 0.4s ease;
   }
+  .video-box:hover { transform: scale(1.02); box-shadow: 0 0 30px #00f0ffcc; }
+  .video-box video { width: 100%; border-radius: 12px; opacity:0.5; }
 
-  .video-box:hover {
-    transform: scale(1.02);
-    box-shadow: 0 0 30px #00f0ffcc;
-  }
-
-  .video-box video {
-    width: 100%;
-    border-radius: 12px;
-    opacity:0.5;
-  }
-
-  /* 🔹 Mascote animado */
+  /* Mascote centralizado */
   .mascote-container {
     position: relative;
     width: 400px;
     margin: 40px auto;
+    text-align: center;
   }
+  .mascote-container img { width: 100%; display: block; opacity: 0.8; margin: 0 auto; }
 
-  .mascote-container img {
-    width: 100%;
-    display: block;
-    opacity: 0.8; 
-  }
-
-  /* Olhos brilhando */
   .olho {
     position: absolute;
-    width: 10px;
-    height: 10px;
+    width: 10px; height: 10px;
     background: radial-gradient(circle, #00f0ff, transparent);
     border-radius: 40%;
     animation: brilhoOlho 0.2s infinite alternate;
   }
+  .olho.esquerdo { top: 122px; left: 38%; }
+  .olho.direito { top: 122px; left: 52%; }
 
-  .olho.esquerdo { top: 122px; left: 162px; }
-  .olho.direito { top: 122px; left: 210px; }
+  @keyframes brilhoOlho { from { opacity: 0.1; } to { opacity: 1; box-shadow: 0 0 12px #00f0ff; } }
 
-  @keyframes brilhoOlho {
-    from { opacity: 0.1; }
-    to { opacity: 1; box-shadow: 0 0 12px #00f0ff; }
+  /* Texto translúcido com tom igual ao mascote */
+  #tituloMascote {
+    font-size: 32px;
+    font-weight: 900;
+    font-family: 'Orbitron', sans-serif;
+    color: transparent;
+    -webkit-text-stroke: 1px #00f0ff;
+    text-shadow: 0 0 15px #00f0ff, 0 0 30px #00f0ff;
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: pulsar 2s infinite alternate;
+    display: inline-block;
+    margin-top: 10px;
   }
 
-  /* 🔹 Cometa e título */
+  @keyframes pulsar {
+    from { text-shadow: 0 0 15px #00f0ff, 0 0 30px #00f0ff; }
+    to { text-shadow: 0 0 25px #00f0ff, 0 0 50px #00f0ff; }
+  }
+
+  /* Canvas para o cometa */
   #cometaCanvas {
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: fixed;
+    top: 0; left: 0;
     pointer-events: none;
     z-index: 10;
-  }
-
-  #tituloMascote {
-    text-align: center;
-    margin-top: 10px;
-    font-size: 1.8em;
-    font-weight: bold;
-    color: #00f0ff;
-    text-shadow: 0 0 10px #00f0ff;
   }
 </style>
 </head>
 <body>
- <!-- 🔹 Fundo animado futurista com robôs e efeitos -->
+<canvas id="cometaCanvas"></canvas>
+
+<!-- Fundo -->
 <div id="background-scene">
-
-  <!-- Efeito de luz pulsante -->
   <div class="overlay-lights"></div>
+  <div class="particles"><div class="particle particle-1"></div><div class="particle particle-2"></div><div class="particle particle-3"></div></div>
+  <div class="light-rays"><div class="light-ray light-ray-1"></div><div class="light-ray light-ray-2"></div><div class="light-ray light-ray-3"></div><div class="light-ray light-ray-4"></div></div>
+  <div class="robots-bg"></div>
+</div>
 
-  <!-- Partículas flutuantes -->
-  <div class="particles">
-    <div class="particle particle-1"></div>
-    <div class="particle particle-2"></div>
+<!-- Menu -->
+<button class="menu-toggle">=</button>
+<nav class="menu-lateral" id="menuLateral">
+  <ul>
+    <li><a href="index.html">Início</a></li>
+    <li><a href="contato.html">Contato</a></li>
+    <li><a href="noticias.html">Notícias</a></li>
+    <li><a href="apoio.html">Apoio</a></li>
+    <li><a href="softwares.html">Softwares</a></li>
+  </ul>
+</nav>
+
+<!-- Mascote centralizado com título -->
+<div class="mascote-container">
+  <img src="assets/images/mascote2.png" alt="Mascote Godoy Solutions Tech"/>
+  <div class="olho esquerdo"></div>
+  <div class="olho direito"></div>
+  <div id="tituloMascote"></div>
+</div>
+
+<!-- Vídeo -->
+<div class="video-box">
+  <video autoplay controls loop playsinline>
+    <source src="assets/images/demo.mp4" type="video/mp4">
+    Seu navegador não suporta vídeo HTML5.
+  </video>
+</div>
+
+<!-- Conteúdo -->
+<main>
+  <section class="sobre">
+    <h2>Sobre a Empresa</h2>
+    <p>A <strong>Godoy Solutions in TECH</strong> foi fundada por <strong>Caique Eduardo Godoy da Silva</strong>, nascido em 1996. Com ampla experiência e sólida formação na área de tecnologia, atua com dedicação e comprometimento para entregar as melhores soluções.</p>
+    <p>Possui diversas certificações, incluindo Algoritmos, HTML5, CSS3, JavaScript básico, Inteligência Artificial e Análise de Dados, além de qualificações técnicas em Elétrica Residencial e Manutenção de Informática.</p>
+    <p>Comprometida com a inovação e o aprimoramento contínuo, a empresa busca oferecer soluções tecnológicas eficientes e alinhadas às tendências futuristas do mercado, garantindo a satisfação e o sucesso dos seus clientes.</p>
+  </section>
+
+  <section class="servicos">
+    <h2>Nossos Serviços</h2>
+    <ul>
+      <li><i class="fas fa-laptop-code"></i> Sistemas de gerenciamento e vendas</li>
+      <li><i class="fas fa-mobile-alt"></i> Sites e aplicativos personalizados</li>
+      <li><i class="fas fa-tools"></i> Manutenção de PCs, celulares e periféricos</li>
+      <li><i class="fas fa-wrench"></i> Instalação e restauração de sistemas</li>
+      <li><i class="fas fa-database"></i> Recuperação de dados</li>
+      <li><i class="fas fa-chalkboard-teacher"></i> Aulas e consultoria em Tech</li>
+    </ul>
+    <a href="contato.html" class="btn-cta"><i class="fas fa-comments"></i> Solicite um orçamento</a>
+  </section>
+</main>
+
+<footer class="footer">&copy; 2025 Godoy Solutions in TECH • Desenvolvido por Caíque Eduardo</footer>
+
+<a href="https://www.instagram.com/godoysolutionstech?igsh=MjJ6b2xhN3RhZzRl" target="_blank" class="instagram-fixo">
+  <i class="fab fa-instagram"></i>
+</a>
+
+<!-- Script principal -->
+<script src="assets/js/main.js"></script>
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById('menuLateral');
+    if (menu) { menu.classList.toggle('ativo'); }
+  }
+</script>
+
+<!-- Script do cometa com efeito poeira estelar -->
+<script>
+  const canvas = document.getElementById('cometaCanvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  class Cometa {
+    constructor(destX, destY) {
+      this.x = Math.random() * canvas.width;
+      this.y = -50;
+      this.destX = destX;
+      this.destY = destY;
+      const dx = destX - this.x;
+      const dy = destY - this.y;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      this.velX = dx / (dist/10);
+      this.velY = dy / (dist/10);
+      this.trail = [];
+      this.maxTrail = 30;
+    }
+    update() {
+      this.trail.push({x: this.x, y: this.y, alpha: 1});
+      if (this.trail.length > this.maxTrail) this.trail.shift();
+      this.x += this.velX;
+      this.y += this.velY;
+      this.trail.forEach(p => p.alpha *= 0.95);
+    }
+    draw() {
+      for (let i = 0; i < this.trail.length; i++) {
+        const p = this.trail[i];
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(0,240,255,${p.alpha})`;
+        ctx.arc(p.x, p.y, 4 * p.alpha, 0, Math.PI*2);
+        ctx.fill();
+      }
+      ctx.fillStyle = "#00f0ff";
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, 5, 0, Math.PI*2);
+      ctx.fill();
+    }
+  }
+
+  let cometa;
+  let tituloMostrado = false;
+  const tituloEl = document.getElementById('tituloMascote');
+  const tituloX = window.innerWidth / 2;
+  const tituloY = document.querySelector('.mascote-container').getBoundingClientRect().bottom - 40;
+
+  function animar() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (cometa) {
+      cometa.update();
+      cometa.draw();
+      if (!tituloMostrado && Math.abs(cometa.x - tituloX) < 10 && Math.abs(cometa.y - tituloY) < 10) {
+        escreverTitulo("Godoy Soluções em TECH");
+        tituloMostrado = true;
+      }
+    }
+    requestAnimationFrame(animar);
+  }
+
+  function spawnCometa() {
+    cometa = new Cometa(tituloX, tituloY);
+  }
+
+  function escreverTitulo(texto) {
+    tituloEl.textContent = "";
+    let i = 0;
+    const intervalo = setInterval(() => {
+      tituloEl.textContent += texto[i];
+      i++;
+      if (i === texto.length) clearInterval(intervalo);
+    }, 80);
+  }
+
+  spawnCometa();
+  animar();
+</script>
+
+</body>
+</html>
     <div class="particle particle-3"></div>
   </div>
 
