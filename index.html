@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 <head>
 
+<!-- Ícones do Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="assets/css/estilo.css">
   
@@ -10,9 +11,11 @@
 <title>Godoy Solutions in TECH</title>
 <link rel="stylesheet" href="assets/css/estilo.css"/>
 
+<!-- Ícone da aba -->
 <link rel="icon" type="image/png" href="assets/images/logoicon.png" />
 <link rel="apple-touch-icon" href="assets/images/logoicon.png" />
 
+<!-- Compartilhamento redes sociais -->
 <meta property="og:title" content="Godoy Solutions in TECH" />
 <meta property="og:description" content="Tecnologia com propósito, soluções com personalidade." />
 <meta property="og:image" content="https://godoysoluintech.netlify.app/assets/images/logo.jpeg" />
@@ -22,6 +25,8 @@
 <meta name="twitter:image" content="https://godoysoluintech.netlify.app/assets/images/logo.jpeg" />
 
 <script src="https://kit.fontawesome.com/7ab7dab519.js" crossorigin="anonymous"></script>
+
+<!-- Fonte futurista -->
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;900&display=swap" rel="stylesheet">
 
 <style>
@@ -29,52 +34,138 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
-/* Mascote centralizado e responsivo */
+/* Video box */
+.video-box {
+  max-width: 720px;
+  margin: 30px auto;
+  padding: 10px;
+  border: 2px solid #00f0ff;
+  border-radius: 20px;
+  box-shadow: 0 0 20px #00f0ff88;
+  background-color: #000000cc;
+  backdrop-filter: blur(8px);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.video-box:hover { transform: scale(1.02); box-shadow: 0 0 30px #00f0ffcc; }
+.video-box video { width: 100%; border-radius: 12px; opacity:0.5; }
+
+/* Mascote centralizado */
 .mascote-container {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  width: 400px;
   margin: 40px auto;
-  max-width: 300px; 
-  width: 90%;
+  text-align: center;
 }
-.mascote-container img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  opacity: 0.8;
+.mascote-container img { width: 100%; display: block; opacity: 0.8; margin: 0 auto; }
+
+.olho {
+  position: absolute;
+  width: 10px; height: 10px;
+  background: radial-gradient(circle, #00f0ff, transparent);
+  border-radius: 40%;
+  animation: brilhoOlho 0.2s infinite alternate;
 }
+.olho.esquerdo { top: 122px; left: 40%; }
+.olho.direito { top: 122px; left: 60%; }
+
+@keyframes brilhoOlho { from { opacity: 0.1; } to { opacity: 1; box-shadow: 0 0 12px #00f0ff; } }
 
 /* Título transparente com contorno */
 #tituloMascote {
-  font-size: clamp(24px, 5vw, 40px); /* tamanho responsivo */
+  font-size: clamp(24px, 5vw, 40px); /* responsivo */
   font-weight: 900;
   font-family: 'Orbitron', sans-serif;
   color: transparent;
   -webkit-text-stroke: 1px #00f0ff;
   text-shadow: 0 0 15px #00f0ff, 0 0 30px #00f0ff;
-  margin-top: 15px;
+  margin-top: 8px; /* logo abaixo do mascote */
   position: relative;
   z-index: 5;
   text-align: center;
   white-space: nowrap; /* força em uma linha só */
 }
+
+/* Manter restante do CSS do fundo, luzes, partículas, etc. */
 </style>
 </head>
 <body>
 
+<!-- Fundo -->
+<div id="background-scene">
+  <div class="overlay-lights"></div>
+  <div class="particles"><div class="particle particle-1"></div><div class="particle particle-2"></div><div class="particle particle-3"></div></div>
+  <div class="light-rays"><div class="light-ray light-ray-1"></div><div class="light-ray light-ray-2"></div><div class="light-ray light-ray-3"></div><div class="light-ray light-ray-4"></div></div>
+  <div class="robots-bg"></div>
+</div>
+
+<!-- Menu -->
+<button class="menu-toggle">=</button>
+<nav class="menu-lateral" id="menuLateral">
+  <ul>
+    <li><a href="index.html">Início</a></li>
+    <li><a href="contato.html">Contato</a></li>
+    <li><a href="noticias.html">Notícias</a></li>
+    <li><a href="apoio.html">Apoio</a></li>
+    <li><a href="softwares.html">Softwares</a></li>
+  </ul>
+</nav>
+
+<!-- Mascote centralizado com título -->
 <div class="mascote-container">
   <img src="assets/images/mascote2.png" alt="Mascote Godoy Solutions Tech"/>
+  <div class="olho esquerdo"></div>
+  <div class="olho direito"></div>
   <div id="tituloMascote">Godoy Soluções em TECH</div>
 </div>
 
+<!-- Vídeo -->
+<div class="video-box">
+  <video autoplay controls loop playsinline>
+    <source src="assets/images/demo.mp4" type="video/mp4">
+    Seu navegador não suporta vídeo HTML5.
+  </video>
+</div>
+
+<!-- Conteúdo -->
+<main>
+  <section class="sobre">
+    <h2>Sobre a Empresa</h2>
+    <p>A <strong>Godoy Solutions in TECH</strong> foi fundada por <strong>Caique Eduardo Godoy da Silva</strong>, nascido em 1996. Com ampla experiência e sólida formação na área de tecnologia, atua com dedicação e comprometimento para entregar as melhores soluções.</p>
+    <p>Possui diversas certificações, incluindo Algoritmos, HTML5, CSS3, JavaScript básico, Inteligência Artificial e Análise de Dados, além de qualificações técnicas em Elétrica Residencial e Manutenção de Informática.</p>
+    <p>Comprometida com a inovação e o aprimoramento contínuo, a empresa busca oferecer soluções tecnológicas eficientes e alinhadas às tendências futuristas do mercado, garantindo a satisfação e o sucesso dos seus clientes.</p>
+  </section>
+
+  <section class="servicos">
+    <h2>Nossos Serviços</h2>
+    <ul>
+      <li><i class="fas fa-laptop-code"></i> Sistemas de gerenciamento e vendas</li>
+      <li><i class="fas fa-mobile-alt"></i> Sites e aplicativos personalizados</li>
+      <li><i class="fas fa-tools"></i> Manutenção de PCs, celulares e periféricos</li>
+      <li><i class="fas fa-wrench"></i> Instalação e restauração de sistemas</li>
+      <li><i class="fas fa-database"></i> Recuperação de dados</li>
+      <li><i class="fas fa-chalkboard-teacher"></i> Aulas e consultoria em Tech</li>
+    </ul>
+    <a href="contato.html" class="btn-cta"><i class="fas fa-comments"></i> Solicite um orçamento</a>
+  </section>
+</main>
+
+<footer class="footer">&copy; 2025 Godoy Solutions in TECH • Desenvolvido por Caíque Eduardo</footer>
+
+<a href="https://www.instagram.com/godoysolutionstech?igsh=MjJ6b2xhN3RhZzRl" target="_blank" class="instagram-fixo">
+  <i class="fab fa-instagram"></i>
+</a>
+
+<script src="assets/js/main.js"></script>
+<script>
+function toggleMenu() {
+  const menu = document.getElementById('menuLateral');
+  if (menu) { menu.classList.toggle('ativo'); }
+}
+</script>
+
 </body>
 </html>
+
 
