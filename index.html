@@ -1,15 +1,14 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Godoy Solutions in TECH</title>
 
 <!-- Ícones do Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="assets/css/estilo.css">
-  
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Godoy Solutions in TECH</title>
-<link rel="stylesheet" href="assets/css/estilo.css"/>
 
 <!-- Ícone da aba -->
 <link rel="icon" type="image/png" href="assets/images/logoicon.png" />
@@ -28,65 +27,28 @@
 
 <!-- Fonte futurista -->
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;900&display=swap" rel="stylesheet">
-
-<style>
-body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-}
-
-/* Video box */
-.video-box {
-  max-width: 720px;
-  margin: 30px auto;
-  padding: 10px;
-  border: 2px solid #00f0ff;
-  border-radius: 20px;
-  box-shadow: 0 0 5px #00f0ff88;
-  background-color: #000000cc;
-  backdrop-filter: blur(8px);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-.video-box:hover { transform: scale(1.02); box-shadow: 0 0 30px #00f0ffcc; }
-.video-box video { width: 100%; border-radius: 12px; opacity:0.5; }
-
-/* Mascote centralizado */
-.mascote-container {
-  position: relative;
-  width: 400px;
-  margin: 40px auto;
-  text-align: center;
-}
-.mascote-container img { width: 100%; display: block; opacity: 0.8; margin: 0 auto; }
-
-.olho {
-  position: absolute;
-  width: 10px; height: 10px;
-  background: radial-gradient(circle, #00f0ff, transparent);
-  border-radius: 40%;
-  animation: brilhoOlho 0.2s infinite alternate;
-}
-.olho.esquerdo { top: 122px; left: 40%; }
-
-
-@keyframes brilhoOlho { from { opacity: 0.1; } to { opacity: 1; box-shadow: 0 0 12px #00f0ff; } }
-
-
-</style>
 </head>
 <body>
 
 <!-- Fundo -->
 <div id="background-scene">
   <div class="overlay-lights"></div>
-  <div class="particles"><div class="particle particle-1"></div><div class="particle particle-2"></div><div class="particle particle-3"></div></div>
-  <div class="light-rays"><div class="light-ray light-ray-1"></div><div class="light-ray light-ray-2"></div><div class="light-ray light-ray-3"></div><div class="light-ray light-ray-4"></div></div>
+  <div class="particles">
+    <div class="particle particle-1"></div>
+    <div class="particle particle-2"></div>
+    <div class="particle particle-3"></div>
+  </div>
+  <div class="light-rays">
+    <div class="light-ray light-ray-1"></div>
+    <div class="light-ray light-ray-2"></div>
+    <div class="light-ray light-ray-3"></div>
+    <div class="light-ray light-ray-4"></div>
+  </div>
   <div class="robots-bg"></div>
 </div>
 
 <!-- Menu -->
-<button class="menu-toggle">=</button>
+<button class="menu-toggle" onclick="toggleMenu()">=</button>
 <nav class="menu-lateral" id="menuLateral">
   <ul>
     <li><a href="index.html">Início</a></li>
@@ -102,7 +64,6 @@ body {
   <img src="assets/images/mascote2.png" alt="Mascote Godoy Solutions Tech"/>
   <div class="olho esquerdo"></div>
   <div class="olho direito"></div>
- 
 </div>
 
 <!-- Vídeo -->
@@ -143,14 +104,5 @@ body {
 </a>
 
 <script src="assets/js/main.js"></script>
-<script>
-function toggleMenu() {
-  const menu = document.getElementById('menuLateral');
-  if (menu) { menu.classList.toggle('ativo'); }
-}
-</script>
-
 </body>
 </html>
-
-
