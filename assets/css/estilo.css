@@ -96,9 +96,9 @@ body {
 
 /* Video box */
 .video-box {
-  
-  max-width: 20%; /* Limita a largura máxima para telas menores */
-  margin: 30px auto; /* Centralização e espaçamento vertical */
+ position: relative;
+  width: 90%;
+  max-width: 800px; /* Centralização e espaçamento vertical */
   padding: 10px; /* Espaçamento interno original */
   border: 2px solid #00f0ff; /* Estilo de borda original */
   border-radius: 20px; /* Arredondamento de borda original */
