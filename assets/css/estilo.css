@@ -109,6 +109,7 @@ body {
   backdrop-filter: blur(8px);
   transition: all 0.4s ease;
   box-sizing: border-box;
+   opacity: 0.5;
   
   /* Garante que o container não encoste nas bordas */
   left: 0;
