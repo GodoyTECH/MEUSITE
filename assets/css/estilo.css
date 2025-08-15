@@ -1,3 +1,94 @@
+/* ===========================
+   CSS específico da página Softwares
+   ===========================
+   Autor: Eu mesmo (comentários explicativos)
+*/
+
+/* Corpo da página */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #16222A, #D085D1);
+  color: #ffffff;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Fundo animado */
+#background-scene {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* atrás de todo conteúdo */
+}
+
+/* Conteúdo central da página */
+.conteudo-central {
+  position: relative;
+  width: 90%;
+  max-width: 800px;
+  margin: 30vh auto 50px auto; /* título 30% abaixo do topo */
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.05); /* leve transparência */
+  padding: 20px;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+/* Título principal com contorno RGB */
+.titulo-contorno {
+  font-size: 3em;
+  color: transparent; /* só contorno */
+  -webkit-text-stroke: 1px rgb(0, 255, 255); /* contorno azul neon */
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+/* Subtítulo abaixo do título */
+.subtitulo {
+  font-size: 1.2em;
+  margin-bottom: 25px;
+  color: #ffffffcc; /* leve transparência */
+}
+
+/* Lista de softwares */
+.lista-softwares {
+  list-style-type: none;
+  padding: 0;
+}
+
+.lista-softwares li {
+  margin: 15px 0;
+  background-color: rgba(255, 255, 255, 0.05); /* transparente para deixar fundo aparecer */
+  padding: 15px;
+  border-radius: 8px;
+  transition: transform 0.2s;
+}
+
+/* Efeito hover nas caixas */
+.lista-softwares li:hover {
+  transform: scale(1.05); /* leve "zoom" ao passar mouse */
+}
+
+/* Links dentro das caixas */
+.lista-softwares a {
+  color: #00ffff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.lista-softwares a:hover {
+  text-decoration: underline;
+}
+
+/* ===========================
+   Observações:
+   - Centralização, transparência e título contornado aplicados.
+   - Menu lateral e scripts continuam funcionando via CSS/JS geral do site.
+   =========================== */
 body {
   margin: 0;
   padding: 0;
