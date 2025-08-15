@@ -39,6 +39,10 @@ body {
 
 /* Título principal com contorno RGB */
 .titulo-contorno {
+
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+
   font-size: 3em;
   color: transparent; /* só contorno */
   -webkit-text-stroke: 1px rgb(0, 255, 255); /* contorno azul neon */
