@@ -1,17 +1,34 @@
-// script.js
-document.addEventListener('DOMContentLoaded', function () {
-  const menuToggle = document.querySelector('.menu-toggle');
+// ========== MENU HAMBÚRGUER ==========
+document.addEventListener('DOMContentLoaded', () => {
+  const botao = document.querySelector('.menu-toggle');
   const menu = document.getElementById('menuLateral');
 
-  if (menuToggle && menu) {
-    menuToggle.addEventListener('click', function () {
-      menu.classList.toggle('ativo');
+  if (!botao || !menu) return;
+
+  // Abre/fecha o menu ao clicar no botão
+  botao.addEventListener('click', (e) => {
+    e.stopPropagation();
+    menu.classList.toggle('ativo');
+  });
+
+  // Fecha o menu ao clicar fora dele
+  document.addEventListener('click', (e) => {
+    const clicouFora = !menu.contains(e.target) && !botao.contains(e.target);
+    if (clicouFora) {
+      menu.classList.remove('ativo');
+    }
+  });
+
+  // Fecha o menu ao clicar em qualquer link dentro dele
+  menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.remove('ativo');
     });
-  }
+  });
 });
 
 
-// Função para ativar/desativar a cena de fundo
+// ========== FUNDO ==========
 function toggleBackground() {
   const bg = document.getElementById('background-scene');
   if (bg) {
@@ -19,7 +36,7 @@ function toggleBackground() {
   }
 }
 
-// Exemplo: Adicionar mais partículas dinamicamente
+// ========== PARTÍCULAS ==========
 function generateParticles(qtd = 10) {
   const container = document.querySelector('.particles');
   if (!container) return;
@@ -34,11 +51,11 @@ function generateParticles(qtd = 10) {
   }
 }
 
-// Função para iniciar tudo ao carregar a página
 document.addEventListener('DOMContentLoaded', () => {
   console.log("🧠 Fundo animado carregado.");
-  generateParticles(15); // Gera partículas extras
+  generateParticles(15);
 });
+
 
 // ========== SISTEMA DE CONTATO ==========
 document.addEventListener('DOMContentLoaded', () => {
@@ -56,10 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // Mensagem opcional de carregamento
     form.querySelector('button[type="submit"]').innerText = "Enviando...";
-
-    // Estética de envio (opcional)
     form.style.opacity = "0.6";
   });
 });
@@ -114,7 +128,7 @@ class NewsSystem {
 }
 
 
-// ========== SISTEMA DE RANKING (GOOGLE SHEETS) ==========
+// ========== SISTEMA DE RANKING ==========
 function carregarRanking() {
   const sheetURL = `https://opensheet.elk.sh/1isrjaaOEUJqwLTIbzV3KzZHlpZYC6r4f0mtS28PL6YI/form1`;
   const lista = document.getElementById("ranking-list");
@@ -136,36 +150,6 @@ function carregarRanking() {
       lista.innerHTML = "<li>Erro ao carregar dados dos apoiadores.</li>";
     });
 }
-
-
-// ========== MENU HAMBÚRGUER ==========
-document.addEventListener('DOMContentLoaded', () => {
-  const botao = document.querySelector('.menu-toggle');
-  const menu = document.getElementById('menuLateral');
-
-  if (!botao || !menu) return;
-
-  // Abre/fecha o menu ao clicar no botão
-  botao.addEventListener('click', (e) => {
-    e.stopPropagation();
-    menu.classList.toggle('ativo');
-  });
-
-  // Fecha o menu ao clicar fora dele
-  document.addEventListener('click', (e) => {
-    const clicouFora = !menu.contains(e.target) && !botao.contains(e.target);
-    if (clicouFora) {
-      menu.classList.remove('ativo');
-    }
-  });
-
-  // Fecha o menu ao clicar em qualquer link dentro dele
-  menu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      menu.classList.remove('ativo');
-    });
-  });
-});
 
 
 // ========== INICIALIZAÇÃO GLOBAL ==========
@@ -202,11 +186,3 @@ document.addEventListener('DOMContentLoaded', () => {
   carregarRanking();
   setInterval(carregarRanking, 20000);
 });
-
-
-// ========== FUNÇÃO GLOBAL OPCIONAL ==========
-function toggleMenu() {
-  const menu = document.getElementById('menuLateral');
-  menu.classList.toggle('ativo');
-}
-
