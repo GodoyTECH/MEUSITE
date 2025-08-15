@@ -123,7 +123,7 @@ body {
 
 /* Ajuste preciso do vídeo */
 .video-box video {
-  width: calc(100% - 4px); /* Compensa eventual borda */
+  width: calc(100% - 0px); /* Compensa eventual borda */
   max-height: 450px; /* Altura máxima controlada */
   border-radius: 12px;
   opacity: 0.5;
