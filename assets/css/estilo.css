@@ -462,31 +462,37 @@ body {
 /* === MENU LATERAL (Oculto inicialmente) === */
 nav.menu-lateral {
   position: fixed;
-  top: 80px; /* Alinhado com base da nave */
+  top: 80px;
   right: 1px;
-  width: 220px;
+  width: 160px; /* Largura reduzida (original: 220px) */
   max-height: 0;
   overflow: hidden;
-  background: transparent;
-  backdrop-filter: none;
+  background: rgba(0, 5, 15, 0.7); /* Fundo semi-transparente */
+  backdrop-filter: blur(8px); /* Efeito de vidro */
+  border-left: 1px solid #00f0ff; /* Borda lateral esquerda */
   border-bottom-left-radius: 12px;
-  box-shadow: -3px 5px 20px rgba(0, 200, 200, 0.5);
-  transition: max-height 0.45s ease-out, box-shadow 0.3s ease;
+  box-shadow: 
+    0 0 20px rgba(0, 240, 255, 0.6), /* Efeito de projeção */
+    -5px 0 25px rgba(0, 200, 200, 0.4); /* Sombra direita */
+  transition: 
+    max-height 0.45s ease-out,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
   z-index: 1000;
 }
 
-/* Estado visível (ativo) */
 nav.menu-lateral.ativo {
-  max-height: 80vh; /* Altura responsiva */
-  box-shadow: -3px 5px 30px rgba(0, 200,200, 0.3);
+  max-height: 80vh;
+  box-shadow: 
+    0 0 30px rgba(0, 240, 255, 0.8), /* Projeção mais intensa */
+    -5px 0 30px rgba(0, 200, 200, 0.5);
 }
 
-/* Estrutura de navegação */
+/* === ESTRUTURA (MANTIDA COM AJUSTES) === */
 nav.menu-lateral ul {
   list-style: none;
-  padding: 15px 0;
+  padding: 10px 0; /* Reduzido (original: 15px) */
   margin: 0;
- 
 }
 
 nav.menu-lateral ul li a {
@@ -495,25 +501,26 @@ nav.menu-lateral ul li a {
   display: flex;
   justify-content: center;
   align-items: center;
-  
+  padding: 12px 5px; /* Ajustado (menos espaço horizontal) */
+  margin: 5px 10px; /* Espaçamento entre itens */
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 0.9rem; /* Reduzido (original: 0.95rem) */
+  color: #00f0ff !important;
+  text-shadow: 0 0 8px rgba(0, 240, 255, 1);
+  transition: all 0.3s ease;
+  border-radius: 3px; /* Cantos levemente arredondados */
+}
 
-  font-family: 'Segoe UI', system-ui, sans-serif; 
-  font-weight: 500; 
-  letter-spacing: 0.5px; 
-  text-transform: uppercase; 
-  font-size: 0.95rem; /* Tamanho ajustado */
-  color: translate !important; /* Cor neon mantida */
-  text-shadow: 0 0 5px rgba(0, 240, 255, 1.0); /* Brilho sutil */
-  transition: all 0.3s ease; /* Transição suave para hover */
-}
-}
-}
-
+/* Efeito hover (com projeção) */
 nav.menu-lateral ul li a:hover {
-  background: rgba(0, 240, 255, 0.08);
-  border-left-color: #00f0ff;
-  padding-left: 28px;
-  color: white;
+  background: rgba(0, 240, 255, 0.1);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.5); /* Brilho interno */
+  transform: scale(1.02); /* Zoom sutil */
+  padding-left: 5px; /* Remove o deslocamento original */
+  border-left: none; /* Remove borda lateral */
 }
 
 /* === RESPONSIVO === */
