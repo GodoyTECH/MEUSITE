@@ -466,8 +466,10 @@ body {
   filter: drop-shadow(0 0 5px #00f0ff);
 }
 
-.menu-toggle.active .menu-icon {
-  transform: rotate(90deg);
+.menu-toggle:hover .menu-icon {
+  transform: rotate(360deg);  /* ← Valor da rotação (360° = volta completa) */
+  transition: transform 0.5s ease;  /* ← Duração e suavização */
+}
 }
 
 /* ===== MENU LATERAL COMPACTO ===== */
