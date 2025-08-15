@@ -437,10 +437,10 @@ body {
   cursor: pointer;
   position: fixed;
   top: 20px;
-  right: 40px;
+  right: 80px;
   z-index: 1001;
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   display: grid;
   place-items: center;
   perspective: 800px;
@@ -449,28 +449,28 @@ body {
 .menu-icon {
   width: 80px;
   height: 80px;
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   filter: drop-shadow(0 0 3px #00f0ff);
   transform-style: preserve-3d;
 }
 
 /* Rotação lateral ao passar mouse */
 .menu-toggle:hover .menu-icon {
-  transform: rotateY(180deg);
+  transform: rotateY(360deg);
 }
 
 /* === MENU LATERAL (Oculto inicialmente) === */
 nav.menu-lateral {
   position: fixed;
   top: 80px; /* Alinhado com base da nave */
-  right: 20px;
+  right: 1px;
   width: 220px;
   max-height: 0;
   overflow: hidden;
   background: rgba(5, 5, 35, 0.98);
   backdrop-filter: blur(12px);
   border-bottom-left-radius: 12px;
-  box-shadow: -3px 5px 20px rgba(0, 240, 255, 0.15);
+  box-shadow: -3px 5px 20px rgba(0, 0, 0, 0.5);
   transition: max-height 0.45s ease-out, box-shadow 0.3s ease;
   z-index: 1000;
 }
