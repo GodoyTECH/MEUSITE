@@ -437,7 +437,7 @@ body {
   cursor: pointer;
   position: fixed;
   top: 20px;
-  right: 80px;
+  right: 90px;
   z-index: 1001;
   width: 50px;
   height: 50px;
@@ -486,7 +486,7 @@ nav.menu-lateral ul {
   list-style: none;
   padding: 15px 0;
   margin: 0;
-  text-position: center;
+ 
 }
 
 nav.menu-lateral ul li a {
@@ -502,8 +502,8 @@ nav.menu-lateral ul li a {
   letter-spacing: 0.5px; 
   text-transform: uppercase; 
   font-size: 0.95rem; /* Tamanho ajustado */
-  color: #00f0ff !important; /* Cor neon mantida */
-  text-shadow: 0 0 5px rgba(0, 240, 255, 0.7); /* Brilho sutil */
+  color: translate !important; /* Cor neon mantida */
+  text-shadow: 0 0 5px rgba(0, 240, 255, 1.0); /* Brilho sutil */
   transition: all 0.3s ease; /* Transição suave para hover */
 }
 }
