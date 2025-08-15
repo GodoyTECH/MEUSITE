@@ -428,94 +428,102 @@ body {
   z-index: 1000;
 }
 
-/* ===== BOTÃO FIXO DO MENU ===== */
+
+/* === BOTÃO NAVEGAÇÃO (Nave Espacial) === */
 .menu-toggle {
-  /*  estilos */
-  background: none;
+  background: transparent;
   border: none;
   padding: 0;
   cursor: pointer;
-  
-  /* Posicionamento */
   position: fixed;
   top: 20px;
   right: 20px;
-  z-index: 1000;
-  
-  /* Tamanho do container */
-  width: 80px;
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  z-index: 1001;
+  width: 60px;
+  height: 60px;
+  display: grid;
+  place-items: center;
+  perspective: 800px;
 }
 
 .menu-icon {
-  /* Estilo da imagem */
-  width: 100%;
-  height: auto;
-  transition: all 0.3s ease;
-  
-  /* Efeito neon */
-  filter: drop-shadow(0 0 2px #00f0ff);
+  width: 50px;
+  height: 50px;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 0 3px #00f0ff);
+  transform-style: preserve-3d;
 }
 
-/* Efeitos de interação */
+/* Rotação lateral ao passar mouse */
 .menu-toggle:hover .menu-icon {
-  transform: scale(1.1);
-  filter: drop-shadow(0 0 5px #00f0ff);
+  transform: rotateY(180deg);
 }
 
-.menu-toggle:hover .menu-icon {
-  transform: rotate(360deg);  /* ← Valor da rotação (360° = volta completa) */
-  transition: transform 0.5s ease;  /* ← Duração e suavização */
-}
-}
-
-/* ===== MENU LATERAL COMPACTO ===== */
+/* === MENU LATERAL (Oculto inicialmente) === */
 nav.menu-lateral {
   position: fixed;
-  top: 80px;
-  right: -220px; /* escondido inicialmente */
-  width: 200px;
-  background: transparent; /* alterado para transparente */
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  backdrop-filter: blur(8px);
-  box-shadow: -4px 0 20px rgba(0, 255, 255, 0.3);
-  transition: right 0.3s ease;
-  z-index: 9998;
-  padding: 15px 0;
+  top: 80px; /* Alinhado com base da nave */
+  right: 20px;
+  width: 220px;
+  max-height: 0;
+  overflow: hidden;
+  background: rgba(5, 5, 35, 0.98);
+  backdrop-filter: blur(12px);
+  border-bottom-left-radius: 12px;
+  box-shadow: -3px 5px 20px rgba(0, 240, 255, 0.15);
+  transition: max-height 0.45s ease-out, box-shadow 0.3s ease;
+  z-index: 1000;
 }
+
+/* Estado visível (ativo) */
 nav.menu-lateral.ativo {
-  right: 0;
+  max-height: 80vh; /* Altura responsiva */
+  box-shadow: -3px 5px 30px rgba(0, 240, 255, 0.25);
 }
+
+/* Estrutura de navegação */
 nav.menu-lateral ul {
   list-style: none;
-  padding: 0;
+  padding: 15px 0;
   margin: 0;
 }
-nav.menu-lateral ul li {
-  width: 100%;
-}
+
 nav.menu-lateral ul li a {
   display: block;
-  width: 100%;
-  padding: 15px 20px;
-  color: var(--primary);
+  padding: 14px 25px;
+  color: #00f0ff;
+  font-size: 1.05rem;
   text-decoration: none;
-  font-size: 1.1em;
-  font-weight: bold;
-  transition: background 0.3s, color 0.3s;
-  border-radius: 6px;
-  opacity: 0.7;
+  transition: all 0.25s ease;
+  border-left: 3px solid transparent;
 }
+
 nav.menu-lateral ul li a:hover {
-  background: var(--btn-bg)33;
-  color: #ffffff;
+  background: rgba(0, 240, 255, 0.08);
+  border-left-color: #00f0ff;
+  padding-left: 28px;
+  color: white;
 }
 
-
+/* === RESPONSIVO === */
+@media (max-width: 768px) {
+  .menu-toggle {
+    width: 54px;
+    height: 54px;
+    right: 15px;
+  }
+  
+  .menu-icon {
+    width: 44px;
+    height: 44px;
+  }
+  
+  nav.menu-lateral {
+    top: 74px;
+    right: 15px;
+    width: 200px;
+  }
+}
 /* ===== SEÇÕES ===== */
 section {
   padding: 60px 20px;
@@ -803,40 +811,7 @@ form button[type="submit"]:hover {
   }
 }
 
-/* ===== MOBILE MENU (hambúrguer) ===== */
 
-@media (max-width: 768px) {
-
-  .menu-lateral {
-    display: block;
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    background: none;
-    border: none;
-    color: var(--primary);
-    font-size: 2em;
-    cursor: pointer;
-    z-index: 999;
-  }
-  nav.nav ul {
-    display: none;
-    flex-direction: column;
-    background: rgba(0, 0, 30, 0.95);
-    position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    padding: 20px 0;
-  }
-  nav.nav ul.show {
-    display: flex;
-  }
-  nav.nav ul li {
-    margin: 10px 0;
-  }
-}
 /* 🔹 Estilo para o formulário Google Forms */
 .google-form-container {
   max-width: 800px;
