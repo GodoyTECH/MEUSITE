@@ -1,4 +1,15 @@
 // script.js
+document.addEventListener('DOMContentLoaded', function () {
+  const menuToggle = document.querySelector('.menu-toggle');
+  const menu = document.getElementById('menuLateral');
+
+  if (menuToggle && menu) {
+    menuToggle.addEventListener('click', function () {
+      menu.classList.toggle('ativo');
+    });
+  }
+});
+
 
 // Função para ativar/desativar a cena de fundo
 function toggleBackground() {
