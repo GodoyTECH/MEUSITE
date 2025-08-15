@@ -96,7 +96,7 @@ body {
 
 /* Video box */
 .video-box {
-  width: 200px; /* Largura fixa original */
+  
   max-width: 20%; /* Limita a largura máxima para telas menores */
   margin: 30px auto; /* Centralização e espaçamento vertical */
   padding: 10px; /* Espaçamento interno original */
