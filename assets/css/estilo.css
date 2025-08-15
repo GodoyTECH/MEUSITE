@@ -96,8 +96,8 @@ body {
 
 /* Video box */
 .video-box {
-  width: 720px; /* Largura fixa original */
-  max-width: 90%; /* Limita a largura máxima para telas menores */
+  width: 400px; /* Largura fixa original */
+  max-width: 50%; /* Limita a largura máxima para telas menores */
   margin: 30px auto; /* Centralização e espaçamento vertical */
   padding: 10px; /* Espaçamento interno original */
   border: 2px solid #00f0ff; /* Estilo de borda original */
@@ -109,7 +109,7 @@ body {
   box-sizing: border-box; /* Garante cálculo correto das dimensões */
 }
 
-/* Efeito hover - mantido idêntico ao original */
+/* Efeito hover -*/
 .video-box:hover {
   transform: scale(1.02);
   box-shadow: 0 0 30px #00f0ffcc;
@@ -120,7 +120,7 @@ body {
   width: 100%;
   border-radius: 12px;
   opacity: 0.5;
-  display: block; /* Corrige espaçamento adicional */
+  display: 20px; /* Corrige espaçamento adicional */
 }
 /* Mascote centralizado */
 .mascote-container {
