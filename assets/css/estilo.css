@@ -437,7 +437,7 @@ body {
   cursor: pointer;
   position: fixed;
   top: 20px;
-  right: 90px;
+  right: 80px;
   z-index: 1001;
   width: 50px;
   height: 50px;
@@ -452,6 +452,10 @@ body {
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   filter: drop-shadow(0 0 3px #00f0ff);
   transform-style: preserve-3d;
+  object-fit: contain;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges; /* Firefox */
+  image-rendering: pixelated; /* Fallback */
 }
 
 /* Rotação lateral ao passar mouse */
@@ -484,14 +488,14 @@ nav.menu-lateral {
 nav.menu-lateral.ativo {
   max-height: 80vh;
   box-shadow: 
-    0 0 30px rgba(0, 240, 255, 0.8), /* Projeção mais intensa */
+    0 0 30px rgba(0, 240, 255, 0.8), 
     -5px 0 30px rgba(0, 200, 200, 0.5);
 }
 
-/* === ESTRUTURA (MANTIDA COM AJUSTES) === */
+/* === ESTRUTURA ( COM AJUSTES) === */
 nav.menu-lateral ul {
   list-style: none;
-  padding: 10px 0; /* Reduzido (original: 15px) */
+  padding: 10px 0;  
   margin: 0;
 }
 
