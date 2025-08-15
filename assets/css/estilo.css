@@ -497,6 +497,12 @@ nav.menu-lateral ul li a {
   text-decoration: none;
   transition: all 0.25s ease;
   border-left: 3px solid transparent;
+  text-align: center; /* Centraliza o texto horizontalmente */
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente (flex) */
+  align-items: center; /* Centraliza verticalmente (flex) */
+  padding: 12px 5px; /* padding para melhor espaçamento */
+}
 }
 
 nav.menu-lateral ul li a:hover {
