@@ -439,8 +439,8 @@ body {
   top: 20px;
   right: 80px;
   z-index: 1001;
-  width: 80px;
-  height: 80px;
+  width: 50px;
+  height: 50px;
   display: grid;
   place-items: center;
   perspective: 800px;
@@ -467,7 +467,7 @@ nav.menu-lateral {
   width: 220px;
   max-height: 0;
   overflow: hidden;
-  background: rgba(5, 5, 35, 0.98);
+  background: transparent;
   backdrop-filter: blur(12px);
   border-bottom-left-radius: 12px;
   box-shadow: -3px 5px 20px rgba(0, 0, 0, 0.5);
