@@ -94,33 +94,43 @@ body {
 
 }
 
-/* Video box */
+/* Container principal do vídeo - versão final ajustada */
 .video-box {
- position: relative;
-  width: 90%;
-  max-width: 800px; /* Centralização e espaçamento vertical */
-  padding: 10px; /* Espaçamento interno original */
-  border: 2px solid #00f0ff; /* Estilo de borda original */
-  border-radius: 20px; /* Arredondamento de borda original */
-  box-shadow: 0 0 5px #00f0ff88; /* Sombra original */
-  background-color: #000000cc; /* Cor de fundo original */
-  backdrop-filter: blur(8px); /* Efeito de desfoque original */
-  transition: transform 0.4s ease, box-shadow 0.4s ease; /* Transição original */
-  box-sizing: border-box; /* Garante cálculo correto das dimensões */
+  position: relative;
+  width: 85%; /* Reduzi para 85% para garantir margens */
+  max-width: 750px; /* Largura máxima reduzida */
+  min-width: 300px; /* Largura mínima para mobile */
+  margin: 30px auto;
+  padding: 15px;
+  border: 2px solid #00f0ff;
+  border-radius: 20px;
+  box-shadow: 0 0 5px #00f0ff88;
+  background-color: #000000cc;
+  backdrop-filter: blur(8px);
+  transition: all 0.4s ease;
+  box-sizing: border-box;
+  
+  /* Garante que o container não encoste nas bordas */
+  left: 0;
+  right: 0;
 }
 
-/* Efeito hover -*/
+/* Efeito hover mantido */
 .video-box:hover {
   transform: scale(1.02);
   box-shadow: 0 0 30px #00f0ffcc;
 }
 
-/* Estilo do elemento de vídeo - mantido original com ajuste de layout */
+/* Ajuste preciso do vídeo */
 .video-box video {
-  width: 100%;
+  width: calc(100% - 4px); /* Compensa eventual borda */
+  max-height: 450px; /* Altura máxima controlada */
   border-radius: 12px;
   opacity: 0.5;
-  display: 20px; /* Corrige espaçamento adicional */
+  display: block;
+  margin: 0 auto;
+  object-fit: contain; /* Garante proporção correta */
+}
 }
 /* Mascote centralizado */
 .mascote-container {
