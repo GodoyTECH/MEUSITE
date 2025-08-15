@@ -431,13 +431,13 @@ body {
 
 /* === BOTÃO NAVEGAÇÃO (Nave Espacial) === */
 .menu-toggle {
-  background: transparent;
+  background: none;
   border: none;
   padding: 0;
   cursor: pointer;
   position: fixed;
   top: 20px;
-  right: 20px;
+  right: 40px;
   z-index: 1001;
   width: 60px;
   height: 60px;
@@ -447,8 +447,8 @@ body {
 }
 
 .menu-icon {
-  width: 50px;
-  height: 50px;
+  width: 80px;
+  height: 80px;
   transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   filter: drop-shadow(0 0 3px #00f0ff);
   transform-style: preserve-3d;
@@ -478,7 +478,7 @@ nav.menu-lateral {
 /* Estado visível (ativo) */
 nav.menu-lateral.ativo {
   max-height: 80vh; /* Altura responsiva */
-  box-shadow: -3px 5px 30px rgba(0, 240, 255, 0.25);
+  box-shadow: -3px 5px 30px rgba(0, 0, 0, 0.3);
 }
 
 /* Estrutura de navegação */
