@@ -109,7 +109,7 @@ body {
   backdrop-filter: blur(8px);
   transition: all 0.4s ease;
   box-sizing: border-box;
-   opacity: 0.5;
+  
   
   /* Garante que o container não encoste nas bordas */
   left: 0;
@@ -126,8 +126,9 @@ body {
 .video-box video {
   width: calc(100% - 4px); /* Compensa eventual borda */
   max-height: 450px; /* Altura máxima controlada */
-  border-radius: 0px;
+  border-radius: 5px;
   display: block;
+   opacity: 0.8;
   margin: 0 auto;
   object-fit: contain; /* Garante proporção correta */
 }
