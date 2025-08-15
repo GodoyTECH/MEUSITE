@@ -1,86 +1,68 @@
-
-<!-- Página de Softwares para download - Godoy Solutions -->
+<!-- Página de Softwares para download -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <!-- Ícone da aba (favicon) -->
-  <link rel="icon" type="image/png" href="logoicon.png">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Softwares Solutions</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to right, #16222A, #D085D1);
-      color: #ffffff;
-      padding: 40px;
-    }
-    h1 {
-      color: #00e6ff;
-      text-align: center;
-    }
-    ul {
-      list-style-type: none;
-      padding: 0;
-    }
-    li {
-      margin: 15px 0;
-      background-color: rgba(255, 255, 255, 0.05);
-      padding: 15px;
-      border-radius: 8px;
-    }
-    a {
-      color: #00ffff;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
+
+  <!-- Ícone da aba -->
+  <link rel="icon" type="image/png" href="logoicon.png">
+
+  <!-- CSS geral do site -->
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<!-- Fundo -->
-<div id="background-scene">
-  <div class="overlay-lights"></div>
-  <div class="particles">
-    <div class="particle particle-1"></div>
-    <div class="particle particle-2"></div>
-    <div class="particle particle-3"></div>
+<body>
+
+  <!-- Fundo animado -->
+  <div id="background-scene">
+    <div class="overlay-lights"></div>
+    <div class="particles">
+      <div class="particle particle-1"></div>
+      <div class="particle particle-2"></div>
+      <div class="particle particle-3"></div>
+    </div>
+    <div class="light-rays">
+      <div class="light-ray light-ray-1"></div>
+      <div class="light-ray light-ray-2"></div>
+      <div class="light-ray light-ray-3"></div>
+      <div class="light-ray light-ray-4"></div>
+    </div>
+    <div class="robots-bg"></div>
   </div>
-  <div class="light-rays">
-    <div class="light-ray light-ray-1"></div>
-    <div class="light-ray light-ray-2"></div>
-    <div class="light-ray light-ray-3"></div>
-    <div class="light-ray light-ray-4"></div>
-  </div>
-  <div class="robots-bg"></div>
-</div>
 
-<!-- Menu -->
-<button class="menu-toggle">=</button>
-<nav class="menu-lateral" id="menuLateral">
-  <ul>
-    <li><a href="index.html">Início</a></li>
-    <li><a href="contato.html">Contato</a></li>
-    <li><a href="noticias.html">Notícias</a></li>
-    <li><a href="apoio.html">Apoio</a></li>
-    <li><a href="softwares.html">Softwares</a></li>
-  </ul>
-</nav>
+  <!-- Botão do menu lateral -->
+  <button class="menu-toggle">=</button>
 
+  <!-- Menu lateral -->
+  <nav class="menu-lateral" id="menuLateral">
+    <ul>
+      <li><a href="index.html">Início</a></li>
+      <li><a href="contato.html">Contato</a></li>
+      <li><a href="noticias.html">Notícias</a></li>
+      <li><a href="apoio.html">Apoio</a></li>
+      <li><a href="softwares.html">Softwares</a></li>
+    </ul>
+  </nav>
 
-  <h1>Softwares Utilitários</h1>
-  <p style="text-align:center;">Clique nos links abaixo para acessar os programas essenciais no seu Dispositivo.</p>
-   <ul>
-    <li><a href="downloads/Google_Chrome_Installer.exe" download>⬇️Baixar Google Chrome</a></li>
-    <li><a href="downloads/WinRAR_Setup.exe" download>⬇️Baixar WinRAR</a></li>
-    <li><a href="downloads/Adobe_Reader_Setup.exe" download>⬇️Baixar Adobe Reader</a></li>
-    <li><a href="downloads/office.exe" download>⬇️Baixar Pacote Office</a></li>
+  <!-- Conteúdo central -->
+  <div class="conteudo-central">
+    <h1 class="titulo-contorno">Softwares Utilitários</h1>
+    <p class="subtitulo">Clique nos links abaixo para acessar os programas essenciais no seu Dispositivo.</p>
+
+    <ul class="lista-softwares">
+      <li><a href="downloads/Google_Chrome_Installer.exe" download>⬇️ Baixar Google Chrome</a></li>
+      <li><a href="downloads/WinRAR_Setup.exe" download>⬇️ Baixar WinRAR</a></li>
+      <li><a href="downloads/Adobe_Reader_Setup.exe" download>⬇️ Baixar Adobe Reader</a></li>
+      <li><a href="downloads/office.exe" download>⬇️ Baixar Pacote Office</a></li>
       <li><a href="downloads/ativaçaoWin.txt" download>⬇️ Veja como Ativar WIN(10,11)</a></li>
-  </ul>
+    </ul>
+  </div>
+
+
 </body>
+
+
   <script src="assets/js/main.js"></script>
   <link rel="stylesheet" href="assets/css/estilo.css">
 <div id="background-scene"></div>
