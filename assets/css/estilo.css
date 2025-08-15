@@ -467,8 +467,8 @@ nav.menu-lateral {
   width: 160px; /* Largura reduzida (original: 220px) */
   max-height: 0;
   overflow: hidden;
-  background: rgba(0, 5, 15, 0.7); /* Fundo semi-transparente */
-  backdrop-filter: blur(8px); /* Efeito de vidro */
+  background: transparent; /* Fundo semi-transparente */
+  backdrop-filter: none; /* Efeito de vidro */
   border-left: 1px solid #00f0ff; /* Borda lateral esquerda */
   border-bottom-left-radius: 12px;
   box-shadow: 
