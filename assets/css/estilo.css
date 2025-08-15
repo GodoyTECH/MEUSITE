@@ -149,13 +149,6 @@ body {
   to { opacity: 1; box-shadow: 0 0 12px #00f0ff; }
 }
 
-/* Fundo */
-#background-scene {
-  background-image: url('../images/fundo.jpg'); /* <- AQUI É O CAMINHO DA SUA IMAGEM */
-  background-size: cover;
-  background-position: center;
-}
-
 /* 🔹 IMAGEM DOS ROBÔS NAS BORDAS */
 .robots-bg {
   position: fixed; /* fixo para cobrir a tela mesmo com rolagem */
