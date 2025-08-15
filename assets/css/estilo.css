@@ -136,6 +136,7 @@ body {
 
 /* Mascote centralizado */
 .mascote-container {
+   background : none;
   position: relative;
   width: 400px;
   margin: 40px auto;
