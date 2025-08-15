@@ -4,6 +4,13 @@ body {
   overflow-x: hidden;
 }
 
+/* Fundo */
+#background-scene {
+  background-image: url('../images/fundo.jpg'); /* <-- Aqui está o caminho da imagem */
+  background-size: cover;
+  background-position: center;
+}
+
 /* Video box */
 .video-box {
   max-width: 720px;
