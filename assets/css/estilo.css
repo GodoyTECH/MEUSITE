@@ -29,7 +29,7 @@ body {
   position: relative;
   width: 90%;
   max-width: 800px;
-  margin: 30vh auto 50px auto; /* título 30% abaixo do topo */
+  margin: 20vh auto 50px auto; /* título 30% abaixo do topo */
   text-align: center;
   background-color: rgba(255, 255, 255, 0.05); /* leve transparência */
   padding: 20px;
