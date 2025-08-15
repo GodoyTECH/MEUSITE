@@ -92,11 +92,11 @@ body {
 }
 
 
-}
+
 
 /* Container principal do vídeo - versão final ajustada */
 .video-box {
-  position: relative;
+ 
   width: 85%; /* Reduzi para 85% para garantir margens */
   max-width: 750px; /* Largura máxima reduzida */
   min-width: 300px; /* Largura mínima para mobile */
@@ -131,7 +131,7 @@ body {
   margin: 0 auto;
   object-fit: contain; /* Garante proporção correta */
 }
-}
+
 /* Mascote centralizado */
 .mascote-container {
   position: relative;
