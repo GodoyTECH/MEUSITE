@@ -852,19 +852,6 @@ form button[type="submit"]:hover {
   border: none;
   border-radius: 10px;
 }
-/* Botão do Instagram fixo no canto superior direito */
-.instagram-fixo {
-  position: fixed;
-  top: 0px;
-  left: 10px;
-  z-index: 9999;
-  font-size: 20px;
-  color: #fff;
-  background: translate;
-  padding: 10px;
-  border-radius: 20%;
- 
-}
 
 
 
