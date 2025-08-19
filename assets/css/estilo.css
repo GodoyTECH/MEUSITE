@@ -134,35 +134,7 @@ body {
   object-fit: contain; /* Garante proporção correta */
 }
 
-/* Mascote centralizado */
-.mascote-container {
-   background : none;
-  position: relative;
-  width: 400px;
-  margin: 40px auto;
-  text-align: center;
-}
-.mascote-container img {
-  width: 100%;
-  display: block;
-  opacity: 0.8;
-  margin: 0 auto;
-}
 
-.olho {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  background: radial-gradient(circle, #00f0ff, transparent);
-  border-radius: 40%;
-  animation: brilhoOlho 0.2s infinite alternate;
-}
-.olho.esquerdo { top: 122px; left: 40%; }
-
-@keyframes brilhoOlho {
-  from { opacity: 0.1; }
-  to { opacity: 1; box-shadow: 0 0 12px #00f0ff; }
-}
 
 /* 🔹 IMAGEM DOS ROBÔS NAS BORDAS */
 .robots-bg {
