@@ -1,114 +1,46 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Godoy Solutions in TECH</title>
-
-<!-- Ícones do Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="stylesheet" href="assets/css/estilo.css">
-
-<!-- Ícone da aba -->
-<link rel="icon" type="image/png" href="assets/images/logoicon.png" />
-<link rel="apple-touch-icon" href="assets/images/logoicon.png" />
-
-<!-- Compartilhamento redes sociais -->
-<meta property="og:title" content="Godoy Solutions in TECH" />
-<meta property="og:description" content="Tecnologia com propósito, soluções com personalidade." />
-<meta property="og:image" content="https://godoysoluintech.netlify.app/assets/images/logo.jpeg" />
-<meta property="og:url" content="https://godoysoluintech.netlify.app/" />
-<meta property="og:type" content="website" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://godoysoluintech.netlify.app/assets/images/logo.jpeg" />
-
-<script src="https://kit.fontawesome.com/7ab7dab519.js" crossorigin="anonymous"></script>
-
-<!-- Fonte futurista -->
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;900&display=swap" rel="stylesheet">
-
-  <!-- Pré-carrega o ícone para evitar piscar -->
-  <link rel="preload" href="caminho/nave-espacial-icon.png" as="image">
-
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sobre - Godoy Solutions in TECH</title>
+  <link rel="stylesheet" href="assets/css/estilo.css">
+  <script defer src="assets/js/main.js"></script>
 </head>
 <body>
+  <!-- Fundo -->
+  <div id="background-scene"></div>
 
-<!-- Fundo -->
-<div id="background-scene">
-  <div class="overlay-lights"></div>
-  <div class="particles">
-    <div class="particle particle-1"></div>
-    <div class="particle particle-2"></div>
-    <div class="particle particle-3"></div>
+  <!-- Mascote -->
+  <div class="mascote-container">
+    <img src="assets/images/mascote2.png" alt="Mascote Godoy Solutions Tech"/>
   </div>
-  <div class="light-rays">
-    <div class="light-ray light-ray-1"></div>
-    <div class="light-ray light-ray-2"></div>
-    <div class="light-ray light-ray-3"></div>
-    <div class="light-ray light-ray-4"></div>
+
+  <!-- NOVO MENU RETRÁTIL -->
+  <div class="menu-container retraido">
+    <div class="menu-header">
+      <img src="assets/images/nave.png" alt="Ícone Nave">
+      <span>🚀 Clique aqui para navegar</span>
+    </div>
+    <nav class="menu-conteudo">
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="noticias.html">Notícias</a></li>
+        <li><a href="contato.html">Contato</a></li>
+        <li><a href="apoio.html">Apoio</a></li>
+        <li><a href="softwares.html">Softwares</a></li>
+      </ul>
+    </nav>
+    <div class="menu-risco"></div>
   </div>
-  <div class="robots-bg"></div>
-</div>
 
-<!-- Menu -->
-<button class="menu-toggle" aria-label="Abrir menu">
-  <img src="nave.png" alt="Ícone de menu" class="menu-icon">
-</button>
-<nav class="menu-lateral" id="menuLateral">
-  <ul>
-    <li><a href="index.html">Início</a></li>
-    <li><a href="contato.html">Contato</a></li>
-    <li><a href="noticias.html">Notícias</a></li>
-    <li><a href="apoio.html">Apoio</a></li>
-    <li><a href="softwares.html">Softwares</a></li>
-  </ul>
-</nav>
-
-<!-- Mascote centralizado com título -->
-<div class="mascote-container">
-  <img src="assets/images/mascote2.png" alt="Mascote Godoy Solutions Tech"/>
-  <div class="olho esquerdo"></div>
-  <div class="olho direito"></div>
-</div>
-
-<!-- Vídeo -->
-<div class="video-box">
-  <video autoplay controls loop playsinline>
-    <source src="assets/images/demo.mp4" type="video/mp4">
-    Seu navegador não suporta vídeo HTML5.
-  </video>
-</div>
-
-<!-- Conteúdo -->
-<main>
-  <section class="sobre">
-    <h2>Sobre a Empresa</h2>
-    <p>A <strong>Godoy Solutions in TECH</strong> foi fundada por <strong>Caique Eduardo Godoy da Silva</strong>, nascido em 1996. Com ampla experiência e sólida formação na área de tecnologia, atua com dedicação e comprometimento para entregar as melhores soluções.</p>
-    <p>Possui diversas certificações, incluindo Algoritmos, HTML5, CSS3, JavaScript básico, Inteligência Artificial e Análise de Dados, além de qualificações técnicas em Elétrica Residencial e Manutenção de Informática.</p>
-    <p>Comprometida com a inovação e o aprimoramento contínuo, a empresa busca oferecer soluções tecnológicas eficientes e alinhadas às tendências futuristas do mercado, garantindo a satisfação e o sucesso dos seus clientes.</p>
-  </section>
-
-  <section class="servicos">
-    <h2>Nossos Serviços</h2>
-    <ul>
-      <li><i class="fas fa-laptop-code"></i> Sistemas de gerenciamento e vendas</li>
-      <li><i class="fas fa-mobile-alt"></i> Sites e aplicativos personalizados</li>
-      <li><i class="fas fa-tools"></i> Manutenção de PCs, celulares e periféricos</li>
-      <li><i class="fas fa-wrench"></i> Instalação e restauração de sistemas</li>
-      <li><i class="fas fa-database"></i> Recuperação de dados</li>
-      <li><i class="fas fa-chalkboard-teacher"></i> Aulas e consultoria em Tech</li>
-    </ul>
-    <a href="contato.html" class="btn-cta"><i class="fas fa-comments"></i> Solicite um orçamento</a>
-  </section>
-</main>
-
-<footer class="footer">&copy; 2025 Godoy Solutions in TECH • Desenvolvido por Caíque Eduardo</footer>
-
-<a href="https://www.instagram.com/godoysolutionstech?igsh=MjJ6b2xhN3RhZzRl" target="_blank" class="instagram-fixo">
-  <i class="fab fa-instagram"></i>
-</a>
-
-<script src="assets/js/main.js"></script>
+  <!-- Conteúdo principal -->
+  <main>
+    <section class="sobre">
+      <h2>Sobre a Empresa</h2>
+      <p>A <strong>Godoy Solutions in TECH</strong> foi fundada por <strong>Caique Eduardo Godoy da Silva</strong>...</p>
+    </section>
+  </main>
 </body>
 </html>
-
