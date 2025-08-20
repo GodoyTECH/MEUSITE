@@ -345,19 +345,25 @@ footer {
 
 
   /* ===== INSTAGRAM FIXO ===== */
-  .instagram-fixo {
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
-    background: none;
-    color: #fff;
-    font-size: 22px;
-    padding: 12px;
-    border-radius: 50%;
-    text-align: center;
-    transition: transform 0.3s;
-  }
-  .instagram-fixo:hover { transform: scale(1.1); }
+ .instagram-central {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.instagram-central a {
+  display: inline-block;
+  background: #e1306c;
+  color: #fff;
+  font-size: 26px;
+  padding: 14px;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+.instagram-central a:hover {
+  transform: scale(1.1);
+}
+
 
   /* ===== ANIMAÇÃO ===== */
   @keyframes float {
@@ -424,14 +430,18 @@ footer {
       </a>
     </div>
   </div>
+   <div class="instagram-central">
+    <a href="https://www.instagram.com/godoysolutionstech?igsh=MjJ6b2xhN3RhZzRl" target="_blank">
+      <i class="fab fa-instagram"></i>
+    </a>
+  </div>
+</div>
 
   <!-- Rodapé -->
   <footer>&copy; 2025 Godoy Solutions in TECH • Desenvolvido por Caíque Eduardo</footer>
 
-  <!-- Instagram -->
-  <a href="https://www.instagram.com/godoysolutionstech?igsh=MjJ6b2xhN3RhZzRl" target="_blank" class="instagram-fixo">
-    <i class="fab fa-instagram"></i>
-  </a>
+ 
+
 
   <!-- JS -->
   <script>
