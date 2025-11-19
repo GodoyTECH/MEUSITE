@@ -439,7 +439,10 @@ nav.menu-lateral {
   width: 160px; /* Largura reduzida (original: 220px) */
   max-height: 0;
   overflow: hidden;
-  background: translucent; /* Fundo escuro mais visível */
+  background : nav.menu-lateral {
+  background: rgba; /* translúcido moderno */
+  
+}
 }
   backdrop-filter: none; /* Efeito de vidro */
   border-left: 1px solid #00f0ff; /* Borda lateral esquerda */
