@@ -152,38 +152,69 @@ function carregarRanking() {
 }
 
 
-// ========== INICIALIZAÇÃO GLOBAL ==========
 document.addEventListener('DOMContentLoaded', () => {
   const sources = [
     {
-      url: 'https://gnews.io/api/v4/top-headlines?category=technology&lang=pt&max=6&apikey=api_live_rbEsy9MuS69BGrPSapTQ0YtIvJBCQAkgMTuhKljZLkNtRwsMBNPHKduR',
-      parser: d => d.articles || []
-    },
-    {
-      url: null,
-      parser: () => []
-    }
-  ];
-          title: "Godoy Solutions Expande Serviços",
-          description: "Nova linha de consultoria em IA para pequenas empresas já disponível.",
-          url: "#",
-          image: "assets/images/default-news.jpg"
-        },
-        {
-          title: "Workshop Gratuito: JavaScript Moderno",
-          description: "Participe do evento online gratuito no dia 20/10.",
-          url: "#",
-          image: "assets/images/default-news.jpg"
-        }
-      ]
+      // 🔹 API NewsData.io — Tecnologia (PT)
+      url: 'https://newsdata.io/api/1/news?apikey=pub_1818976715b4f62607030677d8aa37ebba3d1&category=technology&language=pt',
+      parser: d => d.results || []
     }
   ];
 
-  const noticiasContainer = document.getElementById('news-cards');
-  if (noticiasContainer) {
-    new NewsSystem('news-cards', sources).init();
+  const container = document.getElementById('news-container');
+
+  async function loadNews() {
+    container.innerHTML = '<p style="color:#fff;">Carregando notícias...</p>';
+
+    let allNews = [];
+
+    for (const src of sources) {
+      try {
+        const res = await fetch(src.url);
+        const data = await res.json();
+
+        const parsed = src.parser(data);
+
+        parsed.forEach(item => {
+          allNews.push({
+            title: item.title,
+            url: item.link,
+            img: item.image_url || item.image || '',
+            desc: item.description || ''
+          });
+        });
+
+      } catch (err) {
+        console.error("Erro ao carregar:", src.url, err);
+      }
+    }
+
+    renderNews(allNews);
   }
 
-  carregarRanking();
-  setInterval(carregarRanking, 20000);
+  function renderNews(newsList) {
+    container.innerHTML = '';
+
+    if (newsList.length === 0) {
+      container.innerHTML = '<p style="color:#fff;">Nenhuma notícia encontrada.</p>';
+      return;
+    }
+
+    newsList.slice(0, 6).forEach(n => {
+      const card = document.createElement('div');
+      card.className = 'news-card';
+
+      card.innerHTML = `
+        <img src="${n.img || 'https://via.placeholder.com/400x200?text=Tecnologia'}" />
+        <h3>${n.title}</h3>
+        <p>${n.desc}</p>
+        <a href="${n.url}" target="_blank">Ler mais</a>
+      `;
+
+      container.appendChild(card);
+    });
+  }
+
+  loadNews();
+  setInterval(loadNews, 1000 * 60 * 5); // 🔄 Atualiza a cada 5 minutos
 });
