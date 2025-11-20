@@ -436,38 +436,51 @@ nav.menu-lateral {
   position: fixed;
   top: 80px;
   right: 1px;
-  width: 160px; /* Largura reduzida (original: 220px) */
+  width: 160px;
   max-height: 0;
   overflow: hidden;
-  background : nav.menu-lateral {
-  background: rgba; /* translúcido moderno */
-  
-}
-}
-  backdrop-filter: none; /* Efeito de vidro */
-  border-left: 1px solid #00f0ff; /* Borda lateral esquerda */
+
+  /* CORRIGIDO — seu código estava quebrado aqui */
+  background: rgba(0, 0, 0, 0.35); 
+  backdrop-filter: blur(10px); 
+
+  border-left: 1px solid #00f0ff;
   border-bottom-left-radius: 12px;
+
   box-shadow: 
-    0 0 20px rgba(0, 240, 255, 0.6), /* Efeito de projeção */
-    -5px 0 25px rgba(0, 200, 200, 0.4); /* Sombra direita */
+    0 0 20px rgba(0, 240, 255, 0.6),
+    -5px 0 25px rgba(0, 200, 200, 0.4);
+
   transition: 
     max-height 0.45s ease-out,
     box-shadow 0.3s ease,
-    background 0.3s ease;
+    background 0.3s ease,
+    transform 0.4s ease;
+
   z-index: 1000;
 }
 
+/* === MENU ABERTO === */
 nav.menu-lateral.ativo {
   max-height: 80vh;
   box-shadow: 
-    0 0 30px rgba(0, 240, 255, 0.8), 
+    0 0 30px rgba(0, 240, 255, 0.8),
     -5px 0 30px rgba(0, 200, 200, 0.5);
 }
 
-/* === ESTRUTURA ( COM AJUSTES) === */
+/* === QUANDO O MENU ABRE, EMPURRA O CONTEÚDO PARA A ESQUERDA === */
+body.menu-aberto main,
+body.menu-aberto #conteudo,
+body.menu-aberto .conteudo-principal {
+  transform: translateX(-160px);
+  transition: transform 0.4s ease;
+  background: transparent !important; /* deixa só o fundo do site visível */
+}
+
+/* === LISTA === */
 nav.menu-lateral ul {
   list-style: none;
-  padding: 10px 0;  
+  padding: 10px 0;
   margin: 0;
 }
 
@@ -477,26 +490,30 @@ nav.menu-lateral ul li a {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 12px 5px; /* Ajustado (menos espaço horizontal) */
-  margin: 5px 10px; /* Espaçamento entre itens */
+
+  padding: 12px 5px;
+  margin: 5px 10px;
+
   font-family: 'Segoe UI', system-ui, sans-serif;
   font-weight: 500;
-  letter-spacing: 0.5px;
   text-transform: uppercase;
-  font-size: 0.9rem; /* Reduzido (original: 0.95rem) */
+  letter-spacing: 0.5px;
+  font-size: 0.9rem;
+
   color: #00f0ff !important;
   text-shadow: 0 0 8px rgba(0, 240, 255, 1);
+
+  border-radius: 3px;
   transition: all 0.3s ease;
-  border-radius: 3px; /* Cantos levemente arredondados */
 }
 
-/* Efeito hover (com projeção) */
+/* === HOVER === */
 nav.menu-lateral ul li a:hover {
   background: rgba(0, 240, 255, 0.1);
-  box-shadow: 0 0 15px rgba(0, 240, 255, 0.5); /* Brilho interno */
-  transform: scale(1.02); /* Zoom sutil */
-  padding-left: 5px; /* Remove o deslocamento original */
-  border-left: none; /* Remove borda lateral */
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
+  transform: scale(1.02);
+  padding-left: 5px;
+  border-left: none;
 }
 
 /* === RESPONSIVO === */
@@ -506,18 +523,25 @@ nav.menu-lateral ul li a:hover {
     height: 54px;
     right: 15px;
   }
-  
+
   .menu-icon {
     width: 44px;
     height: 44px;
   }
-  
+
   nav.menu-lateral {
     top: 74px;
     right: 15px;
     width: 200px;
   }
+
+  body.menu-aberto main,
+  body.menu-aberto #conteudo,
+  body.menu-aberto .conteudo-principal {
+    transform: translateX(-200px);
+  }
 }
+
 /* ===== SEÇÕES ===== */
 section {
   padding: 60px 20px;
