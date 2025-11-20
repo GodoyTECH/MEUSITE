@@ -153,18 +153,22 @@ function carregarRanking() {
 
 
 document.addEventListener('DOMContentLoaded', () => {
+  const container = document.getElementById('news-cards'); // <-- CORRIGIDO!
+
+  if (!container) {
+    console.error("ERRO: Elemento #news-cards não existe no HTML.");
+    return;
+  }
+
   const sources = [
     {
-      // 🔹 API NewsData.io — Tecnologia (PT)
-      url: 'https://newsdata.io/api/1/news?apikey=pub_1818976715b4f62607030677d8aa37ebba3d1&category=technology&language=pt',
+      url: 'https://newsdata.io/api/1/news?apikey=api_live_rbEsy9MuS69BGrPSapTQ0YtIvJBCQAkgMTuhKljZLkNtRwsMBNPHKduR&category=technology&language=pt',
       parser: d => d.results || []
     }
   ];
 
-  const container = document.getElementById('news-container');
-
   async function loadNews() {
-    container.innerHTML = '<p style="color:#fff;">Carregando notícias...</p>';
+    container.innerHTML = '<p style="color:#fff;">Carregando notícias tecnológicas...</p>';
 
     let allNews = [];
 
@@ -196,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
     container.innerHTML = '';
 
     if (newsList.length === 0) {
-      container.innerHTML = '<p style="color:#fff;">Nenhuma notícia encontrada.</p>';
+      container.innerHTML = '<p style="color:#fff;">Nenhuma notícia encontrada no momento.</p>';
       return;
     }
 
@@ -205,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
       card.className = 'news-card';
 
       card.innerHTML = `
-        <img src="${n.img || 'https://via.placeholder.com/400x200?text=Tecnologia'}" />
+        <img src="${n.img || 'https://via.placeholder.com/450x250?text=Tecnologia'}" />
         <h3>${n.title}</h3>
         <p>${n.desc}</p>
         <a href="${n.url}" target="_blank">Ler mais</a>
@@ -216,5 +220,5 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   loadNews();
-  setInterval(loadNews, 1000 * 60 * 5); // 🔄 Atualiza a cada 5 minutos
+  setInterval(loadNews, 1000 * 60 * 5);
 });
