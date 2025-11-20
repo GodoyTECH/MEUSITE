@@ -160,12 +160,13 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
-  // SUA API DO APITUBE
+  // SUA API APITUBE
   const API_KEY = "api_live_srjLpIrGeerqzyHZh7AMdWDXBp2LhO3GHTBZNav0lJc";
 
+  // 🚀 ENDPOINT CORRETO
   const sources = [
     {
-      url: `https://apitube.io/api/v1/news?apikey=${API_KEY}&category=technology&lang=pt`,
+      url: `https://apitube.io/api/v1/articles?apikey=${API_KEY}&category=technology&lang=pt`,
       parser: d => Array.isArray(d.data) ? d.data : []
     }
   ];
@@ -182,7 +183,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         console.log("API response:", data);
 
-        // Caso erro
         if (!data.success) {
           console.error("Erro da API:", data.message);
           continue;
@@ -195,7 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
             title: item.title,
             url: item.url,
             img: item.thumbnail || item.image || '',
-            desc: item.excerpt || ''
+            desc: item.excerpt || 'Clique para ler mais.'
           });
         });
 
