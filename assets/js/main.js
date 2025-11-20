@@ -153,17 +153,19 @@ function carregarRanking() {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  const container = document.getElementById('news-cards'); // <-- CORRIGIDO!
+  const container = document.getElementById('news-cards'); 
 
   if (!container) {
     console.error("ERRO: Elemento #news-cards não existe no HTML.");
     return;
   }
 
+  const API_KEY = "api_live_srjLpIrGeerqzyHZh7AMdWDXBp2LhO3GHTBZNav0lJc";
+
   const sources = [
     {
-      url: 'https://newsdata.io/api/1/news?apikey=api_live_rbEsy9MuS69BGrPSapTQ0YtIvJBCQAkgMTuhKljZLkNtRwsMBNPHKduR&category=technology&language=pt',
-      parser: d => d.results || []
+      url: `https://newsdata.io/api/1/news?apikey=${API_KEY}&category=technology&language=pt`,
+      parser: d => Array.isArray(d.results) ? d.results : []
     }
   ];
 
@@ -176,6 +178,14 @@ document.addEventListener('DOMContentLoaded', () => {
       try {
         const res = await fetch(src.url);
         const data = await res.json();
+
+        console.log("API response:", data);
+
+        // Caso erro 401 ou similar
+        if (data.status === "error") {
+          console.error("Erro da API:", data.message);
+          continue;
+        }
 
         const parsed = src.parser(data);
 
@@ -209,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
       card.className = 'news-card';
 
       card.innerHTML = `
-        <img src="${n.img || 'https://via.placeholder.com/450x250?text=Tecnologia'}" />
+        <img src="${n.img || 'https://via.placeholder.com/450x250?text=Tech'}" />
         <h3>${n.title}</h3>
         <p>${n.desc}</p>
         <a href="${n.url}" target="_blank">Ler mais</a>
