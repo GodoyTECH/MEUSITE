@@ -163,48 +163,30 @@ document.addEventListener('DOMContentLoaded', () => {
   // SUA API APITUBE
   const API_KEY = "api_live_srjLpIrGeerqzyHZh7AMdWDXBp2LhO3GHTBZNav0lJc";
 
-  // 🚀 ENDPOINT CORRETO
-  const sources = [
-    {
-      url: `https://apitube.io/api/v1/articles?apikey=${API_KEY}&category=technology&lang=pt`,
-      parser: d => Array.isArray(d.data) ? d.data : []
-    }
-  ];
+  // ENDPOINT CORRETO DA APITUBE (.in + /api/news)
+  const API_URL = `https://apitube.in/api/news?apikey=${API_KEY}&category=technology&language=pt`;
 
   async function loadNews() {
     container.innerHTML = '<p style="color:#fff;">Carregando notícias tecnológicas...</p>';
 
-    let allNews = [];
+    try {
+      const res = await fetch(API_URL);
+      const data = await res.json();
 
-    for (const src of sources) {
-      try {
-        const res = await fetch(src.url);
-        const data = await res.json();
+      console.log("🟦 API Response:", data);
 
-        console.log("API response:", data);
-
-        if (!data.success) {
-          console.error("Erro da API:", data.message);
-          continue;
-        }
-
-        const parsed = src.parser(data);
-
-        parsed.forEach(item => {
-          allNews.push({
-            title: item.title,
-            url: item.url,
-            img: item.thumbnail || item.image || '',
-            desc: item.excerpt || 'Clique para ler mais.'
-          });
-        });
-
-      } catch (err) {
-        console.error("Erro ao carregar:", src.url, err);
+      if (!data.success || !Array.isArray(data.data)) {
+        console.error("Erro da API:", data.message);
+        container.innerHTML = '<p style="color:#fff;">Erro ao carregar notícias.</p>';
+        return;
       }
-    }
 
-    renderNews(allNews);
+      renderNews(data.data);
+
+    } catch (err) {
+      console.error("Erro ao carregar:", API_URL, err);
+      container.innerHTML = '<p style="color:#fff;">Erro ao carregar notícias.</p>';
+    }
   }
 
   function renderNews(newsList) {
@@ -215,15 +197,15 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    newsList.slice(0, 6).forEach(n => {
+    newsList.slice(0, 6).forEach(item => {
       const card = document.createElement('div');
       card.className = 'news-card';
 
       card.innerHTML = `
-        <img src="${n.img || 'https://via.placeholder.com/450x250?text=Tech'}" />
-        <h3>${n.title}</h3>
-        <p>${n.desc}</p>
-        <a href="${n.url}" target="_blank">Ler mais</a>
+        <img src="${item.thumbnail || item.image || 'https://via.placeholder.com/450x250?text=Tech'}" />
+        <h3>${item.title}</h3>
+        <p>${item.excerpt || 'Clique para ler mais.'}</p>
+        <a href="${item.url}" target="_blank">Ler mais</a>
       `;
 
       container.appendChild(card);
