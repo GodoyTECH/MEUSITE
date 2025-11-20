@@ -160,12 +160,13 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
+  // SUA API DO APITUBE
   const API_KEY = "api_live_srjLpIrGeerqzyHZh7AMdWDXBp2LhO3GHTBZNav0lJc";
 
   const sources = [
     {
-      url: `https://newsdata.io/api/1/news?apikey=${API_KEY}&category=technology&language=pt`,
-      parser: d => Array.isArray(d.results) ? d.results : []
+      url: `https://apitube.io/api/v1/news?apikey=${API_KEY}&category=technology&lang=pt`,
+      parser: d => Array.isArray(d.data) ? d.data : []
     }
   ];
 
@@ -181,8 +182,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         console.log("API response:", data);
 
-        // Caso erro 401 ou similar
-        if (data.status === "error") {
+        // Caso erro
+        if (!data.success) {
           console.error("Erro da API:", data.message);
           continue;
         }
@@ -192,9 +193,9 @@ document.addEventListener('DOMContentLoaded', () => {
         parsed.forEach(item => {
           allNews.push({
             title: item.title,
-            url: item.link,
-            img: item.image_url || item.image || '',
-            desc: item.description || ''
+            url: item.url,
+            img: item.thumbnail || item.image || '',
+            desc: item.excerpt || ''
           });
         });
 
