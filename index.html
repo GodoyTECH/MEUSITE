@@ -356,6 +356,51 @@ footer {
   transform: scale(1.1);
 }
 
+/* ===== PUBLICIDADE ===== */
+.ads-container {
+  margin: 20px auto;
+  max-width: 750px;
+}
+
+.ad-banner {
+  background: linear-gradient(45deg, #1a1a2e, #16213e);
+  border: 2px solid #00f2ff;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0, 242, 255, 0.3);
+}
+
+.ad-banner span {
+  color: #00f2ff;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.ad-banner:hover {
+  box-shadow: 0 0 25px rgba(0, 242, 255, 0.5);
+  cursor: pointer;
+}
+
+/* Anúncio quadrado (sidebar) */
+.ad-square {
+  width: 300px;
+  height: 250px;
+  background: linear-gradient(135deg, #0f0f23, #1a1a3e);
+  border: 1px solid #333;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px auto;
+}
+
+.ad-square span {
+  color: #666;
+  font-size: 12px;
+}
+
 
   /* ===== ANIMAÇÃO ===== */
   @keyframes float {
@@ -420,6 +465,30 @@ footer {
         <i class="fas fa-laptop-code"></i>
         <span>Softwares</span>
       </a>
+      <!-- Novos Projetos -->
+      <a href="https://scoletor.netlify.app" class="portal-item" target="_blank">
+        <i class="fas fa-robot"></i>
+        <span>Social Coletor</span>
+      </a>
+      <a href="https://petcrushes.netlify.app" class="portal-item" target="_blank">
+        <i class="fas fa-paw"></i>
+        <span>PetCrushes</span>
+      </a>
+      <a href="https://chatfoodsys.onrender.com" class="portal-item" target="_blank">
+        <i class="fas fa-apple-alt"></i>
+        <span>ChatFood</span>
+      </a>
+      <a href="https://rpregras.netlify.app" class="portal-item" target="_blank">
+        <i class="fas fa-gamepad"></i>
+        <span>RP Regras</span>
+      </a>
+    </div>
+    
+    <!-- Publicidade -->
+    <div class="ads-container">
+      <div class="ad-banner">
+        <span>Anuncie aqui</span>
+      </div>
     </div>
   </div>
    <div class="instagram-central">
