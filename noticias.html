@@ -1,74 +1,92 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <!-- Ícone da aba do navegador -->
-  <link rel="icon" type="image/png" href="assets/images/logoicon.png" />
-  <link rel="apple-touch-icon" href="assets/images/logoicon.png" />
-
-  <!-- Compartilhamento redes sociais -->
-  <meta property="og:title" content="Godoy Solutions in TECH" />
-  <meta property="og:description" content="Tecnologia com propósito, soluções com personalidade." />
-  <meta property="og:image" content="https://godoysoluintech.netlify.app/noticias//assets/images/logotipo.jpeg" />
-  <meta property="og:url" content="https://godoysoluintech.netlify.app/noticias" />
-  <meta property="og:type" content="website" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="https://godoysoluintech.netlify.app/noticias/assets/images/logotipo.jpeg" />
-
-  <!-- FontAwesome funcional -->
-  <script src="https://kit.fontawesome.com/7ab7dab519.js" crossorigin="anonymous"></script>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Notícias & Atualizações</title>
-  <link rel="stylesheet" href="assets/css/estilo.css"/>
- 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notícias - Godoy Solutions in TECH</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/shared.css">
 </head>
 <body>
-      <div id="background-scene">
-    <div class="robots-bg"></div>
-    <div class="overlay-lights"></div>
-    <div class="particles">
-      <div class="particle particle-1"></div>
-      <div class="particle particle-2"></div>
-      <div class="particle particle-3"></div>
-    </div>
-    <div class="light-rays">
-      <div class="light-ray light-ray-1"></div>
-      <div class="light-ray light-ray-2"></div>
-      <div class="light-ray light-ray-3"></div>
-      <div class="light-ray light-ray-4"></div>
-    </div>
-  </div>
+  <div class="bg-scene"></div>
+  <div class="grid-overlay"></div>
 
+  <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
 
-<!-- Menu -->
-<button class="menu-toggle" aria-label="Abrir menu">
-  <img src="nave.png" alt="Ícone de menu" class="menu-icon">
-</button>
-<nav class="menu-lateral" id="menuLateral">
-  <ul>
-    <li><a href="index.html">Início</a></li>
-    <li><a href="contato.html">Contato</a></li>
-    <li><a href="noticias.html">Notícias</a></li>
-    <li><a href="apoio.html">Apoio</a></li>
-    <li><a href="softwares.html">Softwares</a></li>
-  </ul>
-</nav>
- </header>
-  <main>
-    <section id="noticias">
-      <div class="news-header">
-        <div class="news-line"></div>
-        <h2 class="news-title">NOTÍCIAS & ATUALIZAÇÕES</h2>
+  <nav class="sidebar" id="sidebar">
+    <div class="logo-area">
+      <div class="logo-icon"><i class="fas fa-robot"></i></div>
+      <span class="logo-text">Godoy TECH</span>
+    </div>
+    <div class="nav-menu">
+      <a href="index.html" class="nav-item"><i class="fas fa-th-large"></i><span>Dashboard</span></a>
+      <a href="sobre.html" class="nav-item"><i class="fas fa-user"></i><span>Sobre</span></a>
+      <a href="softwares.html" class="nav-item"><i class="fas fa-laptop-code"></i><span>Softwares</span></a>
+      <a href="noticias.html" class="nav-item active"><i class="fas fa-newspaper"></i><span>Notícias</span></a>
+      <a href="contato.html" class="nav-item"><i class="fas fa-envelope"></i><span>Contato</span></a>
+      <a href="apoio.html" class="nav-item"><i class="fas fa-hand-holding-heart"></i><span>Apoio</span></a>
+    </div>
+    <div class="sidebar-footer">
+      <div class="user-info">
+        <div class="user-avatar">CE</div>
+        <span class="user-name">Caíque Eduardo</span>
       </div>
-      <div id="news-cards" class="news-grid">
-        <p>Carregando notícias tecnológicas...</p>
-      </div>
-    </section>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <header class="page-header">
+      <h1 class="page-title">Notícias</h1>
+      <p class="page-subtitle">Fique por dentro das últimas novidades</p>
+    </header>
+
+    <div class="items-grid">
+      <article class="item-card">
+        <div class="item-icon"><i class="fas fa-rocket"></i></div>
+        <h3 class="item-title">Novos Projetos</h3>
+        <p class="item-desc">Estamos sempre criando novas soluções. Fique atento para novidades!</p>
+      </article>
+
+      <article class="item-card">
+        <div class="item-icon"><i class="fas fa-robot"></i></div>
+        <h3 class="item-title">Inteligência Artificial</h3>
+        <p class="item-desc">Implementamos IA em nossos projetos para melhor experiência.</p>
+      </article>
+
+      <article class="item-card">
+        <div class="item-icon"><i class="fas fa-mobile-alt"></i></div>
+        <h3 class="item-title">Mobile First</h3>
+        <p class="item-desc">Todos os nossos sistemas são otimizados para dispositivos móveis.</p>
+      </article>
+
+      <article class="item-card">
+        <div class="item-icon"><i class="fas fa-shield-alt"></i></div>
+        <h3 class="item-title">Segurança</h3>
+        <p class="item-desc">Priorizamos a segurança dos dados dos nossos usuários.</p>
+      </article>
+    </div>
+
+    <footer class="main-footer">
+      <p class="footer-text"><i class="fas fa-code"></i> 2025 Godoy Solutions in TECH • Desenvolvido por Caíque Eduardo</p>
+    </footer>
   </main>
-  <footer class="footer">
-    &copy; 2025 Godoy Solutions in TECH • Desenvolvido por Caíque Eduardo
-  </footer>
- <script src="assets/js/main.js"></script>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const sidebar = document.getElementById('sidebar');
+    menuToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+      menuToggle.querySelector('i').classList.toggle('fa-times');
+      menuToggle.querySelector('i').classList.toggle('fa-bars');
+    });
+    document.addEventListener('click', (e) => {
+      if (window.innerWidth <= 768 && !sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+        sidebar.classList.remove('active');
+        menuToggle.querySelector('i').classList.remove('fa-times');
+        menuToggle.querySelector('i').classList.add('fa-bars');
+      }
+    });
+  </script>
 </body>
 </html>
