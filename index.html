@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portal oficial da Godoy Solutions in TECH. Explore notícias, softwares, contato, apoio e muito mais.">
+  <meta name="description" content="Portal oficial da Godoy Solutions in TECH - Dashboard Profissional">
   <meta name="author" content="Caíque Eduardo">
-  <meta name="keywords" content="tecnologia, godoy solutions, tech, inovação, software, portal, notícias">
+  <meta name="keywords" content="tecnologia, godoy solutions, tech, inovação, software, portal, dashboard">
   <meta property="og:title" content="Godoy Solutions in TECH">
-  <meta property="og:description" content="Bem-vindo ao portal Godoy Solutions in TECH">
+  <meta property="og:description" content="Dashboard Profissional - Godoy Solutions in TECH">
   <meta property="og:type" content="website">
   <meta property="og:image" content="assets/images/logoicon.png">
-  <meta property="og:url" content="https://seudominio.com/">
+  <meta property="og:url" content="https://godoysolutionstech.netlify.app/">
 
   <title>Godoy Solutions in TECH</title>
 
@@ -21,425 +21,920 @@
   <link rel="icon" type="image/png" href="assets/images/logoicon.png">
   <link rel="apple-touch-icon" href="assets/images/logoicon.png">
 
-  <!-- Fonte futurista -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;900&display=swap" rel="stylesheet">
+  <!-- Fontes -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-  /* ===== RESET ===== */
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+    /* ===== VARIÁVEIS CSS ===== */
+    :root {
+      --bg-primary: #0a0a0f;
+      --bg-secondary: #12121a;
+      --bg-card: rgba(18, 18, 26, 0.8);
+      --bg-glass: rgba(255, 255, 255, 0.05);
+      --accent-cyan: #00f2ff;
+      --accent-purple: #7A288A;
+      --accent-pink: #ff006e;
+      --text-primary: #ffffff;
+      --text-secondary: #a0a0b0;
+      --border-glow: rgba(0, 242, 255, 0.3);
+      --gradient-neon: linear-gradient(135deg, #00f2ff 0%, #7A288A 50%, #ff006e 100%);
+      --shadow-glow: 0 0 30px rgba(0, 242, 255, 0.2);
+      --radius-lg: 20px;
+      --radius-md: 16px;
+      --radius-sm: 10px;
+      --sidebar-width: 260px;
+      --header-height: 70px;
+    }
 
-  body, html {
-    height: 100%;
-    font-family: 'Orbitron', sans-serif;
-    color: #fff;
-    text-align: center;
-    overflow-x: hidden;
-  }
+    /* ===== RESET ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  /* ===== FUNDO ===== */
-  #background-scene {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: url("assets/images/robots-scene.png") no-repeat center center / cover;
-    z-index: -1;
-  }
- /* Mascote centralizado */
-.mascote-container {
-   background : none;
-  position: relative;
-  width: 250px;
-  margin: 20px auto;
-  text-align: center;
-}
-.mascote-container img {
-  width: 100%;
-  display: block;
-  opacity: 0.7;
-  margin: 0 auto;
-}
+    body, html {
+      height: 100%;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      overflow-x: hidden;
+    }
 
+    /* ===== FUNDO ANIMADO ===== */
+    .bg-scene {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -10;
+      background: 
+        radial-gradient(ellipse at 20% 20%, rgba(122, 40, 138, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(0, 242, 255, 0.1) 0%, transparent 50%),
+        var(--bg-primary);
+    }
 
+    .grid-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image: 
+        linear-gradient(rgba(0, 242, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 242, 255, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      z-index: -9;
+      pointer-events: none;
+    }
 
+    /* ===== SIDEBAR ===== */
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: var(--sidebar-width);
+      height: 100vh;
+      background: var(--bg-secondary);
+      border-right: 1px solid rgba(0, 242, 255, 0.1);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      z-index: 1000;
+      transition: transform 0.3s ease;
+    }
 
-/* 🔹 IMAGEM DOS ROBÔS NAS BORDAS */
-.robots-bg {
-  position: fixed; /* fixo para cobrir a tela mesmo com rolagem */
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: url('../images/robots-scene.png') center center no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-position: center center;
-  opacity: 0.7;
-  pointer-events: none;
-  z-index: -5;
-}
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 15px 10px;
+      margin-bottom: 30px;
+    }
 
-footer {
+    .logo-icon {
+      width: 45px;
+      height: 45px;
+      background: var(--gradient-neon);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
 
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  z-index: 10;
-  background: #000;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-}
-footer {
-  background: #000;
-  color: #00f2ff;
-  padding: 15px 20px;
-  text-align: center;
-  font-size: 0.9em;
-  font-weight: bold;
-  box-shadow: 0 -2px 10px rgba(0, 255, 255, 0.2);
-}
+    .logo-text {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      background: var(--gradient-neon);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
 
+    .nav-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+    }
 
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: var(--radius-md);
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
 
-.light-rays {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  pointer-events: none;
-  z-index: -4;
-  overflow: hidden;
-}
+    .nav-item:hover, .nav-item.active {
+      background: var(--bg-glass);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(0, 242, 255, 0.2);
+    }
 
-.light-ray {
-  position: absolute;
-  width: 2px;
-  height: 100vh;
-  background: #44D5F7;
-  opacity: 0.2;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-}
+    .nav-item i {
+      width: 20px;
+      text-align: center;
+    }
 
-/* Cada linha tem uma animação que move vertical e horizontalmente */
-.light-ray-1 {
-  background: #44D5F7;
-  animation-name: moveDiagonal1;
-  animation-duration: 6s;
-  animation-delay: 0s;
-}
+    .sidebar-footer {
+      padding: 20px 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
 
-.light-ray-2 {
-  background: #7A288A;
-  animation-name: moveDiagonal2;
-  animation-duration: 8s;
-  animation-delay: 1.5s;
-}
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+      background: var(--bg-glass);
+      border-radius: var(--radius-sm);
+    }
 
-.light-ray-3 {
-  background: #44D5F7;
-  animation-name: moveDiagonal3;
-  animation-duration: 7s;
-  animation-delay: 0.7s;
-}
+    .user-avatar {
+      width: 36px;
+      height: 36px;
+      background: var(--gradient-neon);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
 
-.light-ray-4 {
-  background: #7A288A;
-  animation-name: moveDiagonal4;
-  animation-duration: 5s;
-  animation-delay: 2.3s;
-}
+    .user-name {
+      font-size: 13px;
+      font-weight: 600;
+    }
 
-/* Animações com movimento horizontal (left) e vertical (translateY) */
-@keyframes moveDiagonal1 {
-  0% {
-    left: 10%;
-    transform: translateY(-100vh);
-    opacity: 0;
-  }
-  10% {
-    opacity: 0.3;
-  }
-  90% {
-    opacity: 0.3;
-  }
-  100% {
-    left: 25%;
-    transform: translateY(100vh);
-    opacity: 0;
-  }
-}
+    /* ===== BOTÃO MENU MOBILE ===== */
+    .menu-toggle {
+      display: none;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      width: 50px;
+      height: 50px;
+      background: var(--bg-secondary);
+      border: 1px solid rgba(0, 242, 255, 0.3);
+      border-radius: var(--radius-sm);
+      color: var(--accent-cyan);
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 1100;
+      transition: all 0.3s ease;
+    }
 
-@keyframes moveDiagonal2 {
-  0% {
-    left: 35%;
-    transform: translateY(-100vh);
-    opacity: 0;
-  }
-  10% {
-    opacity: 0.3;
-  }
-  90% {
-    opacity: 0.3;
-  }
-  100% {
-    left: 45%;
-    transform: translateY(100vh);
-    opacity: 0;
-  }
-}
+    .menu-toggle:hover {
+      background: var(--bg-glass);
+      box-shadow: var(--shadow-glow);
+    }
 
-@keyframes moveDiagonal3 {
-  0% {
-    left: 55%;
-    transform: translateY(-100vh);
-    opacity: 0;
-  }
-  10% {
-    opacity: 0.3;
-  }
-  90% {
-    opacity: 0.3;
-  }
-  100% {
-    left: 60%;
-    transform: translateY(100vh);
-    opacity: 0;
-  }
-}
+    /* ===== CONTEÚDO PRINCIPAL ===== */
+    .main-content {
+      margin-left: var(--sidebar-width);
+      padding: 30px;
+      min-height: 100vh;
+    }
 
-@keyframes moveDiagonal4 {
-  0% {
-    left: 75%;
-    transform: translateY(-100vh);
-    opacity: 0;
-  }
-  10% {
-    opacity: 0.3;
-  }
-  90% {
-    opacity: 0.3;
-  }
-  100% {
-    left: 80%;
-    transform: translateY(100vh);
-    opacity: 0;
-  }
-}
+    /* ===== HEADER ===== */
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
 
+    .page-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      background: var(--gradient-neon);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
 
+    .page-subtitle {
+      color: var(--text-secondary);
+      font-size: 14px;
+      margin-top: 5px;
+    }
 
+    /* ===== SEÇÃO PORTFÓLIO INTERATIVO ===== */
+    .portfolio-section {
+      margin-top: 20px;
+    }
 
-/* 🔹 PARTÍCULAS */
-.particles {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+    }
 
-.particle {
-  position: absolute;
-  width: 5px;
-  height: 5px;
-  background: #00BFFF;
-  border-radius: 50%;
-  animation: float 6s ease-in-out infinite;
-}
+    .section-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-.particle-1 { top: 60%; left: 20%; animation-delay: 0s; }
-.particle-2 { top: 70%; left: 50%; animation-delay: 2s; }
-.particle-3 { top: 40%; left: 75%; animation-delay: 4s; }
+    .section-title i {
+      color: var(--accent-cyan);
+    }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0); opacity: 1; }
-  50% { transform: translateY(-20px); opacity: 0.5; }
-}
+    /* ===== GRID DE MINI MONITORES ===== */
+    .monitors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 25px;
+    }
 
-/* 🔹 OVERLAY PULSANTE */
-.overlay-lights {
-  position: absolute;
-  top: 30%;
-  left: 30%;
-  width: 150px;
-  height: 150px;
-  background: rgba(68, 213, 247, 0.2);
-  border-radius: 50%;
-  animation: pulse 5s infinite;
-  pointer-events: none;
-}
+    /* ===== CARTÃO DE MONITOR ===== */
+    .monitor-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(0, 242, 255, 0.15);
+      overflow: hidden;
+      transition: all 0.4s ease;
+      position: relative;
+    }
 
-@keyframes pulse {https://chatgpt.com/library
-  0%, 100% { transform: scale(1); opacity: 0.6; }
-  50% { transform: scale(1.5); opacity: 0.2; }
-}
+    .monitor-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--gradient-neon);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
 
+    .monitor-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-glow);
+      border-color: rgba(0, 242, 255, 0.3);
+    }
 
-  /* ===== PORTAL ===== */
-  .portal {
-    margin: 30px auto;
-    max-width: 750px;
-    padding: 30px;
-    background: rgba(0,0,0,0.55);
-    border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.7);
-    backdrop-filter: blur(10px);
-    opacity: 0.7 ;
-  }
-  .portal h1 {
-    margin-bottom: 5px;
-    font-size: 32px;
-    font-weight: 900;
-    color: #7FFFD4 ;
-  }
-  .portal p {
-    margin-bottom: 25px;
-    font-size: 16px;
-    color: #ddd;
-  }
+    .monitor-card:hover::before {
+      opacity: 1;
+    }
 
-  /* ===== grade DE LINKS ===== */
-  
-  .portal-grid {
-     display: flex;
-     flex-wrap: wrap;
-     justify-content: center;
-     gap: 20px;
-}
+    .monitor-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 20px;
+      background: rgba(0, 0, 0, 0.3);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
 
-  }
-  .portal-item {
-    background: rgba(0,255,255,0.1);
-    padding: 20px;
-    border-radius: 12px;
-    transition: transform .3s, background .3s;
-    cursor: pointer;
-    text-decoration: none;
-  }
-  .portal-item:hover {
-    transform: translateY(-5px);
-    background: translate;
-  }
-  .portal-item i {
-    font-size: 36px;
-    margin-bottom: 10px;
-    color: #0ff;
-  }
-  .portal-item span {
-    display: block;
-    font-size: 14px;
-    font-weight: bold;
-    color: #fff;
-  }
+    .monitor-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
+    .monitor-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--bg-glass);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: var(--accent-cyan);
+    }
 
+    .monitor-name {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+    }
 
-  /* ===== INSTAGRAM FIXO ===== */
- .instagram-central {
-  margin-top: 1px;
-  text-align: center;
-}
+    .monitor-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-.instagram-central a {
-  display: inline-block;
-  background: none;
-  color: #fff;
-  font-size: 26px;
-  padding: 14px;
-  border-radius: 50%;
-  transition: transform 0.3s;
-}
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      animation: pulse-dot 2s infinite;
+    }
 
-.instagram-central a:hover {
-  transform: scale(1.1);
-}
+    .status-dot.online {
+      background: #00ff88;
+      box-shadow: 0 0 10px #00ff88;
+    }
 
+    .status-dot.offline {
+      background: #ff4444;
+      box-shadow: 0 0 10px #ff4444;
+    }
 
-  /* ===== ANIMAÇÃO ===== */
-  @keyframes float {
-    0%,100% { transform: translateY(0); }
-    50% { transform: translateY(-12px); }
-  }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .status-text {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    /* ===== ÁREA DO MONITOR (IFRAME) ===== */
+    .monitor-screen {
+      position: relative;
+      width: 100%;
+      height: 350px;
+      background: #000;
+      border: none;
+    }
+
+    .monitor-screen iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .monitor-screen iframe.loaded {
+      opacity: 1;
+    }
+
+    .monitor-screen .loading-overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-secondary);
+      transition: opacity 0.3s ease;
+    }
+
+    .monitor-screen .loading-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .loading-spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid rgba(0, 242, 255, 0.2);
+      border-top-color: var(--accent-cyan);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .loading-text {
+      margin-top: 15px;
+      color: var(--text-secondary);
+      font-size: 13px;
+    }
+
+    /* ===== TAGS DO MONITOR ===== */
+    .monitor-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 16px 20px;
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    .tag {
+      padding: 6px 12px;
+      background: var(--bg-glass);
+      border-radius: 20px;
+      font-size: 11px;
+      color: var(--text-secondary);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .tag.cyan { color: var(--accent-cyan); border-color: rgba(0, 242, 255, 0.3); }
+    .tag.purple { color: var(--accent-purple); border-color: rgba(122, 40, 138, 0.3); }
+    .tag.pink { color: var(--accent-pink); border-color: rgba(255, 0, 110, 0.3); }
+
+    /* ===== LINKS RÁPIDOS (Legacy - Mantido para compatibilidade) ===== */
+    .quick-links {
+      margin-top: 40px;
+      padding: 25px;
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(0, 242, 255, 0.1);
+    }
+
+    .quick-links-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 16px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .quick-links-title i {
+      color: var(--accent-cyan);
+    }
+
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+    }
+
+    .quick-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 18px;
+      background: var(--bg-glass);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border: 1px solid transparent;
+    }
+
+    .quick-link:hover {
+      background: rgba(0, 242, 255, 0.1);
+      border-color: rgba(0, 242, 255, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .quick-link i {
+      color: var(--accent-cyan);
+      font-size: 16px;
+    }
+
+    /* ===== FOOTER ===== */
+    .main-footer {
+      margin-top: 50px;
+      padding: 25px;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .footer-text {
+      color: var(--text-secondary);
+      font-size: 13px;
+    }
+
+    .footer-text i {
+      color: var(--accent-pink);
+    }
+
+    /* ===== RESPONSIVIDADE ===== */
+    @media (max-width: 1024px) {
+      .monitors-grid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .sidebar {
+        transform: translateX(-100%);
+      }
+
+      .sidebar.active {
+        transform: translateX(0);
+      }
+
+      .main-content {
+        margin-left: 0;
+        padding: 80px 20px 30px;
+      }
+
+      .page-title {
+        font-size: 22px;
+      }
+
+      .monitors-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .monitor-screen {
+        height: 300px;
+      }
+
+      .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page-title {
+        font-size: 18px;
+      }
+
+      .monitor-header {
+        padding: 12px 15px;
+      }
+
+      .monitor-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+      }
+
+      .monitor-name {
+        font-size: 12px;
+      }
+
+      .monitor-tags {
+        padding: 12px 15px;
+      }
+
+      .monitor-screen {
+        height: 250px;
+      }
+
+      .quick-links {
+        padding: 20px 15px;
+      }
+
+      .links-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 320px) {
+      .main-content {
+        padding: 75px 12px 20px;
+      }
+
+      .monitor-screen {
+        height: 220px;
+      }
+
+      .tag {
+        font-size: 10px;
+        padding: 4px 8px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Fundo -->
- 
-<div id="background-scene">
-  <div class="overlay-lights"></div>
-  <div class="particles">
-    <div class="particle particle-1"></div>
-    <div class="particle particle-2"></div>
-    <div class="particle particle-3"></div>
-  </div>
-  <div class="light-rays">
-    <div class="light-ray light-ray-1"></div>
-    <div class="light-ray light-ray-2"></div>
-    <div class="light-ray light-ray-3"></div>
-    <div class="light-ray light-ray-4"></div>
-  </div>
-  <div class="robots-bg"></div>
-</div>
-  
+  <!-- Fundos -->
+  <div class="bg-scene"></div>
+  <div class="grid-overlay"></div>
 
-  <!-- Mascote -->
-  <div class="mascote-container">
-  <img src="assets/images/mascote2.png" alt="Mascote Godoy Solutions Tech"/>
-  <div class="olho esquerdo"></div>
-  
-</div>
+  <!-- Botão Menu Mobile -->
+  <button class="menu-toggle" id="menuToggle">
+    <i class="fas fa-bars"></i>
+  </button>
 
-  <!-- Portal de Navegação -->
-  <div class="portal">
-    <h1>Godoy Solutions in TECH</h1>
-    <p>Escolha uma categoria para navegar</p>
-       
-    <div class="portal-grid">
-   
+  <!-- Sidebar -->
+  <nav class="sidebar" id="sidebar">
+    <div class="logo-area">
+      <div class="logo-icon">
+        <i class="fas fa-robot"></i>
+      </div>
+      <span class="logo-text">Godoy Solutions</span>
+    </div>
+
+    <div class="nav-menu">
+      <a href="#portfolio" class="nav-item active">
+        <i class="fas fa-th-large"></i>
+        <span>Dashboard</span>
       </a>
-      <a href="sobre.html" class="portal-item">
+      <a href="sobre.html" class="nav-item">
         <i class="fas fa-user"></i>
         <span>Sobre</span>
       </a>
-      <a href="contato.html" class="portal-item">
-        <i class="fas fa-envelope"></i>
-        <span>Contato</span>
-      </a>
-      <a href="noticias.html" class="portal-item">
-        <i class="fas fa-newspaper"></i>
-        <span>Notícias</span>
-      </a>
-      <a href="apoio.html" class="portal-item">
-        <i class="fas fa-hand-holding-heart"></i>
-        <span>Apoio</span>
-      </a>
-      <a href="softwares.html" class="portal-item">
+      <a href="softwares.html" class="nav-item">
         <i class="fas fa-laptop-code"></i>
         <span>Softwares</span>
       </a>
+      <a href="noticias.html" class="nav-item">
+        <i class="fas fa-newspaper"></i>
+        <span>Notícias</span>
+      </a>
+      <a href="contato.html" class="nav-item">
+        <i class="fas fa-envelope"></i>
+        <span>Contato</span>
+      </a>
+      <a href="apoio.html" class="nav-item">
+        <i class="fas fa-hand-holding-heart"></i>
+        <span>Apoio</span>
+      </a>
     </div>
-  </div>
-   <div class="instagram-central">
-    <a href="https://www.instagram.com/godoysolutionstech?igsh=MjJ6b2xhN3RhZzRl" target="_blank">
-      <i class="fab fa-instagram"></i>
-    </a>
-  </div>
-</div>
 
-  <!-- Rodapé -->
-  <footer>&copy; 2025 Godoy Solutions in TECH • Desenvolvido por Caíque Eduardo</footer>
+    <div class="sidebar-footer">
+      <div class="user-info">
+        <div class="user-avatar">CE</div>
+        <span class="user-name">Caíque Eduardo</span>
+      </div>
+    </div>
+  </nav>
 
- 
+  <!-- Conteúdo Principal -->
+  <main class="main-content">
+    <!-- Header -->
+    <header class="page-header">
+      <div>
+        <h1 class="page-title">Dashboard Profissional</h1>
+        <p class="page-subtitle">Bem-vindo ao portfólio interativo da Godoy Solutions in TECH</p>
+      </div>
+    </header>
 
+    <!-- Seção Portfólio Interativo -->
+    <section class="portfolio-section" id="portfolio">
+      <div class="section-header">
+        <h2 class="section-title">
+          <i class="fas fa-desktop"></i>
+          Portfólio Interativo
+        </h2>
+      </div>
 
-  <!-- JS -->
+      <!-- Grid de Monitores -->
+      <div class="monitors-grid">
+
+        <!-- Monitor 1: Social Coletor -->
+        <article class="monitor-card">
+          <div class="monitor-header">
+            <div class="monitor-info">
+              <div class="monitor-icon">
+                <i class="fas fa-robot"></i>
+              </div>
+              <span class="monitor-name">Social Coletor</span>
+            </div>
+            <div class="monitor-status">
+              <span class="status-dot online"></span>
+              <span class="status-text">Online</span>
+            </div>
+          </div>
+          <div class="monitor-screen">
+            <div class="loading-overlay" id="loader-1">
+              <div class="loading-spinner"></div>
+              <span class="loading-text">Carregando Social Coletor...</span>
+            </div>
+            <iframe 
+              src="https://scoletor.netlify.app" 
+              loading="lazy"
+              onload="this.classList.add('loaded'); document.getElementById('loader-1').classList.add('hidden');"
+              title="Social Coletor">
+            </iframe>
+          </div>
+          <div class="monitor-tags">
+            <span class="tag cyan">Automação</span>
+            <span class="tag purple">IA</span>
+            <span class="tag">Dashboard</span>
+          </div>
+        </article>
+
+        <!-- Monitor 2: PetCrushes -->
+        <article class="monitor-card">
+          <div class="monitor-header">
+            <div class="monitor-info">
+              <div class="monitor-icon">
+                <i class="fas fa-paw"></i>
+              </div>
+              <span class="monitor-name">PetCrushes</span>
+            </div>
+            <div class="monitor-status">
+              <span class="status-dot online"></span>
+              <span class="status-text">Online</span>
+            </div>
+          </div>
+          <div class="monitor-screen">
+            <div class="loading-overlay" id="loader-2">
+              <div class="loading-spinner"></div>
+              <span class="loading-text">Carregando PetCrushes...</span>
+            </div>
+            <iframe 
+              src="https://petcrushes.netlify.app" 
+              loading="lazy"
+              onload="this.classList.add('loaded'); document.getElementById('loader-2').classList.add('hidden');"
+              title="PetCrushes">
+            </iframe>
+          </div>
+          <div class="monitor-tags">
+            <span class="tag pink">Gamificação</span>
+            <span class="tag">Pets</span>
+            <span class="tag cyan">Social</span>
+          </div>
+        </article>
+
+        <!-- Monitor 3: ChatFood -->
+        <article class="monitor-card">
+          <div class="monitor-header">
+            <div class="monitor-info">
+              <div class="monitor-icon">
+                <i class="fas fa-utensils"></i>
+              </div>
+              <span class="monitor-name">ChatFood</span>
+            </div>
+            <div class="monitor-status">
+              <span class="status-dot online"></span>
+              <span class="status-text">Online</span>
+            </div>
+          </div>
+          <div class="monitor-screen">
+            <div class="loading-overlay" id="loader-3">
+              <div class="loading-spinner"></div>
+              <span class="loading-text">Carregando ChatFood...</span>
+            </div>
+            <iframe 
+              src="https://chatfoodsys.onrender.com" 
+              loading="lazy"
+              onload="this.classList.add('loaded'); document.getElementById('loader-3').classList.add('hidden');"
+              title="ChatFood">
+            </iframe>
+          </div>
+          <div class="monitor-tags">
+            <span class="tag purple">IA</span>
+            <span class="tag">Foodtech</span>
+            <span class="tag cyan">Chatbot</span>
+          </div>
+        </article>
+
+        <!-- Monitor 4: RP Regras -->
+        <article class="monitor-card">
+          <div class="monitor-header">
+            <div class="monitor-info">
+              <div class="monitor-icon">
+                <i class="fas fa-gamepad"></i>
+              </div>
+              <span class="monitor-name">RP Regras</span>
+            </div>
+            <div class="monitor-status">
+              <span class="status-dot online"></span>
+              <span class="status-text">Online</span>
+            </div>
+          </div>
+          <div class="monitor-screen">
+            <div class="loading-overlay" id="loader-4">
+              <div class="loading-spinner"></div>
+              <span class="loading-text">Carregando RP Regras...</span>
+            </div>
+            <iframe 
+              src="https://rpregras.netlify.app" 
+              loading="lazy"
+              onload="this.classList.add('loaded'); document.getElementById('loader-4').classList.add('hidden');"
+              title="RP Regras">
+            </iframe>
+          </div>
+          <div class="monitor-tags">
+            <span class="tag pink">RPG</span>
+            <span class="tag">Regras</span>
+            <span class="tag purple">Interativo</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Links Rápidos (Compatibilidade) -->
+    <section class="quick-links">
+      <h3 class="quick-links-title">
+        <i class="fas fa-link"></i>
+        Links Rápidos
+      </h3>
+      <div class="links-grid">
+        <a href="sobre.html" class="quick-link">
+          <i class="fas fa-user"></i>
+          <span>Sobre Nós</span>
+        </a>
+        <a href="softwares.html" class="quick-link">
+          <i class="fas fa-laptop-code"></i>
+          <span>Softwares</span>
+        </a>
+        <a href="noticias.html" class="quick-link">
+          <i class="fas fa-newspaper"></i>
+          <span>Notícias</span>
+        </a>
+        <a href="contato.html" class="quick-link">
+          <i class="fas fa-envelope"></i>
+          <span>Contato</span>
+        </a>
+        <a href="apoio.html" class="quick-link">
+          <i class="fas fa-hand-holding-heart"></i>
+          <span>Apoio</span>
+        </a>
+        <a href="https://www.instagram.com/godoysolutionstech" class="quick-link" target="_blank">
+          <i class="fab fa-instagram"></i>
+          <span>Instagram</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+      <p class="footer-text">
+        <i class="fas fa-code"></i> 2025 Godoy Solutions in TECH • Desenvolvido por Caíque Eduardo
+      </p>
+    </footer>
+  </main>
+
+  <!-- JavaScript -->
   <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    console.log("✨ Home carregada com sucesso.");
-  });
+    // Menu Mobile Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const sidebar = document.getElementById('sidebar');
+
+    menuToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+      const icon = menuToggle.querySelector('i');
+      if (sidebar.classList.contains('active')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+      } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+    });
+
+    // Fechar sidebar ao clicar fora no mobile
+    document.addEventListener('click', (e) => {
+      if (window.innerWidth <= 768) {
+        if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+          sidebar.classList.remove('active');
+          const icon = menuToggle.querySelector('i');
+          icon.classList.remove('fa-times');
+          icon.classList.add('fa-bars');
+        }
+      }
+    });
+
+    // Ativar item de navegação ao clicar
+    document.querySelectorAll('.nav-item').forEach(item => {
+      item.addEventListener('click', function(e) {
+        // Se não é link externo, previne comportamento padrão para scroll interno
+        if (this.getAttribute('href').startsWith('#')) {
+          e.preventDefault();
+          document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+          this.classList.add('active');
+          
+          const targetId = this.getAttribute('href').substring(1);
+          const targetSection = document.getElementById(targetId);
+          if (targetSection) {
+            targetSection.scrollIntoView({ behavior: 'smooth' });
+          }
+          
+          // Fechar menu mobile após clicar
+          if (window.innerWidth <= 768) {
+            sidebar.classList.remove('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+          }
+        } else if (!this.getAttribute('href').startsWith('http')) {
+          // Links internos - Remove active de outros e marca como active
+          document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+          this.classList.add('active');
+        }
+      });
+    });
+
+    console.log('✨ Dashboard SaaS carregado com sucesso!');
   </script>
 </body>
 </html>

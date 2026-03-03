@@ -1,117 +1,93 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Godoy Solutions in TECH</title>
-
-<!-- Ícones do Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="stylesheet" href="assets/css/estilo.css">
-
-<!-- Ícone da aba -->
-<link rel="icon" type="image/png" href="assets/images/logoicon.png" />
-<link rel="apple-touch-icon" href="assets/images/logoicon.png" />
-
-<!-- Compartilhamento redes sociais -->
-<meta property="og:title" content="Godoy Solutions in TECH" />
-<meta property="og:description" content="Tecnologia com propósito, soluções com personalidade." />
-<meta property="og:image" content="https://godoysoluintech.netlify.app/assets/images/logo.jpeg" />
-<meta property="og:url" content="https://godoysoluintech.netlify.app/" />
-<meta property="og:type" content="website" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://godoysoluintech.netlify.app/assets/images/logo.jpeg" />
-
-<script src="https://kit.fontawesome.com/7ab7dab519.js" crossorigin="anonymous"></script>
-
-<!-- Fonte futurista -->
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;900&display=swap" rel="stylesheet">
-
-  <!-- Pré-carrega o ícone para evitar piscar -->
-  <link rel="preload" href="caminho/nave-espacial-icon.png" as="image">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre - Godoy Solutions in TECH</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/shared.css">
 </head>
 <body>
+  <div class="bg-scene"></div>
+  <div class="grid-overlay"></div>
 
+  <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
 
+  <nav class="sidebar" id="sidebar">
+    <div class="logo-area">
+      <div class="logo-icon"><i class="fas fa-robot"></i></div>
+      <span class="logo-text">Godoy Solutions</span>
+    </div>
+    <div class="nav-menu">
+      <a href="index.html" class="nav-item"><i class="fas fa-th-large"></i><span>Dashboard</span></a>
+      <a href="sobre.html" class="nav-item active"><i class="fas fa-user"></i><span>Sobre</span></a>
+      <a href="softwares.html" class="nav-item"><i class="fas fa-laptop-code"></i><span>Softwares</span></a>
+      <a href="noticias.html" class="nav-item"><i class="fas fa-newspaper"></i><span>Notícias</span></a>
+      <a href="contato.html" class="nav-item"><i class="fas fa-envelope"></i><span>Contato</span></a>
+      <a href="apoio.html" class="nav-item"><i class="fas fa-hand-holding-heart"></i><span>Apoio</span></a>
+    </div>
+    <div class="sidebar-footer">
+      <div class="user-info">
+        <div class="user-avatar">CE</div>
+        <span class="user-name">Caíque Eduardo</span>
+      </div>
+    </div>
+  </nav>
 
-<!-- Fundo -->
-<div id="background-scene">
-  <div class="overlay-lights"></div>
-  <div class="particles">
-    <div class="particle particle-1"></div>
-    <div class="particle particle-2"></div>
-    <div class="particle particle-3"></div>
-  </div>
-  <div class="light-rays">
-    <div class="light-ray light-ray-1"></div>
-    <div class="light-ray light-ray-2"></div>
-    <div class="light-ray light-ray-3"></div>
-    <div class="light-ray light-ray-4"></div>
-  </div>
-  <div class="robots-bg"></div>
-</div>
+  <main class="main-content">
+    <header class="page-header">
+      <h1 class="page-title">Sobre Nós</h1>
+      <p class="page-subtitle">Conheça a história e missão da Godoy Solutions in TECH</p>
+    </header>
 
-<!-- Menu -->
-<button class="menu-toggle" aria-label="Abrir menu">
-  <img src="nave.png" alt="Ícone de menu" class="menu-icon">
-</button>
-<nav class="menu-lateral" id="menuLateral">
-  <ul>
-    <li><a href="index.html">Início</a></li>
-     <li><a href="sobre.html">Sobre</a></li>
-    <li><a href="contato.html">Contato</a></li>
-    <li><a href="noticias.html">Notícias</a></li>
-    <li><a href="apoio.html">Apoio</a></li>
-    <li><a href="softwares.html">Softwares</a></li>
-  </ul>
-</nav>
+    <div class="content-card">
+      <h2 class="card-title"><i class="fas fa-rocket"></i> Quem Somos</h2>
+      <p class="card-text">
+        A <strong>Godoy Solutions in TECH</strong> é uma iniciativa de tecnologia fundada por <strong>Caíque Eduardo</strong>, 
+        dedicada a criar soluções inovadoras para o cotidiano. Nosso foco está em automação, inteligência artificial 
+        e desenvolvimento de sistemas web modernos.<br><br>
+        Com uma abordagem centrada no usuário, buscamos simplificar tarefas complexas através de ferramentas 
+        tecnológicas acessíveis e intuitivas.
+      </p>
+    </div>
 
+    <div class="content-card">
+      <h2 class="card-title"><i class="fas fa-bullseye"></i> Nossa Missão</h2>
+      <p class="card-text">
+        Democratizar o acesso à tecnologia, criando sistemas que automatizam processos, economizam tempo 
+        e proporcionam experiências marcantes aos usuários.
+      </p>
+    </div>
 
+    <div class="content-card">
+      <h2 class="card-title"><i class="fas fa-lightbulb"></i> Projetos</h2>
+      <p class="card-text">
+        Desenvolvemos diversos projetos nas áreas de automação, gamificação e assistência virtual. 
+        Cada projeto é pensado para resolver problemas reais com tecnologia de ponta.
+      </p>
+    </div>
 
-<!-- Vídeo -->
-<div class="video-box">
-  <video autoplay controls loop playsinline>
-    <source src="assets/images/demo.mp4" type="video/mp4">
-    Seu navegador não suporta vídeo HTML5.
-  </video>
-</div>
+    <footer class="main-footer">
+      <p class="footer-text"><i class="fas fa-code"></i> 2025 Godoy Solutions in TECH • Desenvolvido por Caíque Eduardo</p>
+    </footer>
+  </main>
 
-<!-- Conteúdo -->
-<main>
-  <section class="sobre">
-    <h2>Sobre a Empresa</h2>
-    <p>A <strong>Godoy Solutions in TECH</strong> foi fundada por <strong>Caique Eduardo Godoy da Silva</strong>, nascido em 1996. Com ampla experiência e sólida formação na área de tecnologia, atua com dedicação e comprometimento para entregar as melhores soluções.</p>
-    <p>Possui diversas certificações, incluindo Algoritmos, HTML5, CSS3, JavaScript básico, Inteligência Artificial e Análise de Dados, além de qualificações técnicas em Elétrica Residencial e Manutenção de Informática.</p>
-    <p>Comprometida com a inovação e o aprimoramento contínuo, a empresa busca oferecer soluções tecnológicas eficientes e alinhadas às tendências futuristas do mercado, garantindo a satisfação e o sucesso dos seus clientes.</p>
-  </section>
-
-  <section class="servicos">
-    <h2>Nossos Serviços</h2>
-    <ul>
-      <li><i class="fas fa-laptop-code"></i> Sistemas de gerenciamento e vendas</li>
-      <li><i class="fas fa-mobile-alt"></i> Sites e aplicativos personalizados</li>
-      <li><i class="fas fa-tools"></i> Manutenção de PCs, celulares e periféricos</li>
-      <li><i class="fas fa-wrench"></i> Instalação e restauração de sistemas</li>
-      <li><i class="fas fa-database"></i> Recuperação de dados</li>
-      <li><i class="fas fa-chalkboard-teacher"></i> Aulas e consultoria em Tech</li>
-    </ul>
-    <a href="contato.html" class="btn-cta"><i class="fas fa-comments"></i> Solicite um orçamento</a>
-  </section>
-</main>
-
-<footer class="footer">&copy; 2025 Godoy Solutions in TECH • Desenvolvido por Caíque Eduardo</footer>
-
-<a href="https://www.instagram.com/godoysolutionstech?igsh=MjJ6b2xhN3RhZzRl" target="_blank" class="instagram-fixo">
-  <i class="fab fa-instagram"></i>
-</a>
-
-<script src="assets/js/main.js"></script>
-
-
-
-
-
-
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const sidebar = document.getElementById('sidebar');
+    menuToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+      menuToggle.querySelector('i').classList.toggle('fa-times');
+      menuToggle.querySelector('i').classList.toggle('fa-bars');
+    });
+    document.addEventListener('click', (e) => {
+      if (window.innerWidth <= 768 && !sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+        sidebar.classList.remove('active');
+        menuToggle.querySelector('i').classList.remove('fa-times');
+        menuToggle.querySelector('i').classList.add('fa-bars');
+      }
+    });
+  </script>
 </body>
 </html>

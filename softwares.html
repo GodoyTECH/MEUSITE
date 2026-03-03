@@ -1,72 +1,104 @@
-<!-- Página de Softwares para download -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Softwares Solutions</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
-  <!-- Ícone da aba -->
-  <link rel="icon" type="image/png" href="assets/images/logoicon.png" />
-  <link rel="apple-touch-icon" href="assets/images/logoicon.png" />
-
-  <!-- CSS geral do site -->
-  <link rel="stylesheet" href="assets/css/estilo.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Softwares - Godoy Solutions in TECH</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/shared.css">
 </head>
 <body>
+  <div class="bg-scene"></div>
+  <div class="grid-overlay"></div>
 
-  <!-- Fundo animado -->
-  <div id="background-scene">
-    <div class="overlay-lights"></div>
-    <div class="particles">
-      <div class="particle particle-1"></div>
-      <div class="particle particle-2"></div>
-      <div class="particle particle-3"></div>
+  <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+
+  <nav class="sidebar" id="sidebar">
+    <div class="logo-area">
+      <div class="logo-icon"><i class="fas fa-robot"></i></div>
+      <span class="logo-text">Godoy Solutions</span>
     </div>
-    <div class="light-rays">
-      <div class="light-ray light-ray-1"></div>
-      <div class="light-ray light-ray-2"></div>
-      <div class="light-ray light-ray-3"></div>
-      <div class="light-ray light-ray-4"></div>
+    <div class="nav-menu">
+      <a href="index.html" class="nav-item"><i class="fas fa-th-large"></i><span>Dashboard</span></a>
+      <a href="sobre.html" class="nav-item"><i class="fas fa-user"></i><span>Sobre</span></a>
+      <a href="softwares.html" class="nav-item active"><i class="fas fa-laptop-code"></i><span>Softwares</span></a>
+      <a href="noticias.html" class="nav-item"><i class="fas fa-newspaper"></i><span>Notícias</span></a>
+      <a href="contato.html" class="nav-item"><i class="fas fa-envelope"></i><span>Contato</span></a>
+      <a href="apoio.html" class="nav-item"><i class="fas fa-hand-holding-heart"></i><span>Apoio</span></a>
     </div>
-    <div class="robots-bg"></div>
-  </div>
+    <div class="sidebar-footer">
+      <div class="user-info">
+        <div class="user-avatar">CE</div>
+        <span class="user-name">Caíque Eduardo</span>
+      </div>
+    </div>
+  </nav>
 
-  
-<!-- Menu -->
-<button class="menu-toggle" aria-label="Abrir menu">
-  <img src="nave.png" alt="Ícone de menu" class="menu-icon">
-</button>
-<nav class="menu-lateral" id="menuLateral">
-  <ul>
-    <li><a href="index.html">Início</a></li>
-    <li><a href="contato.html">Contato</a></li>
-    <li><a href="noticias.html">Notícias</a></li>
-    <li><a href="apoio.html">Apoio</a></li>
-    <li><a href="softwares.html">Softwares</a></li>
-  </ul>
-</nav>
+  <main class="main-content">
+    <header class="page-header">
+      <h1 class="page-title">Nossos Softwares</h1>
+      <p class="page-subtitle">Soluções desenvolvidas pela Godoy Solutions in TECH</p>
+    </header>
 
-  <!-- Conteúdo central -->
-  <div class="conteudo-central">
-    <h1 class="titulo-contorno">Softwares Utilitários</h1>
-    <p class="subtitulo">Clique nos links abaixo para acessar os programas essenciais no seu Dispositivo.</p>
+    <div class="items-grid">
+      <article class="item-card">
+        <div class="item-icon"><i class="fas fa-robot"></i></div>
+        <h3 class="item-title">Social Coletor</h3>
+        <p class="item-desc">Sistema de automação para coleta e análise de dados das redes sociais.</p>
+      </article>
 
-    <ul class="lista-softwares">
-      <li><a href="downloads/Google_Chrome_Installer.exe" download>⬇️ Baixar Google Chrome</a></li>
-      <li><a href="downloads/WinRAR_Setup.exe" download>⬇️ Baixar WinRAR</a></li>
-      <li><a href="downloads/Adobe_Reader_Setup.exe" download>⬇️ Baixar Adobe Reader</a></li>
-      <li><a href="downloads/office.exe" download>⬇️ Baixar Pacote Office</a></li>
-      <li><a href="downloads/ativaçaoWin.txt" download>⬇️ Veja como Ativar WIN(10,11)</a></li>
-    </ul>
-  </div>
+      <article class="item-card">
+        <div class="item-icon"><i class="fas fa-paw"></i></div>
+        <h3 class="item-title">PetCrushes</h3>
+        <p class="item-desc">Plataforma de gamificação para pets e seus donos.</p>
+      </article>
 
+      <article class="item-card">
+        <div class="item-icon"><i class="fas fa-utensils"></i></div>
+        <h3 class="item-title">ChatFood</h3>
+        <p class="item-desc">Assistente virtual para pedidos e delivery de alimentos.</p>
+      </article>
 
+      <article class="item-card">
+        <div class="item-icon"><i class="fas fa-gamepad"></i></div>
+        <h3 class="item-title">RP Regras</h3>
+        <p class="item-desc">Sistema interativo de regras para RPG e roleplay.</p>
+      </article>
+
+      <article class="item-card">
+        <div class="item-icon"><i class="fas fa-bolt"></i></div>
+        <h3 class="item-title">FlashTrack</h3>
+        <p class="item-desc">Sistema de tracking e otimização de rotas.</p>
+      </article>
+
+      <article class="item-card">
+        <div class="item-icon"><i class="fas fa-cut"></i></div>
+        <h3 class="item-title">SysLuxe</h3>
+        <p class="item-desc">Sistema de gestão para barbearias e salões.</p>
+      </article>
+    </div>
+
+    <footer class="main-footer">
+      <p class="footer-text"><i class="fas fa-code"></i> 2025 Godoy Solutions in TECH • Desenvolvido por Caíque Eduardo</p>
+    </footer>
+  </main>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const sidebar = document.getElementById('sidebar');
+    menuToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+      menuToggle.querySelector('i').classList.toggle('fa-times');
+      menuToggle.querySelector('i').classList.toggle('fa-bars');
+    });
+    document.addEventListener('click', (e) => {
+      if (window.innerWidth <= 768 && !sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+        sidebar.classList.remove('active');
+        menuToggle.querySelector('i').classList.remove('fa-times');
+        menuToggle.querySelector('i').classList.add('fa-bars');
+      }
+    });
+  </script>
 </body>
-
-
-  <script src="assets/js/main.js"></script>
-  
-<div id="background-scene"></div>
-
 </html>
