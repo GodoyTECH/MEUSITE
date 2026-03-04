@@ -803,6 +803,7 @@
             <span class="tag">Nutrição</span>
             <span class="tag cyan">Chatbot</span>
           </div>
+          <p class="monitor-desc">Envie uma foto do seu prato pelo WhatsApp e receba instantaneamente o peso dos alimentos e análise completa de nutrientes. IA nutricional que transforma alimentação em dados.</p>
         </article>
 
         
@@ -906,6 +907,40 @@
             <span class="tag cyan">Clientes</span>
           </div>
           <p class="monitor-desc">Sistema de gestão para barbearias e salões de beleza com agenda e controle de clientes.</p>
+        </article>
+
+        <!-- Monitor 7: FlashTrack -->
+        <article class="monitor-card">
+          <div class="monitor-header">
+            <div class="monitor-info">
+              <div class="monitor-icon">
+                <i class="fas fa-route"></i>
+              </div>
+              <span class="monitor-name">FlashTrack</span>
+            </div>
+            <div class="monitor-status">
+              <span class="status-dot online"></span>
+              <span class="status-text">Online</span>
+            </div>
+          </div>
+          <div class="monitor-screen">
+            <div class="loading-overlay" id="loader-7">
+              <div class="loading-spinner"></div>
+              <span class="loading-text">Carregando FlashTrack...</span>
+            </div>
+            <iframe 
+              src="https://flashtrack.netlify.app" 
+              loading="lazy"
+              onload="this.classList.add('loaded'); document.getElementById('loader-7').classList.add('hidden');"
+              title="FlashTrack">
+            </iframe>
+          </div>
+          <div class="monitor-tags">
+            <span class="tag cyan">GPS</span>
+            <span class="tag purple">Rastreamento</span>
+            <span class="tag">Delivery</span>
+          </div>
+          <p class="monitor-desc">Sistema de rastreamento por GPS para delivery e equipes externas. Controle de rotas em tempo real com dashboard e notificações.</p>
         </article>
 </div>
     </section>

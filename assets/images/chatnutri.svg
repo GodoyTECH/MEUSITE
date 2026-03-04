@@ -1,16 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
   <defs>
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#1a1a2e"/>
-      <stop offset="100%" style="stop-color:#16213e"/>
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
     </linearGradient>
-    <linearGradient id="robotGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#00f2ff"/>
-      <stop offset="100%" style="stop-color:#7A288A"/>
+    <linearGradient id="heartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ef4444"/>
+      <stop offset="100%" style="stop-color:#dc2626"/>
     </linearGradient>
-    <linearGradient id="plateGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#4ade80"/>
-      <stop offset="100%" style="stop-color:#22c55e"/>
+    <linearGradient id="armGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#1d4ed8"/>
     </linearGradient>
   </defs>
   
@@ -19,60 +19,70 @@
   
   <!-- Grid pattern -->
   <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
-    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(0,242,255,0.1)" stroke-width="0.5"/>
+    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(59,130,246,0.1)" stroke-width="0.5"/>
   </pattern>
   <rect width="400" height="400" fill="url(#grid)"/>
   
-  <!-- Robot Head -->
-  <g transform="translate(120, 80)">
-    <!-- Main head -->
-    <rect x="0" y="20" width="160" height="140" rx="30" fill="url(#robotGrad)" opacity="0.9"/>
-    <!-- Face plate -->
-    <rect x="20" y="40" width="120" height="90" rx="20" fill="#0a0a0f"/>
-    <!-- Eyes -->
-    <circle cx="50" cy="75" r="18" fill="#00f2ff">
-      <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite"/>
-    </circle>
-    <circle cx="110" cy="75" r="18" fill="#00f2ff">
-      <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite"/>
-    </circle>
-    <!-- Eye shine -->
-    <circle cx="45" cy="70" r="5" fill="white" opacity="0.8"/>
-    <circle cx="105" cy="70" r="5" fill="white" opacity="0.8"/>
-    <!-- Mouth -->
-    <rect x="55" y="105" width="50" height="8" rx="4" fill="#00f2ff" opacity="0.7"/>
-    <!-- Antenna -->
-    <rect x="75" y="0" width="10" height="25" fill="#00f2ff"/>
-    <circle cx="80" cy="0" r="8" fill="#ff006e">
-      <animate attributeName="r" values="8;10;8" dur="1.5s" repeatCount="indefinite"/>
-    </circle>
+  <!-- Heart with strong arms -->
+  <g transform="translate(200, 180)">
+    <!-- Strong defined left arm -->
+    <path d="M -60 -20 Q -90 -30 -100 10 Q -110 50 -90 80 Q -80 90 -70 70 Q -60 50 -50 30 Q -45 20 -50 0" 
+          fill="url(#armGrad)" stroke="#1e40af" stroke-width="2"/>
+    <!-- Strong defined right arm -->
+    <path d="M 60 -20 Q 90 -30 100 10 Q 110 50 90 80 Q 80 90 70 70 Q 60 50 50 30 Q 45 20 50 0" 
+          fill="url(#armGrad)" stroke="#1e40af" stroke-width="2"/>
+    
+    <!-- Heart body -->
+    <path d="M 0 60 
+             C -60 -20 -120 -20 -120 40 
+             C -120 90 -60 130 0 170 
+             C 60 130 120 90 120 40 
+             C 120 -20 60 -20 0 60 Z" 
+          fill="url(#heartGrad)" stroke="#b91c1c" stroke-width="3"/>
+    
+    <!-- Heart shine -->
+    <ellipse cx="-40" cy="30" rx="20" ry="15" fill="rgba(255,255,255,0.3)"/>
+    
+    <!-- Face on heart -->
+    <circle cx="-20" cy="50" r="8" fill="white"/>
+    <circle cx="20" cy="50" r="8" fill="white"/>
+    <circle cx="-20" cy="52" r="3" fill="#1e293b"/>
+    <circle cx="20" cy="52" r="3" fill="#1e293b"/>
+    <!-- Smile -->
+    <path d="M -15 70 Q 0 85 15 70" stroke="white" stroke-width="3" fill="none" stroke-linecap="round"/>
   </g>
   
-  <!-- Thought bubble -->
-  <g transform="translate(250, 60)">
-    <ellipse cx="50" cy="50" rx="45" ry="35" fill="white" opacity="0.15"/>
-    <circle cx="20" cy="95" r="8" fill="white" opacity="0.15"/>
-    <circle cx="10" cy="110" r="5" fill="white" opacity="0.1"/>
+  <!-- Plate/food icon floating -->
+  <g transform="translate(320, 100)">
+    <circle cx="0" cy="0" r="35" fill="white" opacity="0.2"/>
+    <circle cx="0" cy="0" r="25" fill="#22c55e"/>
+    <!-- Food items on plate -->
+    <circle cx="-8" cy="-5" r="6" fill="#16a34a"/>
+    <circle cx="8" cy="-5" r="6" fill="#f97316"/>
+    <circle cx="0" cy="8" r="5" fill="#ef4444"/>
   </g>
   
-  <!-- Food Plate -->
-  <g transform="translate(280, 140)">
-    <!-- Plate -->
-    <circle cx="50" cy="50" r="45" fill="white" opacity="0.2"/>
-    <circle cx="50" cy="50" r="35" fill="url(#plateGrad)" opacity="0.8"/>
-    <!-- Food items -->
-    <!-- Broccoli -->
-    <circle cx="35" cy="40" r="10" fill="#16a34a"/>
-    <circle cx="40" cy="35" r="6" fill="#22c55e"/>
-    <!-- Carrot -->
-    <rect x="55" y="30" width="20" height="8" rx="4" fill="#f97316" transform="rotate(30 65 34)"/>
-    <!-- Tomato -->
-    <circle cx="45" cy="60" r="8" fill="#ef4444"/>
-    <!-- Leaf -->
-    <ellipse cx="65" cy="55" rx="8" ry="4" fill="#84cc16" transform="rotate(-20 65 55)"/>
+  <!-- AI processing lines -->
+  <g stroke="#3b82f6" stroke-width="2" opacity="0.6">
+    <line x1="280" y1="150" x2="220" y2="170">
+      <animate attributeName="opacity" values="0.6;1;0.6" dur="1.5s" repeatCount="indefinite"/>
+    </line>
+    <line x1="290" y1="180" x2="230" y2="190">
+      <animate attributeName="opacity" values="0.6;1;0.6" dur="1.5s" repeatCount="indefinite" begin="0.2s"/>
+    </line>
+    <line x1="295" y1="210" x2="235" y2="210">
+      <animate attributeName="opacity" values="0.6;1;0.6" dur="1.5s" repeatCount="indefinite" begin="0.4s"/>
+    </line>
+  </g>
+  
+  <!-- Nutritional info floating -->
+  <g transform="translate(80, 280)">
+    <rect x="0" y="0" width="120" height="60" rx="10" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.2)"/>
+    <text x="60" y="25" text-anchor="middle" fill="#22c55e" font-family="Arial" font-size="14" font-weight="bold">325 kcal</text>
+    <text x="60" y="45" text-anchor="middle" fill="#94a3b8" font-family="Arial" font-size="11">Proteínas: 12g</text>
   </g>
   
   <!-- Text -->
-  <text x="200" y="350" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="24" font-weight="bold">ChatNutri</text>
-  <text x="200" y="375" text-anchor="middle" fill="#00f2ff" font-family="Arial, sans-serif" font-size="14">Assistente Nutricional IA</text>
+  <text x="200" y="360" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="22" font-weight="bold">ChatNutri</text>
+  <text x="200" y="382" text-anchor="middle" fill="#3b82f6" font-family="Arial, sans-serif" font-size="12">IA Nutricional</text>
 </svg>
