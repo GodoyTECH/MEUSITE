@@ -618,6 +618,13 @@
         padding: 4px 8px;
       }
     }
+    /* ===== DESCRIÇÃO DO MONITOR ===== */
+    .monitor-desc {
+      padding: 0 20px 16px;
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
   </style>
 </head>
 <body>
@@ -728,6 +735,7 @@
             <span class="tag purple">IA</span>
             <span class="tag">Dashboard</span>
           </div>
+          <p class="monitor-desc">Plataforma de automação para coleta e organização de dados sociais, com dashboard e exportação.</p>
         </article>
 
         <!-- Monitor 2: PetCrushes -->
@@ -761,16 +769,17 @@
             <span class="tag">Pets</span>
             <span class="tag cyan">Social</span>
           </div>
+          <p class="monitor-desc">Plataforma de gamificação para pets e seus donos, com recompensas e achievements.</p>
         </article>
 
-        <!-- Monitor 3: ChatFood -->
+        <!-- Monitor 3: ChatNutri -->
         <article class="monitor-card">
           <div class="monitor-header">
             <div class="monitor-info">
               <div class="monitor-icon">
                 <i class="fas fa-utensils"></i>
               </div>
-              <span class="monitor-name">ChatFood</span>
+              <span class="monitor-name">ChatNutri</span>
             </div>
             <div class="monitor-status">
               <span class="status-dot online"></span>
@@ -780,30 +789,31 @@
           <div class="monitor-screen">
             <div class="loading-overlay" id="loader-3">
               <div class="loading-spinner"></div>
-              <span class="loading-text">Carregando ChatFood...</span>
+              <span class="loading-text">Carregando ChatNutri...</span>
             </div>
             <iframe 
-              src="https://chatfoodsys.onrender.com" 
+              src="https://chatfood.netlify.app" 
               loading="lazy"
               onload="this.classList.add('loaded'); document.getElementById('loader-3').classList.add('hidden');"
-              title="ChatFood">
+              title="ChatNutri">
             </iframe>
           </div>
           <div class="monitor-tags">
             <span class="tag purple">IA</span>
-            <span class="tag">Foodtech</span>
+            <span class="tag">Nutrição</span>
             <span class="tag cyan">Chatbot</span>
           </div>
         </article>
 
-        <!-- Monitor 4: RP Regras -->
+        
+        <!-- Monitor 4: VerificosRP -->
         <article class="monitor-card">
           <div class="monitor-header">
             <div class="monitor-info">
               <div class="monitor-icon">
-                <i class="fas fa-gamepad"></i>
+                <i class="fas fa-shield-halved"></i>
               </div>
-              <span class="monitor-name">RP Regras</span>
+              <span class="monitor-name">VerificosRP</span>
             </div>
             <div class="monitor-status">
               <span class="status-dot online"></span>
@@ -813,23 +823,91 @@
           <div class="monitor-screen">
             <div class="loading-overlay" id="loader-4">
               <div class="loading-spinner"></div>
-              <span class="loading-text">Carregando RP Regras...</span>
+              <span class="loading-text">Carregando VerificosRP...</span>
             </div>
             <iframe 
-              src="https://rpregras.netlify.app" 
+              src="https://verificosrp.netlify.app" 
               loading="lazy"
               onload="this.classList.add('loaded'); document.getElementById('loader-4').classList.add('hidden');"
-              title="RP Regras">
+              title="VerificosRP">
             </iframe>
           </div>
           <div class="monitor-tags">
-            <span class="tag pink">RPG</span>
+            <span class="tag cyan">Segurança</span>
+            <span class="tag purple">Verificação</span>
             <span class="tag">Regras</span>
-            <span class="tag purple">Interativo</span>
           </div>
+          <p class="monitor-desc">Sistema de verificação de regras e infrações para comunidades de Roleplay.</p>
         </article>
 
-      </div>
+        <!-- Monitor 5: Aurum Facilities -->
+        <article class="monitor-card">
+          <div class="monitor-header">
+            <div class="monitor-info">
+              <div class="monitor-icon">
+                <i class="fas fa-building"></i>
+              </div>
+              <span class="monitor-name">Aurum Facilities</span>
+            </div>
+            <div class="monitor-status">
+              <span class="status-dot online"></span>
+              <span class="status-text">Online</span>
+            </div>
+          </div>
+          <div class="monitor-screen">
+            <div class="loading-overlay" id="loader-5">
+              <div class="loading-spinner"></div>
+              <span class="loading-text">Carregando Aurum Facilities...</span>
+            </div>
+            <iframe 
+              src="https://aurum-facilities.netlify.app" 
+              loading="lazy"
+              onload="this.classList.add('loaded'); document.getElementById('loader-5').classList.add('hidden');"
+              title="Aurum Facilities">
+            </iframe>
+          </div>
+          <div class="monitor-tags">
+            <span class="tag cyan">Gestão</span>
+            <span class="tag purple">Dashboard</span>
+            <span class="tag">Facilities</span>
+          </div>
+          <p class="monitor-desc">Plataforma de gestão completa para facilities e administração de condomínios.</p>
+        </article>
+
+        <!-- Monitor 6: SysLuxe -->
+        <article class="monitor-card">
+          <div class="monitor-header">
+            <div class="monitor-info">
+              <div class="monitor-icon">
+                <i class="fas fa-cut"></i>
+              </div>
+              <span class="monitor-name">SysLuxe</span>
+            </div>
+            <div class="monitor-status">
+              <span class="status-dot online"></span>
+              <span class="status-text">Online</span>
+            </div>
+          </div>
+          <div class="monitor-screen">
+            <div class="loading-overlay" id="loader-6">
+              <div class="loading-spinner"></div>
+              <span class="loading-text">Carregando SysLuxe...</span>
+            </div>
+            <iframe 
+              src="https://sysluxe.netlify.app" 
+              loading="lazy"
+              onload="this.classList.add('loaded'); document.getElementById('loader-6').classList.add('hidden');"
+              title="SysLuxe">
+            </iframe>
+          </div>
+          <div class="monitor-tags">
+            <span class="tag pink">Salão</span>
+            <span class="tag">Gestão</span>
+            <span class="tag cyan">Clientes</span>
+          </div>
+          <p class="monitor-desc">Sistema de gestão para barbearias e salões de beleza com agenda e controle de clientes.</p>
+        </article>
+</div>
     </section>
 
     <!-- Links Rápidos (Compatibilidade) -->
@@ -938,3 +1016,12 @@
   </script>
 </body>
 </html>
+
+    /* ===== DESCRIÇÃO DO MONITOR ===== */
+    .monitor-desc {
+      padding: 0 20px 16px;
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
