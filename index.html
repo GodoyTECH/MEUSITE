@@ -9,7 +9,7 @@
   <meta property="og:title" content="Godoy Solutions in TECH">
   <meta property="og:description" content="Dashboard Profissional - Godoy Solutions in TECH">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="assets/images/logoicon.png">
+  <meta property="og:image" content="logonew.png">
   <meta property="og:url" content="https://godoysolutionstech.netlify.app/">
 
   <title>Godoy Solutions in TECH</title>
@@ -18,8 +18,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/images/logoicon.png">
-  <link rel="apple-touch-icon" href="assets/images/logoicon.png">
+  <link rel="icon" type="image/png" href="logonew.png">
+  <link rel="apple-touch-icon" href="logonew.png">
 
   <!-- Fontes -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -27,9 +27,9 @@
   <style>
     /* ===== VARIÁVEIS CSS ===== */
     :root {
-      --bg-primary: #0a0a0f;
-      --bg-secondary: #12121a;
-      --bg-card: rgba(18, 18, 26, 0.8);
+      --bg-primary: #14112a;
+      --bg-secondary: #201c40;
+      --bg-card: rgba(36, 30, 74, 0.82);
       --bg-glass: rgba(255, 255, 255, 0.05);
       --accent-cyan: #00f2ff;
       --accent-purple: #7A288A;
@@ -63,10 +63,10 @@
       top: 0; left: 0;
       width: 100%; height: 100%;
       z-index: -10;
-      background: 
-        radial-gradient(ellipse at 20% 20%, rgba(122, 40, 138, 0.15) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 80%, rgba(0, 242, 255, 0.1) 0%, transparent 50%),
-        var(--bg-primary);
+      background:
+        radial-gradient(ellipse at 20% 20%, rgba(160, 90, 255, 0.22) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 80%, rgba(64, 143, 255, 0.18) 0%, transparent 55%),
+        linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
     }
 
     .grid-overlay {
@@ -99,31 +99,47 @@
 
     .logo-area {
       display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 15px 10px;
-      margin-bottom: 30px;
-    }
-
-    .logo-icon {
-      width: 45px;
-      height: 45px;
-      background: var(--gradient-neon);
-      border-radius: var(--radius-sm);
-      display: flex;
-      align-items: center;
       justify-content: center;
-      font-size: 20px;
+      padding: 12px 8px 10px;
+      margin-bottom: 22px;
     }
 
-    .logo-text {
+    .brand-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .brand-logo {
+      width: 100%;
+      max-width: 140px;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 6px 18px rgba(122, 40, 138, 0.35));
+    }
+
+    .brand-title {
+      text-align: center;
+      line-height: 1.08;
+      letter-spacing: 0.04em;
       font-family: 'Orbitron', sans-serif;
       font-size: 16px;
-      font-weight: 700;
-      background: var(--gradient-neon);
+      font-weight: 800;
+      background: linear-gradient(90deg, #e5e7ff 0%, #c7b7ff 45%, #9ad7ff 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      text-shadow: 0 0 18px rgba(154, 215, 255, 0.18);
+    }
+
+    .brand-sub {
+      display: inline-block;
+      margin-top: 3px;
+      color: #c7b7ff;
+      font-size: 12px;
+      letter-spacing: 0.08em;
     }
 
     .nav-menu {
@@ -593,6 +609,22 @@
         align-items: flex-start;
         gap: 10px;
       }
+
+      .logo-area {
+        justify-content: center;
+      }
+
+      .brand-block {
+        align-items: center;
+      }
+
+      .brand-title {
+        text-align: center;
+      }
+
+      .brand-logo {
+        max-width: 110px;
+      }
     }
 
     @media (max-width: 480px) {
@@ -668,10 +700,13 @@
   <!-- Sidebar -->
   <nav class="sidebar" id="sidebar">
     <div class="logo-area">
-      <div class="logo-icon">
-        <i class="fas fa-robot"></i>
+      <div class="brand-block">
+        <img class="brand-logo" src="logonew.png" alt="Godoy Solutions in TECH" />
+        <div class="brand-title">
+          <span>Godoy Solutions</span><br />
+          <span class="brand-sub">in TECH</span>
+        </div>
       </div>
-      <span class="logo-text">Godoy Solutions</span>
     </div>
 
     <div class="nav-menu">
