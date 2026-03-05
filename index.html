@@ -800,6 +800,40 @@
           <p class="monitor-desc">Plataforma de automação para coleta e organização de dados sociais, com dashboard e exportação.</p>
         </article>
 
+        <!-- Monitor 8: Soft Power Informática -->
+        <article class="monitor-card">
+          <div class="monitor-header">
+            <div class="monitor-info">
+              <div class="monitor-icon">
+                <i class="fas fa-computer"></i>
+              </div>
+              <span class="monitor-name">Soft Power Informática</span>
+            </div>
+            <div class="monitor-status">
+              <span class="status-dot online"></span>
+              <span class="status-text">Online</span>
+            </div>
+          </div>
+          <div class="monitor-screen">
+            <div class="loading-overlay" id="loader-8">
+              <div class="loading-spinner"></div>
+              <span class="loading-text">Carregando Soft Power...</span>
+            </div>
+            <iframe 
+              src="https://softpower-informatica.netlify.app" 
+              loading="lazy"
+              onload="this.classList.add('loaded'); document.getElementById('loader-8').classList.add('hidden');"
+              title="Soft Power Informática">
+            </iframe>
+          </div>
+          <div class="monitor-tags">
+            <span class="tag cyan">Site Comercial</span>
+            <span class="tag purple">Informática</span>
+            <span class="tag">Assistência Técnica</span>
+          </div>
+          <p class="monitor-desc">Landing page comercial premium da Soft Power Informática, com foco em serviços, contato e conversão local.</p>
+        </article>
+
         <!-- Monitor 2: PetCrushes -->
         <article class="monitor-card">
           <div class="monitor-header">
@@ -1004,7 +1038,9 @@
           </div>
           <p class="monitor-desc">Sistema de rastreamento por GPS para delivery e equipes externas. Controle de rotas em tempo real com dashboard e notificações.</p>
         </article>
-</div>
+
+
+      </div>
     </section>
 
     <!-- Links Rápidos (Compatibilidade) -->
@@ -1113,12 +1149,3 @@
   </script>
 </body>
 </html>
-
-    /* ===== DESCRIÇÃO DO MONITOR ===== */
-    .monitor-desc {
-      padding: 0 20px 16px;
-      font-size: 12px;
-      color: var(--text-secondary);
-      line-height: 1.4;
-    }
-
