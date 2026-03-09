@@ -686,38 +686,486 @@
     }
 
     /* ===== NEXIA MODULE (layout fix) ===== */
-    .nexia-module { position: relative; overflow: hidden; isolation: isolate; box-shadow: 0 24px 60px rgba(4, 8, 20, 0.55); border: 1px solid rgba(0, 242, 255, 0.2); background: linear-gradient(145deg, rgba(7, 11, 26, 0.95), rgba(14, 18, 37, 0.85)); }
-    .nexia-module .monitor-screen { height: 420px; padding: 0; position: relative; overflow: hidden; background: radial-gradient(circle at 20% 20%, rgba(19, 70, 108, 0.22), transparent 42%), #040814; }
-    .nexia-stage { position: absolute; inset: 0; overflow: hidden; perspective: 1100px; transform-style: preserve-3d; --pointer-x: 0; --pointer-y: 0; --eye-x: 0px; --eye-y: 0px; }
-    .nexia-bg, .nexia-avatar-zone { position: absolute; inset: 0; }
-    .nexia-bg { pointer-events: none; }
-    .nexia-bg::before, .nexia-bg::after { content: ''; position: absolute; border-radius: 50%; pointer-events: none; }
-    .nexia-bg::before { width: 320px; height: 320px; right: 6%; top: 8%; background: radial-gradient(circle, rgba(0, 242, 255, 0.28) 0%, rgba(0, 242, 255, 0.02) 64%, transparent 75%); filter: blur(1px); transform: translate3d(calc(var(--pointer-x) * -10px), calc(var(--pointer-y) * -8px), 0); }
-    .nexia-bg::after { width: 220px; height: 220px; left: 7%; bottom: 6%; background: radial-gradient(circle, rgba(129, 84, 255, 0.2), transparent 70%); transform: translate3d(calc(var(--pointer-x) * 6px), calc(var(--pointer-y) * 4px), 0); }
-    .nexia-radar, .nexia-grid, .nexia-particles { position: absolute; inset: 0; pointer-events: none; }
-    .nexia-radar { background: radial-gradient(circle at 72% 52%, rgba(0, 242, 255, 0.08) 0, rgba(0, 242, 255, 0.01) 37%, transparent 65%), conic-gradient(from 0deg at 72% 52%, rgba(0, 242, 255, 0.18), transparent 35%, rgba(0, 242, 255, 0.1), transparent 75%); opacity: 0.65; mix-blend-mode: screen; animation: radarSpin 18s linear infinite; transform: translateZ(-10px); }
-    .nexia-grid { background-image: linear-gradient(rgba(94, 156, 255, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(94, 156, 255, 0.08) 1px, transparent 1px); background-size: 26px 26px; mask-image: radial-gradient(circle at 70% 50%, #000 25%, transparent 78%); opacity: 0.45; }
-    .nexia-particles { background-image: radial-gradient(circle, rgba(173, 237, 255, 0.65) 0.8px, transparent 1px); background-size: 50px 50px; opacity: 0.18; animation: particlesDrift 13s linear infinite; }
-    .nexia-avatar-zone { display: flex; justify-content: center; align-items: flex-end; transform-style: preserve-3d; pointer-events: none; }
-    .nexia-avatar-zone::before { content: ''; position: absolute; left: 62%; top: 52%; width: min(62%, 250px); aspect-ratio: 1/1; border-radius: 50%; background: radial-gradient(circle, rgba(0, 230, 255, 0.42) 0%, rgba(0, 210, 255, 0.18) 38%, rgba(0, 180, 255, 0.05) 58%, rgba(0, 160, 255, 0) 74%); border: 1px solid rgba(130, 237, 255, 0.45); box-shadow: 0 0 34px rgba(0, 242, 255, 0.34), inset 0 0 24px rgba(0, 242, 255, 0.28); transform: translate3d(calc(-50% + (var(--pointer-x) * -5px)), calc(-50% + (var(--pointer-y) * -4px)), 16px); mix-blend-mode: screen; z-index: 0; }
-    .nexia-avatar { width: min(100%, 460px); max-height: 100%; object-fit: contain; object-position: center bottom; filter: drop-shadow(0 16px 30px rgba(0, 242, 255, 0.2)); transform: translate3d(calc(var(--pointer-x) * 8px), calc(var(--pointer-y) * 7px), 50px); animation: nexiaFloat 6.5s ease-in-out infinite; will-change: transform; position: relative; z-index: 1; }
-    .nexia-eye-highlight-layer { position: absolute; left: 50%; top: 34%; width: 86px; height: 36px; border-radius: 50%; background: radial-gradient(circle at 50% 50%, rgba(0, 255, 250, 0.75) 0%, rgba(0, 247, 255, 0.35) 28%, rgba(0, 247, 255, 0) 70%); mix-blend-mode: screen; opacity: 0.72; transform: translate3d(calc(-50% + var(--eye-x)), var(--eye-y), 56px); transition: transform 160ms ease-out, opacity 220ms ease; pointer-events: none; filter: blur(0.2px); z-index: 2; }
-    .nexia-status-badge { position: absolute; top: 14px; right: 14px; z-index: 8; pointer-events: none; }
-    .nexia-chip, .nexia-status { display: inline-flex; align-items: center; gap: 7px; padding: 7px 10px; border-radius: 999px; font-size: 11px; letter-spacing: 0.04em; color: #daf9ff; text-transform: uppercase; background: linear-gradient(135deg, rgba(4, 15, 30, 0.68), rgba(8, 33, 53, 0.45)); border: 1px solid rgba(92, 227, 255, 0.42); box-shadow: 0 0 15px rgba(0, 242, 255, 0.12); backdrop-filter: blur(6px); transition: transform 0.2s ease, border-color 0.2s ease; pointer-events: auto; }
-    .nexia-chip:hover, .nexia-status:hover { transform: translateY(-1px); border-color: rgba(146, 247, 255, 0.7); }
-    .nexia-module .monitor-tags { border-top: 1px solid rgba(0, 242, 255, 0.16); }
-    .nexia-bottom-content { padding: 0 20px 18px; }
-    .nexia-title { font-family: 'Orbitron', sans-serif; color: #ebf9ff; font-size: 15px; margin: 0 0 7px; letter-spacing: 0.03em; }
-    .nexia-desc { font-size: 12px; line-height: 1.45; color: #cae4f7; margin: 0 0 14px; }
-    .nexia-cta-button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 18px; border-radius: 999px; border: 1px solid rgba(119, 255, 224, 0.85); background: linear-gradient(120deg, rgba(4, 214, 201, 0.55), rgba(110, 63, 255, 0.5)); color: #f6ffff; font-size: 12px; font-weight: 700; text-decoration: none; box-shadow: 0 10px 20px rgba(0, 242, 255, 0.28); transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease; outline: none; }
-    .nexia-cta-button:hover { transform: translateY(-2px); box-shadow: 0 16px 24px rgba(0, 242, 255, 0.35); filter: brightness(1.08); }
-    .nexia-cta-button:focus-visible { box-shadow: 0 0 0 3px rgba(164, 255, 241, 0.45), 0 12px 24px rgba(0, 242, 255, 0.35); }
-    @keyframes nexiaFloat { 0%, 100% { transform: translate3d(calc(var(--pointer-x) * 10px), calc(var(--pointer-y) * 8px), 50px) translateY(0); } 50% { transform: translate3d(calc(var(--pointer-x) * 10px), calc(var(--pointer-y) * 8px), 50px) translateY(-8px); } }
-    @keyframes radarSpin { to { transform: rotate(360deg); } }
-    @keyframes particlesDrift { to { background-position: 50px 50px; } }
-    @media (max-width: 768px) { .nexia-module .monitor-screen { height: 400px; } .nexia-avatar { width: min(100%, 390px); } .nexia-eye-highlight-layer { top: 33%; } }
-    @media (max-width: 480px) { .nexia-module .monitor-screen { height: 430px; } .nexia-avatar { width: min(100%, 320px); } .nexia-avatar-zone::before { width: min(70%, 210px); left: 62%; top: 43%; } .nexia-bottom-content { padding: 0 15px 16px; } .nexia-eye-highlight-layer { top: 30.5%; } .nexia-status-badge { top: 10px; right: 10px; } .nexia-cta-button { width: 100%; } }
-    @media (prefers-reduced-motion: reduce) { .nexia-avatar, .nexia-particles, .nexia-radar { animation: none !important; } }
+   /* =========================================================
+   NEXIA MODULE
+   Estilo principal do monitor da assistente NexIA
+   ========================================================= */
+
+.nexia-module{
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+
+  /* sombra e borda futurista */
+  box-shadow: 0 24px 60px rgba(4,8,20,.55);
+  border: 1px solid rgba(0,242,255,.20);
+
+  /* fundo do monitor */
+  background: linear-gradient(
+    145deg,
+    rgba(7,11,26,.95),
+    rgba(14,18,37,.85)
+  );
+}
+
+
+/* =========================================================
+   ÁREA VISUAL DO MONITOR (onde fica a avatar)
+   ========================================================= */
+
+.nexia-module .monitor-screen{
+
+  /* altura do palco da NexIA */
+  height: 440px;
+
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+
+  /* fundo espacial */
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(19,70,108,.22),
+      transparent 42%
+    ),
+    #040814;
+}
+
+
+/* =========================================================
+   STAGE 3D
+   Camada que controla o efeito de parallax e movimento
+   ========================================================= */
+
+.nexia-stage{
+
+  position:absolute;
+  inset:0;
+
+  overflow:hidden;
+
+  /* perspectiva 3D */
+  perspective:1100px;
+  transform-style:preserve-3d;
+
+  /* variáveis usadas pelo JS */
+  --pointer-x:0;
+  --pointer-y:0;
+  --eye-x:0px;
+  --eye-y:0px;
+}
+
+
+/* =========================================================
+   CAMADAS DE FUNDO
+   ========================================================= */
+
+.nexia-bg,
+.nexia-avatar-zone{
+  position:absolute;
+  inset:0;
+}
+
+.nexia-bg{
+  pointer-events:none;
+}
+
+.nexia-bg::before,
+.nexia-bg::after{
+  content:'';
+  position:absolute;
+  border-radius:50%;
+  pointer-events:none;
+}
+
+
+/* =========================================================
+   GLOW SUPERIOR DIREITO
+   ========================================================= */
+
+.nexia-bg::before{
+
+  width:320px;
+  height:320px;
+
+  right:6%;
+  top:8%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(0,242,255,.28) 0%,
+      rgba(0,242,255,.02) 64%,
+      transparent 75%
+    );
+
+  filter:blur(1px);
+
+  transform:
+    translate3d(
+      calc(var(--pointer-x) * -10px),
+      calc(var(--pointer-y) * -8px),
+      0
+    );
+}
+
+
+/* =========================================================
+   GLOW INFERIOR ESQUERDO
+   ========================================================= */
+
+.nexia-bg::after{
+
+  width:220px;
+  height:220px;
+
+  left:7%;
+  bottom:6%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(129,84,255,.20),
+      transparent 70%
+    );
+
+  transform:
+    translate3d(
+      calc(var(--pointer-x)*6px),
+      calc(var(--pointer-y)*4px),
+      0
+    );
+}
+
+
+/* =========================================================
+   ELEMENTOS TECNOLÓGICOS DO FUNDO
+   ========================================================= */
+
+.nexia-radar,
+.nexia-grid,
+.nexia-particles{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+}
+
+
+/* radar girando */
+
+.nexia-radar{
+
+  background:
+    radial-gradient(
+      circle at 72% 52%,
+      rgba(0,242,255,.08),
+      rgba(0,242,255,.01) 37%,
+      transparent 65%
+    ),
+    conic-gradient(
+      from 0deg at 72% 52%,
+      rgba(0,242,255,.18),
+      transparent 35%,
+      rgba(0,242,255,.10),
+      transparent 75%
+    );
+
+  opacity:.65;
+  mix-blend-mode:screen;
+
+  animation:radarSpin 18s linear infinite;
+
+  transform:translateZ(-10px);
+}
+
+
+/* grid digital */
+
+.nexia-grid{
+
+  background-image:
+    linear-gradient(rgba(94,156,255,.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(94,156,255,.08) 1px, transparent 1px);
+
+  background-size:26px 26px;
+
+  mask-image:
+    radial-gradient(circle at 70% 50%, #000 25%, transparent 78%);
+
+  opacity:.45;
+}
+
+
+/* partículas */
+
+.nexia-particles{
+
+  background-image:
+    radial-gradient(circle, rgba(173,237,255,.65) .8px, transparent 1px);
+
+  background-size:50px 50px;
+
+  opacity:.18;
+
+  animation:particlesDrift 13s linear infinite;
+}
+
+
+/* =========================================================
+   ZONA DA AVATAR
+   ========================================================= */
+
+.nexia-avatar-zone{
+
+  display:flex;
+  justify-content:center;
+
+  /* fixa a base da personagem no chão */
+  align-items:flex-end;
+
+  transform-style:preserve-3d;
+
+  pointer-events:none;
+
+  /* DESCE A AVATAR PARA ESCONDER O CORTE */
+  transform:translateY(16px);
+}
+
+
+/* =========================================================
+   HALO HOLOGRÁFICO
+   ========================================================= */
+
+.nexia-avatar-zone::before{
+
+  content:'';
+
+  position:absolute;
+
+  left:62%;
+  top:56%;
+
+  width:min(62%,250px);
+
+  aspect-ratio:1/1;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(0,230,255,.42) 0%,
+      rgba(0,210,255,.18) 38%,
+      rgba(0,180,255,.05) 58%,
+      rgba(0,160,255,0) 74%
+    );
+
+  border:1px solid rgba(130,237,255,.45);
+
+  box-shadow:
+    0 0 34px rgba(0,242,255,.34),
+    inset 0 0 24px rgba(0,242,255,.28);
+
+  transform:
+    translate3d(
+      calc(-50% + (var(--pointer-x) * -5px)),
+      calc(-50% + (var(--pointer-y) * -4px)),
+      16px
+    );
+
+  mix-blend-mode:screen;
+
+  z-index:0;
+}
+
+
+/* =========================================================
+   IMAGEM DA NEXIA
+   ========================================================= */
+
+.nexia-avatar{
+
+  width:min(100%,460px);
+  max-height:100%;
+
+  object-fit:contain;
+
+  /* ancora no pé da imagem */
+  object-position:center bottom;
+
+  filter:drop-shadow(0 16px 30px rgba(0,242,255,.2));
+
+  transform:
+    translate3d(
+      calc(var(--pointer-x)*8px),
+      calc(var(--pointer-y)*6px),
+      50px
+    );
+
+  animation:nexiaFloat 6.5s ease-in-out infinite;
+
+  will-change:transform;
+
+  position:relative;
+  z-index:1;
+}
+
+
+/* =========================================================
+   OLHOS HOLOGRÁFICOS
+   ========================================================= */
+
+.nexia-eye-highlight-layer{
+
+  position:absolute;
+
+  left:50%;
+  top:34%;
+
+  width:86px;
+  height:36px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(0,255,250,.75) 0%,
+      rgba(0,247,255,.35) 28%,
+      rgba(0,247,255,0) 70%
+    );
+
+  mix-blend-mode:screen;
+
+  opacity:.72;
+
+  transform:
+    translate3d(
+      calc(-50% + var(--eye-x)),
+      var(--eye-y),
+      56px
+    );
+
+  transition:
+    transform 160ms ease-out,
+    opacity 220ms ease;
+
+  pointer-events:none;
+
+  filter:blur(.2px);
+
+  z-index:2;
+}
+
+
+/* =========================================================
+   STATUS ONLINE
+   ========================================================= */
+
+.nexia-status-badge{
+
+  position:absolute;
+
+  top:14px;
+  right:14px;
+
+  z-index:8;
+
+  pointer-events:none;
+}
+
+
+/* =========================================================
+   BOTÃO WHATSAPP
+   ========================================================= */
+
+.nexia-cta-button{
+
+  display:inline-flex;
+
+  align-items:center;
+  justify-content:center;
+
+  gap:8px;
+
+  padding:12px 18px;
+
+  border-radius:999px;
+
+  border:1px solid rgba(119,255,224,.85);
+
+  background:
+    linear-gradient(
+      120deg,
+      rgba(4,214,201,.55),
+      rgba(110,63,255,.5)
+    );
+
+  color:#f6ffff;
+
+  font-size:12px;
+  font-weight:700;
+
+  text-decoration:none;
+
+  box-shadow:0 10px 20px rgba(0,242,255,.28);
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    filter .2s ease;
+}
+
+.nexia-cta-button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 16px 24px rgba(0,242,255,.35);
+  filter:brightness(1.08);
+}
+
+
+/* =========================================================
+   ANIMAÇÕES
+   ========================================================= */
+
+/* movimento flutuante reduzido (evita mostrar corte) */
+
+@keyframes nexiaFloat{
+
+  0%,100%{
+    transform:
+      translate3d(
+        calc(var(--pointer-x)*10px),
+        calc(var(--pointer-y)*6px),
+        50px
+      )
+      translateY(0);
+  }
+
+  50%{
+    transform:
+      translate3d(
+        calc(var(--pointer-x)*10px),
+        calc(var(--pointer-y)*6px),
+        50px
+      )
+      translateY(-4px);
+  }
+}
+
+
+/* radar girando */
+
+@keyframes radarSpin{
+  to{transform:rotate(360deg);}
+}
+
+
+/* partículas se movendo */
+
+@keyframes particlesDrift{
+  to{background-position:50px 50px;}
+}
 </style>
 </head>
 <body>
