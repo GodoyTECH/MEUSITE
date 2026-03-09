@@ -685,11 +685,11 @@
       line-height: 1.4;
     }
 
-    /* ===== NEXIA MODULE (rebuild) ===== */
+    /* ===== NEXIA MODULE (layout fix) ===== */
     .nexia-module { position: relative; overflow: hidden; isolation: isolate; box-shadow: 0 24px 60px rgba(4, 8, 20, 0.55); border: 1px solid rgba(0, 242, 255, 0.2); background: linear-gradient(145deg, rgba(7, 11, 26, 0.95), rgba(14, 18, 37, 0.85)); }
     .nexia-module .monitor-screen { height: 420px; padding: 0; position: relative; overflow: hidden; background: radial-gradient(circle at 20% 20%, rgba(19, 70, 108, 0.22), transparent 42%), #040814; }
-    .nexia-stage { position: relative; width: 100%; height: 100%; perspective: 1100px; transform-style: preserve-3d; --pointer-x: 0; --pointer-y: 0; --eye-x: 0px; --eye-y: 0px; }
-    .nexia-bg, .nexia-character-layer, .nexia-ui, .nexia-copy { position: absolute; inset: 0; }
+    .nexia-stage { position: absolute; inset: 0; overflow: hidden; perspective: 1100px; transform-style: preserve-3d; --pointer-x: 0; --pointer-y: 0; --eye-x: 0px; --eye-y: 0px; }
+    .nexia-bg, .nexia-avatar-zone { position: absolute; inset: 0; }
     .nexia-bg { pointer-events: none; }
     .nexia-bg::before, .nexia-bg::after { content: ''; position: absolute; border-radius: 50%; pointer-events: none; }
     .nexia-bg::before { width: 320px; height: 320px; right: 6%; top: 8%; background: radial-gradient(circle, rgba(0, 242, 255, 0.28) 0%, rgba(0, 242, 255, 0.02) 64%, transparent 75%); filter: blur(1px); transform: translate3d(calc(var(--pointer-x) * -10px), calc(var(--pointer-y) * -8px), 0); }
@@ -698,34 +698,26 @@
     .nexia-radar { background: radial-gradient(circle at 72% 52%, rgba(0, 242, 255, 0.08) 0, rgba(0, 242, 255, 0.01) 37%, transparent 65%), conic-gradient(from 0deg at 72% 52%, rgba(0, 242, 255, 0.18), transparent 35%, rgba(0, 242, 255, 0.1), transparent 75%); opacity: 0.65; mix-blend-mode: screen; animation: radarSpin 18s linear infinite; transform: translateZ(-10px); }
     .nexia-grid { background-image: linear-gradient(rgba(94, 156, 255, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(94, 156, 255, 0.08) 1px, transparent 1px); background-size: 26px 26px; mask-image: radial-gradient(circle at 70% 50%, #000 25%, transparent 78%); opacity: 0.45; }
     .nexia-particles { background-image: radial-gradient(circle, rgba(173, 237, 255, 0.65) 0.8px, transparent 1px); background-size: 50px 50px; opacity: 0.18; animation: particlesDrift 13s linear infinite; }
-    .nexia-character-layer { display: flex; justify-content: flex-end; align-items: flex-end; padding-right: 4%; transform-style: preserve-3d; pointer-events: none; }
-    .nexia-character { width: min(71%, 360px); max-height: 95%; object-fit: contain; object-position: right bottom; filter: drop-shadow(0 16px 30px rgba(0, 242, 255, 0.2)); transform: translate3d(calc(var(--pointer-x) * 10px), calc(var(--pointer-y) * 8px), 50px); animation: nexiaFloat 6.5s ease-in-out infinite; will-change: transform; }
-    .nexia-eye-glow { position: absolute; right: 20.5%; top: 34.5%; width: 86px; height: 36px; border-radius: 50%; background: radial-gradient(circle at 50% 50%, rgba(0, 255, 250, 0.75) 0%, rgba(0, 247, 255, 0.35) 28%, rgba(0, 247, 255, 0) 70%); mix-blend-mode: screen; opacity: 0.72; transform: translate3d(var(--eye-x), var(--eye-y), 56px); transition: transform 160ms ease-out, opacity 220ms ease; pointer-events: none; filter: blur(0.2px); }
-    .nexia-hologram-hand { position: absolute; right: 28%; bottom: 26%; width: 130px; height: 130px; border-radius: 50%; transform: translate3d(calc(var(--pointer-x) * -8px), calc(var(--pointer-y) * -6px), 55px); pointer-events: none; }
-    .nexia-hologram-hand::before, .nexia-hologram-hand::after { content: ''; position: absolute; inset: 0; border-radius: 50%; }
-    .nexia-hologram-hand::before { background: radial-gradient(circle, rgba(0, 230, 255, 0.4), rgba(0, 110, 255, 0.04) 62%, transparent 75%); box-shadow: 0 0 25px rgba(0, 242, 255, 0.35), inset 0 0 18px rgba(0, 242, 255, 0.3); animation: pulseEnergy 4.2s ease-in-out infinite; }
-    .nexia-hologram-hand::after { inset: 14px; border: 1px solid rgba(130, 237, 255, 0.55); box-shadow: 0 0 12px rgba(0, 242, 255, 0.4); animation: spinRing 8s linear infinite; }
-    .nexia-ui { z-index: 7; pointer-events: none; }
-    .nexia-ui-top, .nexia-ui-side { position: absolute; display: flex; gap: 8px; flex-wrap: wrap; }
-    .nexia-ui-top { top: 14px; left: 14px; max-width: 56%; }
-    .nexia-ui-side { right: 14px; top: 18px; flex-direction: column; align-items: flex-end; }
+    .nexia-avatar-zone { display: flex; justify-content: center; align-items: flex-end; transform-style: preserve-3d; pointer-events: none; }
+    .nexia-avatar-zone::before { content: ''; position: absolute; left: 62%; top: 42%; width: min(62%, 250px); aspect-ratio: 1/1; border-radius: 50%; background: radial-gradient(circle, rgba(0, 230, 255, 0.42) 0%, rgba(0, 210, 255, 0.18) 38%, rgba(0, 180, 255, 0.05) 58%, rgba(0, 160, 255, 0) 74%); border: 1px solid rgba(130, 237, 255, 0.45); box-shadow: 0 0 34px rgba(0, 242, 255, 0.34), inset 0 0 24px rgba(0, 242, 255, 0.28); transform: translate3d(calc(-50% + (var(--pointer-x) * -5px)), calc(-50% + (var(--pointer-y) * -4px)), 16px); mix-blend-mode: screen; z-index: 0; }
+    .nexia-avatar { width: min(100%, 460px); max-height: 100%; object-fit: contain; object-position: center bottom; filter: drop-shadow(0 16px 30px rgba(0, 242, 255, 0.2)); transform: translate3d(calc(var(--pointer-x) * 8px), calc(var(--pointer-y) * 7px), 50px); animation: nexiaFloat 6.5s ease-in-out infinite; will-change: transform; position: relative; z-index: 1; }
+    .nexia-eye-highlight-layer { position: absolute; left: 50%; top: 34%; width: 86px; height: 36px; border-radius: 50%; background: radial-gradient(circle at 50% 50%, rgba(0, 255, 250, 0.75) 0%, rgba(0, 247, 255, 0.35) 28%, rgba(0, 247, 255, 0) 70%); mix-blend-mode: screen; opacity: 0.72; transform: translate3d(calc(-50% + var(--eye-x)), var(--eye-y), 56px); transition: transform 160ms ease-out, opacity 220ms ease; pointer-events: none; filter: blur(0.2px); z-index: 2; }
+    .nexia-status-badge { position: absolute; top: 14px; right: 14px; z-index: 8; pointer-events: none; }
     .nexia-chip, .nexia-status { display: inline-flex; align-items: center; gap: 7px; padding: 7px 10px; border-radius: 999px; font-size: 11px; letter-spacing: 0.04em; color: #daf9ff; text-transform: uppercase; background: linear-gradient(135deg, rgba(4, 15, 30, 0.68), rgba(8, 33, 53, 0.45)); border: 1px solid rgba(92, 227, 255, 0.42); box-shadow: 0 0 15px rgba(0, 242, 255, 0.12); backdrop-filter: blur(6px); transition: transform 0.2s ease, border-color 0.2s ease; pointer-events: auto; }
     .nexia-chip:hover, .nexia-status:hover { transform: translateY(-1px); border-color: rgba(146, 247, 255, 0.7); }
-    .nexia-copy { z-index: 8; display: flex; align-items: flex-end; padding: 14px; pointer-events: none; }
-    .nexia-copy-box { width: min(58%, 320px); pointer-events: auto; padding: 16px; border-radius: 16px; border: 1px solid rgba(133, 208, 255, 0.22); background: linear-gradient(170deg, rgba(3, 9, 22, 0.76), rgba(4, 10, 26, 0.9)); box-shadow: 0 12px 30px rgba(2, 8, 20, 0.45); }
+    .nexia-module .monitor-tags { border-top: 1px solid rgba(0, 242, 255, 0.16); }
+    .nexia-bottom-content { padding: 0 20px 18px; }
     .nexia-title { font-family: 'Orbitron', sans-serif; color: #ebf9ff; font-size: 15px; margin: 0 0 7px; letter-spacing: 0.03em; }
     .nexia-desc { font-size: 12px; line-height: 1.45; color: #cae4f7; margin: 0 0 14px; }
     .nexia-cta-button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 18px; border-radius: 999px; border: 1px solid rgba(119, 255, 224, 0.85); background: linear-gradient(120deg, rgba(4, 214, 201, 0.55), rgba(110, 63, 255, 0.5)); color: #f6ffff; font-size: 12px; font-weight: 700; text-decoration: none; box-shadow: 0 10px 20px rgba(0, 242, 255, 0.28); transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease; outline: none; }
     .nexia-cta-button:hover { transform: translateY(-2px); box-shadow: 0 16px 24px rgba(0, 242, 255, 0.35); filter: brightness(1.08); }
     .nexia-cta-button:focus-visible { box-shadow: 0 0 0 3px rgba(164, 255, 241, 0.45), 0 12px 24px rgba(0, 242, 255, 0.35); }
     @keyframes nexiaFloat { 0%, 100% { transform: translate3d(calc(var(--pointer-x) * 10px), calc(var(--pointer-y) * 8px), 50px) translateY(0); } 50% { transform: translate3d(calc(var(--pointer-x) * 10px), calc(var(--pointer-y) * 8px), 50px) translateY(-8px); } }
-    @keyframes pulseEnergy { 0%, 100% { transform: scale(1); opacity: 0.82; } 50% { transform: scale(1.08); opacity: 1; } }
-    @keyframes spinRing { to { transform: rotate(360deg); } }
     @keyframes radarSpin { to { transform: rotate(360deg); } }
     @keyframes particlesDrift { to { background-position: 50px 50px; } }
-    @media (max-width: 768px) { .nexia-module .monitor-screen { height: 390px; } .nexia-character { width: min(72%, 320px); } .nexia-copy-box { width: min(64%, 290px); } .nexia-eye-glow { right: 19%; top: 35%; } }
-    @media (max-width: 480px) { .nexia-module .monitor-screen { height: 430px; } .nexia-character-layer { justify-content: center; padding-right: 0; } .nexia-character { width: min(86%, 290px); object-position: center bottom; } .nexia-copy { justify-content: center; padding: 12px; } .nexia-copy-box { width: 100%; } .nexia-ui-top { left: 10px; right: 10px; max-width: none; } .nexia-ui-side { right: 10px; top: 72px; } .nexia-hologram-hand { right: 34%; bottom: 36%; width: 104px; height: 104px; } .nexia-eye-glow { top: 30.5%; right: 42%; } .nexia-cta-button { width: 100%; } }
-    @media (prefers-reduced-motion: reduce) { .nexia-character, .nexia-particles, .nexia-radar, .nexia-hologram-hand::before, .nexia-hologram-hand::after { animation: none !important; } }
+    @media (max-width: 768px) { .nexia-module .monitor-screen { height: 400px; } .nexia-avatar { width: min(100%, 390px); } .nexia-eye-highlight-layer { top: 33%; } }
+    @media (max-width: 480px) { .nexia-module .monitor-screen { height: 430px; } .nexia-avatar { width: min(100%, 320px); } .nexia-avatar-zone::before { width: min(70%, 210px); left: 62%; top: 43%; } .nexia-bottom-content { padding: 0 15px 16px; } .nexia-eye-highlight-layer { top: 30.5%; } .nexia-status-badge { top: 10px; right: 10px; } .nexia-cta-button { width: 100%; } }
+    @media (prefers-reduced-motion: reduce) { .nexia-avatar, .nexia-particles, .nexia-radar { animation: none !important; } }
 </style>
 </head>
 <body>
@@ -850,25 +842,24 @@
                 <span class="nexia-grid"></span>
                 <span class="nexia-particles"></span>
               </div>
-              <div class="nexia-character-layer">
-                <img src="nexiav2.png" alt="Avatar da NexIA" class="nexia-character" />
-                <span class="nexia-eye-glow" aria-hidden="true"></span>
-                <span class="nexia-hologram-hand" aria-hidden="true"></span>
+              <div class="nexia-avatar-zone">
+                <img src="nexiav2.png" alt="Avatar da NexIA" class="nexia-avatar" />
+                <span class="nexia-eye-highlight-layer" aria-hidden="true"></span>
               </div>
-              <div class="nexia-ui" aria-hidden="true">
-                <div class="nexia-ui-top">
-                  <span class="nexia-chip">IA</span><span class="nexia-chip">Automação</span><span class="nexia-chip">WhatsApp</span>
-                </div>
-                <div class="nexia-ui-side"><span class="nexia-status"><span class="status-dot online"></span><span class="status-text">Online</span></span></div>
-              </div>
-              <div class="nexia-copy">
-                <div class="nexia-copy-box">
-                  <h3 class="nexia-title">Teste nossa automação própria</h3>
-                  <p class="nexia-desc">Fale com a NexIA e veja nossa IA em ação em tempo real.</p>
-                  <a class="nexia-cta-button" href="https://wa.me/SEUNUMERO" target="_blank" rel="noopener">Testar no WhatsApp</a>
-                </div>
+              <div class="nexia-status-badge" aria-hidden="true">
+                <span class="nexia-status"><span class="status-dot online"></span><span class="status-text">Online</span></span>
               </div>
             </div>
+          </div>
+          <div class="monitor-tags">
+            <span class="tag cyan">IA</span>
+            <span class="tag purple">Automação</span>
+            <span class="tag">WhatsApp</span>
+          </div>
+          <div class="nexia-bottom-content">
+            <h3 class="nexia-title">Teste nossa automação própria</h3>
+            <p class="nexia-desc">Fale com a NexIA e veja nossa IA em ação em tempo real.</p>
+            <a class="nexia-cta-button" href="https://wa.me/SEUNUMERO" target="_blank" rel="noopener">Testar no WhatsApp</a>
           </div>
         </article>
 
