@@ -743,8 +743,8 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at 50% 12%, rgba(10, 15, 35, 0) 0%, rgba(8, 10, 20, 0.14) 55%, rgba(6, 9, 16, 0.42) 100%),
-        linear-gradient(180deg, rgba(0, 0, 0, 0.04) 0%, rgba(0, 0, 0, 0.42) 78%, rgba(0, 0, 0, 0.72) 100%);
+        radial-gradient(circle at 50% 12%, rgba(10, 15, 35, 0) 0%, rgba(8, 10, 20, 0.1) 55%, rgba(6, 9, 16, 0.3) 100%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.02) 0%, rgba(0, 0, 0, 0.3) 78%, rgba(0, 0, 0, 0.52) 100%);
       pointer-events: none;
       z-index: 2;
     }
@@ -755,7 +755,7 @@
       background:
         radial-gradient(circle at 68% 30%, rgba(0, 242, 255, 0.26), transparent 58%),
         radial-gradient(circle at 30% 75%, rgba(122, 40, 138, 0.24), transparent 64%);
-      opacity: 0.72;
+      opacity: 0.64;
       pointer-events: none;
       z-index: 1;
       transition: opacity 0.3s ease;
@@ -797,13 +797,13 @@
       transform: translateX(-50%) translateZ(25px);
       background: radial-gradient(circle at center, rgba(0, 242, 255, 0.62) 0%, rgba(0, 242, 255, 0) 65%);
       mix-blend-mode: screen;
-      opacity: 0.62;
+      opacity: 0.56;
       transition: transform 0.15s ease, opacity 0.2s ease;
       pointer-events: none;
       z-index: 5;
     }
 
-    .nexia-card:hover .nexia-eyes { opacity: 0.86; }
+    .nexia-card:hover .nexia-eyes { opacity: 0.78; }
 
     .nexia-overlay {
       position: absolute;
@@ -858,12 +858,12 @@
       padding: 18px;
       border-radius: 18px 18px 0 0;
       background:
-        linear-gradient(180deg, rgba(4, 8, 16, 0.12) 0%, rgba(4, 8, 16, 0.85) 42%, rgba(4, 8, 16, 0.99) 100%),
-        rgba(8, 10, 20, 0.76);
-      border: 1px solid rgba(150, 210, 255, 0.2);
+        linear-gradient(180deg, rgba(4, 8, 16, 0.04) 0%, rgba(4, 8, 16, 0.58) 48%, rgba(4, 8, 16, 0.78) 100%),
+        rgba(8, 10, 20, 0.34);
+      border: 1px solid rgba(150, 210, 255, 0.16);
       backdrop-filter: blur(8px);
-      box-shadow: 0 -6px 28px rgba(0, 0, 0, 0.35);
-      min-height: 36%;
+      box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.24), inset 0 1px 0 rgba(205, 236, 255, 0.14);
+      min-height: 34%;
     }
 
     .nexia-title {
@@ -946,7 +946,7 @@
       .nexia-image { object-position: 56% 11%; transform: translateZ(0) scale(1.04); }
       .nexia-cta-button { width: 100%; }
       .nexia-eyes { opacity: 0.52; width: 82px; }
-      .nexia-bottom { left: 0; right: 0; bottom: 0; padding: 14px; min-height: 42%; }
+      .nexia-bottom { left: 0; right: 0; bottom: 0; padding: 14px; min-height: 40%; }
       .nexia-title { font-size: 14px; }
       .nexia-desc { font-size: 11px; margin-bottom: 10px; }
       .nexia-energy { top: 59%; left: 63%; width: 120px; height: 120px; }
