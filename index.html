@@ -692,6 +692,7 @@
       isolation: isolate;
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
       will-change: transform;
+      align-self: start;
     }
 
     .nexia-card .monitor-screen {
@@ -710,19 +711,10 @@
       height: 100%;
       overflow: hidden;
       border-radius: 0 0 var(--radius-lg) var(--radius-lg);
-      background: radial-gradient(circle at 50% 20%, rgba(0, 153, 255, 0.15), transparent 58%), #04060d;
-    }
-
-    .nexia-preview::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: url('nexia.png') center 95% / 120% no-repeat;
-      opacity: 0.34;
-      filter: blur(8px) saturate(1.2);
-      transform: scale(1.08);
-      z-index: 0;
-      pointer-events: none;
+      background:
+        radial-gradient(circle at 28% 72%, rgba(0, 242, 255, 0.18), transparent 52%),
+        radial-gradient(circle at 75% 20%, rgba(122, 40, 138, 0.2), transparent 58%),
+        #050814;
     }
 
     .nexia-tilt-layer {
@@ -739,8 +731,8 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: 55% 8%;
-      transform: translateZ(8px) scale(1.2);
+      object-position: 54% 11%;
+      transform: translateZ(8px) scale(1.08);
       transform-origin: center top;
       animation: nexiaFloat 8s ease-in-out infinite;
       filter: saturate(1.06) contrast(1.03);
@@ -871,7 +863,7 @@
       border: 1px solid rgba(150, 210, 255, 0.2);
       backdrop-filter: blur(8px);
       box-shadow: 0 -6px 28px rgba(0, 0, 0, 0.35);
-      min-height: 42%;
+      min-height: 36%;
     }
 
     .nexia-title {
@@ -920,8 +912,8 @@
     }
 
     @keyframes nexiaFloat {
-      0%, 100% { transform: translateZ(8px) scale(1.2) translateY(0); }
-      50% { transform: translateZ(8px) scale(1.2) translateY(-5px); }
+      0%, 100% { transform: translateZ(8px) scale(1.08) translateY(0); }
+      50% { transform: translateZ(8px) scale(1.08) translateY(-5px); }
     }
 
     @keyframes pulseEnergy {
@@ -932,16 +924,16 @@
     @keyframes spinRing { to { transform: rotate(360deg); } }
 
     @media (max-width: 1024px) {
-      .nexia-card .monitor-screen { height: 390px; }
-      .nexia-preview::before { background-size: 124%; }
-      .nexia-image { object-position: 56% 8%; transform: translateZ(6px) scale(1.16); }
+
+    .nexia-card .monitor-screen { height: 390px; }
+      .nexia-image { object-position: 55% 10%; transform: translateZ(6px) scale(1.07); }
       .nexia-energy { top: 61%; left: 66%; width: 160px; height: 160px; }
     }
 
     @media (max-width: 768px) {
-      .nexia-card .monitor-screen { height: 350px; }
-      .nexia-preview::before { background-size: 130%; opacity: 0.3; }
-      .nexia-image { object-position: 58% 9%; transform: translateZ(4px) scale(1.14); }
+
+    .nexia-card .monitor-screen { height: 350px; }
+      .nexia-image { object-position: 56% 11%; transform: translateZ(4px) scale(1.06); }
       .nexia-top { flex-wrap: wrap; gap: 10px; }
       .nexia-tags { max-width: 100%; }
       .nexia-bottom { padding: 15px; }
@@ -949,12 +941,12 @@
     }
 
     @media (max-width: 480px) {
-      .nexia-card .monitor-screen { height: 312px; }
-      .nexia-preview::before { background-size: 138%; opacity: 0.28; }
-      .nexia-image { object-position: 57% 10%; transform: translateZ(0) scale(1.12); }
+
+    .nexia-card .monitor-screen { height: 312px; }
+      .nexia-image { object-position: 56% 11%; transform: translateZ(0) scale(1.04); }
       .nexia-cta-button { width: 100%; }
       .nexia-eyes { opacity: 0.52; width: 82px; }
-      .nexia-bottom { left: 0; right: 0; bottom: 0; padding: 14px; min-height: 46%; }
+      .nexia-bottom { left: 0; right: 0; bottom: 0; padding: 14px; min-height: 42%; }
       .nexia-title { font-size: 14px; }
       .nexia-desc { font-size: 11px; margin-bottom: 10px; }
       .nexia-energy { top: 59%; left: 63%; width: 120px; height: 120px; }
@@ -1091,7 +1083,7 @@
         </article>
 
         <!-- Monitor X: NexIA -->
-        <article class="monitor-card nexia-card" data-tilt data-tilt-max="12" data-tilt-speed="400" data-tilt-scale="1.02" data-tilt-glare="true" data-tilt-max-glare="0.22">
+        <article class="monitor-card nexia-card" data-tilt data-tilt-max="12" data-tilt-speed="400" data-tilt-scale="1.02" data-tilt-glare="false">
           <div class="monitor-screen nexia-preview">
             <div class="nexia-tilt-layer">
               <img src="nexia.png" alt="NexIA apresentando automação inteligente" class="nexia-image" />
@@ -1424,8 +1416,7 @@
         max: 12,
         speed: 400,
         scale: 1.02,
-        glare: true,
-        'max-glare': 0.22
+        glare: false
       });
     }
 
