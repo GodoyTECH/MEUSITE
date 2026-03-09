@@ -684,7 +684,224 @@
       color: var(--text-secondary);
       line-height: 1.4;
     }
-  </style>
+
+    /* ===== NEXIA CARD (premium) ===== */
+    .nexia-card {
+      transform-style: preserve-3d;
+      perspective: 1000px;
+      isolation: isolate;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    }
+
+    .nexia-card .monitor-screen {
+      position: relative;
+      display: block;
+      background: #05070f;
+      height: 420px;
+      overflow: hidden;
+      padding: 0;
+    }
+
+    .nexia-preview {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      padding: 0;
+    }
+
+    .nexia-tilt-layer {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+    }
+
+    .nexia-image-wrap {
+      position: absolute;
+      inset: 0;
+      background: url('nexia.png') center 8% / cover no-repeat;
+      transform: translateZ(8px) scale(1.12);
+      transform-origin: center top;
+      animation: nexiaFloat 7s ease-in-out infinite;
+    }
+
+    .nexia-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 8%;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .nexia-glow {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 40%, rgba(0, 242, 255, 0.32), transparent 60%);
+      opacity: 0.7;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .nexia-card:hover .nexia-glow { opacity: 0.95; }
+
+    .nexia-energy {
+      z-index: 2;
+      position: absolute;
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 242, 255, 0.35), rgba(0, 242, 255, 0.0) 70%);
+      filter: blur(2px);
+      transform: translateZ(20px) translate(10px, 40px);
+      animation: pulseEnergy 4s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .nexia-ring {
+      position: absolute;
+      inset: 8px;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 242, 255, 0.45);
+      box-shadow: 0 0 25px rgba(0, 242, 255, 0.4);
+      animation: spinRing 6s linear infinite;
+      opacity: 0.7;
+    }
+
+    .nexia-eyes {
+      z-index: 3;
+      position: absolute;
+      width: 90px;
+      height: 28px;
+      top: 28%;
+      left: 50%;
+      transform: translateX(-50%) translateZ(25px);
+      background: radial-gradient(circle, rgba(0, 242, 255, 0.6) 0%, rgba(0, 242, 255, 0) 65%);
+      mix-blend-mode: screen;
+      opacity: 0.65;
+      transition: transform 0.15s ease, opacity 0.2s ease;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .nexia-card:hover .nexia-eyes { opacity: 0.9; }
+
+    .nexia-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    .nexia-top {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      right: 12px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .nexia-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .nexia-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(10, 15, 30, 0.55);
+      border: 1px solid rgba(0, 242, 255, 0.25);
+      backdrop-filter: blur(6px);
+    }
+
+    .nexia-bottom {
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      pointer-events: auto;
+      padding: 16px;
+      border-radius: 14px;
+      background: linear-gradient(180deg, rgba(5, 8, 18, 0) 0%, rgba(5, 8, 18, 0.78) 55%, rgba(5, 8, 18, 0.92) 100%);
+    }
+
+    .nexia-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 15px;
+      letter-spacing: 0.03em;
+      color: #e9f7ff;
+      margin-bottom: 6px;
+    }
+
+    .nexia-desc {
+      font-size: 12px;
+      color: #d5deee;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    .nexia-cta-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(0, 242, 255, 0.25), rgba(122, 40, 138, 0.45));
+      border: 1px solid rgba(0, 242, 255, 0.55);
+      color: #f2fbff;
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      box-shadow: 0 10px 20px rgba(0, 242, 255, 0.22);
+    }
+
+    .nexia-cta-button:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 14px 30px rgba(0, 242, 255, 0.35);
+      background: linear-gradient(135deg, rgba(0, 242, 255, 0.5), rgba(255, 0, 110, 0.3));
+    }
+
+    @keyframes nexiaFloat {
+      0%, 100% { transform: translateZ(10px) translateY(0px); }
+      50% { transform: translateZ(10px) translateY(-6px); }
+    }
+
+    @keyframes pulseEnergy {
+      0%, 100% { transform: translateZ(20px) translate(10px, 40px) scale(1); opacity: 0.7; }
+      50% { transform: translateZ(20px) translate(10px, 40px) scale(1.05); opacity: 1; }
+    }
+
+    @keyframes spinRing { to { transform: rotate(360deg); } }
+
+    @media (max-width: 768px) {
+      .nexia-card .monitor-screen { height: 340px; }
+      .nexia-energy { width: 140px; height: 140px; }
+    }
+
+    @media (max-width: 480px) {
+      .nexia-card .monitor-screen { height: 300px; }
+      .nexia-cta-button { width: 100%; }
+      .nexia-eyes { opacity: 0.5; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .nexia-image { animation: none; }
+      .nexia-energy, .nexia-ring { animation: none; }
+    }
+</style>
 </head>
 <body>
 
@@ -798,6 +1015,39 @@
             <span class="tag">Dashboard</span>
           </div>
           <p class="monitor-desc">Plataforma de automação para coleta e organização de dados sociais, com dashboard e exportação.</p>
+        </article>
+
+        <!-- Monitor X: NexIA -->
+        <article class="monitor-card nexia-card" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-scale="1.03" data-tilt-glare="true" data-tilt-max-glare="0.25">
+          <div class="nexia-glow"></div>
+          <div class="monitor-screen nexia-preview">
+            <div class="nexia-tilt-layer">
+              <div class="nexia-energy">
+                <span class="nexia-ring"></span>
+              </div>
+              <div class="nexia-image-wrap" role="img" aria-label="NexIA"></div>
+              <img src="nexia.png" alt="NexIA" class="nexia-image" />
+              <div class="nexia-eyes"></div>
+              <div class="nexia-overlay">
+                <div class="nexia-top">
+                  <div class="nexia-tags">
+                    <span class="tag cyan">IA</span>
+                    <span class="tag purple">Automação</span>
+                    <span class="tag">WhatsApp</span>
+                  </div>
+                  <div class="nexia-status">
+                    <span class="status-dot online"></span>
+                    <span class="status-text">Online</span>
+                  </div>
+                </div>
+                <div class="nexia-bottom">
+                  <h3 class="nexia-title">Teste nossa automação própria</h3>
+                  <p class="nexia-desc">Fale com a NexIA e veja nossa IA em ação em tempo real.</p>
+                  <a class="nexia-cta-button" href="https://wa.me/5511995586459" target="_blank" rel="noopener">Testar no WhatsApp</a>
+                </div>
+              </div>
+            </div>
+          </div>
         </article>
 
         <!-- Monitor 8: Soft Power Informática -->
@@ -1085,9 +1335,46 @@
     </footer>
   </main>
 
+  <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
   <!-- JavaScript -->
   <script>
-    // Menu Mobile Toggle
+    // NexIA tilt (Vanilla-Tilt)
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches === false) {
+      const nexiaCard = document.querySelector('.nexia-card');
+      if (nexiaCard && window.VanillaTilt) {
+        VanillaTilt.init(nexiaCard, {
+          max: 15,
+          speed: 400,
+          scale: 1.03,
+          glare: true,
+          'max-glare': 0.25
+        });
+      }
+    }
+
+        // NexIA eyes tracking (subtle highlight)
+    const nexiaEyes = document.querySelector('.nexia-eyes');
+    const nexiaCard = document.querySelector('.nexia-card');
+    function updateEyes(clientX, clientY) {
+      if (!nexiaEyes || !nexiaCard) return;
+      const rect = nexiaCard.getBoundingClientRect();
+      const x = (clientX - rect.left) / rect.width - 0.5;
+      const y = (clientY - rect.top) / rect.height - 0.5;
+      const tx = (x * 8).toFixed(2);
+      const ty = (y * 5).toFixed(2);
+      nexiaEyes.style.transform = `translateX(-50%) translateZ(25px) translate(${tx}px, ${ty}px)`;
+    }
+    if (nexiaCard) {
+      nexiaCard.addEventListener('mousemove', (e) => updateEyes(e.clientX, e.clientY));
+      nexiaCard.addEventListener('mouseleave', () => {
+        nexiaEyes.style.transform = 'translateX(-50%) translateZ(25px)';
+      });
+      nexiaCard.addEventListener('touchmove', (e) => {
+        if (e.touches && e.touches[0]) updateEyes(e.touches[0].clientX, e.touches[0].clientY);
+      }, { passive: true });
+    }
+
+// Menu Mobile Toggle
     const menuToggle = document.getElementById('menuToggle');
     const sidebar = document.getElementById('sidebar');
 
