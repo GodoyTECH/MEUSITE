@@ -1,14 +1,14 @@
 /* ===== CSS COMPARTILHADO - GODOY TECH DASHBOARD ===== */
 :root {
   --bg-primary: #0a0a0f;
-  --bg-secondary: #12121a;
-  --bg-card: rgba(18, 18, 26, 0.8);
-  --bg-glass: rgba(255, 255, 255, 0.05);
+  --bg-secondary: rgba(18, 18, 26, 0.68);
+  --bg-card: rgba(18, 18, 26, 0.58);
+  --bg-glass: rgba(255, 255, 255, 0.09);
   --accent-cyan: #00f2ff;
   --accent-purple: #7A288A;
   --accent-pink: #ff006e;
   --text-primary: #ffffff;
-  --text-secondary: #a0a0b0;
+  --text-secondary: #d0d7e6;
   --border-glow: rgba(0, 242, 255, 0.3);
   --gradient-neon: linear-gradient(135deg, #00f2ff 0%, #7A288A 50%, #ff006e 100%);
   --shadow-glow: 0 0 30px rgba(0, 242, 255, 0.2);
@@ -23,7 +23,7 @@
 body, html {
   height: 100%;
   font-family: 'Inter', sans-serif;
-  background: var(--bg-primary);
+  background: #edf6ff;
   color: var(--text-primary);
   overflow-x: hidden;
 }
@@ -33,10 +33,12 @@ body, html {
   top: 0; left: 0;
   width: 100%; height: 100%;
   z-index: -10;
-  background: 
-    radial-gradient(ellipse at 20% 20%, rgba(122, 40, 138, 0.15) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 80%, rgba(0, 242, 255, 0.1) 0%, transparent 50%),
-    var(--bg-primary);
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.7), rgba(232, 244, 255, 0.82)),
+    url('../images/tech-light-bg.svg');
+  background-size: cover, cover;
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
 }
 
 .grid-overlay {
@@ -44,8 +46,8 @@ body, html {
   top: 0; left: 0;
   width: 100%; height: 100%;
   background-image: 
-    linear-gradient(rgba(0, 242, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 242, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(121, 178, 234, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(121, 178, 234, 0.08) 1px, transparent 1px);
   background-size: 50px 50px;
   z-index: -9;
   pointer-events: none;
@@ -64,6 +66,8 @@ body, html {
   flex-direction: column;
   z-index: 1000;
   transition: transform 0.3s ease;
+  backdrop-filter: blur(10px) saturate(130%);
+  -webkit-backdrop-filter: blur(10px) saturate(130%);
 }
 
 .logo-area {
@@ -167,6 +171,8 @@ body, html {
   cursor: pointer;
   z-index: 1100;
   transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .menu-toggle:hover {
@@ -207,6 +213,8 @@ body, html {
   padding: 30px;
   margin-bottom: 25px;
   transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .content-card:hover {
