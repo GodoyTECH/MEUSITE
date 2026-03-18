@@ -3,38 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Godoy Solutions in TECH desenvolve soluções em automação, inteligência artificial, dashboards, sistemas web e experiências digitais inovadoras.">
+  <meta name="description" content="Desenvolvemos soluções em automação, inteligência artificial, sites, sistemas, bots e integrações para WhatsApp, Telegram, Discord, APIs e ambientes em nuvem.">
   <meta name="author" content="Caíque Eduardo">
   <meta name="keywords" content="tecnologia, godoy solutions, tech, inovação, software, portal, dashboard">
   <meta name="theme-color" content="#080d24">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Godoy Solutions in TECH | Automação, IA e Sistemas Web">
-  <meta property="og:description" content="Godoy Solutions in TECH desenvolve soluções em automação, inteligência artificial, dashboards, sistemas web e experiências digitais inovadoras.">
+  <meta property="og:title" content="Godoy Solutions in TECH | Automação, IA e Soluções Digitais">
+  <meta property="og:description" content="Desenvolvemos soluções em automação, inteligência artificial, sites, sistemas, bots e integrações para WhatsApp, Telegram, Discord, APIs e ambientes em nuvem.">
   <meta property="og:url" content="https://godoysolutionstech.netlify.app/">
   <meta property="og:site_name" content="Godoy Solutions in TECH">
   <meta property="og:locale" content="pt_BR">
-  <meta property="og:image" content="https://godoysolutionstech.netlify.app/logo.png">
-  <meta property="og:image:secure_url" content="https://godoysolutionstech.netlify.app/logo.png">
+  <meta property="og:image" content="https://godoysolutionstech.netlify.app/og.png">
+  <meta property="og:image:secure_url" content="https://godoysolutionstech.netlify.app/og.png">
   <meta property="og:image:type" content="image/png">
-  <meta property="og:image:width" content="2000">
-  <meta property="og:image:height" content="1418">
-  <meta property="og:image:alt" content="Godoy Solutions in TECH - Automação, IA e Sistemas Web">
+  <meta property="og:image:alt" content="Godoy Solutions in TECH - automação, inteligência artificial, soluções digitais e sistemas">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Godoy Solutions in TECH | Automação, IA e Sistemas Web">
-  <meta name="twitter:description" content="Godoy Solutions in TECH desenvolve soluções em automação, inteligência artificial, dashboards, sistemas web e experiências digitais inovadoras.">
-  <meta name="twitter:image" content="https://godoysolutionstech.netlify.app/logo.png">
+  <meta name="twitter:title" content="Godoy Solutions in TECH | Automação, IA e Soluções Digitais">
+  <meta name="twitter:description" content="Desenvolvemos soluções em automação, inteligência artificial, sites, sistemas, bots e integrações para WhatsApp, Telegram, Discord, APIs e ambientes em nuvem.">
+  <meta name="twitter:image" content="https://godoysolutionstech.netlify.app/og.png">
 
   <link rel="canonical" href="https://godoysolutionstech.netlify.app/">
 
 
-  <title>Godoy Solutions in TECH | Automação, IA e Sistemas Web</title>
+  <title>Godoy Solutions in TECH | Automação, IA e Soluções Digitais</title>
 
   <!-- Ícones FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="logonew.png">
+  <link rel="shortcut icon" href="logonew.png">
   <link rel="apple-touch-icon" href="logonew.png">
 
   <!-- Fontes -->
@@ -81,7 +80,7 @@
       z-index: -10;
       background-image:
         linear-gradient(rgba(255, 255, 255, 0.7), rgba(232, 244, 255, 0.82)),
-        url('assets/images/tech-light-bg.svg');
+        url('fundo.png');
       background-size: cover, cover;
       background-position: center, center;
       background-repeat: no-repeat, no-repeat;
@@ -194,36 +193,6 @@
       text-align: center;
     }
 
-    .sidebar-footer {
-      padding: 20px 10px;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .user-info {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px;
-      background: var(--bg-glass);
-      border-radius: var(--radius-sm);
-    }
-
-    .user-avatar {
-      width: 36px;
-      height: 36px;
-      background: var(--gradient-neon);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-    }
-
-    .user-name {
-      font-size: 13px;
-      font-weight: 600;
-    }
-
     /* ===== BOTÃO MENU MOBILE ===== */
     .menu-toggle {
       display: none;
@@ -252,6 +221,15 @@
       margin-left: var(--sidebar-width);
       padding: 30px;
       min-height: 100vh;
+    }
+
+    .page-transition {
+      animation: pageIn .35s ease both;
+    }
+
+    @keyframes pageIn {
+      from { opacity: 0; transform: translateY(14px) scale(.995); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
     }
 
     /* ===== HEADER ===== */
@@ -1436,10 +1414,6 @@
         <i class="fas fa-user"></i>
         <span>Sobre</span>
       </a>
-      <a href="softwares.html" class="nav-item">
-        <i class="fas fa-laptop-code"></i>
-        <span>Softwares</span>
-      </a>
       <a href="noticias.html" class="nav-item">
         <i class="fas fa-newspaper"></i>
         <span>Notícias</span>
@@ -1454,16 +1428,10 @@
       </a>
     </div>
 
-    <div class="sidebar-footer">
-      <div class="user-info">
-        <div class="user-avatar">CE</div>
-        <span class="user-name">Caíque Eduardo</span>
-      </div>
-    </div>
   </nav>
 
   <!-- Conteúdo Principal -->
-  <main class="main-content">
+  <main class="main-content page-transition">
     <!-- Header -->
     <header class="page-header">
       <div>
@@ -1801,10 +1769,6 @@
           <i class="fas fa-user"></i>
           <span>Sobre Nós</span>
         </a>
-        <a href="softwares.html" class="quick-link">
-          <i class="fas fa-laptop-code"></i>
-          <span>Softwares</span>
-        </a>
         <a href="noticias.html" class="quick-link">
           <i class="fas fa-newspaper"></i>
           <span>Notícias</span>
@@ -1918,6 +1882,21 @@
           document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
           this.classList.add('active');
         }
+      });
+    });
+
+    // Transição suave entre páginas (sem SPA pesado)
+    document.querySelectorAll('a[href]').forEach((link) => {
+      const href = link.getAttribute('href') || '';
+      if (!href || href.startsWith('#') || href.startsWith('http') || link.target === '_blank') return;
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        const content = document.querySelector('.page-transition');
+        if (!content) return window.location.href = href;
+        content.style.transition = 'opacity .16s ease, transform .16s ease';
+        content.style.opacity = '0';
+        content.style.transform = 'translateY(8px) scale(.995)';
+        setTimeout(() => { window.location.href = href; }, 140);
       });
     });
 

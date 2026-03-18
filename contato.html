@@ -3,7 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contato - Godoy Solutions in TECH</title>
+  <title>Contato | Godoy Solutions in TECH</title>
+  <meta name="description" content="Desenvolvemos soluções em automação, inteligência artificial, sites, sistemas, bots e integrações para WhatsApp, Telegram, Discord, APIs e ambientes em nuvem.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Contato | Godoy Solutions in TECH">
+  <meta property="og:description" content="Desenvolvemos soluções em automação, inteligência artificial, sites, sistemas, bots e integrações para WhatsApp, Telegram, Discord, APIs e ambientes em nuvem.">
+  <meta property="og:url" content="https://godoysolutionstech.netlify.app/contato.html">
+  <meta property="og:image" content="https://godoysolutionstech.netlify.app/og.png">
+  <meta property="og:image:alt" content="Godoy Solutions in TECH - automação, inteligência artificial, soluções digitais e sistemas">
+  <meta property="og:site_name" content="Godoy Solutions in TECH">
+  <meta property="og:locale" content="pt_BR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contato | Godoy Solutions in TECH">
+  <meta name="twitter:description" content="Desenvolvemos soluções em automação, inteligência artificial, sites, sistemas, bots e integrações para WhatsApp, Telegram, Discord, APIs e ambientes em nuvem.">
+  <meta name="twitter:image" content="https://godoysolutionstech.netlify.app/og.png">
+  <link rel="canonical" href="https://godoysolutionstech.netlify.app/contato.html">
+  <link rel="icon" type="image/png" href="logonew.png">
+  <link rel="shortcut icon" href="logonew.png">
+  <link rel="apple-touch-icon" href="logonew.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/shared.css">
@@ -11,89 +28,67 @@
 <body>
   <div class="bg-scene"></div>
   <div class="grid-overlay"></div>
-
   <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
 
   <nav class="sidebar" id="sidebar">
     <div class="logo-area">
-      <div class="logo-icon"><i class="fas fa-robot"></i></div>
-      <span class="logo-text">Godoy Solutions</span>
+      <div class="brand-block">
+        <img class="brand-logo" src="logonew.png" alt="Godoy Solutions in TECH" />
+        <div class="brand-title">Godoy Solutions<br><span class="brand-sub">in TECH</span></div>
+      </div>
     </div>
     <div class="nav-menu">
       <a href="index.html" class="nav-item"><i class="fas fa-th-large"></i><span>Dashboard</span></a>
       <a href="sobre.html" class="nav-item"><i class="fas fa-user"></i><span>Sobre</span></a>
-      <a href="softwares.html" class="nav-item"><i class="fas fa-laptop-code"></i><span>Softwares</span></a>
       <a href="noticias.html" class="nav-item"><i class="fas fa-newspaper"></i><span>Notícias</span></a>
       <a href="contato.html" class="nav-item active"><i class="fas fa-envelope"></i><span>Contato</span></a>
       <a href="apoio.html" class="nav-item"><i class="fas fa-hand-holding-heart"></i><span>Apoio</span></a>
     </div>
-    <div class="sidebar-footer">
-      <div class="user-info">
-        <div class="user-avatar">CE</div>
-        <span class="user-name">Caíque Eduardo</span>
-      </div>
-    </div>
   </nav>
 
-  <main class="main-content">
+  <main class="main-content page-transition">
     <header class="page-header">
-      <h1 class="page-title">Fale Conosco</h1>
-      <p class="page-subtitle">Entre em contato para parcerias, dúvidas ou sugestões</p>
+      <h1 class="page-title">Contato</h1>
+      <p class="page-subtitle">Converse com a Godoy Solutions in TECH para novos projetos, automações e integrações.</p>
     </header>
 
-    <div class="content-card">
-      <h2 class="card-title"><i class="fas fa-paper-plane"></i> Envie uma Mensagem</h2>
+    <section class="content-card">
+      <h2 class="card-title"><i class="fas fa-paper-plane"></i> Envie sua Mensagem</h2>
       <form class="contact-form" action="obrigado.html" method="GET">
         <div class="form-group">
-          <label class="form-label" for="nome">Seu Nome</label>
-          <input type="text" id="nome" name="nome" class="form-input" placeholder="Digite seu nome" required>
+          <label class="form-label" for="nome">Nome</label>
+          <input type="text" id="nome" name="nome" class="form-input" placeholder="Seu nome" required>
         </div>
         <div class="form-group">
-          <label class="form-label" for="email">Seu E-mail</label>
-          <input type="email" id="email" name="email" class="form-input" placeholder="seu@email.com" required>
+          <label class="form-label" for="email">E-mail</label>
+          <input type="email" id="email" name="email" class="form-input" placeholder="voce@empresa.com" required>
         </div>
         <div class="form-group">
           <label class="form-label" for="assunto">Assunto</label>
-          <input type="text" id="assunto" name="assunto" class="form-input" placeholder="Sobre o que quer falar?">
+          <input type="text" id="assunto" name="assunto" class="form-input" placeholder="Ex.: Automação para WhatsApp">
         </div>
         <div class="form-group">
           <label class="form-label" for="mensagem">Mensagem</label>
-          <textarea id="mensagem" name="mensagem" class="form-textarea" placeholder="Escreva sua mensagem..." required></textarea>
+          <textarea id="mensagem" name="mensagem" class="form-textarea" placeholder="Descreva seu cenário e objetivo" required></textarea>
         </div>
-        <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> Enviar Mensagem</button>
+        <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> Enviar</button>
       </form>
-    </div>
+    </section>
 
-    <div class="content-card">
-      <h2 class="card-title"><i class="fas fa-hashtag"></i> Redes Sociais</h2>
-      <p class="card-text">
-        Siga-nos nas redes sociais para novidades:<br><br>
-        <a href="https://instagram.com/godoysolutionstech" target="_blank" style="color: var(--accent-cyan); margin-right: 15px;">
-          <i class="fab fa-instagram"></i> @godoysolutionstech
-        </a>
-      </p>
-    </div>
+    <section class="content-card">
+      <h2 class="card-title"><i class="fas fa-sitemap"></i> Serviços que podemos iniciar hoje</h2>
+      <div class="items-grid">
+        <article class="item-card"><div class="item-icon"><i class="fas fa-robot"></i></div><h3 class="item-title">Automação e IA</h3><p class="item-desc">Fluxos para atendimento, triagem, captação e resposta em canais digitais.</p></article>
+        <article class="item-card"><div class="item-icon"><i class="fas fa-comments"></i></div><h3 class="item-title">Bots em Canais</h3><p class="item-desc">WhatsApp, Telegram, Discord e Slack com lógica de negócio e integração.</p></article>
+        <article class="item-card"><div class="item-icon"><i class="fas fa-code"></i></div><h3 class="item-title">Web e Sistemas</h3><p class="item-desc">Sites, dashboards, APIs, integração com banco de dados e deploy em nuvem.</p></article>
+      </div>
+    </section>
 
     <footer class="main-footer">
-      <p class="footer-text"><i class="fas fa-code"></i> 2025 Godoy Solutions in TECH • Desenvolvido por Caíque Eduardo</p>
+      <p class="footer-text"><i class="fas fa-code"></i> 2026 Godoy Solutions in TECH • Contato comercial e técnico</p>
     </footer>
   </main>
 
-  <script>
-    const menuToggle = document.getElementById('menuToggle');
-    const sidebar = document.getElementById('sidebar');
-    menuToggle.addEventListener('click', () => {
-      sidebar.classList.toggle('active');
-      menuToggle.querySelector('i').classList.toggle('fa-times');
-      menuToggle.querySelector('i').classList.toggle('fa-bars');
-    });
-    document.addEventListener('click', (e) => {
-      if (window.innerWidth <= 768 && !sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
-        sidebar.classList.remove('active');
-        menuToggle.querySelector('i').classList.remove('fa-times');
-        menuToggle.querySelector('i').classList.add('fa-bars');
-      }
-    });
-  </script>
+  <script src="assets/js/layout.js"></script>
 </body>
 </html>
