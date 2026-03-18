@@ -42,18 +42,18 @@
   <style>
     /* ===== VARIÁVEIS CSS ===== */
     :root {
-      --bg-primary: #14112a;
-      --bg-secondary: rgba(32, 28, 64, 0.68);
-      --bg-card: rgba(36, 30, 74, 0.6);
-      --bg-glass: rgba(255, 255, 255, 0.09);
-      --accent-cyan: #00f2ff;
-      --accent-purple: #7A288A;
-      --accent-pink: #ff006e;
-      --text-primary: #ffffff;
-      --text-secondary: #d0d7e6;
-      --border-glow: rgba(0, 242, 255, 0.3);
-      --gradient-neon: linear-gradient(135deg, #00f2ff 0%, #7A288A 50%, #ff006e 100%);
-      --shadow-glow: 0 0 30px rgba(0, 242, 255, 0.2);
+      --bg-primary: #eaf4ff;
+      --bg-secondary: rgba(240, 248, 255, 0.78);
+      --bg-card: rgba(223, 237, 251, 0.72);
+      --bg-glass: rgba(255, 255, 255, 0.55);
+      --accent-cyan: #00aef0;
+      --accent-purple: #6e88d8;
+      --accent-pink: #7f84e8;
+      --text-primary: #113352;
+      --text-secondary: #496888;
+      --border-glow: rgba(56, 156, 227, 0.35);
+      --gradient-neon: linear-gradient(135deg, #22b6ff 0%, #3b89dd 55%, #7d8fe8 100%);
+      --shadow-glow: 0 10px 28px rgba(37, 127, 201, 0.2);
       --radius-lg: 20px;
       --radius-md: 16px;
       --radius-sm: 10px;
@@ -106,14 +106,14 @@
       width: var(--sidebar-width);
       height: 100vh;
       background: var(--bg-secondary);
-      border-right: 1px solid rgba(0, 242, 255, 0.1);
+      border-right: 1px solid rgba(63, 141, 210, 0.22);
       padding: 20px;
       display: flex;
       flex-direction: column;
       z-index: 1000;
       transition: transform 0.3s ease;
-      backdrop-filter: blur(10px) saturate(130%);
-      -webkit-backdrop-filter: blur(10px) saturate(130%);
+      backdrop-filter: blur(12px) saturate(125%);
+      -webkit-backdrop-filter: blur(12px) saturate(125%);
     }
 
     .logo-area {
@@ -146,17 +146,17 @@
       font-family: 'Orbitron', sans-serif;
       font-size: 16px;
       font-weight: 800;
-      background: linear-gradient(90deg, #e5e7ff 0%, #c7b7ff 45%, #9ad7ff 100%);
+      background: linear-gradient(90deg, #144571 0%, #2c6fae 45%, #54a0df 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      text-shadow: 0 0 18px rgba(154, 215, 255, 0.18);
+      text-shadow: 0 0 12px rgba(74, 156, 230, 0.16);
     }
 
     .brand-sub {
       display: inline-block;
       margin-top: 3px;
-      color: #c7b7ff;
+      color: #4e82b6;
       font-size: 12px;
       letter-spacing: 0.08em;
     }
@@ -184,8 +184,9 @@
 
     .nav-item:hover, .nav-item.active {
       background: var(--bg-glass);
-      color: var(--accent-cyan);
-      border: 1px solid rgba(0, 242, 255, 0.2);
+      color: #0f5f9e;
+      border: 1px solid rgba(58, 153, 228, 0.32);
+      box-shadow: 0 8px 16px rgba(55, 133, 198, 0.12);
     }
 
     .nav-item i {
@@ -201,10 +202,10 @@
       left: 20px;
       width: 50px;
       height: 50px;
-      background: var(--bg-secondary);
-      border: 1px solid rgba(0, 242, 255, 0.3);
+      background: rgba(241, 249, 255, 0.9);
+      border: 1px solid rgba(58, 153, 228, 0.38);
       border-radius: var(--radius-sm);
-      color: var(--accent-cyan);
+      color: #1472b7;
       font-size: 20px;
       cursor: pointer;
       z-index: 1100;
@@ -292,7 +293,7 @@
     .monitor-card {
       background: var(--bg-card);
       border-radius: var(--radius-lg);
-      border: 1px solid rgba(0, 242, 255, 0.15);
+      border: 1px solid rgba(67, 152, 223, 0.24);
       overflow: hidden;
       transition: all 0.4s ease;
       position: relative;
@@ -327,8 +328,8 @@
       justify-content: space-between;
       align-items: center;
       padding: 16px 20px;
-      background: rgba(0, 0, 0, 0.3);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      background: rgba(217, 233, 248, 0.78);
+      border-bottom: 1px solid rgba(72, 143, 204, 0.18);
     }
 
     .monitor-info {
@@ -393,7 +394,7 @@
       position: relative;
       width: 100%;
       height: 350px;
-      background: #000;
+      background: rgba(201, 224, 246, 0.45);
       border: none;
       overflow: auto;
       scrollbar-width: thin;
@@ -478,7 +479,7 @@
       flex-wrap: wrap;
       gap: 8px;
       padding: 16px 20px;
-      background: rgba(0, 0, 0, 0.2);
+      background: rgba(216, 234, 250, 0.62);
     }
 
     .tag {
